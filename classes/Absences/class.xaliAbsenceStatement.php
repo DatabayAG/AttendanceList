@@ -55,7 +55,7 @@ class xaliAbsenceStatement extends ActiveRecord {
             }
 		}
 
-		return NULL;
+		return null;
 	}
 
 	public function getEntryId(): string

@@ -66,7 +66,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 		return xaliUserStatus::where(array(
 			'status' => ilLPStatus::LP_STATUS_COMPLETED_NUM,
 			'attendancelist_id' => $this->getId()
-		))->getArray(NULL, 'user_id');
+		))->getArray(null, 'user_id');
 	}
 
 
@@ -84,7 +84,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 		$other_than_not_attempted = xaliUserStatus::where(array(
 			'status' => ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM,
 			'attendancelist_id' => $this->getId()
-		), $operators)->getArray(NULL, 'user_id');
+		), $operators)->getArray(null, 'user_id');
 
 		return array_diff($this->plugin->getMembers($this->plugin->lookupRefId($this->getId())), $other_than_not_attempted);
 	}
@@ -100,7 +100,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 		return xaliUserStatus::where(array(
 			'status' => ilLPStatus::LP_STATUS_FAILED_NUM,
 			'attendancelist_id' => $this->getId()
-		))->getArray(NULL, 'user_id');
+		))->getArray(null, 'user_id');
 	}
 
 
@@ -114,7 +114,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 		return xaliUserStatus::where(array(
 			'status' => ilLPStatus::LP_STATUS_IN_PROGRESS_NUM,
 			'attendancelist_id' => $this->getId()
-		))->getArray(NULL, 'user_id');
+		))->getArray(null, 'user_id');
 	}
 
 

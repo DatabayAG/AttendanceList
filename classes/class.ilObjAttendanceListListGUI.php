@@ -58,7 +58,7 @@ class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI {
 		try {
 			/** @var xaliSetting $settings */
 			$settings = xaliSetting::find($this->obj_id);
-			if ($settings != NULL) {
+			if ($settings != null) {
 				if ($settings->getActivation()) {
 					$activation_from = date('d. M Y', strtotime($settings->getActivationFrom()));
 					$activation_to = date('d. M Y', strtotime($settings->getActivationTo()));

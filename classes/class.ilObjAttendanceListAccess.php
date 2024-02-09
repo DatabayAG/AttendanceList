@@ -13,7 +13,7 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	 *
 	 * @return bool
 	 */
-	public function _checkAccess($a_cmd, $a_permission, $a_ref_id, $a_obj_id = NULL, $a_user_id = ''): bool
+	public function _checkAccess($a_cmd, $a_permission, $a_ref_id, $a_obj_id = null, $a_user_id = ''): bool
     {
 		global $DIC;
 		$ilUser = $DIC['ilUser'];
@@ -24,7 +24,7 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 		if ($a_user_id == '') {
 			$a_user_id = $ilUser->getId();
 		}
-		if ($a_obj_id === NULL) {
+		if ($a_obj_id === null) {
 			$a_obj_id = ilObject2::_lookupObjId($a_ref_id);
 		}
 
@@ -93,7 +93,7 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	 *
 	 * @return bool
 	 */
-	public static function hasReadAccess($ref_id = NULL, $user_id = NULL): bool
+	public static function hasReadAccess($ref_id = null, $user_id = null): bool
     {
 		return self::hasAccess('read', $ref_id, $user_id);
 	}
@@ -105,7 +105,7 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	 *
 	 * @return bool
 	 */
-	public static function hasWriteAccess($ref_id = NULL, $user_id = NULL): bool
+	public static function hasWriteAccess($ref_id = null, $user_id = null): bool
     {
 		return self::hasAccess('write', $ref_id, $user_id);
 	}
@@ -118,7 +118,7 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	 *
 	 * @return bool
 	 */
-	protected static function hasAccess($permission, $ref_id = NULL, $user_id = NULL): bool
+	protected static function hasAccess($permission, $ref_id = null, $user_id = null): bool
     {
 		global $DIC;
 		$ilUser = $DIC['ilUser'];
