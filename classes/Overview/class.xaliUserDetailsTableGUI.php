@@ -49,7 +49,7 @@ class xaliUserDetailsTableGUI extends ilTable2GUI
 
         $this->setTitle($this->user->getFirstname() . ' ' . $this->user->getLastname());
 
-        $this->setExportFormats(array(self::EXPORT_CSV, self::EXPORT_EXCEL));
+        $this->setExportFormats([self::EXPORT_CSV, self::EXPORT_EXCEL]);
 
         $this->setEnableNumInfo(false);
         $this->setRowTemplate('tpl.user_details_row.html', $this->pl->getDirectory());
@@ -63,7 +63,7 @@ class xaliUserDetailsTableGUI extends ilTable2GUI
 
         $this->parseData();
 
-        $async_links = array();
+        $async_links = [];
         $this->ctrl->setParameter($this->parent_obj, 'user_id', $this->user->getId());
         foreach ($this->getData() as $data_set) {
             $this->ctrl->setParameter($this->parent_obj, 'checklist_id', $data_set['id']);
@@ -89,16 +89,16 @@ class xaliUserDetailsTableGUI extends ilTable2GUI
 
     protected function parseData(): void
     {
-        $data = array();
+        $data = [];
         /** @var xaliChecklist $checklist */
-        foreach (xaliChecklist::where(array(
+        foreach (xaliChecklist::where([
             'obj_id' => $this->obj_id,
             'checklist_date' => date('Y-m-d')
-        ), array(
+        ], [
             'obj_id' => '=',
             'checklist_date' => '<='
-        ))->orderBy('checklist_date')->get() as $checklist) {
-            $checklist_data = array();
+        ])->orderBy('checklist_date')->get() as $checklist) {
+            $checklist_data = [];
             $checklist_data["id"] = $checklist->getId();
             $checklist_data["date"] = $checklist->getChecklistDate();
             $checklist_data["tutor"] = $checklist->getLastEditedBy(true);
@@ -185,7 +185,7 @@ class xaliUserDetailsTableGUI extends ilTable2GUI
         //		$this->tpl->setVariable('VAL_LINK_ABSENCE', )
 
         //		foreach (array('unexcused', 'excused', 'present') as $label) {
-        foreach (array('unexcused', 'present') as $label) {
+        foreach (['unexcused', 'present'] as $label) {
             $this->tpl->setVariable('LABEL_' . strtoupper($label), $this->pl->txt('label_' . $label));
         }
         if (xaliConfig::getConfig(xaliConfig::F_SHOW_NOT_RELEVANT)) {

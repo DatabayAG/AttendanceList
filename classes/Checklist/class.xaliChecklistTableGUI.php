@@ -46,7 +46,7 @@ class xaliChecklistTableGUI extends ilTable2GUI
         parent::__construct($a_parent_obj);
 
         if (!$this->is_new) {
-            $this->setExportFormats(array(self::EXPORT_CSV, self::EXPORT_EXCEL));
+            $this->setExportFormats([self::EXPORT_CSV, self::EXPORT_EXCEL]);
         }
 
         $this->setEnableNumInfo(false);
@@ -79,10 +79,10 @@ class xaliChecklistTableGUI extends ilTable2GUI
 
     protected function parseData(): void
     {
-        $data = array();
+        $data = [];
         foreach ($this->users as $usr_id) {
             $user = new ilObjUser($usr_id);
-            $user_data = array();
+            $user_data = [];
             $user_data["name"] = $user->getFullname();
             $user_data["login"] = $user->getLogin();
             $user_data["id"] = $user->getId();
@@ -159,7 +159,7 @@ class xaliChecklistTableGUI extends ilTable2GUI
         }
 
         //		foreach (array('unexcused', 'excused', 'present') as $label) {
-        foreach (array('unexcused', 'present') as $label) {
+        foreach (['unexcused', 'present'] as $label) {
             $this->tpl->setVariable('LABEL_' . strtoupper($label), $this->pl->txt('label_' . $label));
         }
         if (xaliConfig::getConfig(xaliConfig::F_SHOW_NOT_RELEVANT)) {

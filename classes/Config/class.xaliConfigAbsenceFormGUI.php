@@ -79,14 +79,14 @@ class xaliConfigAbsenceFormGUI extends ilPropertyFormGUI
 
     public function fillForm(): void
     {
-        $values = array(
+        $values = [
             xaliAbsenceReason::F_ABSENCE_REASONS_TITLE => $this->absence_reason->getTitle(),
             xaliAbsenceReason::F_ABSENCE_REASONS_INFO => $this->absence_reason->getInfo(),
             xaliAbsenceReason::F_ABSENCE_REASONS_HAS_COMMENT => $this->absence_reason->hasComment(),
             xaliAbsenceReason::F_ABSENCE_REASONS_COMMENT_REQ => $this->absence_reason->getCommentReq(),
             xaliAbsenceReason::F_ABSENCE_REASONS_HAS_UPLOAD => $this->absence_reason->hasUpload(),
             xaliAbsenceReason::F_ABSENCE_REASONS_UPLOAD_REQ => $this->absence_reason->getUploadReq()
-        );
+        ];
         $this->setValuesByArray($values);
     }
 

@@ -133,7 +133,7 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
             }
         }
 
-        if (xaliAbsenceStatement::where(array('entry_id' => $this->absence_statement->getEntryId()))->hasSets()) {
+        if (xaliAbsenceStatement::where(['entry_id' => $this->absence_statement->getEntryId()])->hasSets()) {
             $this->absence_statement->update();
         } else {
             $this->absence_statement->create();
@@ -149,11 +149,11 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
             $filename = ilObjFile::_lookupTitle($file_id);
         }
         $reason_id = $this->absence_statement->getReasonId();
-        $values = array(
+        $values = [
             'reason_id' => $reason_id,
             'comment_' . $reason_id => $this->absence_statement->getComment(),
             'file_upload_' . $reason_id => $filename,
-        );
+        ];
         $this->setValuesByArray($values);
     }
 }

@@ -23,7 +23,7 @@ declare(strict_types=1);
 class srWeekdayInputGUI extends ilFormPropertyGUI
 {
     public const TYPE = 'weekday';
-    protected array $value = array();
+    protected array $value = [];
     protected ilLanguage $lng;
     protected ilAttendanceListPlugin $pl;
 
@@ -76,7 +76,7 @@ class srWeekdayInputGUI extends ilFormPropertyGUI
     {
         $tpl = $this->pl->getTemplate("default/tpl.weekday_input.html");
 
-        $days = array(1 => 'Mon', 2 => 'Tue', 3 => 'Wed', 4 => 'Thu', 5 => 'Fri', 6 => 'Sat', 7 => 'Sun');
+        $days = [1 => 'Mon', 2 => 'Tue', 3 => 'Wed', 4 => 'Thu', 5 => 'Fri', 6 => 'Sat', 7 => 'Sun'];
 
         for ($i = 1; $i < 8; $i++) {
             $tpl->setCurrentBlock('byday_simple');

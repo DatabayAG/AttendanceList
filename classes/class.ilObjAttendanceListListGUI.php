@@ -45,18 +45,18 @@ class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI
         $this->cut_enabled = false;
         $this->copy_enabled = true;
 
-        $commands = array(
-            array(
+        $commands = [
+            [
                 'permission' => 'read',
                 'cmd' => ilObjAttendanceListGUI::CMD_STANDARD,
                 'default' => true,
-            ),
-            array(
+            ],
+            [
                 'permission' => 'write',
                 'cmd' => ilObjAttendanceListGUI::CMD_EDIT_SETTINGS,
                 'lang_var' => 'edit'
-            )
-        );
+            ]
+        ];
 
         return $commands;
     }
@@ -69,7 +69,7 @@ class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI
      *                        'property' (string) => property name
      *                        'value' (string) => property value
      */
-    public function getCustomProperties(array $a_prop = array()): array
+    public function getCustomProperties(array $a_prop = []): array
     {
 
         $props = parent::getCustomProperties($a_prop);
@@ -81,22 +81,22 @@ class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI
                 if ($settings->getActivation()) {
                     $activation_from = date('d. M Y', strtotime($settings->getActivationFrom()));
                     $activation_to = date('d. M Y', strtotime($settings->getActivationTo()));
-                    $props[] = array(
+                    $props[] = [
                         'alert' => false,
                         'newline' => true,
                         'property' => $this->lng->txt('activation'),
                         'value' => $activation_from . ' - ' . $activation_to,
                         'propertyNameVisible' => true
-                    );
+                    ];
                 }
                 if (!$settings->getIsOnline()) {
-                    $props[] = array(
+                    $props[] = [
                         'alert' => true,
                         'newline' => true,
                         'property' => 'Status',
                         'value' => 'Offline',
                         'propertyNameVisible' => true
-                    );
+                    ];
                 }
             }
         } catch (Exception $e) {
@@ -108,7 +108,7 @@ class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI
 
     public function getAlertProperties(): array
     {
-        $alert = array();
+        $alert = [];
         foreach ((array) $this->getCustomProperties() as $prop) {
             if ($prop['alert']) {
                 $alert[] = $prop;

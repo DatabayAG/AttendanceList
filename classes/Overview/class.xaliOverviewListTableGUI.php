@@ -44,7 +44,7 @@ class xaliOverviewListTableGUI extends ilTable2GUI
 
         parent::__construct($a_parent_obj, xaliOverviewGUI::CMD_LISTS);
         $this->setRowTemplate('tpl.list_overview_row.html', $this->pl->getDirectory());
-        $this->setExportFormats(array(self::EXPORT_CSV, self::EXPORT_EXCEL));
+        $this->setExportFormats([self::EXPORT_CSV, self::EXPORT_EXCEL]);
 
         $this->initColumns();
         $this->initFilter();
@@ -64,10 +64,10 @@ class xaliOverviewListTableGUI extends ilTable2GUI
 
     public function parseData(): void
     {
-        $data = array();
-        foreach (xaliChecklist::where(array('obj_id' => $this->obj_id))->get() as $checklist) {
+        $data = [];
+        foreach (xaliChecklist::where(['obj_id' => $this->obj_id])->get() as $checklist) {
             /** @var $checklist xaliChecklist */
-            $dataset = array();
+            $dataset = [];
             $dataset['id'] = $checklist->getId();
             $dataset['sort_date'] = $checklist->getChecklistDate(false);
             $dataset['date'] = $checklist->getChecklistDate();

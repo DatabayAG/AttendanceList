@@ -178,7 +178,7 @@ class xaliSetting extends ActiveRecord
 
         // delete empty lists outside defined dates
         if ($delete) {
-            foreach (xaliChecklist::where(array('obj_id' => $this->getId(), 'last_edited_by' => null))->get() as $checklist) {
+            foreach (xaliChecklist::where(['obj_id' => $this->getId(), 'last_edited_by' => null])->get() as $checklist) {
                 if ($checklist->getChecklistDate() < $begin
                     || $checklist->getChecklistDate() > $end
                     || !in_array(date("D", strtotime($checklist->getChecklistDate())), $weekdays)) {
@@ -198,7 +198,7 @@ class xaliSetting extends ActiveRecord
 
             foreach ($period as $dt) {
                 if (in_array($dt->format("D"), $weekdays)) {
-                    $where = xaliChecklist::where(array('checklist_date' => $dt->format('Y-m-d'), 'obj_id' => $this->getId()));
+                    $where = xaliChecklist::where(['checklist_date' => $dt->format('Y-m-d'), 'obj_id' => $this->getId()]);
                     if (!$where->hasSets()) {
                         $checklist = new xaliChecklist();
                         $checklist->setChecklistDate($dt->format('Y-m-d'));

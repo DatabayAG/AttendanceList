@@ -146,7 +146,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
         global $DIC;
         $tree = $DIC->repositoryTree();
         $orig_ref_id = $ref_id;
-        while (!in_array(ilObject2::_lookupType($ref_id, true), array('crs', 'grp'))) {
+        while (!in_array(ilObject2::_lookupType($ref_id, true), ['crs', 'grp'])) {
             if ($ref_id == 1 || !$ref_id) {
                 throw new Exception("Parent of ref id {$orig_ref_id} is neither course nor group.");
             }
@@ -164,13 +164,13 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
         /** @var xaliUserStatus $xaliUserStatus */
         $xaliUserStatus = xaliUserStatus::getInstance($user_id, $obj_id);
 
-        return array(
+        return [
             'present' => $xaliUserStatus->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT),
             'absent' => $xaliUserStatus->getAttendanceStatuses(xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED),
             'unedited' => $xaliUserStatus->getUnedited(),
             'percentage' => $xaliUserStatus->getReachedPercentage(),
             'minimum_attendance' => $obj_id ? $xaliUserStatus->calcMinimumAttendance() : 0
-        );
+        ];
     }
 
     public function getAttendanceListIdForCourse(int $crs_ref_id, bool $get_ref_id = false): int

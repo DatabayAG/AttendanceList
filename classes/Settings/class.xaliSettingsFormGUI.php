@@ -81,7 +81,7 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI
         $this->addItem($input);
 
         $input = new ilSelectInputGUI($this->pl->txt(self::F_MINIMUM_ATTENDANCE), self::F_MINIMUM_ATTENDANCE);
-        $options = array();
+        $options = [];
         $options[xaliSetting::CALC_AUTO_MINIMUM_ATTENDANCE] = $this->pl->txt(self::F_MINIMUM_ATTENDANCE . '_auto');
         for ($i = 0; $i <= 100; $i++) {
             $options[$i] = $i . '%';
@@ -92,11 +92,11 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI
         $this->addItem($input);
 
         $input = new ilDateTimeInputGUI($this->pl->txt(self::F_ACTIVATION_FROM), self::F_ACTIVATION_FROM);
-        $input->setValueByArray(array(self::F_ACTIVATION_FROM => $this->xaliSetting->getActivationFrom()));
+        $input->setValueByArray([self::F_ACTIVATION_FROM => $this->xaliSetting->getActivationFrom()]);
         $this->addItem($input);
 
         $input = new ilDateTimeInputGUI($this->pl->txt(self::F_ACTIVATION_TO), self::F_ACTIVATION_TO);
-        $input->setValueByArray(array(self::F_ACTIVATION_TO => $this->xaliSetting->getActivationTo()));
+        $input->setValueByArray([self::F_ACTIVATION_TO => $this->xaliSetting->getActivationTo()]);
         $this->addItem($input);
 
         $input = new srWeekdayInputGUI($this->pl->txt(self::F_WEEKDAYS), self::F_WEEKDAYS);

@@ -229,7 +229,7 @@ class xaliOverviewGUI extends xaliGUI
 
     protected function checkDate($date): void
     {
-        $where = xaliChecklist::where(array('checklist_date' => $date, 'obj_id' => $this->parent_gui->getObject()->getId()));
+        $where = xaliChecklist::where(['checklist_date' => $date, 'obj_id' => $this->parent_gui->getObject()->getId()]);
         if ($where->hasSets()) {
             $this->tpl->setOnScreenMessage('failure', $this->pl->txt('msg_date_already_used'), true);
             $this->ctrl->redirect($this, self::CMD_ADD_LIST);
@@ -285,7 +285,7 @@ class xaliOverviewGUI extends xaliGUI
         $conf->setConfirm($this->lng->txt('delete'), 'deleteLists');
         $conf->setCancel($this->lng->txt('cancel'), 'cancel');
 
-        $checklist_ids = $_GET['checklist_id'] ? array($_GET['checklist_id']) : $_POST['checklist_ids'];
+        $checklist_ids = $_GET['checklist_id'] ? [$_GET['checklist_id']] : $_POST['checklist_ids'];
         foreach ($checklist_ids as $id) {
             $checklist = xaliChecklist::find($id);
             $conf->addItem('checklist_id[]', $checklist->getId(), sprintf($this->pl->txt('table_checklist_title'), $checklist->getChecklistDate()));
@@ -295,7 +295,7 @@ class xaliOverviewGUI extends xaliGUI
 
     public function deleteLists(): void
     {
-        $checklist_ids = is_array($_POST['checklist_id']) ? $_POST['checklist_id'] : array($_POST['checklist_id']);
+        $checklist_ids = is_array($_POST['checklist_id']) ? $_POST['checklist_id'] : [$_POST['checklist_id']];
         foreach ($checklist_ids as $id) {
             $checklist = xaliChecklist::find($id);
             $checklist->delete();
@@ -337,7 +337,7 @@ class xaliOverviewGUI extends xaliGUI
     #[NoReturn] public function addUserAutoComplete(): void
     {
         $auto = new ilUserAutoComplete();
-        $auto->setSearchFields(array('login', 'firstname', 'lastname'));
+        $auto->setSearchFields(['login', 'firstname', 'lastname']);
         $auto->setResultField('login');
         $auto->enableFieldSearchableCheck(false);
         $auto->setMoreLinkAvailable(true);

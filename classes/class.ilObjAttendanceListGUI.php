@@ -1,4 +1,6 @@
-<?php /** @noinspection NullPointerExceptionInspection */
+<?php
+
+/** @noinspection NullPointerExceptionInspection */
 /** @noinspection PhpDeprecationInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
 
@@ -192,7 +194,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
             //$ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
             $ilCtrl->setParameterByClass($class_name, "ref_id", $ref_id);
             $ilCtrl->setParameterByClass($class_name, "entry_id", $entry_id);
-            $ilCtrl->redirectByClass(array("ilobjplugindispatchgui", self::class, xaliAbsenceStatementGUI::class), xaliAbsenceStatementGUI::CMD_STANDARD);
+            $ilCtrl->redirectByClass(["ilobjplugindispatchgui", self::class, xaliAbsenceStatementGUI::class], xaliAbsenceStatementGUI::CMD_STANDARD);
         }
 
         if ($ilAccess->checkAccess("read", "", $ref_id)) {
@@ -200,13 +202,13 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
             $ilCtrl->setTargetScript("ilias.php");
             //$ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
             $ilCtrl->setParameterByClass($class_name, "ref_id", $ref_id);
-            $ilCtrl->redirectByClass(array("ilobjplugindispatchgui", $class_name), "");
+            $ilCtrl->redirectByClass(["ilobjplugindispatchgui", $class_name], "");
         } elseif ($ilAccess->checkAccess("visible", "", $ref_id)) {
             //$ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
             $ilCtrl->setTargetScript("ilias.php");
             //$ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
             $ilCtrl->setParameterByClass($class_name, "ref_id", $ref_id);
-            $ilCtrl->redirectByClass(array("ilobjplugindispatchgui", $class_name), "infoScreen");
+            $ilCtrl->redirectByClass(["ilobjplugindispatchgui", $class_name], "infoScreen");
         } elseif ($ilAccess->checkAccess("read", "", ROOT_FOLDER_ID)) {
             global $DIC;
             $tpl = $DIC->ui()->mainTemplate();
@@ -270,9 +272,9 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
             $this->ctrl->redirectByClass(ilRepositoryGUI::class);
         }
 
-        $forms = array(
+        $forms = [
             self::CFORM_NEW => $this->initCreateForm($a_new_type),
-        );
+        ];
 
         return $forms;
     }
@@ -327,7 +329,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
     public function checkPassedIncompleteLists(): bool
     {
         $members_count = count($this->getMembers());
-        foreach (xaliChecklist::where(array('obj_id' => $this->obj_id))->get() as $checklist) {
+        foreach (xaliChecklist::where(['obj_id' => $this->obj_id])->get() as $checklist) {
             if (date('Y-m-d') > $checklist->getChecklistDate()
                 && ($checklist->getEntriesCount() < $members_count)) {
                 $link_to_overview = $this->ctrl->getLinkTargetByClass(xaliOverviewGUI::class, xaliOverviewGUI::CMD_LISTS);
@@ -346,7 +348,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
         global $DIC;
         $tree = $DIC->repositoryTree();
         $orig_ref_id = $ref_id;
-        while (!in_array(ilObject2::_lookupType($ref_id, true), array('crs', 'grp'))) {
+        while (!in_array(ilObject2::_lookupType($ref_id, true), ['crs', 'grp'])) {
             if ($ref_id == 1 || !$ref_id) {
                 throw new Exception("Parent of ref id {$orig_ref_id} is neither course nor group.");
             }

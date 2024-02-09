@@ -218,17 +218,17 @@ class xaliUserStatus extends ActiveRecord
             if (!$checklist_ids) {
                 $this->attendance_statuses[$status] = 0;
             } else {
-                $operators = array(
+                $operators = [
                     'user_id' => '=',
                     'status' => '=',
                     'checklist_id' => 'IN'
-                );
+                ];
 
-                $this->attendance_statuses[$status] = xaliChecklistEntry::where(array(
+                $this->attendance_statuses[$status] = xaliChecklistEntry::where([
                     'user_id' => $this->user_id,
                     'status' => $status,
                     'checklist_id' => $checklist_ids
-                ), $operators)->count();
+                ], $operators)->count();
             }
         }
         return $this->attendance_statuses[$status];
@@ -264,7 +264,7 @@ class xaliUserStatus extends ActiveRecord
 
     public static function getInstance(int $user_id, int $attendance_list_id): xaliUserStatus|ActiveRecord
     {
-        $xaliUserStatus = xaliUserStatus::where(array('user_id' => $user_id, 'attendancelist_id' => $attendance_list_id))->first();
+        $xaliUserStatus = xaliUserStatus::where(['user_id' => $user_id, 'attendancelist_id' => $attendance_list_id])->first();
         if (!$xaliUserStatus) {
             $xaliUserStatus = new self();
             $xaliUserStatus->setUserId($user_id);
@@ -308,8 +308,8 @@ class xaliUserStatus extends ActiveRecord
     protected function getChecklistIds(): array
     {
         if (!$this->checklist_ids) {
-            $this->checklist_ids = array();
-            foreach (xaliChecklist::where(array('obj_id' => $this->attendancelist_id))->get() as $checklist) {
+            $this->checklist_ids = [];
+            foreach (xaliChecklist::where(['obj_id' => $this->attendancelist_id])->get() as $checklist) {
                 $this->checklist_ids[] = $checklist->getId();
             }
         }

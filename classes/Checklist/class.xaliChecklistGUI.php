@@ -32,7 +32,7 @@ class xaliChecklistGUI extends xaliGUI
 
         $this->settings = xaliSetting::find($parent_gui->getObject()->getId());
 
-        $list_query = xaliChecklist::where(array('checklist_date' => date('Y-m-d'), 'obj_id' => $parent_gui->getObject()->getId()));
+        $list_query = xaliChecklist::where(['checklist_date' => date('Y-m-d'), 'obj_id' => $parent_gui->getObject()->getId()]);
         if ($list_query->hasSets()) {
             $this->checklist = $list_query->first();
         } else {

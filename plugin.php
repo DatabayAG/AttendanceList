@@ -1,4 +1,5 @@
 <?php
+
 $id = 'xali';
 $version = '2.0.0';
 $ilias_min_version = '9.0';

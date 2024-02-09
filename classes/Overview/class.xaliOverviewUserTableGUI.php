@@ -42,7 +42,7 @@ class xaliOverviewUserTableGUI extends ilTable2GUI
 
         parent::__construct($a_parent_obj);
         $this->setRowTemplate('tpl.user_overview_row.html', $this->pl->getDirectory());
-        $this->setExportFormats(array(self::EXPORT_CSV, self::EXPORT_EXCEL));
+        $this->setExportFormats([self::EXPORT_CSV, self::EXPORT_EXCEL]);
 
         $this->setLimit(0);
         $this->initColumns();
@@ -61,10 +61,10 @@ class xaliOverviewUserTableGUI extends ilTable2GUI
 
     public function parseData(): void
     {
-        $data = array();
+        $data = [];
         foreach ($this->users as $usr_id) {
             $user = new ilObjUser($usr_id);
-            $user_data = array();
+            $user_data = [];
             if ($this->filter['login'] != '' && $this->filter['login'] != $user->getLogin()) {
                 continue;
             }
@@ -109,8 +109,8 @@ class xaliOverviewUserTableGUI extends ilTable2GUI
 
     protected function getChecklistIds(): array
     {
-        $ids = array();
-        foreach (xaliChecklist::where(array('obj_id' => $this->obj_id))->get() as $checklist) {
+        $ids = [];
+        foreach (xaliChecklist::where(['obj_id' => $this->obj_id])->get() as $checklist) {
             $ids[] = $checklist->getId();
         }
 

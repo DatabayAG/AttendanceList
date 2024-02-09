@@ -63,7 +63,7 @@ class xaliChecklist extends ActiveRecord
 
     public function getEntryOfUser(int $user_id): xaliChecklistEntry
     {
-        $where = xaliChecklistEntry::where(array('checklist_id' => $this->id, 'user_id' => $user_id));
+        $where = xaliChecklistEntry::where(['checklist_id' => $this->id, 'user_id' => $user_id]);
         if ($where->hasSets()) {
             return $where->first();
         }
@@ -82,15 +82,15 @@ class xaliChecklist extends ActiveRecord
         if (empty($members)) {
             return 0;
         }
-        $operators = array(
+        $operators = [
             'checklist_id' => '=',
             'user_id' => 'IN'
-        );
+        ];
 
-        return xaliChecklistEntry::where(array(
+        return xaliChecklistEntry::where([
             'checklist_id' => $this->getId(),
             'user_id' => $members
-        ), $operators)->count();
+        ], $operators)->count();
     }
 
     public function isComplete(): bool
@@ -110,17 +110,17 @@ class xaliChecklist extends ActiveRecord
         if (empty($members)) {
             return 0;
         }
-        $operators = array(
+        $operators = [
             'status' => '=',
             'checklist_id' => '=',
             'user_id' => 'IN'
-        );
+        ];
 
-        return xaliChecklistEntry::where(array(
+        return xaliChecklistEntry::where([
             'status' => $status,
             'checklist_id' => $this->getId(),
             'user_id' => $members
-        ), $operators)->count();
+        ], $operators)->count();
     }
 
     public function isEmpty(): bool
@@ -130,7 +130,7 @@ class xaliChecklist extends ActiveRecord
 
     public function delete(): void
     {
-        foreach (xaliChecklistEntry::where(array('checklist_id' => $this->id))->get() as $entry) {
+        foreach (xaliChecklistEntry::where(['checklist_id' => $this->id])->get() as $entry) {
             $entry->delete();
         }
         parent::delete();

@@ -73,7 +73,7 @@ class xaliCron
             return;
         }
 
-        $send_mail = array();
+        $send_mail = [];
 
         $now = date('Y-m-d');
         $now_minus_30_days = date('Y-m-d', strtotime('-30 days'));
@@ -114,10 +114,10 @@ class xaliCron
                 continue;
             }
             if (!is_array($send_mail[$res['user_id']])) {
-                $send_mail[$res['user_id']] = array();
+                $send_mail[$res['user_id']] = [];
             }
             if (!is_array($send_mail[$res['user_id']][$res['ref_id']])) {
-                $send_mail[$res['user_id']][$res['ref_id']] = array();
+                $send_mail[$res['user_id']][$res['ref_id']] = [];
             }
             $send_mail[$res['user_id']][$res['ref_id']][$res['id']] = $res['checklist_date'];
         }
@@ -125,7 +125,7 @@ class xaliCron
         // send mails
         foreach ($send_mail as $user_id => $array) {
             /** @var xaliLastReminder $last_reminder */
-            $last_reminder = xaliLastReminder::where(array('user_id' => $user_id))->first();
+            $last_reminder = xaliLastReminder::where(['user_id' => $user_id])->first();
 
             if (!$last_reminder) {
                 $last_reminder = new xaliLastReminder();
@@ -163,7 +163,7 @@ class xaliCron
                 continue;
             }
 
-            $placeholders = array('user' => $ilObjUser, 'open_absences' => $open_absences);
+            $placeholders = ['user' => $ilObjUser, 'open_absences' => $open_absences];
 
             try {
                 $notification = self::notifications4plugin()->notifications()->getNotificationByName(self::NOTIFICATION_NAME);

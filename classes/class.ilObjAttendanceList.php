@@ -26,7 +26,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 
     protected function doDelete(): void
     {
-        foreach (xaliChecklist::where(array('obj_id' => $this->id))->get() as $checklist) {
+        foreach (xaliChecklist::where(['obj_id' => $this->id])->get() as $checklist) {
             $checklist->delete();
         }
         $xaliSetting = xaliSetting::findOrGetInstance($this->id);
@@ -69,10 +69,10 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
      */
     public function getLPCompleted(): array
     {
-        return xaliUserStatus::where(array(
+        return xaliUserStatus::where([
             'status' => ilLPStatus::LP_STATUS_COMPLETED_NUM,
             'attendancelist_id' => $this->getId()
-        ))->getArray(null, 'user_id');
+        ])->getArray(null, 'user_id');
     }
 
     /**
@@ -81,14 +81,14 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
      */
     public function getLPNotAttempted(): array
     {
-        $operators = array(
+        $operators = [
             'status' => '!=',
             'attendancelist_id' => '='
-        );
-        $other_than_not_attempted = xaliUserStatus::where(array(
+        ];
+        $other_than_not_attempted = xaliUserStatus::where([
             'status' => ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM,
             'attendancelist_id' => $this->getId()
-        ), $operators)->getArray(null, 'user_id');
+        ], $operators)->getArray(null, 'user_id');
 
         return array_diff($this->plugin->getMembers($this->plugin->lookupRefId($this->getId())), $other_than_not_attempted);
     }
@@ -99,10 +99,10 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
      */
     public function getLPFailed(): array
     {
-        return xaliUserStatus::where(array(
+        return xaliUserStatus::where([
             'status' => ilLPStatus::LP_STATUS_FAILED_NUM,
             'attendancelist_id' => $this->getId()
-        ))->getArray(null, 'user_id');
+        ])->getArray(null, 'user_id');
     }
 
     /**
@@ -111,18 +111,18 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
      */
     public function getLPInProgress(): array
     {
-        return xaliUserStatus::where(array(
+        return xaliUserStatus::where([
             'status' => ilLPStatus::LP_STATUS_IN_PROGRESS_NUM,
             'attendancelist_id' => $this->getId()
-        ))->getArray(null, 'user_id');
+        ])->getArray(null, 'user_id');
     }
 
     public function getLPStatusForUser(int $a_user_id): int
     {
-        $user_status = xaliUserStatus::where(array(
+        $user_status = xaliUserStatus::where([
             'user_id' => $a_user_id,
             'attendancelist_id' => $this->getId()
-        ))->first();
+        ])->first();
         if ($user_status) {
             return $user_status->getStatus();
         }
@@ -138,7 +138,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
         $xaliSettingClone->setId($new_obj->id);
         $xaliSettingClone->store();
 
-        foreach (xaliChecklist::where(array('obj_id' => $this->id))->get() as $checklist) {
+        foreach (xaliChecklist::where(['obj_id' => $this->id])->get() as $checklist) {
             $checklistClone = $checklist->copy();
             $checklistClone->setObjId($new_obj->id);
             $checklistClone->store();

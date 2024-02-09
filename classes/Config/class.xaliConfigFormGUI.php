@@ -78,12 +78,12 @@ class xaliConfigFormGUI extends ilPropertyFormGUI
 
     public function fillForm(): void
     {
-        $this->setValuesByArray(array(
+        $this->setValuesByArray([
             xaliConfig::F_INTERVAL_REMINDER_EMAIL => xaliConfig::getConfig(xaliConfig::F_INTERVAL_REMINDER_EMAIL),
             xaliConfig::F_SENDER_REMINDER_EMAIL => xaliConfig::getConfig(xaliConfig::F_SENDER_REMINDER_EMAIL),
             xaliConfig::F_SHOW_NOT_RELEVANT => xaliConfig::getConfig(xaliConfig::F_SHOW_NOT_RELEVANT),
             xaliConfig::F_SHOW_PRESENT_TOTAL => xaliConfig::getConfig(xaliConfig::F_SHOW_PRESENT_TOTAL)
-        ));
+        ]);
     }
 
     public function saveObject(): bool

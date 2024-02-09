@@ -93,7 +93,7 @@ class xaliChecklistEntry extends ActiveRecord
         $absence = 'Kurs "' . $parent_course->getTitle() . "\": \n";
         $absence .= "» $absence_date: " . $link . "\n";
 
-        $placeholders = array('user' => $ilObjUser, 'absence' => $absence);
+        $placeholders = ['user' => $ilObjUser, 'absence' => $absence];
 
         $notification = self::notifications4plugin()->notifications()->getNotificationByName(self::NOTIFICATION_NAME);
 
@@ -108,7 +108,7 @@ class xaliChecklistEntry extends ActiveRecord
                 return;
             }
 
-            $last_reminder = xaliLastReminder::where(array('user_id' => $ilObjUser->getId()))->first();
+            $last_reminder = xaliLastReminder::where(['user_id' => $ilObjUser->getId()])->first();
 
             if (!$last_reminder) {
                 $last_reminder = new xaliLastReminder();

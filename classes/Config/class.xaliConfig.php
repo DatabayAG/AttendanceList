@@ -34,8 +34,8 @@ class xaliConfig extends ActiveRecord
         return self::TABLE_NAME;
     }
 
-    protected static array $cache = array();
-    protected static array $cache_loaded = array();
+    protected static array $cache = [];
+    protected static array $cache_loaded = [];
 
     public static function getConfig($name): mixed
     {
@@ -67,7 +67,7 @@ class xaliConfig extends ActiveRecord
         }
         $obj->setValue(json_encode($value, JSON_THROW_ON_ERROR));
 
-        if (self::where(array('name' => $name))->hasSets()) {
+        if (self::where(['name' => $name])->hasSets()) {
             $obj->update();
         } else {
             $obj->create();

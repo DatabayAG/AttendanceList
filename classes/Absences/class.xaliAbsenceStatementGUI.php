@@ -28,9 +28,9 @@ class xaliAbsenceStatementGUI extends xaliGUI
         $entry_id = $_GET['entry_id'];
         if (!$entry_id) {
             $entry_id = xaliChecklistEntry::where(
-                array(
+                [
                     'checklist_id' => $_GET['checklist_id'],
-                    'user_id' => $_GET['user_id'])
+                    'user_id' => $_GET['user_id']]
             )->first()->getId();
         }
         /** @var xaliAbsenceStatement $absence */
