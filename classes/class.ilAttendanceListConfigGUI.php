@@ -49,6 +49,8 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
     protected ilToolbarGUI $toolbar;
     protected ilTabsGUI $tabs;
     private Services $http;
+    private \ILIAS\HTTP\Wrapper\WrapperFactory $httpWrapper;
+    private \ILIAS\Refinery\Factory $refinery;
 
     /**
      * ilAttendanceListConfigGUI constructor.
@@ -65,6 +67,8 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
         $this->toolbar = $ilToolbar;
         $this->tabs = $ilTabs;
         $this->http = $DIC->http();
+        $this->httpWrapper = $this->http->wrapper();
+        $this->refinery = $DIC->refinery();
 
         /** @var $component_factory ilComponentFactory */
         $component_factory = $DIC['component.factory'];
@@ -178,7 +182,11 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
 
     protected function editReason(): void
     {
-        $xaliConfigAbsenceFormGUI = new xaliConfigAbsenceFormGUI($this, new xaliAbsenceReason($_GET['ar_id']));
+        $arId = $this->httpWrapper->query()->retrieve(
+            "ar_id",
+            $this->refinery->kindlyTo()->int()
+        );
+        $xaliConfigAbsenceFormGUI = new xaliConfigAbsenceFormGUI($this, new xaliAbsenceReason($arId));
         $xaliConfigAbsenceFormGUI->fillForm();
         $this->tpl->setContent($xaliConfigAbsenceFormGUI->getHTML());
     }
@@ -186,7 +194,11 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
 
     protected function updateReason(): void
     {
-        $xaliConfigAbsenceFormGUI = new xaliConfigAbsenceFormGUI($this, new xaliAbsenceReason($_GET['ar_id']));
+        $arId = $this->httpWrapper->query()->retrieve(
+            "ar_id",
+            $this->refinery->kindlyTo()->int()
+        );
+        $xaliConfigAbsenceFormGUI = new xaliConfigAbsenceFormGUI($this, new xaliAbsenceReason($arId));
         $xaliConfigAbsenceFormGUI->setValuesByPost();
         if ($xaliConfigAbsenceFormGUI->saveObject()) {
 
@@ -221,7 +233,11 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
 
     protected function deleteReason(): void
     {
-        (new xaliAbsenceReason($_GET['ar_id']))->delete();
+        $arId = $this->httpWrapper->query()->retrieve(
+            "ar_id",
+            $this->refinery->kindlyTo()->int()
+        );
+        (new xaliAbsenceReason($arId))->delete();
 
         $this->tpl->setOnScreenMessage('success', $this->pl->txt("msg_deleted"), true);
 

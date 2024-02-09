@@ -84,7 +84,16 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess
         $ilUser = $DIC->user();
         $ilAccess = $DIC->access();
         $ilLog = $DIC->logger()->root();
-        $ref_id = $ref_id ?: (int) $_GET['ref_id'];
+        $httpWrapper = $DIC->http()->wrapper();
+        $refinery = $DIC->refinery();
+
+        $ref_id = $ref_id ?: (int) $httpWrapper->query()->retrieve(
+            "ref_id",
+            $refinery->byTrying([
+                $refinery->kindlyTo()->int(),
+                $refinery->always(null)
+            ])
+        );
         $user_id = $user_id ?: $ilUser->getId();
 
         return $ilAccess->checkAccessOfUser($user_id, $permission, '', $ref_id);

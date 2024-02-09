@@ -45,6 +45,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
     protected ilRbacReview $rbacreview;
     protected ilObjUser $user;
     protected xaliSetting $setting;
+    private \ILIAS\HTTP\Wrapper\WrapperFactory $httpWrapper;
 
 
     protected function afterConstructor(): void
@@ -70,6 +71,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
         $this->tree = $tree;
         $this->user = $ilUser;
         $this->rbacreview = $rbacreview;
+        $this->httpWrapper = $DIC->http()->wrapper();
     }
 
     public function getType(): string
@@ -82,6 +84,11 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
         global $DIC;
         $ilNavigationHistory = $DIC['ilNavigationHistory'];
 
+        $refId = $this->httpWrapper->query()->retrieve(
+            "ref_id",
+            $this->refinery->kindlyTo()->int()
+        );
+
         $this->setTitleAndDescription();
         // set title
         if (!$this->getCreationMode()) {
@@ -91,8 +98,14 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
             //			$list_gui = ilObjectListGUIFactory::_getListGUIByType('xali');
             //			$this->tpl->setAlertProperties($list_gui->getAlertProperties());
             // set tabs
-            if (strtolower($_GET['baseClass']) !== 'iladministrationgui') {
-                if (strtolower($_GET['cmdClass']) !== 'xaliabsencestatementgui') {
+
+            $baseClass = $this->httpWrapper->query()->retrieve(
+                "baseClass",
+                $this->refinery->kindlyTo()->string()
+            );
+
+            if (strtolower($baseClass) !== 'iladministrationgui') {
+                if (strtolower($this->ctrl->getCmdClass()) !== 'xaliabsencestatementgui') {
                     $this->setTabs();
                 }
                 $this->setLocator();
@@ -105,14 +118,15 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
             global $DIC;
             $ilAccess = $DIC->access();
             // add entry to navigation history
-            if ($ilAccess->checkAccess('read', '', $_GET['ref_id'])) {
-                $ilNavigationHistory->addItem($_GET['ref_id'], $this->ctrl->getLinkTarget($this, $this->getStandardCmd()), $this->getType());
+
+            if ($ilAccess->checkAccess('read', '', $refId)) {
+                $ilNavigationHistory->addItem($refId, $this->ctrl->getLinkTarget($this, $this->getStandardCmd()), $this->getType());
             }
         } else {
             // show info of parent
-            $this->tpl->setTitle(ilObject::_lookupTitle(ilObject::_lookupObjId($_GET['ref_id'])));
-            $this->tpl->setTitleIcon(ilObject::_getIcon(ilObject::_lookupObjId($_GET['ref_id']), 'big'), $this->pl->txt('obj_'
-                . ilObject::_lookupType($_GET['ref_id'], true)));
+            $this->tpl->setTitle(ilObject::_lookupTitle(ilObject::_lookupObjId($refId)));
+            $this->tpl->setTitleIcon(ilObject::_getIcon(ilObject::_lookupObjId($refId)), $this->pl->txt('obj_'
+                . ilObject::_lookupType($refId, true)));
             $this->setLocator();
         }
     }
@@ -150,7 +164,12 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
                 $this->ctrl->forwardCommand($xaliSettingsGUI);
                 break;
             case 'xaliabsencestatementgui':
-                if (xaliChecklistEntry::find($_GET['entry_id'])->getUserId() != $this->user->getId()) {
+                $entryId = $this->httpWrapper->query()->retrieve(
+                    "entry_id",
+                    $this->refinery->kindlyTo()->int()
+                );
+
+                if (xaliChecklistEntry::find($entryId)->getUserId() != $this->user->getId()) {
                     $this->checkPermission("write");
                 }
                 $xaliAbsenceStatementGUI = new xaliAbsenceStatementGUI($this);
@@ -264,7 +283,11 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
     protected function initCreationForms(string $a_new_type): array
     {
         try {
-            $this->getParentCourseOrGroupId($_GET['ref_id']);
+            $refId = $this->httpWrapper->query()->retrieve(
+                "ref_id",
+                $this->refinery->kindlyTo()->int()
+            );
+            $this->getParentCourseOrGroupId($refId);
         } catch (Exception $e) {
             $this->tpl->setOnScreenMessage('failure', $this->pl->txt('msg_creation_failed'), true);
             $this->ctrl->redirectByClass(ilRepositoryGUI::class);

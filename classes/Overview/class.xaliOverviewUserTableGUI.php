@@ -27,6 +27,8 @@ class xaliOverviewUserTableGUI extends ilTable2GUI
     protected string|int $obj_id;
     protected ActiveRecord|null|xaliSetting $settings;
     protected bool $has_passed_students = false;
+    private \ILIAS\HTTP\Wrapper\WrapperFactory $httpWrapper;
+    private \ILIAS\Refinery\Factory $refinery;
 
     public function __construct(xaliOverviewGUI $a_parent_obj, array $users, int $obj_id)
     {
@@ -39,6 +41,8 @@ class xaliOverviewUserTableGUI extends ilTable2GUI
         $this->users = $users;
         $this->obj_id = $obj_id;
         $this->settings = xaliSetting::find($obj_id);
+        $this->httpWrapper = $DIC->http()->wrapper();
+        $this->refinery = $DIC->refinery();
 
         parent::__construct($a_parent_obj);
         $this->setRowTemplate('tpl.user_overview_row.html', $this->pl->getDirectory());
@@ -54,7 +58,15 @@ class xaliOverviewUserTableGUI extends ilTable2GUI
         $this->setFilterCommand(xaliOverviewGUI::CMD_APPLY_FILTER_USERS);
         $this->setResetCommand(xaliOverviewGUI::CMD_RESET_FILTER_USERS);
 
-        if (empty($_GET['_xpt']) || in_array($_GET['_xpt'], array_keys($this->export_formats))) {
+        $refId = $this->httpWrapper->query()->retrieve(
+            "ref_id",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->int(),
+                $this->refinery->always(null)
+            ])
+        );
+
+        if ($refId || in_array($refId, array_keys($this->export_formats), true)) {
             $this->parseData();
         }
     }
@@ -120,7 +132,7 @@ class xaliOverviewUserTableGUI extends ilTable2GUI
     public function initFilter(): void
     {
         $user_filter = new ilTextInputGUI($this->lng->txt('login'), 'name');
-        $this->ctrl->saveParameterByClass(ilAttendanceListPlugin::class, 'ref_id', $_GET['ref_id']);
+        $this->ctrl->saveParameterByClass(ilAttendanceListPlugin::class, 'ref_id');
         $user_filter->setDataSource($this->ctrl->getLinkTarget($this->parent_obj, xaliOverviewGUI::CMD_ADD_USER_AUTO_COMPLETE, "", true));
         $this->addFilterItem($user_filter);
         $user_filter->readFromSession();

@@ -122,7 +122,15 @@ class xaliOverviewGUI extends xaliGUI
             return;
         }
 
-        if ($checklist_id = $_GET['checklist_id']) {
+        $checklist_id = $this->httpWrapper->query()->retrieve(
+            "checklist_id",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->int(),
+                $this->refinery->always(null)
+            ])
+        );
+
+        if ($checklist_id) {
             $checklist = xaliChecklist::find($checklist_id);
         } else {
             $checklist = new xaliChecklist();
@@ -161,7 +169,10 @@ class xaliOverviewGUI extends xaliGUI
 
     public function saveUser(): void
     {
-        $user_id = $_GET['user_id'];
+        $user_id = $this->httpWrapper->query()->retrieve(
+            "user_id",
+            $this->refinery->kindlyTo()->int()
+        );
         foreach ($_POST['attendance_status'] as $checklist_id => $status) {
             $checklist = xaliChecklist::find($checklist_id);
             $entry = $checklist->getEntryOfUser($user_id);
@@ -238,10 +249,23 @@ class xaliOverviewGUI extends xaliGUI
 
     public function editList(): void
     {
-        $checklist_id = $_GET['checklist_id'];
+        $checklist_id = $this->httpWrapper->query()->retrieve(
+            "checklist_id",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->int(),
+                $this->refinery->always(null)
+            ])
+        );
         if (!$checklist_id) {
-            if ($_GET['entry_id']) {
-                $checklist_id = xaliChecklistEntry::find($_GET['entry_id'])->getChecklistId();
+            $entryId = $this->httpWrapper->query()->retrieve(
+                "entry_id",
+                $this->refinery->byTrying([
+                    $this->refinery->kindlyTo()->int(),
+                    $this->refinery->always(null)
+                ])
+            );
+            if ($entryId) {
+                $checklist_id = xaliChecklistEntry::find($entryId)->getChecklistId();
             } else {
                 $this->ctrl->redirect($this, self::CMD_LISTS);
             }
@@ -263,11 +287,25 @@ class xaliOverviewGUI extends xaliGUI
 
     public function editUser(): void
     {
-        $user_id = $_GET['user_id'];
+        $user_id = $this->httpWrapper->query()->retrieve(
+            "user_id",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->int(),
+                $this->refinery->always(null)
+            ])
+        );
 
         if (!$user_id) {
-            if ($_GET['entry_id']) {
-                $user_id = xaliChecklistEntry::find($_GET['entry_id'])->getUserId();
+            $entry_id = $this->httpWrapper->query()->retrieve(
+                "entry_id",
+                $this->refinery->byTrying([
+                    $this->refinery->kindlyTo()->int(),
+                    $this->refinery->always(null)
+                ])
+            );
+
+            if ($entry_id) {
+                $user_id = xaliChecklistEntry::find($entry_id)->getUserId();
             } else {
                 $this->ctrl->redirect($this, self::CMD_STANDARD);
             }
@@ -285,7 +323,15 @@ class xaliOverviewGUI extends xaliGUI
         $conf->setConfirm($this->lng->txt('delete'), 'deleteLists');
         $conf->setCancel($this->lng->txt('cancel'), 'cancel');
 
-        $checklist_ids = $_GET['checklist_id'] ? [$_GET['checklist_id']] : $_POST['checklist_ids'];
+        $checklistId = $this->httpWrapper->query()->retrieve(
+            "checklist_id",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->int(),
+                $this->refinery->always(null)
+            ])
+        );
+
+        $checklist_ids = $checklistId ?: $_POST['checklist_ids'];
         foreach ($checklist_ids as $id) {
             $checklist = xaliChecklist::find($id);
             $conf->addItem('checklist_id[]', $checklist->getId(), sprintf($this->pl->txt('table_checklist_title'), $checklist->getChecklistDate()));
@@ -311,14 +357,27 @@ class xaliOverviewGUI extends xaliGUI
 
     #[NoReturn] public function saveEntry(): void
     {
+        $checklistId = $this->httpWrapper->query()->retrieve(
+            "checklist_id",
+            $this->refinery->kindlyTo()->int()
+        );
+        $userId = $this->httpWrapper->query()->retrieve(
+            "user_id",
+            $this->refinery->kindlyTo()->int()
+        );
+        $status = $this->httpWrapper->query()->retrieve(
+            "status",
+            $this->refinery->kindlyTo()->int()
+        );
+
         /** @var xaliChecklist $checklist */
-        $checklist = xaliChecklist::find($_GET['checklist_id']);
-        $checklist_entry = $checklist->getEntryOfUser($_GET['user_id']);
-        $checklist_entry->setStatus($_GET['status']);
+        $checklist = xaliChecklist::find($checklistId);
+        $checklist_entry = $checklist->getEntryOfUser($userId);
+        $checklist_entry->setStatus($status);
         $checklist_entry->store();
 
         // update LP
-        xaliUserStatus::updateUserStatus($_GET['user_id'], $this->parent_gui->getObject()->getId());
+        xaliUserStatus::updateUserStatus($userId, $this->parent_gui->getObject()->getId());
 
         exit;
     }
@@ -364,13 +423,29 @@ class xaliOverviewGUI extends xaliGUI
 
     #[NoReturn] protected function saveAbsenceReason(): void
     {
-        /** @var xaliChecklist $checklist */
-        $checklist = xaliChecklist::find($_GET['checklist_id']);
+        $checklistId = $this->httpWrapper->query()->retrieve(
+            "checklist_id",
+            $this->refinery->kindlyTo()->int()
+        );
+        $userId = $this->httpWrapper->query()->retrieve(
+            "user_id",
+            $this->refinery->kindlyTo()->int()
+        );
+        $reason_id = $this->httpWrapper->query()->retrieve(
+            "absence_reason",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->int(),
+                $this->refinery->always(null)
+            ])
+        );
 
-        $entry = $checklist->getEntryOfUser($_GET['user_id']);
+        /** @var xaliChecklist $checklist */
+        $checklist = xaliChecklist::find($checklistId);
+
+        $entry = $checklist->getEntryOfUser($userId);
 
         if ($entry->getStatus() === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
-            if (($reason_id = $_GET['absence_reason']) !== null) {
+            if ($reason_id) {
                 /** @var xaliAbsenceStatement $stm */
                 $stm = xaliAbsenceStatement::findOrGetInstance($entry->getId());
                 $stm->setReasonId($reason_id);

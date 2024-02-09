@@ -25,12 +25,28 @@ class xaliAbsenceStatementGUI extends xaliGUI
 
     protected function show(): void
     {
-        $entry_id = $_GET['entry_id'];
+        $entry_id = $this->httpWrapper->query()->retrieve(
+            "entry_id",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->int(),
+                $this->refinery->always(null)
+            ])
+        );
         if (!$entry_id) {
+            $checklistId = $this->httpWrapper->query()->retrieve(
+                "checklist_id",
+                $this->refinery->kindlyTo()->int()
+            );
+
+            $userId = $this->httpWrapper->query()->retrieve(
+                "user_id",
+                $this->refinery->kindlyTo()->int()
+            );
+
             $entry_id = xaliChecklistEntry::where(
                 [
-                    'checklist_id' => $_GET['checklist_id'],
-                    'user_id' => $_GET['user_id']]
+                    'checklist_id' => $checklistId,
+                    'user_id' => $userId]
             )->first()->getId();
         }
         /** @var xaliAbsenceStatement $absence */
@@ -43,11 +59,17 @@ class xaliAbsenceStatementGUI extends xaliGUI
     protected function update(): void
     {
         /** @var xaliAbsenceStatement $absence */
-        $absence = xaliAbsenceStatement::findOrGetInstance($_GET['entry_id']);
+
+        $entryId = $this->httpWrapper->query()->retrieve(
+            "entry_id",
+            $this->refinery->kindlyTo()->int()
+        );
+
+        $absence = xaliAbsenceStatement::findOrGetInstance($entryId);
         $xaliAbsenceFormGUI = new xaliAbsenceStatementFormGUI($this, $absence);
         $xaliAbsenceFormGUI->setValuesByPost();
         if ($xaliAbsenceFormGUI->saveForm()) {
-            $user_id = xaliChecklistEntry::find($_GET['entry_id'])->getUserId();
+            $user_id = xaliChecklistEntry::find($entryId)->getUserId();
             xaliUserStatus::updateUserStatus($user_id, $this->parent_gui->getObject()->getId());
             $this->tpl->setOnScreenMessage('success', $this->pl->txt("msg_saved"), true);
 
@@ -58,7 +80,10 @@ class xaliAbsenceStatementGUI extends xaliGUI
 
     #[NoReturn] protected function downloadFile(): void
     {
-        $file_id = $_GET['file_id'];
+        $file_id = $this->httpWrapper->query()->retrieve(
+            "file_id",
+            $this->refinery->kindlyTo()->int()
+        );
         $fileObj = new ilObjFile($file_id, false);
         $fileObj->sendFile();
         exit;
@@ -66,8 +91,20 @@ class xaliAbsenceStatementGUI extends xaliGUI
 
     protected function cancel(): void
     {
-        if ($back_cmd = $_GET['back_cmd']) {
-            $this->ctrl->setParameterByClass(xaliOverviewGUI::class, 'entry_id', $_GET['entry_id']);
+        $back_cmd = $this->httpWrapper->query()->retrieve(
+            "back_cmd",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->string(),
+                $this->refinery->always(null),
+            ])
+        );
+        if ($back_cmd) {
+            $entryId = $this->httpWrapper->query()->retrieve(
+                "entry_id",
+                $this->refinery->kindlyTo()->int()
+            );
+
+            $this->ctrl->setParameterByClass(xaliOverviewGUI::class, 'entry_id', $entryId);
             $this->ctrl->redirectByClass(xaliOverviewGUI::class, $back_cmd);
         }
         $this->ctrl->returnToParent($this);

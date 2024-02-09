@@ -15,6 +15,8 @@
 
 declare(strict_types=1);
 
+use ILIAS\DI\Container;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 /**
@@ -29,6 +31,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
     public const PLUGIN_CLASS_NAME = self::class;
 
     protected static bool $init_notifications = false;
+    private Container $dic;
 
 
     public static function initNotifications(): void
@@ -48,6 +51,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
         string $id
     ) {
         global $DIC;
+        $this->dic = $DIC;
         parent::__construct($db, $component_repository, $id);
 
         $this->db = $DIC->database();
@@ -107,11 +111,19 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
 
     public function getMembers(int $ref_id = 0): array
     {
-        global $DIC;
-        $rbacreview = $DIC->rbac()->review();
+        $httpWrapper = $this->dic->http()->wrapper();
+        $refinery = $this->dic->refinery();
+        $rbacreview = $this->dic->rbac()->review();
         static $members;
         if (!$members) {
-            $ref_id = (int) ($ref_id ?: $_GET["ref_id"]);
+
+            if (!$ref_id) {
+                $ref_id = $httpWrapper->query()->retrieve(
+                    "ref_id",
+                    $refinery->kindlyTo()->int()
+                );
+            }
+
             $parent = $this->getParentCourseOrGroup($ref_id);
             $member_role = $parent->getDefaultMemberRole();
             $members = $rbacreview->assignedUsers($member_role);
@@ -128,7 +140,15 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
      */
     public function getParentCourseOrGroup(int $ref_id = 0): ilObjGroup|ilObjCourse
     {
-        $ref_id = (int) ($ref_id ?: $_GET["ref_id"]);
+        $httpWrapper = $this->dic->http()->wrapper();
+        $refinery = $this->dic->refinery();
+        if (!$ref_id) {
+            $refId = $httpWrapper->query()->retrieve(
+                "ref_id",
+                $refinery->kindlyTo()->int()
+            );
+        }
+
         return ilObjectFactory::getInstanceByRefId($this->getParentCourseOrGroupId($ref_id));
     }
 

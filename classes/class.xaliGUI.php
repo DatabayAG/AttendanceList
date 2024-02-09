@@ -28,6 +28,8 @@ class xaliGUI
     protected ilObjUser $user;
     protected ilToolbarGUI $toolbar;
     protected ilLanguage $lng;
+    protected \ILIAS\HTTP\Wrapper\WrapperFactory $httpWrapper;
+    protected \ILIAS\Refinery\Factory $refinery;
 
     public function __construct(ilObjAttendanceListGUI $parent_gui)
     {
@@ -44,6 +46,9 @@ class xaliGUI
         $this->tabs = $ilTabs;
         $this->tpl = $tpl;
         $this->ctrl = $ilCtrl;
+        $this->httpWrapper = $DIC->http()->wrapper();
+        $this->refinery = $DIC->refinery();
+        
         /** @var $component_factory ilComponentFactory */
         $component_factory = $DIC['component.factory'];
         $this->pl = $component_factory->getPlugin(ilAttendanceListPlugin::PLUGIN_ID);

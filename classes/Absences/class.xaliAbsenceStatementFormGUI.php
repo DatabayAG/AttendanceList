@@ -15,6 +15,7 @@
 
 declare(strict_types=1);
 use ILIAS\FileUpload\FileUpload;
+use ILIAS\HTTP\Wrapper\WrapperFactory;
 
 class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
 {
@@ -24,6 +25,7 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
     protected FileUpload $upload;
     protected ?xaliAbsenceStatement $absence_statement;
     private xaliAbsenceStatementGUI $parent_gui;
+    private WrapperFactory $httpWrapper;
 
     public function __construct(xaliAbsenceStatementGUI $parent_gui, xaliAbsenceStatement $xaliAbsenceStatement)
     {
@@ -39,13 +41,20 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
         $this->lng = $lng;
         $this->ctrl = $ilCtrl;
         $this->upload = $DIC->upload();
+        $this->httpWrapper = $DIC->http()->wrapper();
 
         parent::__construct();
 
         if ($file_id = $this->absence_statement->getFileId()) {
             $this->ctrl->setParameter($this->parent_gui, 'file_id', $file_id);
         }
-        $this->ctrl->setParameter($this->parent_gui, 'back_cmd', $_GET['back_cmd']);
+
+        $backCmd = $this->httpWrapper->query()->retrieve(
+            "back_cmd",
+            $this->refinery->kindlyTo()->string()
+        );
+
+        $this->ctrl->setParameter($this->parent_gui, 'back_cmd', $backCmd);
         $this->ctrl->setParameter($this->parent_gui, 'entry_id', $xaliAbsenceStatement->getEntryId());
         $this->setFormAction($this->ctrl->getFormAction($this->parent_gui));
         $this->initForm();
