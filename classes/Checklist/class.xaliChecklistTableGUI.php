@@ -15,12 +15,9 @@ class xaliChecklistTableGUI extends ilTable2GUI {
     /**
      * xaliChecklistTableGUI constructor.
      *
-     * @param xaliChecklistGUI|xaliOverviewGUI $a_parent_obj
-     * @param xaliChecklist $checklist
-     * @param array $users
      * @throws ilCtrlException
      */
-	public function __construct($a_parent_obj, xaliChecklist $checklist, array $users) {
+	public function __construct(xaliChecklistGUI|xaliOverviewGUI $a_parent_obj, xaliChecklist $checklist, array $users) {
 		global $DIC;
 		$this->ctrl = $DIC->ctrl();
 		$this->lng = $DIC->language();

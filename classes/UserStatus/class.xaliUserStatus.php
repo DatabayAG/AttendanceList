@@ -247,12 +247,7 @@ class xaliUserStatus extends ActiveRecord {
             - $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_NOT_RELEVANT);
 	}
 
-
-	/**
-	 * @param $user_id
-	 * @param $attendance_list_id
-	 */
-	public static function getInstance($user_id, $attendance_list_id): xaliUserStatus|ActiveRecord
+	public static function getInstance(int $user_id, int $attendance_list_id): xaliUserStatus|ActiveRecord
     {
 		$xaliUserStatus = xaliUserStatus::where(array('user_id' => $user_id, 'attendancelist_id' => $attendance_list_id))->first();
 		if (!$xaliUserStatus) {

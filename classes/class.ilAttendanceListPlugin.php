@@ -138,11 +138,10 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 	}
 
 
-	/**
-	 * @param $ref_id
-	 * @throws Exception
-	 */
-	public function getParentCourseOrGroupId($ref_id): int
+    /**
+     * @throws Exception
+     */
+	public function getParentCourseOrGroupId(int $ref_id): int
     {
 		global $DIC;
 		$tree = $DIC->repositoryTree();
@@ -151,19 +150,13 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 			if ($ref_id == 1 || !$ref_id) {
 				throw new Exception("Parent of ref id {$orig_ref_id} is neither course nor group.");
 			}
-			$ref_id = $tree->getParentId($ref_id);
+			$ref_id = (int) $tree->getParentId($ref_id);
 		}
 
 		return $ref_id;
 	}
 
-
-	/**
-	 * @param $user_id
-	 * @param $crs_ref_id
-	 *
-	 */
-	public function getAttendancesForUserAndCourse($user_id, $crs_ref_id): array
+	public function getAttendancesForUserAndCourse(int $user_id, int $crs_ref_id): array
     {
 		$obj_id = $this->getAttendanceListIdForCourse($crs_ref_id);
 		$settings = new xaliSetting($obj_id);
@@ -180,13 +173,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 		);
 	}
 
-
-	/**
-	 * @param      $crs_ref_id
-	 * @param bool $get_ref_id
-	 *
-	 */
-	public function getAttendanceListIdForCourse($crs_ref_id, $get_ref_id = false): int
+	public function getAttendanceListIdForCourse(int $crs_ref_id, bool $get_ref_id = false): int
     {
 		global $DIC;
 		$tree = $DIC->repositoryTree();

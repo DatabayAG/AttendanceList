@@ -23,13 +23,7 @@ class srWeekdayInputGUI extends ilFormPropertyGUI {
 		$this->setType(self::TYPE);
 	}
 
-
-	/**
-	 * Set Value.
-	 *
-	 * @param    string $a_value Value
-	 */
-	function setValue($a_value): void
+	function setValue(array $a_value): void
     {
 		$this->value = $a_value;
 	}
@@ -40,13 +34,7 @@ class srWeekdayInputGUI extends ilFormPropertyGUI {
 		return $this->value;
 	}
 
-
-	/**
-	 * Set value by array
-	 *
-	 * @param    object $a_item Item
-	 */
-	function setValueByArray($a_values): void
+	function setValueByArray(array $a_values): void
     {
 		$this->setValue($a_values[$this->getPostVar()]);
 	}

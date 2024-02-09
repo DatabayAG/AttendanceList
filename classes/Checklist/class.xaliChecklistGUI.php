@@ -10,11 +10,6 @@ class xaliChecklistGUI extends xaliGUI {
 	protected ilObjUser $user;
 	protected xaliSetting $settings;
 
-	/**
-	 * xaliChecklistGUI constructor.
-	 *
-	 * @param ilObjAttendanceListGUI $parent_gui
-	 */
 	public function __construct(ilObjAttendanceListGUI $parent_gui) {
 		parent::__construct($parent_gui);
 

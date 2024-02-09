@@ -26,11 +26,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 		return !xaliSetting::find($this->getId())->getIsOnline();
 	}
 
-
-	/**
-	 * @param $user_id
-	 */
-	public function getOpenAbsenceStatementsForUser($user_id): int
+	public function getOpenAbsenceStatementsForUser(int $user_id): int
     {
 		global $DIC;
 		$ilDB = $DIC->database();
@@ -111,14 +107,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 		))->getArray(null, 'user_id');
 	}
 
-
-	/**
-	 * Get current status for given user
-	 *
-	 * @param int $a_user_id
-	 *
-	 */
-	public function getLPStatusForUser($a_user_id): int
+	public function getLPStatusForUser(int $a_user_id): int
     {
 		$user_status = xaliUserStatus::where(array(
 			'user_id' => $a_user_id,
@@ -131,12 +120,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 		return ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM;
 	}
 
-
-    /**
-     * @inheritDoc
-     *
-     * @param ilObjAttendanceList $new_obj
-     */
     protected function doCloneObject(/*ilObjAttendanceList*/ $new_obj, /*int*/ $a_target_id, /*?int*/ $a_copy_id = null): void
     {
         $xaliSetting = xaliSetting::findOrGetInstance($this->id);

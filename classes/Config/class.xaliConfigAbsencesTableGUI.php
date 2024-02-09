@@ -10,12 +10,6 @@ class xaliConfigAbsencesTableGUI extends ilTable2GUI {
 	protected int $obj_id;
 	protected ilCtrl $ctrl;
 
-
-	/**
-	 * xaliConfigAbsencesTableGUI constructor.
-	 *
-	 * @param ilAttendanceListConfigGUI $a_parent_obj
-	 */
 	public function __construct(ilAttendanceListConfigGUI $a_parent_obj) {
 		global $DIC;
 		$lng = $DIC->language();

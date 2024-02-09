@@ -14,11 +14,9 @@ class xaliOverviewListTableGUI extends ilTable2GUI {
     /**
      * xaliOverviewListTableGUI constructor.
      *
-     * @param xaliOverviewGUI $a_parent_obj
-     * @param string $obj_id
      * @throws ilException
      */
-	public function __construct(xaliOverviewGUI $a_parent_obj, $obj_id) {
+	public function __construct(xaliOverviewGUI $a_parent_obj, string $obj_id) {
 		global $DIC;
 		$lng = $DIC->language();
 		$ilCtrl = $DIC->ctrl();

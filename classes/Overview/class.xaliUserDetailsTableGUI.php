@@ -14,14 +14,7 @@ class xaliUserDetailsTableGUI extends ilTable2GUI {
 	protected ilLanguage $lng;
 	protected ?object $parent_obj;
 
-
-	/**
-	 * xaliUserDetailsTableGUI constructor.
-	 *
-	 * @param        $a_parent_obj
-	 * @param string $user_id
-	 */
-	public function __construct(xaliOverviewGUI $a_parent_obj, $user_id, $obj_id) {
+	public function __construct(xaliOverviewGUI $a_parent_obj, string $user_id, string $obj_id) {
 		global $DIC;
 		$ilCtrl = $DIC->ctrl();
 		$lng = $DIC->language();

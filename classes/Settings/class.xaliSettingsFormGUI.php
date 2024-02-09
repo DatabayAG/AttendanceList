@@ -26,9 +26,6 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI {
 	protected ilObjAttendanceList $object;
 
     /**
-     * xaliSettingsFormGUI constructor.
-     *
-     * @param $parent_gui xaliSettingsGUI
      * @throws ilCtrlException
      */
 	public function __construct(xaliSettingsGUI $parent_gui, ilObjAttendanceList|ilObject $object) {

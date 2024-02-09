@@ -13,12 +13,6 @@ class xaliGUI {
 	protected ilToolbarGUI $toolbar;
     private ilLanguage $lng;
 
-
-    /**
-	 * xaliGUI constructor.
-	 *
-	 * @param ilObjAttendanceListGUI $parent_gui
-	 */
 	function __construct(ilObjAttendanceListGUI $parent_gui) {
 		global $DIC;
 		$tpl = $DIC->ui()->mainTemplate();
