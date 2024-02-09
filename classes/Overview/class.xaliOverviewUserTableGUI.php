@@ -129,7 +129,7 @@ class xaliOverviewUserTableGUI extends ilTable2GUI {
 	}
 
 
-	function numericOrdering($a_field): bool
+	public function numericOrdering($a_field): bool
     {
 		switch ($a_field) {
 			case 'present':

@@ -4,9 +4,9 @@ use JetBrains\PhpStorm\NoReturn;
 
 class xaliAbsenceStatementGUI extends xaliGUI {
 
-	const CMD_UPDATE = 'update';
-	const CMD_STANDARD = 'show';
-	const CMD_DOWNLOAD_FILE = 'downloadFile';
+	public const CMD_UPDATE = 'update';
+    public const CMD_STANDARD = 'show';
+    public const CMD_DOWNLOAD_FILE = 'downloadFile';
 
 	protected function show(): void
     {

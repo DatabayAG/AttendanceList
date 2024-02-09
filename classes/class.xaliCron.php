@@ -4,8 +4,8 @@
 class xaliCron {
 //use Notifications4PluginTrait;
 
-	const DEBUG = false;
-	const NOTIFICATION_NAME = "absence_reminder";
+	public const DEBUG = false;
+	public const NOTIFICATION_NAME = "absence_reminder";
 	protected Ilias $ilias;
 	protected ilAttendanceListPlugin $pl;
 	protected ilLogger $log;
@@ -15,7 +15,7 @@ class xaliCron {
 	protected ilCtrl $ctrl;
 
 
-	function __construct() {
+	public function __construct() {
 		global $DIC;
 		$ilDB = $DIC->database();
 		$ilUser = $DIC->user();

@@ -1,8 +1,8 @@
 <?php
 class xaliGUI {
 
-	const CMD_STANDARD = 'show';
-	const CMD_CANCEL = 'cancel';
+	public const CMD_STANDARD = 'show';
+	public const CMD_CANCEL = 'cancel';
 
 	protected mixed $tpl;
 	protected mixed $ctrl;
@@ -13,7 +13,7 @@ class xaliGUI {
 	protected ilToolbarGUI $toolbar;
     private ilLanguage $lng;
 
-	function __construct(ilObjAttendanceListGUI $parent_gui) {
+	public function __construct(ilObjAttendanceListGUI $parent_gui) {
 		global $DIC;
 		$tpl = $DIC->ui()->mainTemplate();
 		$ilCtrl = $DIC->ctrl();

@@ -8,7 +8,7 @@
  */
 class srWeekdayInputGUI extends ilFormPropertyGUI {
 
-	const TYPE = 'weekday';
+	public const TYPE = 'weekday';
     protected array $value = array();
     protected ilLanguage $lng;
 	protected ilAttendanceListPlugin $pl;
@@ -23,24 +23,24 @@ class srWeekdayInputGUI extends ilFormPropertyGUI {
 		$this->setType(self::TYPE);
 	}
 
-	function setValue(array $a_value): void
+	public function setValue(array $a_value): void
     {
 		$this->value = $a_value;
 	}
 
 
-	function getValue(): array
+	public function getValue(): array
     {
 		return $this->value;
 	}
 
-	function setValueByArray(array $a_values): void
+	public function setValueByArray(array $a_values): void
     {
 		$this->setValue($a_values[$this->getPostVar()]);
 	}
 
 
-	function checkInput(): bool
+	public function checkInput(): bool
     {
 		return ($_POST[$this->getPostVar()] == null) || (count($_POST[$this->getPostVar()]) <= 7);
 	}
@@ -49,7 +49,7 @@ class srWeekdayInputGUI extends ilFormPropertyGUI {
 	/**
 	 * Insert property html
 	 */
-	function insert(&$a_tpl): void
+	public function insert(&$a_tpl): void
     {
 		$html = $this->render();
 
@@ -89,7 +89,7 @@ class srWeekdayInputGUI extends ilFormPropertyGUI {
      * Get HTML for table filter
      * @throws ilTemplateException
      */
-	function getTableFilterHTML(): string
+	public function getTableFilterHTML(): string
     {
         return $this->render();
 	}

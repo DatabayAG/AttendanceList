@@ -3,13 +3,13 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI {
 
-	function getGuiClass(): string
+	public function getGuiClass(): string
     {
 		return ilObjAttendanceListGUI::class;
 	}
 
 
-	function initCommands(): array
+	public function initCommands(): array
     {
 		// Always set
 		$this->timings_enabled = false;
@@ -101,7 +101,7 @@ class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI {
 	}
 
 
-	function initType(): void
+	public function initType(): void
     {
 		$this->setType(ilAttendanceListPlugin::PLUGIN_ID);
 	}

@@ -8,7 +8,7 @@
  */
 class xaliUserStatus extends ActiveRecord {
 
-	const TABLE_NAME = 'xali_user_status';
+	public const TABLE_NAME = 'xali_user_status';
 
 	static function returnDbTableName(): string
     {

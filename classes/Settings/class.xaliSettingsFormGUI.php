@@ -7,17 +7,17 @@
  */
 class xaliSettingsFormGUI extends ilPropertyFormGUI {
 
-	const F_TITLE = 'title';
-	const F_DESCRIPTION = 'description';
-	const F_ONLINE = 'online';
-	const F_MINIMUM_ATTENDANCE = 'minimum_attendance';
-	const F_ACTIVATION = 'activation';
-	const F_ACTIVATION_FROM = 'activation_from';
-	const F_ACTIVATION_TO = 'activation_to';
-	const F_ACTIVATION_WEEKDAYS = 'activation_weekdays';
-	const F_CREATE_LISTS = 'create_lists';
-	const F_DELETE_LISTS = 'delete_lists';
-	const F_WEEKDAYS = 'weekdays';
+	public const F_TITLE = 'title';
+	public const F_DESCRIPTION = 'description';
+	public const F_ONLINE = 'online';
+	public const F_MINIMUM_ATTENDANCE = 'minimum_attendance';
+	public const F_ACTIVATION = 'activation';
+	public const F_ACTIVATION_FROM = 'activation_from';
+	public const F_ACTIVATION_TO = 'activation_to';
+	public const F_ACTIVATION_WEEKDAYS = 'activation_weekdays';
+	public const F_CREATE_LISTS = 'create_lists';
+	public const F_DELETE_LISTS = 'delete_lists';
+	public const F_WEEKDAYS = 'weekdays';
 	protected xaliSettingsGUI $parent_gui;
 	protected ilCtrl $ctrl;
 	protected ilAttendanceListPlugin $pl;

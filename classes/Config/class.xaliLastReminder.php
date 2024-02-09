@@ -10,7 +10,7 @@
  */
 class xaliLastReminder extends ActiveRecord {
 
-	const TABLE_NAME = 'xali_last_reminder';
+	public const TABLE_NAME = 'xali_last_reminder';
 
 
 	static function returnDbTableName(): string

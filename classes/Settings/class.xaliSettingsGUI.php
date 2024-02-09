@@ -7,8 +7,8 @@
  */
 class xaliSettingsGUI extends xaliGUI {
 
-	const CMD_STANDARD = 'showContent';
-	const CMD_SAVE = 'save';
+	public const CMD_STANDARD = 'showContent';
+	public const CMD_SAVE = 'save';
 
     /**
      * @throws ilCtrlException

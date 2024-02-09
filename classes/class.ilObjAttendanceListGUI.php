@@ -11,12 +11,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
  */
 class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 
-	const CMD_STANDARD = 'showContent';
-	const CMD_OVERVIEW = 'showOverview';
-	const CMD_EDIT_SETTINGS = 'editSettings';
-	const TAB_CONTENT = 'tab_content';
-	const TAB_OVERVIEW = 'tab_overview';
-	const TAB_SETTINGS = 'tab_settings';
+	public const CMD_STANDARD = 'showContent';
+	public const CMD_OVERVIEW = 'showOverview';
+	public const CMD_EDIT_SETTINGS = 'editSettings';
+	public const TAB_CONTENT = 'tab_content';
+	public const TAB_OVERVIEW = 'tab_overview';
+	public const TAB_SETTINGS = 'tab_settings';
 	protected ilCtrl $ctrl;
 	protected ilTabsGUI $tabs;
 	protected ilAttendanceListPlugin|ilPlugin $pl;
@@ -54,7 +54,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 		$this->rbacreview = $rbacreview;
 	}
 
-	function getType(): string
+	public function getType(): string
     {
 		return ilAttendanceListPlugin::PLUGIN_ID;
 	}
@@ -101,7 +101,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 	}
 
 
-	function executeCommand(): void
+	public function executeCommand(): void
     {
 		$this->initHeaderAndLocator();
 
@@ -207,7 +207,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 		}
 	}
 
-	function infoScreen(): void
+	public function infoScreen(): void
     {
 		$this->ctrl->setCmd('showSummary');
 		$this->ctrl->setCmdClass("ilinfoscreengui");
@@ -243,12 +243,12 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 		$this->ctrl->redirectByClass(xaliSettingsGUI::class, xaliSettingsGUI::CMD_STANDARD);
 	}
 
-	function getAfterCreationCmd(): string
+	public function getAfterCreationCmd(): string
     {
 		return self::CMD_EDIT_SETTINGS;
 	}
 
-	function getStandardCmd(): string
+	public function getStandardCmd(): string
     {
 		return self::CMD_STANDARD;
 	}
@@ -310,7 +310,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 		$this->saveObject();
 	}
 
-	function afterSave(ilObject $newObj): void
+	public function afterSave(ilObject $newObj): void
     {
 		$this->setting->setId($newObj->getId());
 		$this->setting->create();

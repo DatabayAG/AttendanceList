@@ -8,13 +8,13 @@
  */
 class xaliAbsenceReason extends ActiveRecord {
 
-	const F_ABSENCE_REASONS_TITLE = 'title';
-	const F_ABSENCE_REASONS_INFO = 'info';
-	const F_ABSENCE_REASONS_HAS_COMMENT = 'has_comment';
-	const F_ABSENCE_REASONS_COMMENT_REQ = 'comment_req';
-	const F_ABSENCE_REASONS_HAS_UPLOAD = 'has_upload';
-	const F_ABSENCE_REASONS_UPLOAD_REQ = 'upload_req';
-	const TABLE_NAME = 'xali_absence_reasons';
+	public const F_ABSENCE_REASONS_TITLE = 'title';
+	public const F_ABSENCE_REASONS_INFO = 'info';
+	public const F_ABSENCE_REASONS_HAS_COMMENT = 'has_comment';
+	public const F_ABSENCE_REASONS_COMMENT_REQ = 'comment_req';
+	public const F_ABSENCE_REASONS_HAS_UPLOAD = 'has_upload';
+	public const F_ABSENCE_REASONS_UPLOAD_REQ = 'upload_req';
+	public const TABLE_NAME = 'xali_absence_reasons';
 
 
 	static function returnDbTableName(): string

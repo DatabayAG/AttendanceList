@@ -11,9 +11,9 @@ use ILIAS\DI\Container;
  */
 class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 
-	const PLUGIN_ID = 'xali';
-	const PLUGIN_NAME = 'AttendanceList';
-	const PLUGIN_CLASS_NAME = self::class;
+	public const PLUGIN_ID = 'xali';
+	public const PLUGIN_NAME = 'AttendanceList';
+	public const PLUGIN_CLASS_NAME = self::class;
 
     protected static bool $init_notifications = false;
 
@@ -71,7 +71,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
     }
 
 
-	function getPluginName(): string
+	public function getPluginName(): string
     {
 		return self::PLUGIN_NAME;
 	}

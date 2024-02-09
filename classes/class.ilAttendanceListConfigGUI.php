@@ -17,19 +17,19 @@ require_once __DIR__ . '/../vendor/autoload.php';
  */
 class ilAttendanceListConfigGUI extends ilPluginConfigGUI {
 
-	const SUBTAB_CONFIG = 'config';
-	const SUBTAB_ABSENCE_REASONS = 'absence_reasons';
+	public const SUBTAB_CONFIG = 'config';
+	public const SUBTAB_ABSENCE_REASONS = 'absence_reasons';
 	//const SUBTAB_NOTIFICATION_ABSENCE = NotificationsCtrl::TAB_NOTIFICATIONS . '_absence';
 	//const SUBTAB_NOTIFICATION_ABSENCE_REMINDER = NotificationsCtrl::TAB_NOTIFICATIONS . '_absence_reminder';
 
-	const CMD_STANDARD = 'configure';
-	const CMD_ADD_REASON = 'addReason';
-	const CMD_SHOW_REASONS = 'showReasons';
-	const CMD_CREATE_REASON = 'createReason';
-	const CMD_EDIT_REASON = 'editReason';
-	const CMD_UPDATE_REASON = 'updateReason';
-	const CMD_DELETE_REASON = 'deleteReason';
-	const CMD_UPDATE_CONFIG = 'updateConfig';
+	public const CMD_STANDARD = 'configure';
+	public const CMD_ADD_REASON = 'addReason';
+	public const CMD_SHOW_REASONS = 'showReasons';
+	public const CMD_CREATE_REASON = 'createReason';
+	public const CMD_EDIT_REASON = 'editReason';
+	public const CMD_UPDATE_REASON = 'updateReason';
+	public const CMD_DELETE_REASON = 'deleteReason';
+	public const CMD_UPDATE_CONFIG = 'updateConfig';
 
 	protected ilGlobalTemplateInterface $tpl;
 	protected ilCtrl $ctrl;
@@ -65,7 +65,7 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI {
 	}
 
 
-	function performCommand($cmd): void
+	public function performCommand($cmd): void
     {
 		$this->tabs->addSubTab(self::SUBTAB_CONFIG, $this->pl->txt('subtab_'
 			. self::SUBTAB_CONFIG), $this->ctrl->getLinkTarget($this, self::CMD_STANDARD));

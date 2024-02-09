@@ -8,8 +8,8 @@
  */
 class xaliSetting extends ActiveRecord {
 
-	const DB_TABLE_NAME = "xali_data";
-	const CALC_AUTO_MINIMUM_ATTENDANCE = -1;
+	public const DB_TABLE_NAME = "xali_data";
+	public const CALC_AUTO_MINIMUM_ATTENDANCE = -1;
 
 
 	static function returnDbTableName(): string

@@ -1,7 +1,7 @@
 <?php
 class xaliChecklist extends ActiveRecord {
 
-	const DB_TABLE_NAME = "xali_checklist";
+	public const DB_TABLE_NAME = "xali_checklist";
 
 	static function returnDbTableName(): string
     {

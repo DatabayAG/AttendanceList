@@ -10,25 +10,25 @@ use JetBrains\PhpStorm\NoReturn;
  */
 class xaliOverviewGUI extends xaliGUI {
 
-	const CMD_STANDARD = 'initUserOverview';
-	const CMD_SHOW_USERS = 'showUsers';
-	const CMD_LISTS = 'showListsOverview';
-	const CMD_EDIT_LIST = 'editList';
-	const CMD_EDIT_USER = 'editUser';
-	const CMD_CONFIRM_DELETE_LISTS = 'confirmDeleteLists';
-	const CMD_ADD_LIST = 'addList';
-	const CMD_CREATE_LIST = 'createList';
-	const CMD_APPLY_FILTER_USERS = 'applyFilterUsers';
-	const CMD_RESET_FILTER_USERS = 'resetFilterUsers';
-	const CMD_APPLY_FILTER_LISTS = 'applyFilterLists';
-	const CMD_RESET_FILTER_LISTS = 'resetFilterLists';
-	const CMD_SAVE_ENTRY = 'saveEntry';
-	const CMD_SAVE_USER = 'saveUser';
+	public const CMD_STANDARD = 'initUserOverview';
+	public const CMD_SHOW_USERS = 'showUsers';
+	public const CMD_LISTS = 'showListsOverview';
+	public const CMD_EDIT_LIST = 'editList';
+	public const CMD_EDIT_USER = 'editUser';
+	public const CMD_CONFIRM_DELETE_LISTS = 'confirmDeleteLists';
+	public const CMD_ADD_LIST = 'addList';
+	public const CMD_CREATE_LIST = 'createList';
+	public const CMD_APPLY_FILTER_USERS = 'applyFilterUsers';
+	public const CMD_RESET_FILTER_USERS = 'resetFilterUsers';
+	public const CMD_APPLY_FILTER_LISTS = 'applyFilterLists';
+	public const CMD_RESET_FILTER_LISTS = 'resetFilterLists';
+	public const CMD_SAVE_ENTRY = 'saveEntry';
+	public const CMD_SAVE_USER = 'saveUser';
     const CMD_ADD_USER_AUTO_COMPLETE = 'addUserAutoComplete';
-	const CMD_SAVE_ABSENCE_REASON = 'saveAbsenceReason';
+	public const CMD_SAVE_ABSENCE_REASON = 'saveAbsenceReason';
 
-	const SUBTAB_USERS = 'subtab_users';
-	const SUBTAB_LISTS = 'subtab_lists';
+	public const SUBTAB_USERS = 'subtab_users';
+	public const SUBTAB_LISTS = 'subtab_lists';
 
 
 	public function initUserOverview(): void

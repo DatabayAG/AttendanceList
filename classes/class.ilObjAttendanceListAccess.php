@@ -29,7 +29,7 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 		return true;
 	}
 
-	function checkAccess(string $a_permission, string $a_cmd, int $a_ref_id, string $a_type = "", ?int $a_obj_id = null, ?int $a_tree_id = null): bool
+	public function checkAccess(string $a_permission, string $a_cmd, int $a_ref_id, string $a_type = "", ?int $a_obj_id = null, ?int $a_tree_id = null): bool
     {
 		return $this->access->checkAccess($a_permission, $a_cmd, $a_ref_id, $a_type, $a_obj_id, $a_tree_id);
 	}
