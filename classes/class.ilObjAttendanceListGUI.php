@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection NullPointerExceptionInspection */
+/** @noinspection PhpDeprecationInspection */
+/** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * This file is part of ILIAS, a powerful learning management system
@@ -89,8 +91,8 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
             //			$list_gui = ilObjectListGUIFactory::_getListGUIByType('xali');
             //			$this->tpl->setAlertProperties($list_gui->getAlertProperties());
             // set tabs
-            if (strtolower($_GET['baseClass']) != 'iladministrationgui') {
-                if (strtolower($_GET['cmdClass']) != 'xaliabsencestatementgui') {
+            if (strtolower($_GET['baseClass']) !== 'iladministrationgui') {
+                if (strtolower($_GET['cmdClass']) !== 'xaliabsencestatementgui') {
                     $this->setTabs();
                 }
                 $this->setLocator();
@@ -165,7 +167,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
                 $this->$cmd();
                 break;
         }
-        if ($cmd != 'create') {
+        if ($cmd !== 'create') {
             $this->tpl->printToStdout();
         }
     }
@@ -185,24 +187,24 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
         if (count($t) == 2) {
             $entry_id = $t[1];
             //			$_GET['entry_id'] = $entry_id;
-            $ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
+            //$ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
             $ilCtrl->setTargetScript("ilias.php");
-            $ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
+            //$ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
             $ilCtrl->setParameterByClass($class_name, "ref_id", $ref_id);
             $ilCtrl->setParameterByClass($class_name, "entry_id", $entry_id);
             $ilCtrl->redirectByClass(array("ilobjplugindispatchgui", self::class, xaliAbsenceStatementGUI::class), xaliAbsenceStatementGUI::CMD_STANDARD);
         }
 
         if ($ilAccess->checkAccess("read", "", $ref_id)) {
-            $ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
+            //$ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
             $ilCtrl->setTargetScript("ilias.php");
-            $ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
+            //$ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
             $ilCtrl->setParameterByClass($class_name, "ref_id", $ref_id);
             $ilCtrl->redirectByClass(array("ilobjplugindispatchgui", $class_name), "");
         } elseif ($ilAccess->checkAccess("visible", "", $ref_id)) {
-            $ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
+            //$ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
             $ilCtrl->setTargetScript("ilias.php");
-            $ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
+            //$ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
             $ilCtrl->setParameterByClass($class_name, "ref_id", $ref_id);
             $ilCtrl->redirectByClass(array("ilobjplugindispatchgui", $class_name), "infoScreen");
         } elseif ($ilAccess->checkAccess("read", "", ROOT_FOLDER_ID)) {
@@ -227,7 +229,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
     {
         $this->tabs->addTab(self::TAB_CONTENT, $this->pl->txt(self::TAB_CONTENT), $this->ctrl->getLinkTargetByClass(xaliChecklistGUI::class, xaliChecklistGUI::CMD_STANDARD));
         $this->addInfoTab();
-        if ($this->ilObjAttendanceListAccess->hasWriteAccess()) {
+        if (ilObjAttendanceListAccess::hasWriteAccess()) {
             $this->tabs->addTab(self::TAB_OVERVIEW, $this->pl->txt(self::TAB_OVERVIEW), $this->ctrl->getLinkTargetByClass(xaliOverviewGUI::class, xaliOverviewGUI::CMD_STANDARD));
             $this->tabs->addTab(self::TAB_SETTINGS, $this->pl->txt(self::TAB_SETTINGS), $this->ctrl->getLinkTargetByClass(xaliSettingsGUI::class, xaliSettingsGUI::CMD_STANDARD));
         }
@@ -259,7 +261,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
         return self::CMD_STANDARD;
     }
 
-    protected function initCreationForms($a_new_type): array
+    protected function initCreationForms(string $a_new_type): array
     {
         try {
             $this->getParentCourseOrGroupId($_GET['ref_id']);
@@ -275,7 +277,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
         return $forms;
     }
 
-    public function initCreateForm($a_new_type): ilPropertyFormGUI
+    public function initCreateForm(string $a_new_type): ilPropertyFormGUI
     {
         $form = parent::initCreateForm($a_new_type);
 

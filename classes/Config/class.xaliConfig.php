@@ -65,7 +65,7 @@ class xaliConfig extends ActiveRecord
             $obj = new self();
             $obj->setName($name);
         }
-        $obj->setValue(json_encode($value));
+        $obj->setValue(json_encode($value, JSON_THROW_ON_ERROR));
 
         if (self::where(array('name' => $name))->hasSets()) {
             $obj->update();

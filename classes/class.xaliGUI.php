@@ -25,9 +25,9 @@ class xaliGUI
     protected ilAttendanceListPlugin|ilPlugin $pl;
     protected ilObjAttendanceListGUI $parent_gui;
     protected ilTabsGUI $tabs;
-    protected mixed $user;
+    protected ilObjUser $user;
     protected ilToolbarGUI $toolbar;
-    private ilLanguage $lng;
+    protected ilLanguage $lng;
 
     public function __construct(ilObjAttendanceListGUI $parent_gui)
     {

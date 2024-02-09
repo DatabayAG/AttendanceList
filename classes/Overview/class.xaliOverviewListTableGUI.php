@@ -23,7 +23,7 @@ declare(strict_types=1);
 class xaliOverviewListTableGUI extends ilTable2GUI
 {
     protected ilAttendanceListPlugin $pl;
-    protected string|int $obj_id;
+    protected int $obj_id;
     protected ilCtrl $ctrl;
 
     /**
@@ -31,7 +31,7 @@ class xaliOverviewListTableGUI extends ilTable2GUI
      *
      * @throws ilException
      */
-    public function __construct(xaliOverviewGUI $a_parent_obj, string $obj_id)
+    public function __construct(xaliOverviewGUI $a_parent_obj, int $obj_id)
     {
         global $DIC;
         $lng = $DIC->language();

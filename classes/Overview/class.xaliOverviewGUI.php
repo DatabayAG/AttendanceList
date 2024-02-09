@@ -139,8 +139,10 @@ class xaliOverviewGUI extends xaliGUI
             $entry->setStatus($status);
             $entry->setUserId($usr_id);
             $entry->store();
-            if (intval($status) === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
-                if (is_array($_POST['absence_reason']) && key_exists($entry->getId(), $_POST['absence_reason']) && $reason_id = $_POST['absence_reason'][$entry->getId()] !== null) {
+            if ((int) $status === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
+                $reason_id = $_POST['absence_reason'][$entry->getId()] ?? null;
+
+                if ($reason_id) {
                     /** @var xaliAbsenceStatement $stm */
                     $stm = xaliAbsenceStatement::findOrGetInstance($entry->getId());
                     $stm->setReasonId($reason_id);
@@ -170,7 +172,9 @@ class xaliOverviewGUI extends xaliGUI
             $checklist->setLastUpdate(time());
             $checklist->store();
             if (intval($status) === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
-                if (is_array($_POST['absence_reason']) && key_exists($entry->getId(), $_POST['absence_reason']) && $reason_id = $_POST['absence_reason'][$entry->getId()] !== null) {
+                $reason_id = $_POST['absence_reason'][$entry->getId()] ?? null;
+
+                if ($reason_id) {
                     /** @var xaliAbsenceStatement $stm */
                     $stm = xaliAbsenceStatement::findOrGetInstance($entry->getId());
                     $stm->setReasonId($reason_id);
@@ -245,6 +249,7 @@ class xaliOverviewGUI extends xaliGUI
 
         $this->ctrl->setParameter($this, 'checklist_id', $checklist_id);
         $users = $this->parent_gui->getMembers();
+        /** @var xaliChecklist $checklist */
         $checklist = xaliChecklist::find($checklist_id);
         if (!$checklist->hasSavedEntries()) {
             $this->tpl->setOnScreenMessage('info', $this->pl->txt('list_unsaved'), true);
@@ -268,7 +273,7 @@ class xaliOverviewGUI extends xaliGUI
             }
         }
 
-        $xaliUserDetailsGUI = new xaliUserDetailsTableGUI($this, $user_id, $this->parent_gui->getObject()->getId());
+        $xaliUserDetailsGUI = new xaliUserDetailsTableGUI($this, (int) $user_id, $this->parent_gui->getObject()->getId());
         $this->tpl->setContent($xaliUserDetailsGUI->getHTML());
     }
 
@@ -364,7 +369,7 @@ class xaliOverviewGUI extends xaliGUI
 
         $entry = $checklist->getEntryOfUser($_GET['user_id']);
 
-        if (intval($entry->getStatus()) === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
+        if ($entry->getStatus() === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
             if (($reason_id = $_GET['absence_reason']) !== null) {
                 /** @var xaliAbsenceStatement $stm */
                 $stm = xaliAbsenceStatement::findOrGetInstance($entry->getId());

@@ -130,7 +130,7 @@ class xaliChecklistEntry extends ActiveRecord
         return $this->id;
     }
 
-    public function setId($id): void
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
@@ -162,7 +162,7 @@ class xaliChecklistEntry extends ActiveRecord
 
     public function setStatus(int $status): void
     {
-        if ($this->status != $status) {
+        if ($this->status !== $status) {
             $this->status_changed = true;
         }
         $this->status = $status;

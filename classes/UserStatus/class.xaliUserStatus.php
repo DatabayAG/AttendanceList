@@ -248,7 +248,7 @@ class xaliUserStatus extends ActiveRecord
             return 0;
         }
 
-        return round(
+        return (int) round(
             $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT) / $nr_of_checklists * 100
         );
     }

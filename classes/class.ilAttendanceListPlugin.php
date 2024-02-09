@@ -111,13 +111,13 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
         return array_shift($allReferences);
     }
 
-    public function getMembers($ref_id = 0): array
+    public function getMembers(int $ref_id = 0): array
     {
         global $DIC;
         $rbacreview = $DIC->rbac()->review();
         static $members;
         if (!$members) {
-            $ref_id = $ref_id ? $ref_id : $_GET['ref_id'];
+            $ref_id = (int) ($ref_id ?: $_GET["ref_id"]);
             $parent = $this->getParentCourseOrGroup($ref_id);
             $member_role = $parent->getDefaultMemberRole();
             $members = $rbacreview->assignedUsers($member_role);
@@ -132,12 +132,10 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
     /**
      * @throws Exception
      */
-    public function getParentCourseOrGroup($ref_id = 0): ilObjGroup|ilObjCourse
+    public function getParentCourseOrGroup(int $ref_id = 0): ilObjGroup|ilObjCourse
     {
-        $ref_id = $ref_id ? $ref_id : $_GET['ref_id'];
-        $parent = ilObjectFactory::getInstanceByRefId($this->getParentCourseOrGroupId($ref_id));
-
-        return $parent;
+        $ref_id = (int) ($ref_id ?: $_GET["ref_id"]);
+        return ilObjectFactory::getInstanceByRefId($this->getParentCourseOrGroupId($ref_id));
     }
 
     /**

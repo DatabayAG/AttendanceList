@@ -97,11 +97,11 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess
         $ilAccess = $DIC->access();
 
         $t_arr = explode("_", $target);
-        if (count($t_arr) == 3) { // access to absence statement -> access will be checked later
+        if (count($t_arr) === 3) { // access to absence statement -> access will be checked later
             return true;
         }
 
-        if ($ilAccess->checkAccess("read", "", $t_arr[1])) {
+        if ($ilAccess->checkAccess("read", "", (int) $t_arr[1])) {
             return true;
         }
         return false;

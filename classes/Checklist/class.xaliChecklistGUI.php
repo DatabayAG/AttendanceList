@@ -78,11 +78,14 @@ class xaliChecklistGUI extends xaliGUI
     {
         if (!is_array($_POST['attendance_status']) || count($this->parent_gui->getMembers()) != count($_POST['attendance_status'])) {
             $this->tpl->setOnScreenMessage('failure', $this->pl->txt('warning_list_incomplete'), true);
+            $this->tpl->printToStdout();
+            /*
             if (self::version()->is6()) {
                 $this->tpl->printToStdout();
             } else {
                 $this->show();
             }
+            */
             return;
         }
 
@@ -92,12 +95,13 @@ class xaliChecklistGUI extends xaliGUI
 
         foreach ($_POST['attendance_status'] as $usr_id => $status) {
             $entry = $this->checklist->getEntryOfUser($usr_id);
-            $entry->setChecklistId($this->checklist->getId());
+            $entry->setChecklistId((int) $this->checklist->getId());
             $entry->setStatus($status);
             $entry->setUserId($usr_id);
             $entry->store();
             if (intval($status) === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
-                if (is_array($_POST['absence_reason']) && key_exists($entry->getId(), $_POST['absence_reason']) && $reason_id = $_POST['absence_reason'][$entry->getId()] !== null) {
+                $reason_id = $_POST['absence_reason'][$entry->getId()] ?? null;
+                if (is_array($_POST['absence_reason']) && key_exists($entry->getId(), $_POST['absence_reason']) && $reason_id !== null) {
                     /** @var xaliAbsenceStatement $stm */
                     $stm = xaliAbsenceStatement::findOrGetInstance($entry->getId());
                     $stm->setReasonId($reason_id);

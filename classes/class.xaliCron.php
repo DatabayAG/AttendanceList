@@ -70,7 +70,7 @@ class xaliCron
 
         $interval = xaliConfig::getConfig(xaliConfig::F_INTERVAL_REMINDER_EMAIL);
         if (!$interval) {
-            return true;
+            return;
         }
 
         $send_mail = array();

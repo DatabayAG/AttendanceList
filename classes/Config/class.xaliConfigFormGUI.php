@@ -25,9 +25,11 @@ class xaliConfigFormGUI extends ilPropertyFormGUI
     protected ilAttendanceListPlugin $pl;
     protected ilLanguage $lng;
     protected ilCtrl $ctrl;
+    private ilAttendanceListConfigGUI $parent_gui;
 
-    public function __construct($parent_gui)
+    public function __construct(ilAttendanceListConfigGUI $parent_gui)
     {
+        parent::__construct();
         global $DIC;
         $lng = $DIC->language();
         $ilCtrl = $DIC->ctrl();

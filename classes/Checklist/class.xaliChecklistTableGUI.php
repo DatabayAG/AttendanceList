@@ -171,7 +171,7 @@ class xaliChecklistTableGUI extends ilTable2GUI
     {
         unset($a_set['id']);
         foreach ($a_set as $key => $value) {
-            if ($value == 'checked') {
+            if ($value === 'checked') {
                 $status_id = substr($key, -1);
                 $value = $this->pl->txt('status_' . $status_id);
             }
@@ -188,7 +188,7 @@ class xaliChecklistTableGUI extends ilTable2GUI
         unset($a_set['id']);
         $col = 0;
         foreach ($a_set as $key => $value) {
-            if ($value == 'checked') {
+            if ($value === 'checked') {
                 $status_id = substr($key, -1);
                 $value = $this->pl->txt('status_' . $status_id);
             }

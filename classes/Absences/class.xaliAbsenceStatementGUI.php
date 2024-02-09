@@ -33,6 +33,7 @@ class xaliAbsenceStatementGUI extends xaliGUI
                     'user_id' => $_GET['user_id'])
             )->first()->getId();
         }
+        /** @var xaliAbsenceStatement $absence */
         $absence = xaliAbsenceStatement::findOrGetInstance($entry_id);
         $xaliAbsenceFormGUI = new xaliAbsenceStatementFormGUI($this, $absence);
         $xaliAbsenceFormGUI->fillForm();
@@ -41,6 +42,7 @@ class xaliAbsenceStatementGUI extends xaliGUI
 
     protected function update(): void
     {
+        /** @var xaliAbsenceStatement $absence */
         $absence = xaliAbsenceStatement::findOrGetInstance($_GET['entry_id']);
         $xaliAbsenceFormGUI = new xaliAbsenceStatementFormGUI($this, $absence);
         $xaliAbsenceFormGUI->setValuesByPost();

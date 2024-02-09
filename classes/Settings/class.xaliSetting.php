@@ -36,7 +36,7 @@ class xaliSetting extends ActiveRecord
      * @db_length           8
      * @db_is_primary       true
      */
-    protected ?string $id;
+    protected ?int $id;
     /**
      * @db_has_field        true
      * @db_fieldtype        integer
@@ -72,12 +72,12 @@ class xaliSetting extends ActiveRecord
      */
     protected array $activation_weekdays = [];
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

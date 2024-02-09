@@ -22,8 +22,9 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
     protected ilCtrl $ctrl;
     protected \ILIAS\FileUpload\FileUpload $upload;
     protected ?xaliAbsenceStatement $absence_statement;
+    private xaliAbsenceStatementGUI $parent_gui;
 
-    public function __construct($parent_gui, ?xaliAbsenceStatement $xaliAbsenceStatement = null)
+    public function __construct(xaliAbsenceStatementGUI $parent_gui, xaliAbsenceStatement $xaliAbsenceStatement)
     {
         global $DIC;
         $lng = $DIC->language();
@@ -82,7 +83,7 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
             $this->addCommandButton(xaliAbsenceStatementGUI::CMD_DOWNLOAD_FILE, $this->pl->txt('download_file'));
         }
         $this->addCommandButton(xaliAbsenceStatementGUI::CMD_UPDATE, $this->lng->txt('save'));
-        $this->addCommandButton(xaliAbsenceStatementGUI::CMD_CANCEL, $this->lng->txt('cancel'));
+        $this->addCommandButton(xaliGUI::CMD_CANCEL, $this->lng->txt('cancel'));
     }
 
     public function saveForm(): bool
@@ -93,11 +94,11 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
 
         $reason_id = $this->getInput('reason_id');
 
-        if ($this->absence_statement->getReasonId() != $reason_id) {
+        if ($this->absence_statement->getReasonId() !== $reason_id) {
             if ($existing_file_id = $this->absence_statement->getFileId()) {
                 $existing_file_obj = new ilObjFile($existing_file_id, false);
                 $existing_file_obj->delete();
-                $this->absence_statement->setFileId(null);
+                $this->absence_statement->setFileId(0);
             }
             $this->absence_statement->setComment('');
         }

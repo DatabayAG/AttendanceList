@@ -29,7 +29,7 @@ class xaliUserDetailsTableGUI extends ilTable2GUI
     protected ilLanguage $lng;
     protected ?object $parent_obj;
 
-    public function __construct(xaliOverviewGUI $a_parent_obj, string $user_id, string $obj_id)
+    public function __construct(xaliOverviewGUI $a_parent_obj, int $user_id, int $obj_id)
     {
         global $DIC;
         $ilCtrl = $DIC->ctrl();

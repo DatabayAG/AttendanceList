@@ -46,6 +46,7 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI
     public function __construct(xaliSettingsGUI $parent_gui, ilObjAttendanceList|ilObject $object)
     {
         global $DIC;
+        parent::__construct();
         $ilCtrl = $DIC->ctrl();
         $lng = $DIC->language();
         $tpl = $DIC->ui()->mainTemplate();
@@ -76,7 +77,7 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI
         $this->addItem($input);
 
         $input = new ilCheckboxInputGUI($this->lng->txt(self::F_ONLINE), self::F_ONLINE);
-        $input->setChecked($this->xaliSetting->getIsOnline());
+        $input->setChecked((bool) $this->xaliSetting->getIsOnline());
         $this->addItem($input);
 
         $input = new ilSelectInputGUI($this->pl->txt(self::F_MINIMUM_ATTENDANCE), self::F_MINIMUM_ATTENDANCE);

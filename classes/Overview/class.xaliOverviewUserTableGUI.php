@@ -99,7 +99,7 @@ class xaliOverviewUserTableGUI extends ilTable2GUI
     {
         parent::fillRow($a_set);
         $color = ($a_set['reached_percentage'] < $a_set['minimum_attendance']) ? 'red' : 'green';
-        if ($color == 'green') {
+        if ($color === 'green') {
             $this->has_passed_students = true;
         }
         $this->ctrl->setParameter($this->parent_obj, 'user_id', $a_set['id']);

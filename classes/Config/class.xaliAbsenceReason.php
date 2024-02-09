@@ -122,31 +122,31 @@ class xaliAbsenceReason extends ActiveRecord
 
     public function hasUpload(): bool
     {
-        return $this->has_upload;
+        return (bool) $this->has_upload;
     }
 
     public function setHasUpload(bool $has_upload): void
     {
-        $this->has_upload = $has_upload;
+        $this->has_upload = (int) $has_upload;
     }
 
     public function getCommentReq(): bool
     {
-        return $this->comment_req;
+        return (bool) $this->comment_req;
     }
 
     public function setCommentReq(bool $comment_req): void
     {
-        $this->comment_req = $comment_req;
+        $this->comment_req = (int) $comment_req;
     }
 
     public function getUploadReq(): bool
     {
-        return $this->upload_req;
+        return (bool) $this->upload_req;
     }
 
     public function setUploadReq(bool $upload_req): void
     {
-        $this->upload_req = $upload_req;
+        $this->upload_req = (int) $upload_req;
     }
 }

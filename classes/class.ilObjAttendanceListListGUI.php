@@ -19,6 +19,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI
 {
+    /**
+     * @var false
+     */
+    private bool $payment_enabled;
+
     public function getGuiClass(): string
     {
         return ilObjAttendanceListGUI::class;
@@ -64,7 +69,7 @@ class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI
      *                        'property' (string) => property name
      *                        'value' (string) => property value
      */
-    public function getCustomProperties($a_prop = array()): array
+    public function getCustomProperties(array $a_prop = array()): array
     {
 
         $props = parent::getCustomProperties($a_prop);
@@ -72,7 +77,7 @@ class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI
         try {
             /** @var xaliSetting $settings */
             $settings = xaliSetting::find($this->obj_id);
-            if ($settings != null) {
+            if ($settings !== null) {
                 if ($settings->getActivation()) {
                     $activation_from = date('d. M Y', strtotime($settings->getActivationFrom()));
                     $activation_to = date('d. M Y', strtotime($settings->getActivationTo()));
@@ -105,7 +110,7 @@ class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI
     {
         $alert = array();
         foreach ((array) $this->getCustomProperties() as $prop) {
-            if ($prop['alert'] == true) {
+            if ($prop['alert']) {
                 $alert[] = $prop;
             }
         }

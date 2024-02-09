@@ -31,7 +31,7 @@ class xaliChecklist extends ActiveRecord
      * @db_is_primary       true
      * @con_sequence        true
      */
-    protected ?string $id;
+    protected ?int $id;
 
     /**
      * @db_has_field        true
@@ -136,12 +136,12 @@ class xaliChecklist extends ActiveRecord
         parent::delete();
     }
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId($id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -151,7 +151,7 @@ class xaliChecklist extends ActiveRecord
         return $this->obj_id;
     }
 
-    public function setObjId($obj_id): void
+    public function setObjId(int $obj_id): void
     {
         $this->obj_id = $obj_id;
     }

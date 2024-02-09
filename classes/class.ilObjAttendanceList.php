@@ -132,6 +132,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 
     protected function doCloneObject(/*ilObjAttendanceList*/ $new_obj, /*int*/ $a_target_id, /*?int*/ $a_copy_id = null): void
     {
+        /** @var xaliSetting $xaliSetting */
         $xaliSetting = xaliSetting::findOrGetInstance($this->id);
         $xaliSettingClone = $xaliSetting->copy();
         $xaliSettingClone->setId($new_obj->id);
