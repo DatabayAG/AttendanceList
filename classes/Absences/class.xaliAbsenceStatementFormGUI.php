@@ -92,7 +92,7 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
             return false;
         }
 
-        $reason_id = $this->getInput('reason_id');
+        $reason_id = (int) $this->getInput('reason_id');
 
         if ($this->absence_statement->getReasonId() !== $reason_id) {
             if ($existing_file_id = $this->absence_statement->getFileId()) {

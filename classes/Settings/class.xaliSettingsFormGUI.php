@@ -128,7 +128,7 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI
         $this->object->update();
 
         $this->xaliSetting->setIsOnline((int) $this->getInput(self::F_ONLINE));
-        $this->xaliSetting->setMinimumAttendance($this->getInput(self::F_MINIMUM_ATTENDANCE));
+        $this->xaliSetting->setMinimumAttendance((int) $this->getInput(self::F_MINIMUM_ATTENDANCE));
         $this->xaliSetting->setActivation((int) $this->getInput(self::F_ACTIVATION));
 
         $activation_from = $this->getInput(self::F_ACTIVATION_FROM);

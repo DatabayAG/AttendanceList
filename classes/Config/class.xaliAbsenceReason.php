@@ -60,25 +60,25 @@ class xaliAbsenceReason extends ActiveRecord
      * @db_fieldtype        integer
      * @db_length           1
      */
-    protected int $has_comment = 0;
+    protected bool $has_comment = false;
     /**
      * @db_has_field        true
      * @db_fieldtype        integer
      * @db_length           1
      */
-    protected int $comment_req = 0;
+    protected bool $comment_req = false;
     /**
      * @db_has_field        true
      * @db_fieldtype        integer
      * @db_length           1
      */
-    protected int $has_upload = 0;
+    protected bool $has_upload = false;
     /**
      * @db_has_field        true
      * @db_fieldtype        integer
      * @db_length           1
      */
-    protected int $upload_req = 0;
+    protected bool $upload_req = false;
 
     public function getId(): string
     {
@@ -110,43 +110,43 @@ class xaliAbsenceReason extends ActiveRecord
         $this->info = $info;
     }
 
-    public function hasComment(): int
+    public function hasComment(): bool
     {
         return $this->has_comment;
     }
 
-    public function setHasComment($has_comment): void
+    public function setHasComment(bool $has_comment): void
     {
         $this->has_comment = $has_comment;
     }
 
     public function hasUpload(): bool
     {
-        return (bool) $this->has_upload;
+        return $this->has_upload;
     }
 
     public function setHasUpload(bool $has_upload): void
     {
-        $this->has_upload = (int) $has_upload;
+        $this->has_upload = $has_upload;
     }
 
     public function getCommentReq(): bool
     {
-        return (bool) $this->comment_req;
+        return $this->comment_req;
     }
 
     public function setCommentReq(bool $comment_req): void
     {
-        $this->comment_req = (int) $comment_req;
+        $this->comment_req = $comment_req;
     }
 
     public function getUploadReq(): bool
     {
-        return (bool) $this->upload_req;
+        return $this->upload_req;
     }
 
     public function setUploadReq(bool $upload_req): void
     {
-        $this->upload_req = (int) $upload_req;
+        $this->upload_req = $upload_req;
     }
 }

@@ -97,10 +97,10 @@ class xaliConfigAbsenceFormGUI extends ilPropertyFormGUI
         }
         $this->absence_reason->setTitle($this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_TITLE));
         $this->absence_reason->setInfo($this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_INFO));
-        $this->absence_reason->setHasComment($this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_HAS_COMMENT));
-        $this->absence_reason->setCommentReq($this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_COMMENT_REQ));
-        $this->absence_reason->setHasUpload($this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_HAS_UPLOAD));
-        $this->absence_reason->setUploadReq($this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_UPLOAD_REQ));
+        $this->absence_reason->setHasComment((bool) $this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_HAS_COMMENT));
+        $this->absence_reason->setCommentReq((bool) $this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_COMMENT_REQ));
+        $this->absence_reason->setHasUpload((bool) $this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_HAS_UPLOAD));
+        $this->absence_reason->setUploadReq((bool) $this->getInput(xaliAbsenceReason::F_ABSENCE_REASONS_UPLOAD_REQ));
 
         $this->absence_reason->store();
 
