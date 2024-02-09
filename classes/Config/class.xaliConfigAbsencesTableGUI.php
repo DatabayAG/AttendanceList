@@ -15,60 +15,61 @@
 
 declare(strict_types=1);
 
-
 /**
  * Class xaliConfigAbsencesTableGUI
  *
  * @author  Theodor Truffer <tt@studer-raimann.ch>
  */
-class xaliConfigAbsencesTableGUI extends ilTable2GUI {
-	protected ilAttendanceListPlugin $pl;
-	protected int $obj_id;
-	protected ilCtrl $ctrl;
+class xaliConfigAbsencesTableGUI extends ilTable2GUI
+{
+    protected ilAttendanceListPlugin $pl;
+    protected int $obj_id;
+    protected ilCtrl $ctrl;
 
-	public function __construct(ilAttendanceListConfigGUI $a_parent_obj) {
-		global $DIC;
-		$lng = $DIC->language();
-		$ilCtrl = $DIC->ctrl();
-		$this->lng = $lng;
-		$this->ctrl = $ilCtrl;
-		$this->pl = ilAttendanceListPlugin::getInstance();
-		$this->setId('xali_config_absences');
-
-		parent::__construct($a_parent_obj, ilAttendanceListConfigGUI::CMD_STANDARD);
-		$this->setRowTemplate('tpl.config_absences_row.html', $this->pl->getDirectory());
-
-		$this->initColumns();
-
-		$this->setFormAction($this->ctrl->getFormAction($a_parent_obj));
-		$this->setTitle($this->pl->txt('absence_reasons'));
-
-//		$this->setDefaultOrderField('sort_date');
-
-		$this->parseData();
-	}
-
-	protected function initColumns(): void
+    public function __construct(ilAttendanceListConfigGUI $a_parent_obj)
     {
-		$this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_TITLE));
-		$this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_INFO));
-		$this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_HAS_COMMENT));
-		$this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_COMMENT_REQ));
-		$this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_HAS_UPLOAD));
-		$this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_UPLOAD_REQ));
-		$this->addColumn("", "", '30px', true);
-	}
+        global $DIC;
+        $lng = $DIC->language();
+        $ilCtrl = $DIC->ctrl();
+        $this->lng = $lng;
+        $this->ctrl = $ilCtrl;
+        $this->pl = ilAttendanceListPlugin::getInstance();
+        $this->setId('xali_config_absences');
 
-	protected function parseData(): void
-    {
-		$this->setData(xaliAbsenceReason::getArray());
-	}
+        parent::__construct($a_parent_obj, ilAttendanceListConfigGUI::CMD_STANDARD);
+        $this->setRowTemplate('tpl.config_absences_row.html', $this->pl->getDirectory());
 
-	protected function fillRow(array $a_set): void
+        $this->initColumns();
+
+        $this->setFormAction($this->ctrl->getFormAction($a_parent_obj));
+        $this->setTitle($this->pl->txt('absence_reasons'));
+
+        //		$this->setDefaultOrderField('sort_date');
+
+        $this->parseData();
+    }
+
+    protected function initColumns(): void
     {
-		$a_set['action'] = $this->buildAction($a_set);
-		parent::fillRow($a_set);
-	}
+        $this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_TITLE));
+        $this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_INFO));
+        $this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_HAS_COMMENT));
+        $this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_COMMENT_REQ));
+        $this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_HAS_UPLOAD));
+        $this->addColumn($this->pl->txt('table_column_' . xaliAbsenceReason::F_ABSENCE_REASONS_UPLOAD_REQ));
+        $this->addColumn("", "", '30px', true);
+    }
+
+    protected function parseData(): void
+    {
+        $this->setData(xaliAbsenceReason::getArray());
+    }
+
+    protected function fillRow(array $a_set): void
+    {
+        $a_set['action'] = $this->buildAction($a_set);
+        parent::fillRow($a_set);
+    }
 
     /**
      * @throws ilCtrlException
@@ -76,13 +77,13 @@ class xaliConfigAbsencesTableGUI extends ilTable2GUI {
      */
     protected function buildAction($a_set): string
     {
-		$actions = new ilAdvancedSelectionListGUI();
-		$actions->setListTitle($this->lng->txt('actions'));
+        $actions = new ilAdvancedSelectionListGUI();
+        $actions->setListTitle($this->lng->txt('actions'));
 
-		$this->ctrl->setParameter($this->parent_obj, 'ar_id', $a_set['id']);
-		$actions->addItem($this->lng->txt('edit'), '',$this->ctrl->getLinkTarget($this->parent_obj, ilAttendanceListConfigGUI::CMD_EDIT_REASON));
-		$actions->addItem($this->lng->txt('delete'), '', $this->ctrl->getLinkTarget($this->parent_obj, ilAttendanceListConfigGUI::CMD_DELETE_REASON));
+        $this->ctrl->setParameter($this->parent_obj, 'ar_id', $a_set['id']);
+        $actions->addItem($this->lng->txt('edit'), '', $this->ctrl->getLinkTarget($this->parent_obj, ilAttendanceListConfigGUI::CMD_EDIT_REASON));
+        $actions->addItem($this->lng->txt('delete'), '', $this->ctrl->getLinkTarget($this->parent_obj, ilAttendanceListConfigGUI::CMD_DELETE_REASON));
 
-		return $actions->getHTML();
-	}
+        return $actions->getHTML();
+    }
 }

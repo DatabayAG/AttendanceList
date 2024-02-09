@@ -15,39 +15,38 @@
 
 declare(strict_types=1);
 
-
 /**
  * Class xaliSettingsGUI
  *
  * @author  Theodor Truffer <tt@studer-raimann.ch>
  */
-class xaliSettingsGUI extends xaliGUI {
-
-	public const CMD_STANDARD = 'showContent';
-	public const CMD_SAVE = 'save';
+class xaliSettingsGUI extends xaliGUI
+{
+    public const CMD_STANDARD = 'showContent';
+    public const CMD_SAVE = 'save';
 
     /**
      * @throws ilCtrlException
      */
     public function showContent(): void
     {
-		$xaliSettingsFormGUI = new xaliSettingsFormGUI($this, $this->parent_gui->getObject());
-		$this->tpl->setContent($xaliSettingsFormGUI->getHTML());
-	}
+        $xaliSettingsFormGUI = new xaliSettingsFormGUI($this, $this->parent_gui->getObject());
+        $this->tpl->setContent($xaliSettingsFormGUI->getHTML());
+    }
 
-	public function save(): void
+    public function save(): void
     {
-		$xaliSettingsFormGUI = new xaliSettingsFormGUI($this, $this->parent_gui->getObject());
-		$xaliSettingsFormGUI->setValuesByPost();
-		if ($xaliSettingsFormGUI->saveSettings()) {
+        $xaliSettingsFormGUI = new xaliSettingsFormGUI($this, $this->parent_gui->getObject());
+        $xaliSettingsFormGUI->setValuesByPost();
+        if ($xaliSettingsFormGUI->saveSettings()) {
 
-			// update LP
-			xaliUserStatus::updateUserStatuses($this->parent_gui->getObject()->getId());
+            // update LP
+            xaliUserStatus::updateUserStatuses($this->parent_gui->getObject()->getId());
 
-            $this->tpl->setOnScreenMessage('success',  $this->lng->txt("saved_successfully"), true);
-			$this->ctrl->redirect($this, self::CMD_STANDARD);
-			return;
-		}
-		$this->tpl->setContent($xaliSettingsFormGUI->getHTML());
-	}
+            $this->tpl->setOnScreenMessage('success', $this->lng->txt("saved_successfully"), true);
+            $this->ctrl->redirect($this, self::CMD_STANDARD);
+            return;
+        }
+        $this->tpl->setContent($xaliSettingsFormGUI->getHTML());
+    }
 }

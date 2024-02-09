@@ -15,8 +15,6 @@
 
 declare(strict_types=1);
 
-
-
 /**
  * Class xaliLastReminder
  *
@@ -24,46 +22,45 @@ declare(strict_types=1);
  *
  * @author  Theodor Truffer <tt@studer-raimann.ch>
  */
-class xaliLastReminder extends ActiveRecord {
+class xaliLastReminder extends ActiveRecord
+{
+    public const TABLE_NAME = 'xali_last_reminder';
 
-	public const TABLE_NAME = 'xali_last_reminder';
-
-
-	static function returnDbTableName(): string
+    public static function returnDbTableName(): string
     {
-		return self::TABLE_NAME;
-	}
+        return self::TABLE_NAME;
+    }
 
+    /**
+     * @db_has_field        true
+     * @db_fieldtype        integer
+     * @db_length           8
+     * @db_is_primary       true
+     */
+    protected ?int $user_id;
+    /**
+     * @db_has_field        true
+     * @db_fieldtype        date
+     */
+    protected string $last_reminder;
 
-	/**
-	 * @db_has_field        true
-	 * @db_fieldtype        integer
-	 * @db_length           8
-	 * @db_is_primary       true
-	 */
-	protected ?int $user_id;
-	/**
-	 * @db_has_field        true
-	 * @db_fieldtype        date
-	 */
-	protected string $last_reminder;
-
-	public function getUserId(): int
+    public function getUserId(): int
     {
-		return $this->user_id;
-	}
+        return $this->user_id;
+    }
 
-	public function setUserId(int $user_id): void
+    public function setUserId(int $user_id): void
     {
-		$this->user_id = $user_id;
-	}
-	public function getLastReminder(): string
-    {
-		return $this->last_reminder;
-	}
+        $this->user_id = $user_id;
+    }
 
-	public function setLastReminder(string $last_reminder): void
+    public function getLastReminder(): string
     {
-		$this->last_reminder = $last_reminder;
-	}
+        return $this->last_reminder;
+    }
+
+    public function setLastReminder(string $last_reminder): void
+    {
+        $this->last_reminder = $last_reminder;
+    }
 }

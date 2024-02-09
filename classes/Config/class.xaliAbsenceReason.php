@@ -15,142 +15,138 @@
 
 declare(strict_types=1);
 
-
-
 /**
  * Class xaliAbsenceReason
  *
  * @author  Theodor Truffer <tt@studer-raimann.ch>
  */
-class xaliAbsenceReason extends ActiveRecord {
+class xaliAbsenceReason extends ActiveRecord
+{
+    public const F_ABSENCE_REASONS_TITLE = 'title';
+    public const F_ABSENCE_REASONS_INFO = 'info';
+    public const F_ABSENCE_REASONS_HAS_COMMENT = 'has_comment';
+    public const F_ABSENCE_REASONS_COMMENT_REQ = 'comment_req';
+    public const F_ABSENCE_REASONS_HAS_UPLOAD = 'has_upload';
+    public const F_ABSENCE_REASONS_UPLOAD_REQ = 'upload_req';
+    public const TABLE_NAME = 'xali_absence_reasons';
 
-	public const F_ABSENCE_REASONS_TITLE = 'title';
-	public const F_ABSENCE_REASONS_INFO = 'info';
-	public const F_ABSENCE_REASONS_HAS_COMMENT = 'has_comment';
-	public const F_ABSENCE_REASONS_COMMENT_REQ = 'comment_req';
-	public const F_ABSENCE_REASONS_HAS_UPLOAD = 'has_upload';
-	public const F_ABSENCE_REASONS_UPLOAD_REQ = 'upload_req';
-	public const TABLE_NAME = 'xali_absence_reasons';
-
-
-	static function returnDbTableName(): string
+    public static function returnDbTableName(): string
     {
-		return self::TABLE_NAME;
-	}
+        return self::TABLE_NAME;
+    }
 
+    /**
+     * @db_has_field        true
+     * @db_fieldtype        integer
+     * @db_length           8
+     * @db_is_primary       true
+     * @con_sequence        true
+     */
+    protected ?string $id = "";
+    /**
+     * @db_has_field        true
+     * @db_fieldtype        text
+     * @db_length           256
+     */
+    protected string $title = "";
+    /**
+     * @db_has_field        true
+     * @db_fieldtype        text
+     * @db_length           256
+     */
+    protected string $info = "";
+    /**
+     * @db_has_field        true
+     * @db_fieldtype        integer
+     * @db_length           1
+     */
+    protected int $has_comment = 0;
+    /**
+     * @db_has_field        true
+     * @db_fieldtype        integer
+     * @db_length           1
+     */
+    protected int $comment_req = 0;
+    /**
+     * @db_has_field        true
+     * @db_fieldtype        integer
+     * @db_length           1
+     */
+    protected int $has_upload = 0;
+    /**
+     * @db_has_field        true
+     * @db_fieldtype        integer
+     * @db_length           1
+     */
+    protected int $upload_req = 0;
 
-	/**
-	 * @db_has_field        true
-	 * @db_fieldtype        integer
-	 * @db_length           8
-	 * @db_is_primary       true
-	 * @con_sequence        true
-	 */
-	protected ?string $id = "";
-	/**
-	 * @db_has_field        true
-	 * @db_fieldtype        text
-	 * @db_length           256
-	 */
-	protected string $title = "";
-	/**
-	 * @db_has_field        true
-	 * @db_fieldtype        text
-	 * @db_length           256
-	 */
-	protected string $info = "";
-	/**
-	 * @db_has_field        true
-	 * @db_fieldtype        integer
-	 * @db_length           1
-	 */
-	protected int $has_comment = 0;
-	/**
-	 * @db_has_field        true
-	 * @db_fieldtype        integer
-	 * @db_length           1
-	 */
-	protected int $comment_req = 0;
-	/**
-	 * @db_has_field        true
-	 * @db_fieldtype        integer
-	 * @db_length           1
-	 */
-	protected int $has_upload = 0;
-	/**
-	 * @db_has_field        true
-	 * @db_fieldtype        integer
-	 * @db_length           1
-	 */
-	protected int $upload_req = 0;
-
-	public function getId(): string
+    public function getId(): string
     {
-		return $this->id;
-	}
+        return $this->id;
+    }
 
-	public function setId(string $id): void
+    public function setId(string $id): void
     {
-		$this->id = $id;
-	}
+        $this->id = $id;
+    }
 
-	public function getTitle(): string
+    public function getTitle(): string
     {
-		return $this->title;
-	}
+        return $this->title;
+    }
 
-	public function setTitle(string $title): void
+    public function setTitle(string $title): void
     {
-		$this->title = $title;
-	}
+        $this->title = $title;
+    }
 
-	public function getInfo(): string
+    public function getInfo(): string
     {
-		return $this->info;
-	}
+        return $this->info;
+    }
 
-	public function setInfo(string $info): void
+    public function setInfo(string $info): void
     {
-		$this->info = $info;
-	}
+        $this->info = $info;
+    }
 
-	public function hasComment(): int
+    public function hasComment(): int
     {
-		return $this->has_comment;
-	}
+        return $this->has_comment;
+    }
 
-	public function setHasComment($has_comment): void
+    public function setHasComment($has_comment): void
     {
-		$this->has_comment = $has_comment;
-	}
+        $this->has_comment = $has_comment;
+    }
 
-	public function hasUpload(): bool
+    public function hasUpload(): bool
     {
-		return $this->has_upload;
-	}
+        return $this->has_upload;
+    }
 
-	public function setHasUpload(bool $has_upload): void
+    public function setHasUpload(bool $has_upload): void
     {
-		$this->has_upload = $has_upload;
-	}
+        $this->has_upload = $has_upload;
+    }
 
-	public function getCommentReq(): bool
+    public function getCommentReq(): bool
     {
-		return $this->comment_req;
-	}
+        return $this->comment_req;
+    }
 
-	public function setCommentReq(bool $comment_req): void
+    public function setCommentReq(bool $comment_req): void
     {
-		$this->comment_req = $comment_req;
-	}
+        $this->comment_req = $comment_req;
+    }
 
-	public function getUploadReq(): bool
+    public function getUploadReq(): bool
     {
-		return $this->upload_req;
-	}
+        return $this->upload_req;
+    }
 
-	public function setUploadReq(bool $upload_req): void
+    public function setUploadReq(bool $upload_req): void
     {
-		$this->upload_req = $upload_req;
-	}
+        $this->upload_req = $upload_req;
+    }
 }

@@ -15,67 +15,67 @@
 
 declare(strict_types=1);
 
-class xaliGUI {
+class xaliGUI
+{
+    public const CMD_STANDARD = 'show';
+    public const CMD_CANCEL = 'cancel';
 
-	public const CMD_STANDARD = 'show';
-	public const CMD_CANCEL = 'cancel';
-
-	protected mixed $tpl;
-	protected mixed $ctrl;
-	protected ilAttendanceListPlugin|ilPlugin $pl;
-	protected ilObjAttendanceListGUI $parent_gui;
-	protected ilTabsGUI $tabs;
-	protected mixed $user;
-	protected ilToolbarGUI $toolbar;
+    protected mixed $tpl;
+    protected mixed $ctrl;
+    protected ilAttendanceListPlugin|ilPlugin $pl;
+    protected ilObjAttendanceListGUI $parent_gui;
+    protected ilTabsGUI $tabs;
+    protected mixed $user;
+    protected ilToolbarGUI $toolbar;
     private ilLanguage $lng;
 
-	public function __construct(ilObjAttendanceListGUI $parent_gui) {
-		global $DIC;
-		$tpl = $DIC->ui()->mainTemplate();
-		$ilCtrl = $DIC->ctrl();
-		$ilTabs = $DIC->tabs();
-		$lng = $DIC->language();
-		$ilUser = $DIC->user();
-		$ilToolbar = $DIC->toolbar();
-		$this->toolbar = $ilToolbar;
-		$this->user = $ilUser;
-		$this->lng = $lng;
-		$this->tabs = $ilTabs;
-		$this->tpl = $tpl;
-		$this->ctrl = $ilCtrl;
+    public function __construct(ilObjAttendanceListGUI $parent_gui)
+    {
+        global $DIC;
+        $tpl = $DIC->ui()->mainTemplate();
+        $ilCtrl = $DIC->ctrl();
+        $ilTabs = $DIC->tabs();
+        $lng = $DIC->language();
+        $ilUser = $DIC->user();
+        $ilToolbar = $DIC->toolbar();
+        $this->toolbar = $ilToolbar;
+        $this->user = $ilUser;
+        $this->lng = $lng;
+        $this->tabs = $ilTabs;
+        $this->tpl = $tpl;
+        $this->ctrl = $ilCtrl;
         /** @var $component_factory ilComponentFactory */
         $component_factory = $DIC['component.factory'];
-        $this->pl  = $component_factory->getPlugin(ilAttendanceListPlugin::PLUGIN_ID);
-		$this->parent_gui = $parent_gui;
-	}
+        $this->pl = $component_factory->getPlugin(ilAttendanceListPlugin::PLUGIN_ID);
+        $this->parent_gui = $parent_gui;
+    }
 
-
-	/**
-	 *
-	 */
-	public function executeCommand(): void
+    /**
+     *
+     */
+    public function executeCommand(): void
     {
-		$this->prepareOutput();
-		if (ilObjAttendanceListAccess::hasWriteAccess()) {
-			$this->parent_gui->checkPassedIncompleteLists();
-		}
+        $this->prepareOutput();
+        if (ilObjAttendanceListAccess::hasWriteAccess()) {
+            $this->parent_gui->checkPassedIncompleteLists();
+        }
 
-		$nextClass = $this->ctrl->getNextClass();
+        $nextClass = $this->ctrl->getNextClass();
 
-		switch ($nextClass) {
-			default:
-				$cmd = $this->ctrl->getCmd(static::CMD_STANDARD);
-				$this->{$cmd}();
-				break;
-		}
-	}
+        switch ($nextClass) {
+            default:
+                $cmd = $this->ctrl->getCmd(static::CMD_STANDARD);
+                $this->{$cmd}();
+                break;
+        }
+    }
 
-	protected function prepareOutput(): void
-    { }
-
-
-	protected function cancel(): void
+    protected function prepareOutput(): void
     {
-		$this->ctrl->redirect($this, static::CMD_STANDARD);
-	}
+    }
+
+    protected function cancel(): void
+    {
+        $this->ctrl->redirect($this, static::CMD_STANDARD);
+    }
 }

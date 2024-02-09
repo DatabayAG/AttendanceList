@@ -15,229 +15,228 @@
 
 declare(strict_types=1);
 
-
-
 /**
  * Class xaliUserStatus
  *
  * @author  Theodor Truffer <tt@studer-raimann.ch>
  */
-class xaliUserStatus extends ActiveRecord {
+class xaliUserStatus extends ActiveRecord
+{
+    public const TABLE_NAME = 'xali_user_status';
 
-	public const TABLE_NAME = 'xali_user_status';
-
-	static function returnDbTableName(): string
+    public static function returnDbTableName(): string
     {
-		return self::TABLE_NAME;
-	}
+        return self::TABLE_NAME;
+    }
 
+    /**
+     * @db_has_field    true
+     * @db_fieldtype    integer
+     * @db_length       8
+     * @db_is_primary   true
+     * @db_sequence     true
+     */
+    protected ?int $id = 0;
 
-	/**
-	 * @db_has_field    true
-	 * @db_fieldtype    integer
-	 * @db_length       8
-	 * @db_is_primary   true
-	 * @db_sequence     true
-	 */
-	protected ?int $id = 0;
+    /**
+     * @db_has_field    true
+     * @db_fieldtype    integer
+     * @db_length       8
+     */
+    protected int $attendancelist_id = 0;
 
-	/**
-	 * @db_has_field    true
-	 * @db_fieldtype    integer
-	 * @db_length       8
-	 */
-	protected int $attendancelist_id = 0;
+    /**
+     * @db_has_field    true
+     * @db_fieldtype    integer
+     * @db_length       8
+     */
+    protected int $user_id = 0;
 
-	/**
-	 * @db_has_field    true
-	 * @db_fieldtype    integer
-	 * @db_length       8
-	 */
-	protected int $user_id = 0;
+    /**
+     * @db_has_field    true
+     * @db_fieldtype    timestamp
+     */
+    protected string $created_at;
 
-	/**
-	 * @db_has_field    true
-	 * @db_fieldtype    timestamp
-	 */
-	protected string $created_at;
+    /**
+     * @db_has_field    true
+     * @db_fieldtype    timestamp
+     */
+    protected string $updated_at;
 
-	/**
-	 * @db_has_field    true
-	 * @db_fieldtype    timestamp
-	 */
-	protected string $updated_at;
+    /**
+     * @db_has_field    true
+     * @db_fieldtype    integer
+     * @db_length       8
+     */
+    protected int $created_user_id = 0;
 
-	/**
-	 * @db_has_field    true
-	 * @db_fieldtype    integer
-	 * @db_length       8
-	 */
-	protected int $created_user_id = 0;
+    /**
+     * @db_has_field    true
+     * @db_fieldtype    integer
+     * @db_length       8
+     */
+    protected int $updated_user_id = 0;
 
-	/**
-	 * @db_has_field    true
-	 * @db_fieldtype    integer
-	 * @db_length       8
-	 */
-	protected int $updated_user_id = 0;
+    /**
+     * @db_has_field    true
+     * @db_fieldtype    integer
+     * @db_length       8
+     */
+    protected int $status = ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM;
 
-	/**
-	 * @db_has_field    true
-	 * @db_fieldtype    integer
-	 * @db_length       8
-	 */
-	protected int $status = ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM;
+    protected bool $status_changed = false;
 
-	protected bool $status_changed = false;
+    protected int $old_status;
+    protected array $checklist_ids = [];
+    protected array $attendance_statuses = [];
 
-	protected int $old_status;
-	protected array $checklist_ids = [];
-	protected array $attendance_statuses =  [];
-
-	public function getId(): int
+    public function getId(): int
     {
-		return $this->id;
-	}
+        return $this->id;
+    }
 
-	public function setId(int $id): void
+    public function setId(int $id): void
     {
-		$this->id = $id;
-	}
+        $this->id = $id;
+    }
 
-	public function getAttendancelistId(): int
+    public function getAttendancelistId(): int
     {
-		return $this->attendancelist_id;
-	}
-	public function setAttendancelistId(int $attendancelist_id): void
+        return $this->attendancelist_id;
+    }
+
+    public function setAttendancelistId(int $attendancelist_id): void
     {
-		$this->attendancelist_id = $attendancelist_id;
-	}
+        $this->attendancelist_id = $attendancelist_id;
+    }
 
-	public function getUserId(): int
+    public function getUserId(): int
     {
-		return $this->user_id;
-	}
+        return $this->user_id;
+    }
 
-	public function setUserId(int $user_id): void
+    public function setUserId(int $user_id): void
     {
-		$this->user_id = $user_id;
-	}
+        $this->user_id = $user_id;
+    }
 
-	public function getCreatedAt(): string
+    public function getCreatedAt(): string
     {
-		return $this->created_at;
-	}
+        return $this->created_at;
+    }
 
-	public function setCreatedAt(string $created_at): void
+    public function setCreatedAt(string $created_at): void
     {
-		$this->created_at = $created_at;
-	}
+        $this->created_at = $created_at;
+    }
 
-	public function getUpdatedAt(): string
+    public function getUpdatedAt(): string
     {
-		return $this->updated_at;
-	}
+        return $this->updated_at;
+    }
 
-
-	public function setUpdatedAt(string $updated_at): void
+    public function setUpdatedAt(string $updated_at): void
     {
-		$this->updated_at = $updated_at;
-	}
+        $this->updated_at = $updated_at;
+    }
 
-	public function getCreatedUserId(): int
+    public function getCreatedUserId(): int
     {
-		return $this->created_user_id;
-	}
+        return $this->created_user_id;
+    }
 
-	public function setCreatedUserId(int $created_user_id): void
+    public function setCreatedUserId(int $created_user_id): void
     {
-		$this->created_user_id = $created_user_id;
-	}
+        $this->created_user_id = $created_user_id;
+    }
 
-	public function getUpdatedUserId(): int
+    public function getUpdatedUserId(): int
     {
-		return $this->updated_user_id;
-	}
+        return $this->updated_user_id;
+    }
 
-	public function setUpdatedUserId(int $updated_user_id): void
+    public function setUpdatedUserId(int $updated_user_id): void
     {
-		$this->updated_user_id = $updated_user_id;
-	}
+        $this->updated_user_id = $updated_user_id;
+    }
 
-	public function getStatus(): int
+    public function getStatus(): int
     {
-		return $this->status;
-	}
+        return $this->status;
+    }
 
-	public function setStatus(int $status): void
+    public function setStatus(int $status): void
     {
-		if ($status != $this->status) {
-			$this->old_status = $this->status;
-			$this->status_changed = true;
-		}
-		$this->status = $status;
-	}
+        if ($status != $this->status) {
+            $this->old_status = $this->status;
+            $this->status_changed = true;
+        }
+        $this->status = $status;
+    }
 
-	public function hasStatusChanged(): bool
+    public function hasStatusChanged(): bool
     {
-		return $this->status_changed;
-	}
+        return $this->status_changed;
+    }
 
-	public function create(): void
+    public function create(): void
     {
-		global $DIC;
-		$ilUser = $DIC->user();
+        global $DIC;
+        $ilUser = $DIC->user();
 
-		$this->created_at = date('Y-m-d H:i:s');
-		$this->updated_at = date('Y-m-d H:i:s');
-		$this->created_user_id = $ilUser->getId();
-		$this->updated_user_id = $ilUser->getId();
-		parent::create();
+        $this->created_at = date('Y-m-d H:i:s');
+        $this->updated_at = date('Y-m-d H:i:s');
+        $this->created_user_id = $ilUser->getId();
+        $this->updated_user_id = $ilUser->getId();
+        parent::create();
         ilLPStatusWrapper::_updateStatus($this->attendancelist_id, $this->user_id);
-        ilLearningProgress::_tracProgress($this->user_id,
+        ilLearningProgress::_tracProgress(
+            $this->user_id,
             $this->attendancelist_id,
             ilAttendanceListPlugin::lookupRefId($this->attendancelist_id),
-            'xali');
-	}
+            'xali'
+        );
+    }
 
-	public function update(): void
+    public function update(): void
     {
-		global $DIC;
-		$ilUser = $DIC->user();
+        global $DIC;
+        $ilUser = $DIC->user();
 
-		$this->updated_at = date('Y-m-d H:i:s');
-		$this->updated_user_id = $ilUser->getId();
-		parent::update();
+        $this->updated_at = date('Y-m-d H:i:s');
+        $this->updated_user_id = $ilUser->getId();
+        parent::update();
 
-		ilLPStatusWrapper::_updateStatus($this->attendancelist_id, $this->user_id);
-	}
+        ilLPStatusWrapper::_updateStatus($this->attendancelist_id, $this->user_id);
+    }
 
-	public function getAttendanceStatuses($status): mixed
+    public function getAttendanceStatuses($status): mixed
     {
-		if (!isset($this->attendance_statuses[$status])) {
-			$checklist_ids = $this->getChecklistIds();
-			if (!$checklist_ids) {
-				$this->attendance_statuses[$status] = 0;
-			} else {
-				$operators = array(
-					'user_id' => '=',
-					'status' => '=',
-					'checklist_id' => 'IN'
-				);
+        if (!isset($this->attendance_statuses[$status])) {
+            $checklist_ids = $this->getChecklistIds();
+            if (!$checklist_ids) {
+                $this->attendance_statuses[$status] = 0;
+            } else {
+                $operators = array(
+                    'user_id' => '=',
+                    'status' => '=',
+                    'checklist_id' => 'IN'
+                );
 
-				$this->attendance_statuses[$status] = xaliChecklistEntry::where(array(
-					'user_id' => $this->user_id,
-					'status' => $status,
-					'checklist_id' => $checklist_ids
-				), $operators)->count();
-			}
-		}
-		return $this->attendance_statuses[$status];
-	}
+                $this->attendance_statuses[$status] = xaliChecklistEntry::where(array(
+                    'user_id' => $this->user_id,
+                    'status' => $status,
+                    'checklist_id' => $checklist_ids
+                ), $operators)->count();
+            }
+        }
+        return $this->attendance_statuses[$status];
+    }
 
-	public function getReachedPercentage(): int
+    public function getReachedPercentage(): int
     {
-		$nr_of_checklists = count($this->getChecklistIds());
+        $nr_of_checklists = count($this->getChecklistIds());
         if (!$nr_of_checklists) {
             return 0;
         }
@@ -245,78 +244,77 @@ class xaliUserStatus extends ActiveRecord {
         $not_present = ($this->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT) + $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_ABSENT_EXCUSED)
                 + $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED)) * 100;
 
-        if($not_present === 0) {
+        if ($not_present === 0) {
             return 0;
         }
 
         return round(
-			$this->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT) / $nr_of_checklists * 100
-		);
-	}
+            $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT) / $nr_of_checklists * 100
+        );
+    }
 
-	public function getUnedited(): int
+    public function getUnedited(): int
     {
-		return count($this->getChecklistIds())
-			- $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT)
+        return count($this->getChecklistIds())
+            - $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT)
 //			- $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_ABSENT_EXCUSED)
-			- $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED)
+            - $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED)
             - $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_NOT_RELEVANT);
-	}
+    }
 
-	public static function getInstance(int $user_id, int $attendance_list_id): xaliUserStatus|ActiveRecord
+    public static function getInstance(int $user_id, int $attendance_list_id): xaliUserStatus|ActiveRecord
     {
-		$xaliUserStatus = xaliUserStatus::where(array('user_id' => $user_id, 'attendancelist_id' => $attendance_list_id))->first();
-		if (!$xaliUserStatus) {
-			$xaliUserStatus = new self();
-			$xaliUserStatus->setUserId($user_id);
-			$xaliUserStatus->setAttendancelistId($attendance_list_id);
-		}
-		return $xaliUserStatus;
-	}
+        $xaliUserStatus = xaliUserStatus::where(array('user_id' => $user_id, 'attendancelist_id' => $attendance_list_id))->first();
+        if (!$xaliUserStatus) {
+            $xaliUserStatus = new self();
+            $xaliUserStatus->setUserId($user_id);
+            $xaliUserStatus->setAttendancelistId($attendance_list_id);
+        }
+        return $xaliUserStatus;
+    }
 
-
-	public function updateLPStatus(): void
+    public function updateLPStatus(): void
     {
-		$ilObjAttendanceList = new ilObjAttendanceList(ilAttendanceListPlugin::lookupRefId($this->getAttendancelistId()));
+        $ilObjAttendanceList = new ilObjAttendanceList(ilAttendanceListPlugin::lookupRefId($this->getAttendancelistId()));
 
-		/** @var xaliSetting $xaliSetting */
-		$xaliSetting = xaliSetting::find($this->attendancelist_id);
-		if ($this->getReachedPercentage() >= $this->calcMinimumAttendance() && !$ilObjAttendanceList->getOpenAbsenceStatementsForUser($this->getUserId())) {
-			$this->setStatus(ilLPStatus::LP_STATUS_COMPLETED_NUM);                      //COMPLETED: minimum attendance is reached
-		} elseif ((time()-(60*60*24)) > strtotime($xaliSetting->getActivationTo())) {
-			$this->setStatus(ilLPStatus::LP_STATUS_FAILED_NUM);                         //FAILED: minimum attendance not reached and time is up
-		} elseif ($this->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT) == 0
+        /** @var xaliSetting $xaliSetting */
+        $xaliSetting = xaliSetting::find($this->attendancelist_id);
+        if ($this->getReachedPercentage() >= $this->calcMinimumAttendance() && !$ilObjAttendanceList->getOpenAbsenceStatementsForUser($this->getUserId())) {
+            $this->setStatus(ilLPStatus::LP_STATUS_COMPLETED_NUM);                      //COMPLETED: minimum attendance is reached
+        } elseif ((time() - (60 * 60 * 24)) > strtotime($xaliSetting->getActivationTo())) {
+            $this->setStatus(ilLPStatus::LP_STATUS_FAILED_NUM);                         //FAILED: minimum attendance not reached and time is up
+        } elseif ($this->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT) == 0
             && $this->getAttendanceStatuses(xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) == 0) {
             $this->setStatus(ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM);                  //NOT ATTEMPTED: no absences and no presences
         } else {
-			$this->setStatus(ilLPStatus::LP_STATUS_IN_PROGRESS_NUM);                    //IN PROGR: minimum attendance not reached, time not yet up
-		}
-	}
+            $this->setStatus(ilLPStatus::LP_STATUS_IN_PROGRESS_NUM);                    //IN PROGR: minimum attendance not reached, time not yet up
+        }
+    }
 
-	public static function updateUserStatuses($attendancelist_id): void
+    public static function updateUserStatuses($attendancelist_id): void
     {
-		foreach (ilAttendanceListPlugin::getInstance()->getMembers(ilAttendanceListPlugin::lookupRefId($attendancelist_id)) as $user_id) {
-			self::updateUserStatus($user_id, $attendancelist_id);
-		}
-	}
+        foreach (ilAttendanceListPlugin::getInstance()->getMembers(ilAttendanceListPlugin::lookupRefId($attendancelist_id)) as $user_id) {
+            self::updateUserStatus($user_id, $attendancelist_id);
+        }
+    }
 
     public static function updateUserStatus($user_id, $attendancelist_id): void
     {
         $user_status = self::getInstance($user_id, $attendancelist_id);
         $user_status->updateLPStatus();
         $user_status->store();
-	}
+    }
 
-	protected function getChecklistIds(): array
+    protected function getChecklistIds(): array
     {
-		if (!$this->checklist_ids) {
-			$this->checklist_ids = array();
-			foreach (xaliChecklist::where(array('obj_id' => $this->attendancelist_id))->get() as $checklist) {
-				$this->checklist_ids[] = $checklist->getId();
-			}
-		}
-		return $this->checklist_ids;
-	}
+        if (!$this->checklist_ids) {
+            $this->checklist_ids = array();
+            foreach (xaliChecklist::where(array('obj_id' => $this->attendancelist_id))->get() as $checklist) {
+                $this->checklist_ids[] = $checklist->getId();
+            }
+        }
+        return $this->checklist_ids;
+    }
 
     public function getPresentTotalString(): string
     {

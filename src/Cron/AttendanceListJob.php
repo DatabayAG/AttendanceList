@@ -17,11 +17,10 @@ use xaliCron;
  */
 class AttendanceListJob extends ilCronJob
 {
-
     use DICTrait;
 
-    const CRON_JOB_ID = ilAttendanceListPlugin::PLUGIN_ID;
-    const PLUGIN_CLASS_NAME = ilAttendanceListPlugin::class;
+    public const CRON_JOB_ID = ilAttendanceListPlugin::PLUGIN_ID;
+    public const PLUGIN_CLASS_NAME = ilAttendanceListPlugin::class;
 
 
     /**
@@ -36,7 +35,7 @@ class AttendanceListJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function getId() : string
+    public function getId(): string
     {
         return self::CRON_JOB_ID;
     }
@@ -45,7 +44,7 @@ class AttendanceListJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function hasAutoActivation() : bool
+    public function hasAutoActivation(): bool
     {
         return true;
     }
@@ -54,7 +53,7 @@ class AttendanceListJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function hasFlexibleSchedule() : bool
+    public function hasFlexibleSchedule(): bool
     {
         return true;
     }
@@ -63,7 +62,7 @@ class AttendanceListJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function getDefaultScheduleType() : int
+    public function getDefaultScheduleType(): int
     {
         return self::SCHEDULE_TYPE_IN_MINUTES;
     }
@@ -81,7 +80,7 @@ class AttendanceListJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function getTitle() : string
+    public function getTitle(): string
     {
         return ilAttendanceListPlugin::PLUGIN_NAME . ": " . self::plugin()->translate("cron_title");
     }
@@ -90,7 +89,7 @@ class AttendanceListJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return self::plugin()->translate("cron_description");
     }
@@ -99,7 +98,7 @@ class AttendanceListJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function run() : ilCronJobResult
+    public function run(): ilCronJobResult
     {
         $result = new ilCronJobResult();
 
