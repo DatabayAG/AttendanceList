@@ -339,21 +339,22 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
         return false;
     }
 
-    public function getParentCourseOrGroupId($ref_id)
+    public function getParentCourseOrGroupId(int $ref_id): int
     {
         global $DIC;
         $tree = $DIC->repositoryTree();
+        $orig_ref_id = $ref_id;
         while (!in_array(ilObject2::_lookupType($ref_id, true), array('crs', 'grp'))) {
-            if ($ref_id == 1) {
-                throw new Exception("Parent of ref id {$ref_id} is neither course nor group.");
+            if ($ref_id == 1 || !$ref_id) {
+                throw new Exception("Parent of ref id {$orig_ref_id} is neither course nor group.");
             }
-            $ref_id = $tree->getParentId($ref_id);
+            $ref_id = (int) $tree->getParentId($ref_id);
         }
 
         return $ref_id;
     }
 
-    public function getMembers()
+    public function getMembers(): array
     {
         return $this->pl->getMembers($this->object->getRefId());
     }

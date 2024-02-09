@@ -45,7 +45,7 @@ class xaliChecklistGUI extends xaliGUI
     /**
      * standard command
      */
-    public function show()
+    public function show(): void
     {
         // activation passed, don't show a list
         if ((time() - (60 * 60 * 24)) > strtotime($this->settings->getActivationTo())) {
@@ -74,7 +74,7 @@ class xaliChecklistGUI extends xaliGUI
     /**
      *
      */
-    public function saveList()
+    public function saveList(): void
     {
         if (!is_array($_POST['attendance_status']) || count($this->parent_gui->getMembers()) != count($_POST['attendance_status'])) {
             $this->tpl->setOnScreenMessage('failure', $this->pl->txt('warning_list_incomplete'), true);
