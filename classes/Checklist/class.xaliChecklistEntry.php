@@ -105,7 +105,7 @@ class xaliChecklistEntry extends ActiveRecord
 
             $interval = xaliConfig::getConfig(xaliConfig::F_INTERVAL_REMINDER_EMAIL);
             if (!$interval) {
-                return true;
+                return;
             }
 
             $last_reminder = xaliLastReminder::where(array('user_id' => $ilObjUser->getId()))->first();
