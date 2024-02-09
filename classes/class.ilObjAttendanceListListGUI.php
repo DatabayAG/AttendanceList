@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-class ilObjAttendanceListListGUI extends \ilObjectPluginListGUI
+class ilObjAttendanceListListGUI extends ilObjectPluginListGUI
 {
     /**
      * @var false

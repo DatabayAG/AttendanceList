@@ -14,13 +14,14 @@
  *********************************************************************/
 
 declare(strict_types=1);
+use ILIAS\FileUpload\FileUpload;
 
 class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
 {
     protected ilAttendanceListPlugin|ilPlugin $pl;
     protected ilLanguage $lng;
     protected ilCtrl $ctrl;
-    protected \ILIAS\FileUpload\FileUpload $upload;
+    protected FileUpload $upload;
     protected ?xaliAbsenceStatement $absence_statement;
     private xaliAbsenceStatementGUI $parent_gui;
 
