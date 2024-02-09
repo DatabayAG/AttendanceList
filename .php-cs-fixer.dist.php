@@ -17,5 +17,6 @@ return (new PhpCsFixer\Config())
         "unary_operator_spaces" => true,
         "function_typehint_space" => true,
         "binary_operator_spaces" => true,
-        "array_syntax" => ["syntax" => "short"]
+        "array_syntax" => ["syntax" => "short"],
+        "fully_qualified_strict_types" => ["import_symbols" => true]
     ]);
