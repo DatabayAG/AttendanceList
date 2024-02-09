@@ -163,7 +163,7 @@ class xaliSetting extends ActiveRecord
     /**
      * @throws Exception
      */
-    public function createOrDeleteEmptyLists($create, $delete): void
+    public function createOrDeleteEmptyLists(bool $create, bool $delete): void
     {
         global $DIC;
 

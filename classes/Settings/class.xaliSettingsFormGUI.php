@@ -142,7 +142,7 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI
         $this->xaliSetting->update();
 
         if ($this->getInput(self::F_CREATE_LISTS) || $this->getInput(self::F_DELETE_LISTS)) {
-            $this->xaliSetting->createOrDeleteEmptyLists($this->getInput(self::F_CREATE_LISTS), $this->getInput(self::F_DELETE_LISTS));
+            $this->xaliSetting->createOrDeleteEmptyLists((bool) $this->getInput(self::F_CREATE_LISTS), (bool) $this->getInput(self::F_DELETE_LISTS));
         }
 
         return true;
