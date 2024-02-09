@@ -60,10 +60,6 @@ class xaliSetting extends ActiveRecord {
 	 */
 	protected array $activation_weekdays = [];
 
-
-	/**
-	 * @return string
-	 */
 	public function getId(): string
     {
 		return $this->id;

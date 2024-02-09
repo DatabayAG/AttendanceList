@@ -251,8 +251,6 @@ class xaliUserStatus extends ActiveRecord {
 	/**
 	 * @param $user_id
 	 * @param $attendance_list_id
-	 *
-	 * @return ActiveRecord|xaliUserStatus
 	 */
 	public static function getInstance($user_id, $attendance_list_id): xaliUserStatus|ActiveRecord
     {

@@ -47,10 +47,10 @@ class xaliCron {
 	}
 
 	/**
-	 * @return bool
 	 * @throws Exception
 	 */
-	protected function sendAbsenceReminders() {
+	protected function sendAbsenceReminders(): void
+    {
 		require_once 'Services/User/classes/class.ilObjUser.php';
 
 		$interval = xaliConfig::getConfig(xaliConfig::F_INTERVAL_REMINDER_EMAIL);

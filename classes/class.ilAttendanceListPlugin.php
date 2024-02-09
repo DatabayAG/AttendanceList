@@ -45,9 +45,6 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 	}
 
 
-	/**
-	 * @return ilAttendanceListPlugin
-	 */
 	public static function getInstance(): ilAttendanceListPlugin
     {
 		if (!isset(self::$instance)) {
@@ -74,9 +71,6 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
     }
 
 
-    /**
-	 * @return string
-	 */
 	function getPluginName(): string
     {
 		return self::PLUGIN_NAME;
@@ -105,20 +99,14 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 	 * Get ref id for object id.
 	 * The ref id is unambiguous since there can't be references to attendance lists.
 	 *
-	 * @param $obj_id
-	 *
-	 * @return int|null
      */
-	static function lookupRefId($obj_id): ?int
+	static function lookupRefId(int $obj_id): ?int
     {
         $allReferences = ilObject2::_getAllReferences($obj_id);
         return array_shift($allReferences);
 	}
 
 
-	/**
-	 * @return array
-	 */
 	public function getMembers($ref_id = 0): array
     {
 		global $DIC;
@@ -139,7 +127,6 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 
 
 	/**
-	 * @return ilObjCourse|ilObjGroup
 	 * @throws Exception
 	 */
 	public function getParentCourseOrGroup($ref_id = 0): ilObjGroup|ilObjCourse
@@ -153,8 +140,6 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 
 	/**
 	 * @param $ref_id
-	 *
-	 * @return int
 	 * @throws Exception
 	 */
 	public function getParentCourseOrGroupId($ref_id): int
@@ -177,7 +162,6 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 	 * @param $user_id
 	 * @param $crs_ref_id
 	 *
-	 * @return array
 	 */
 	public function getAttendancesForUserAndCourse($user_id, $crs_ref_id): array
     {
@@ -201,7 +185,6 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 	 * @param      $crs_ref_id
 	 * @param bool $get_ref_id
 	 *
-	 * @return int
 	 */
 	public function getAttendanceListIdForCourse($crs_ref_id, $get_ref_id = false): int
     {

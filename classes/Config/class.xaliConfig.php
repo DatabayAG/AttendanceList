@@ -16,9 +16,6 @@ class xaliConfig extends ActiveRecord {
 	const TABLE_NAME = 'xali_config';
 
 
-	/**
-	 * @return string
-	 */
 	static function returnDbTableName(): string
     {
 		return self::TABLE_NAME;

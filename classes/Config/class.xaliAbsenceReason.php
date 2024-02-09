@@ -17,9 +17,6 @@ class xaliAbsenceReason extends ActiveRecord {
 	const TABLE_NAME = 'xali_absence_reasons';
 
 
-	/**
-	 * @return string
-	 */
 	static function returnDbTableName(): string
     {
 		return self::TABLE_NAME;

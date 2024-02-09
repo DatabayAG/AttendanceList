@@ -11,9 +11,10 @@ class xaliGUI {
 	protected ilTabsGUI $tabs;
 	protected mixed $user;
 	protected ilToolbarGUI $toolbar;
+    private ilLanguage $lng;
 
 
-	/**
+    /**
 	 * xaliGUI constructor.
 	 *
 	 * @param ilObjAttendanceListGUI $parent_gui

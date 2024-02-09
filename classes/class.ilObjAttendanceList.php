@@ -29,10 +29,8 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 
 	/**
 	 * @param $user_id
-	 *
-	 * @return mixed
 	 */
-	public function getOpenAbsenceStatementsForUser($user_id): mixed
+	public function getOpenAbsenceStatementsForUser($user_id): int
     {
 		global $DIC;
 		$ilDB = $DIC->database();
@@ -59,7 +57,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 	/**
 	 * Get all user ids with LP status completed
 	 *
-	 * @return array
 	 */
 	public function getLPCompleted(): array
     {
@@ -73,7 +70,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 	/**
 	 * Get all user ids with LP status not attempted
 	 *
-	 * @return array
 	 */
 	public function getLPNotAttempted(): array
     {
@@ -93,7 +89,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 	/**
 	 * Get all user ids with LP status failed
 	 *
-	 * @return array
 	 */
 	public function getLPFailed(): array
     {
@@ -107,7 +102,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 	/**
 	 * Get all user ids with LP status in progress
 	 *
-	 * @return array
 	 */
 	public function getLPInProgress(): array
     {
@@ -123,7 +117,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
 	 *
 	 * @param int $a_user_id
 	 *
-	 * @return int
 	 */
 	public function getLPStatusForUser($a_user_id): int
     {

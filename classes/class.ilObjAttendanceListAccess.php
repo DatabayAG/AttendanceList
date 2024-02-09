@@ -11,7 +11,6 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	 * @param int    $a_obj_id
 	 * @param string $a_user_id
 	 *
-	 * @return bool
 	 */
 	public function _checkAccess($a_cmd, $a_permission, $a_ref_id, $a_obj_id = null, $a_user_id = ''): bool
     {
@@ -47,9 +46,8 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	 * @param string $a_obj_id
 	 * @param string $a_tree_id
 	 *
-	 * @return mixed
-	 */
-	function checkAccess($a_permission, $a_cmd, $a_ref_id, string $a_type = "", string $a_obj_id = "", string $a_tree_id = ""): mixed
+     */
+	function checkAccess($a_permission, $a_cmd, $a_ref_id, string $a_type = "", string $a_obj_id = "", string $a_tree_id = ""): bool
     {
 		return $this->access->checkAccess($a_permission, $a_cmd, $a_ref_id, $a_type, $a_obj_id, $a_tree_id);
 	}
@@ -58,7 +56,6 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	/**
 	 * @param $a_id
 	 *
-	 * @return bool
 	 */
 	static function checkOnline($a_id): bool
     {
@@ -71,9 +68,6 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	}
 
 
-	/**
-	 * @return bool
-	 */
 	static function checkActivation($a_id): bool
     {
 		/** @var xaliSetting $settings */
@@ -88,7 +82,6 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	 * @param null $ref_id
 	 * @param null $user_id
 	 *
-	 * @return bool
 	 */
 	public static function hasReadAccess($ref_id = null, $user_id = null): bool
     {
@@ -100,7 +93,6 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	 * @param null $ref_id
 	 * @param null $user_id
 	 *
-	 * @return bool
 	 */
 	public static function hasWriteAccess($ref_id = null, $user_id = null): bool
     {
@@ -113,7 +105,6 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	 * @param null $ref_id
 	 * @param null $user_id
 	 *
-	 * @return bool
 	 */
 	protected static function hasAccess($permission, $ref_id = null, $user_id = null): bool
     {
