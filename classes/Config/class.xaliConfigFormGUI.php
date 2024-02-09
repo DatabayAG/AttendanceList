@@ -13,15 +13,14 @@ class xaliConfigFormGUI extends ilPropertyFormGUI {
 
 	public function __construct($parent_gui) {
 		global $DIC;
-		$lng = $DIC['lng'];
-		$ilCtrl = $DIC['ilCtrl'];
+		$lng = $DIC->language();
+		$ilCtrl = $DIC->ctrl();
 		$this->parent_gui = $parent_gui;
 		$this->pl = ilAttendanceListPlugin::getInstance();
 		$this->lng = $lng;
 		$this->ctrl = $ilCtrl;
-        if (isset($DIC["http"])) {
-            $this->http = $DIC->http();
-        }
+        $this->http = $DIC->http();
+
 		$this->setFormAction($this->ctrl->getFormAction($this->parent_gui));
 		$this->initForm();
 	}

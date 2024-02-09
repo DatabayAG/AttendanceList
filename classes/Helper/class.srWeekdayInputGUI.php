@@ -16,7 +16,7 @@ class srWeekdayInputGUI extends ilFormPropertyGUI {
 
 	public function __construct($a_title, $a_postvar) {
 		global $DIC;
-		$lng = $DIC['lng'];
+		$lng = $DIC->language();
 		$this->lng = $lng;
 		$this->pl = ilAttendanceListPlugin::getInstance();
 		parent::__construct($a_title, $a_postvar);

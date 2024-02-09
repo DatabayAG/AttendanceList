@@ -18,8 +18,8 @@ class xaliConfigAbsencesTableGUI extends ilTable2GUI {
 	 */
 	public function __construct(ilAttendanceListConfigGUI $a_parent_obj) {
 		global $DIC;
-		$lng = $DIC['lng'];
-		$ilCtrl = $DIC['ilCtrl'];
+		$lng = $DIC->language();
+		$ilCtrl = $DIC->ctrl();
 		$this->lng = $lng;
 		$this->ctrl = $ilCtrl;
 		$this->pl = ilAttendanceListPlugin::getInstance();

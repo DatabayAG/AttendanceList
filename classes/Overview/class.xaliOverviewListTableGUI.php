@@ -20,8 +20,8 @@ class xaliOverviewListTableGUI extends ilTable2GUI {
      */
 	public function __construct(xaliOverviewGUI $a_parent_obj, $obj_id) {
 		global $DIC;
-		$lng = $DIC['lng'];
-		$ilCtrl = $DIC['ilCtrl'];
+		$lng = $DIC->language();
+		$ilCtrl = $DIC->ctrl();
 		$this->lng = $lng;
 		$this->ctrl = $ilCtrl;
 		$this->pl = ilAttendanceListPlugin::getInstance();

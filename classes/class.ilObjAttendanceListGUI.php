@@ -32,13 +32,13 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 	protected function afterConstructor(): void
     {
 		global $DIC;
-		$tpl = $DIC['tpl'];
-		$ilCtrl = $DIC['ilCtrl'];
-		$ilTabs = $DIC['ilTabs'];
-		$tree = $DIC['tree'];
-		$rbacreview = $DIC['rbacreview'];
-		$lng = $DIC['lng'];
-		$ilUser = $DIC['ilUser'];
+		$tpl = $DIC->ui()->mainTemplate();
+		$ilCtrl = $DIC->ctrl();
+		$ilTabs = $DIC->tabs();
+		$tree = $DIC->repositoryTree();
+		$rbacreview = $DIC->rbac()->review();
+		$lng = $DIC->language();
+		$ilUser = $DIC->user();
 
 		$this->lng = $lng;
 		$this->tpl = $tpl;
@@ -86,7 +86,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 			}
 
 			global $DIC;
-			$ilAccess = $DIC['ilAccess'];
+			$ilAccess = $DIC->access();
 			// add entry to navigation history
 			if ($ilAccess->checkAccess('read', '', $_GET['ref_id'])) {
 				$ilNavigationHistory->addItem($_GET['ref_id'], $this->ctrl->getLinkTarget($this, $this->getStandardCmd()), $this->getType());
@@ -200,7 +200,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 		else if ($ilAccess->checkAccess("read", "", ROOT_FOLDER_ID))
 		{
             global $DIC;
-            $tpl = $DIC["tpl"];
+            $tpl = $DIC->ui()->mainTemplate();
             $tpl->setOnScreenMessage('failure', sprintf($lng->txt("msg_no_perm_read_item"),
                 ilObject::_lookupTitle(ilObject::_lookupObjId($ref_id))), true);
 			ilObjectGUI::_gotoRepositoryRoot();
@@ -339,7 +339,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI {
 
 	public function getParentCourseOrGroupId($ref_id) {
 		global $DIC;
-		$tree = $DIC['tree'];
+		$tree = $DIC->repositoryTree();
 		while (!in_array(ilObject2::_lookupType($ref_id, true), array( 'crs', 'grp' ))) {
 			if ($ref_id == 1) {
 				throw new Exception("Parent of ref id {$ref_id} is neither course nor group.");

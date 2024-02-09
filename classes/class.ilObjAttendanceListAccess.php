@@ -16,8 +16,8 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	public function _checkAccess($a_cmd, $a_permission, $a_ref_id, $a_obj_id = null, $a_user_id = ''): bool
     {
 		global $DIC;
-		$ilUser = $DIC['ilUser'];
-		$ilAccess = $DIC['ilAccess'];
+		$ilUser = $DIC->user();
+		$ilAccess = $DIC->access();
 		/**
 		 * @var $ilAccess ilAccessHandler
 		 */
@@ -121,9 +121,9 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 	protected static function hasAccess($permission, $ref_id = null, $user_id = null): bool
     {
 		global $DIC;
-		$ilUser = $DIC['ilUser'];
-		$ilAccess = $DIC['ilAccess'];
-		$ilLog = $DIC['ilLog'];
+		$ilUser = $DIC->user();
+		$ilAccess = $DIC->access();
+		$ilLog = $DIC->logger()->root();
 		/**
 		 * @var $ilAccess \ilAccessHandler
 		 */

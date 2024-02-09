@@ -33,12 +33,11 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI {
      */
 	public function __construct(xaliSettingsGUI $parent_gui, ilObjAttendanceList|ilObject $object) {
 		global $DIC;
-		$ilCtrl = $DIC['ilCtrl'];
-		$lng = $DIC['lng'];
-		$tpl = $DIC['tpl'];
-        if (isset($DIC["http"])) {
-            $this->http = $DIC->http();
-        }
+		$ilCtrl = $DIC->ctrl();
+		$lng = $DIC->language();
+		$tpl = $DIC->ui()->mainTemplate();
+        $this->http = $DIC->http();
+
 		$this->parent_gui = $parent_gui;
 		$this->ctrl = $ilCtrl;
 		$this->pl = ilAttendanceListPlugin::getInstance();

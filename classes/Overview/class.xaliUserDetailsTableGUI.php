@@ -23,9 +23,9 @@ class xaliUserDetailsTableGUI extends ilTable2GUI {
 	 */
 	public function __construct(xaliOverviewGUI $a_parent_obj, $user_id, $obj_id) {
 		global $DIC;
-		$ilCtrl = $DIC['ilCtrl'];
-		$lng = $DIC['lng'];
-		$tpl = $DIC['tpl'];
+		$ilCtrl = $DIC->ctrl();
+		$lng = $DIC->language();
+		$tpl = $DIC->ui()->mainTemplate();
 		$this->ctrl = $ilCtrl;
 		$this->lng = $lng;
 		$this->pl = ilAttendanceListPlugin::getInstance();

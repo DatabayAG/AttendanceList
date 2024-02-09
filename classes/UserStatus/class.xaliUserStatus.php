@@ -199,7 +199,7 @@ class xaliUserStatus extends ActiveRecord {
 	public function create(): void
     {
 		global $DIC;
-		$ilUser = $DIC['ilUser'];
+		$ilUser = $DIC->user();
 
 		$this->created_at = date('Y-m-d H:i:s');
 		$this->updated_at = date('Y-m-d H:i:s');
@@ -216,7 +216,7 @@ class xaliUserStatus extends ActiveRecord {
 	public function update(): void
     {
 		global $DIC;
-		$ilUser = $DIC['ilUser'];
+		$ilUser = $DIC->user();
 
 		$this->updated_at = date('Y-m-d H:i:s');
 		$this->updated_user_id = $ilUser->getId();

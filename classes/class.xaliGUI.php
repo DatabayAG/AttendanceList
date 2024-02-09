@@ -20,12 +20,12 @@ class xaliGUI {
 	 */
 	function __construct(ilObjAttendanceListGUI $parent_gui) {
 		global $DIC;
-		$tpl = $DIC['tpl'];
-		$ilCtrl = $DIC['ilCtrl'];
-		$ilTabs = $DIC['ilTabs'];
-		$lng = $DIC['lng'];
-		$ilUser = $DIC['ilUser'];
-		$ilToolbar = $DIC['ilToolbar'];
+		$tpl = $DIC->ui()->mainTemplate();
+		$ilCtrl = $DIC->ctrl();
+		$ilTabs = $DIC->tabs();
+		$lng = $DIC->language();
+		$ilUser = $DIC->user();
+		$ilToolbar = $DIC->toolbar();
 		$this->toolbar = $ilToolbar;
 		$this->user = $ilUser;
 		$this->lng = $lng;
@@ -34,7 +34,6 @@ class xaliGUI {
 		$this->ctrl = $ilCtrl;
         /** @var $component_factory ilComponentFactory */
         $component_factory = $DIC['component.factory'];
-        /** @var $plugin ilAttendanceListPlugin */
         $this->pl  = $component_factory->getPlugin(ilAttendanceListPlugin::PLUGIN_ID);
 		$this->parent_gui = $parent_gui;
 	}

@@ -55,10 +55,10 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI {
 	 */
 	public function __construct() {
 		global $DIC;
-		$tpl = $DIC['tpl'];
-		$ilCtrl = $DIC['ilCtrl'];
-		$ilToolbar = $DIC['ilToolbar'];
-		$ilTabs = $DIC['ilTabs'];
+		$tpl = $DIC->ui()->mainTemplate();
+		$ilCtrl = $DIC->ctrl();
+		$ilToolbar = $DIC->toolbar();
+		$ilTabs = $DIC->tabs();
 		$this->ctrl = $ilCtrl;
 		$this->tpl = $tpl;
 		$this->toolbar = $ilToolbar;

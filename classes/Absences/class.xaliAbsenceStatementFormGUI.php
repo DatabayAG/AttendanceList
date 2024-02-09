@@ -7,17 +7,10 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI {
 	protected \ILIAS\FileUpload\FileUpload $upload;
 	protected ?xaliAbsenceStatement $absence_statement;
 
-
-	/**
-	 * xaliAbsenceStatementFormGUI constructor.
-	 *
-	 * @param                           $parent_gui
-	 * @param xaliAbsenceStatement|null $xaliAbsenceStatement
-	 */
-	public function __construct($parent_gui, xaliAbsenceStatement $xaliAbsenceStatement = null) {
+	public function __construct($parent_gui, ?xaliAbsenceStatement $xaliAbsenceStatement = null) {
 		global $DIC;
-		$lng = $DIC['lng'];
-		$ilCtrl = $DIC['ilCtrl'];
+		$lng = $DIC->language();
+		$ilCtrl = $DIC->ctrl();
 		$this->absence_statement = $xaliAbsenceStatement;
 		$this->parent_gui = $parent_gui;
         /** @var $component_factory ilComponentFactory */

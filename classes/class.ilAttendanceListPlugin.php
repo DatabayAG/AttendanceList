@@ -126,7 +126,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 	public function getMembers($ref_id = 0): array
     {
 		global $DIC;
-		$rbacreview = $DIC['rbacreview'];
+		$rbacreview = $DIC->rbac()->review();
 		static $members;
 		if (!$members) {
 			$ref_id = $ref_id ? $ref_id : $_GET['ref_id'];
@@ -164,7 +164,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 	public function getParentCourseOrGroupId($ref_id): int
     {
 		global $DIC;
-		$tree = $DIC['tree'];
+		$tree = $DIC->repositoryTree();
 		$orig_ref_id = $ref_id;
 		while (!in_array(ilObject2::_lookupType($ref_id, true), array( 'crs', 'grp' ))) {
 			if ($ref_id == 1 || !$ref_id) {
@@ -210,8 +210,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 	public function getAttendanceListIdForCourse($crs_ref_id, $get_ref_id = false): int
     {
 		global $DIC;
-		/** @var ilTree $tree */
-		$tree = $DIC['tree'];
+		$tree = $DIC->repositoryTree();
         $subTree = $tree->getSubTree($tree->getNodeData($crs_ref_id), true, [$this->getId()]);
         $attendancelist = array_shift($subTree);
 		$ref_id = $attendancelist['child'];

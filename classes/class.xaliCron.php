@@ -41,11 +41,11 @@ class xaliCron {
 	 */
 	function __construct() {
 		global $DIC;
-		$ilDB = $DIC['ilDB'];
-		$ilUser = $DIC['ilUser'];
-		$ilCtrl = $DIC['ilCtrl'];
-		$ilLog = $DIC['ilLog'];
-		$rbacreview = $DIC['rbacreview'];
+		$ilDB = $DIC->database();
+		$ilUser = $DIC->user();
+		$ilCtrl = $DIC->ctrl();
+		$ilLog = $DIC->logger()->root();
+		$rbacreview = $DIC->rbac()->review();
 		if (self::DEBUG) {
 			$ilLog->write('Auth passed for async AttendanceList');
 		}
