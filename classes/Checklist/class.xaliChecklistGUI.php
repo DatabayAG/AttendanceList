@@ -6,19 +6,9 @@
  * @author  Theodor Truffer <tt@studer-raimann.ch>
  */
 class xaliChecklistGUI extends xaliGUI {
-
-	/**
-	 * @var xaliChecklist
-	 */
-	protected $checklist;
-	/**
-	 * @var ilObjUser
-	 */
-	protected mixed $user;
-	/**
-	 * @var xaliSetting
-	 */
-	protected $settings;
+	protected xaliChecklist $checklist;
+	protected ilObjUser $user;
+	protected xaliSetting $settings;
 
 	/**
 	 * xaliChecklistGUI constructor.

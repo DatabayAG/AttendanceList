@@ -9,9 +9,7 @@ class xaliChecklist extends ActiveRecord {
 	}
 
 
-	/**
-	 * @var string
-	 *
+	/***
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
@@ -19,46 +17,36 @@ class xaliChecklist extends ActiveRecord {
 	 * @con_sequence        true
 	 */
 	protected ?string $id;
+
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
 	 */
 	protected int $obj_id;
+
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_is_unique        true
 	 * @db_fieldtype        date
 	 */
 	protected string $checklist_date;
+
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
 	 */
 	protected int $last_edited_by;
+
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
 	 */
 	protected int $last_update;
 
-
-	/**
-	 * @param $user_id
-	 *
-	 * @return xaliChecklistEntry
-	 */
-	public function getEntryOfUser($user_id): xaliChecklistEntry
+	public function getEntryOfUser(int $user_id): xaliChecklistEntry
     {
 		$where = xaliChecklistEntry::where(array( 'checklist_id' => $this->id, 'user_id' => $user_id ));
 		if ($where->hasSets()) {

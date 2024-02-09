@@ -66,8 +66,6 @@ class xaliConfig extends ActiveRecord {
 
 
 	/**
-	 * @var string
-	 *
 	 * @db_has_field        true
 	 * @db_is_unique        true
 	 * @db_is_primary       true
@@ -77,8 +75,6 @@ class xaliConfig extends ActiveRecord {
 	 */
 	protected ?string $name;
 	/**
-	 * @var string
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        text
 	 * @db_length           4000

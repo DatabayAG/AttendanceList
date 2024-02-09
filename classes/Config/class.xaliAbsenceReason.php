@@ -27,8 +27,6 @@ class xaliAbsenceReason extends ActiveRecord {
 
 
 	/**
-	 * @var string
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
@@ -37,48 +35,36 @@ class xaliAbsenceReason extends ActiveRecord {
 	 */
 	protected ?string $id = "";
 	/**
-	 * @var String
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        text
 	 * @db_length           256
 	 */
 	protected string $title = "";
 	/**
-	 * @var String
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        text
 	 * @db_length           256
 	 */
 	protected string $info = "";
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           1
 	 */
 	protected int $has_comment = 0;
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           1
 	 */
 	protected int $comment_req = 0;
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           1
 	 */
 	protected int $has_upload = 0;
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           1

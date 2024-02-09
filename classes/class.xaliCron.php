@@ -6,39 +6,15 @@ class xaliCron {
 
 	const DEBUG = false;
 	const NOTIFICATION_NAME = "absence_reminder";
-	/**
-	 * @var Ilias
-	 */
-	protected $ilias;
-	/**
-	 * @var ilAttendanceListPlugin
-	 */
-	protected $pl;
-	/**
-	 * @var ilLog
-	 */
-	protected $log;
-	/**
-	 * @var ilRbacReview
-	 */
-	protected $rbacreview;
-	/**
-	 * @var ilDB
-	 */
-	protected $db;
-	/**
-	 * @var ilObjUser
-	 */
-	protected $user;
-	/**
-	 * @var ilCtrl
-	 */
-	protected $ctrl;
+	protected Ilias $ilias;
+	protected ilAttendanceListPlugin $pl;
+	protected ilLogger $log;
+	protected ilRbacReview $rbacreview;
+	protected ilDBInterface $db;
+	protected ilObjUser $user;
+	protected ilCtrl $ctrl;
 
 
-	/**
-	 *
-	 */
 	function __construct() {
 		global $DIC;
 		$ilDB = $DIC->database();
@@ -49,11 +25,7 @@ class xaliCron {
 		if (self::DEBUG) {
 			$ilLog->write('Auth passed for async AttendanceList');
 		}
-		/**
-		 * @var $ilDB   ilDB
-		 * @var $ilUser ilObjUser
-		 * @var $ilCtrl ilCtrl
-		 */
+
         /** @var $component_factory ilComponentFactory */
         $component_factory = $DIC['component.factory'];
         /** @var $plugin ilAttendanceListPlugin */

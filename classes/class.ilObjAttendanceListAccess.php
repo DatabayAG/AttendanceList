@@ -18,9 +18,6 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 		global $DIC;
 		$ilUser = $DIC->user();
 		$ilAccess = $DIC->access();
-		/**
-		 * @var $ilAccess ilAccessHandler
-		 */
 		if ($a_user_id == '') {
 			$a_user_id = $ilUser->getId();
 		}
@@ -124,9 +121,6 @@ class ilObjAttendanceListAccess extends ilObjectPluginAccess {
 		$ilUser = $DIC->user();
 		$ilAccess = $DIC->access();
 		$ilLog = $DIC->logger()->root();
-		/**
-		 * @var $ilAccess \ilAccessHandler
-		 */
 		$ref_id = $ref_id ? $ref_id : $_GET['ref_id'];
 		$user_id = $user_id ? $user_id : $ilUser->getId();
 

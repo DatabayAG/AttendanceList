@@ -10,15 +10,13 @@ class xaliChecklistEntry extends ActiveRecord {
 	const NOTIFICATION_NAME = "absence";
 
 
-	static function returnDbTableName(): string
+	public static function returnDbTableName(): string
     {
 		return self::DB_TABLE_NAME;
 	}
 
 
 	/**
-	 * @var string
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
@@ -26,30 +24,27 @@ class xaliChecklistEntry extends ActiveRecord {
 	 * @con_sequence        true
 	 */
 	protected ?string $id;
+
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
 	 */
 	protected int $checklist_id = 0;
+
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
 	 */
 	protected int $user_id = 0;
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
 	 */
 	protected int $status = 0;
+
 	protected bool $status_changed = false;
 
 	public function create(): void
@@ -68,7 +63,8 @@ class xaliChecklistEntry extends ActiveRecord {
 		parent::update();
 	}
 
-	protected function sendAbsenceNotification() {
+	protected function sendAbsenceNotification(): void
+    {
         return;
 		global $DIC;
 		$ilCtrl = $DIC->ctrl();

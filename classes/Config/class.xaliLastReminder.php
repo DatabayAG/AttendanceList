@@ -20,8 +20,6 @@ class xaliLastReminder extends ActiveRecord {
 
 
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
@@ -29,8 +27,6 @@ class xaliLastReminder extends ActiveRecord {
 	 */
 	protected ?int $user_id;
 	/**
-	 * @var String
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        date
 	 */

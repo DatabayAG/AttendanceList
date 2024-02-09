@@ -1,4 +1,7 @@
 <?php
+
+use JetBrains\PhpStorm\NoReturn;
+
 class xaliAbsenceStatementGUI extends xaliGUI {
 
 	const CMD_UPDATE = 'update';

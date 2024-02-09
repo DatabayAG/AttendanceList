@@ -19,8 +19,6 @@ class xaliSetting extends ActiveRecord {
 
 
 	/**
-	 * @var string
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
@@ -28,46 +26,34 @@ class xaliSetting extends ActiveRecord {
 	 */
 	protected ?string $id;
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           1
 	 */
-	protected $is_online = 0;
+	protected int $is_online = 0;
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
 	 */
 	protected int $minimum_attendance = 80;
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           1
 	 */
 	protected int $activation = 0;
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        date
 	 */
 	protected string $activation_from = "";
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        date
 	 */
 	protected string $activation_to = "";
 	/**
-	 * @var array
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        text
 	 * @db_length           128

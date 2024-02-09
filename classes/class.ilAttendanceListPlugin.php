@@ -15,11 +15,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
 	const PLUGIN_NAME = 'AttendanceList';
 	const PLUGIN_CLASS_NAME = self::class;
 
-
-    /**
-     * @var bool
-     */
-    protected static $init_notifications = false;
+    protected static bool $init_notifications = false;
 
 
     /**
@@ -60,7 +56,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
             /** @var $component_factory ilComponentFactory */
             $component_factory = $DIC['component.factory'];
             /** @var $plugin ilAttendanceListPlugin */
-            $plugin  = $component_factory->getPlugin(ilAttendanceListPlugin::PLUGIN_ID);
+            $plugin  = $component_factory->getPlugin(self::PLUGIN_ID);
 
 			self::$instance = $plugin;
 		}

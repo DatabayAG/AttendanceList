@@ -1,42 +1,37 @@
 <?php
 class xaliAbsenceStatement extends ActiveRecord {
 
-	const TABLE_NAME = 'xali_absence_statement';
+	public const TABLE_NAME = 'xali_absence_statement';
 
-	static function returnDbTableName(): string
+	public static function returnDbTableName(): string
     {
 		return self::TABLE_NAME;
 	}
 
 	/**
-	 * @var string
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
 	 * @db_is_primary       true
 	 */
 	protected ?string $entry_id;
+
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
 	 */
 	protected int $reason_id = 0;
+
 	/**
-	 * @var String
-	 *
 	 * @db_has_field        true
 	 * @db_is_unique        true
 	 * @db_length           256
 	 * @db_fieldtype        text
 	 */
 	protected string $comment_text = "";
+
 	/**
-	 * @var int
-	 *
 	 * @db_has_field        true
 	 * @db_fieldtype        integer
 	 * @db_length           8
@@ -44,11 +39,10 @@ class xaliAbsenceStatement extends ActiveRecord {
 	protected int $file_id = 0;
 
 
-	/**
-	 * @return null
-	 */
-	public function getReason() {
+	public function getReason(): ?string
+    {
 		if ($this->getReasonId()) {
+            /** @var xaliAbsenceReason $reason */
 		    $reason = xaliAbsenceReason::find($this->getReasonId());
 		    if ($reason) {
                 return $reason->getTitle();

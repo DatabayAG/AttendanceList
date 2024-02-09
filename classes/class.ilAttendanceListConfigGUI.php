@@ -1,5 +1,8 @@
 <?php
 /* Copyright (c) 1998-2009 ILIAS open source, Extended GPL, see docs/LICENSE */
+
+use ILIAS\HTTP\Services;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 
@@ -28,27 +31,12 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI {
 	const CMD_DELETE_REASON = 'deleteReason';
 	const CMD_UPDATE_CONFIG = 'updateConfig';
 
-	/**
-	 * @var ilTemplate
-	 */
-	protected $tpl;
-	/**
-	 * @var ilCtrl
-	 */
-	protected $ctrl;
-	/**
-	 * @var ilAttendanceListPlugin
-	 */
-	protected $pl;
-	/**
-	 * @var ilToolbarGUI
-	 */
-	protected $toolbar;
-	/**
-	 * @var ilTabsGUI
-	 */
-	protected $tabs;
-    private \ILIAS\HTTP\Services $http;
+	protected ilGlobalTemplateInterface $tpl;
+	protected ilCtrl $ctrl;
+	protected ilAttendanceListPlugin $pl;
+	protected ilToolbarGUI $toolbar;
+	protected ilTabsGUI $tabs;
+    private Services $http;
 
     /**
 	 * ilAttendanceListConfigGUI constructor.

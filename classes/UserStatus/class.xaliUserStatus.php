@@ -17,8 +17,6 @@ class xaliUserStatus extends ActiveRecord {
 
 
 	/**
-	 * @var int
-	 *
 	 * @db_has_field    true
 	 * @db_fieldtype    integer
 	 * @db_length       8
@@ -28,8 +26,6 @@ class xaliUserStatus extends ActiveRecord {
 	protected ?int $id = 0;
 
 	/**
-	 * @var int
-	 *
 	 * @db_has_field    true
 	 * @db_fieldtype    integer
 	 * @db_length       8
@@ -37,8 +33,6 @@ class xaliUserStatus extends ActiveRecord {
 	protected int $attendancelist_id = 0;
 
 	/**
-	 * @var int
-	 *
 	 * @db_has_field    true
 	 * @db_fieldtype    integer
 	 * @db_length       8
@@ -46,24 +40,18 @@ class xaliUserStatus extends ActiveRecord {
 	protected int $user_id = 0;
 
 	/**
-	 * @var string
-	 *
 	 * @db_has_field    true
 	 * @db_fieldtype    timestamp
 	 */
 	protected string $created_at;
 
 	/**
-	 * @var string
-	 *
 	 * @db_has_field    true
 	 * @db_fieldtype    timestamp
 	 */
 	protected string $updated_at;
 
 	/**
-	 * @var int
-	 *
 	 * @db_has_field    true
 	 * @db_fieldtype    integer
 	 * @db_length       8
@@ -71,8 +59,6 @@ class xaliUserStatus extends ActiveRecord {
 	protected int $created_user_id = 0;
 
 	/**
-	 * @var int
-	 *
 	 * @db_has_field    true
 	 * @db_fieldtype    integer
 	 * @db_length       8
@@ -80,31 +66,16 @@ class xaliUserStatus extends ActiveRecord {
 	protected int $updated_user_id = 0;
 
 	/**
-	 * @var int
-	 *
 	 * @db_has_field    true
 	 * @db_fieldtype    integer
 	 * @db_length       8
 	 */
 	protected int $status = ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM;
 
-
-	/**
-	 * @var bool
-	 */
 	protected bool $status_changed = false;
 
-	/**
-	 * @var int
-	 */
 	protected int $old_status;
-	/**
-	 * @var array
-	 */
 	protected array $checklist_ids = [];
-	/**
-	 * @var array
-	 */
 	protected array $attendance_statuses =  [];
 
 	public function getId(): int
