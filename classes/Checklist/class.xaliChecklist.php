@@ -24,7 +24,7 @@ class xaliChecklist extends ActiveRecord
         return self::DB_TABLE_NAME;
     }
 
-    /***
+    /**
      * @db_has_field        true
      * @db_fieldtype        integer
      * @db_length           8
