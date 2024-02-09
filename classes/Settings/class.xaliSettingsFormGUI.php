@@ -135,7 +135,9 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI
         $activation_to = $this->getInput(self::F_ACTIVATION_TO);
         $this->xaliSetting->setActivationTo($activation_to);
 
-        $this->xaliSetting->setActivationWeekdays($this->getInput(self::F_WEEKDAYS));
+        $weekdays= (array) $this->getInput(self::F_WEEKDAYS);
+
+        $this->xaliSetting->setActivationWeekdays($weekdays === [""] ? [] : $weekdays);
 
         $this->xaliSetting->update();
 
