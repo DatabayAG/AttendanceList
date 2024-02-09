@@ -62,9 +62,7 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI
         $this->initForm();
     }
 
-    /**
-     *
-     */
+
     public function initForm(): void
     {
         $input = new ilTextInputGUI($this->lng->txt(self::F_TITLE), self::F_TITLE);

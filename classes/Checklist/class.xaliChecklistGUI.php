@@ -71,9 +71,7 @@ class xaliChecklistGUI extends xaliGUI
         $this->tpl->setContent($xaliChecklistTableGUI->getHTML());
     }
 
-    /**
-     *
-     */
+
     public function saveList(): void
     {
         if (!is_array($_POST['attendance_status']) || count($this->parent_gui->getMembers()) != count($_POST['attendance_status'])) {

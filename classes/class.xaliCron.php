@@ -52,9 +52,7 @@ class xaliCron
         $this->rbacreview = $rbacreview;
     }
 
-    /**
-     *
-     */
+
     public function run(): void
     {
         $this->sendAbsenceReminders();

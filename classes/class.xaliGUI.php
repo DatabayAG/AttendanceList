@@ -50,9 +50,7 @@ class xaliGUI
         $this->parent_gui = $parent_gui;
     }
 
-    /**
-     *
-     */
+
     public function executeCommand(): void
     {
         $this->prepareOutput();

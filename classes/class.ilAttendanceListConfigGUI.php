@@ -183,9 +183,7 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
         $this->tpl->setContent($xaliConfigAbsenceFormGUI->getHTML());
     }
 
-    /**
-     *
-     */
+
     protected function updateReason(): void
     {
         $xaliConfigAbsenceFormGUI = new xaliConfigAbsenceFormGUI($this, new xaliAbsenceReason($_GET['ar_id']));
@@ -220,9 +218,7 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
         $this->toolbar->addButtonInstance($button);
     }
 
-    /**
-     *
-     */
+
     protected function deleteReason(): void
     {
         (new xaliAbsenceReason($_GET['ar_id']))->delete();

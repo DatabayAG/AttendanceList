@@ -46,9 +46,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
     protected ilObjUser $user;
     protected xaliSetting $setting;
 
-    /**
-     *
-     */
+
     protected function afterConstructor(): void
     {
         global $DIC;

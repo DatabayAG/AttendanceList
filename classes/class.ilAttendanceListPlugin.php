@@ -30,9 +30,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
 
     protected static bool $init_notifications = false;
 
-    /**
-     *
-     */
+
     public static function initNotifications(): void
     {
         if (!self::$init_notifications) {
@@ -71,9 +69,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
         return self::$instance;
     }
 
-    /**
-     * @inheritDoc
-     */
+
     protected function init(): void
     {
         self::initNotifications();
@@ -84,9 +80,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
         return self::PLUGIN_NAME;
     }
 
-    /**
-     *
-     */
+
     protected function uninstallCustom(): void
     {
         $this->db->dropTable(xaliConfig::TABLE_NAME, false);
@@ -187,9 +181,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
         return ilObjAttendanceList::_lookupObjectId($ref_id);
     }
 
-    /**
-     * @inheritDoc
-     */
+
     public function allowCopy(): bool
     {
         return true;
