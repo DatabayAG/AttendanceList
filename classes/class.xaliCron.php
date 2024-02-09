@@ -41,7 +41,7 @@ class xaliCron {
 	/**
 	 *
 	 */
-	public function run() {
+	public function run(): void {
 		$this->sendAbsenceReminders();
 		$this->updateLearningProgress();
 	}
@@ -165,7 +165,8 @@ class xaliCron {
 	/**
 	 *  Update learning progress of attendance lists whose activation ended today (or yesterday actually)
 	 */
-	protected function updateLearningProgress() {
+	protected function updateLearningProgress(): void
+    {
 		$yesterday = date("Y-m-d", time() - 60 * 60 * 24);
 		/** @var xaliSetting $setting */
 		foreach(xaliSetting::where(['activation_to' => $yesterday])->get() as $setting) {

@@ -54,7 +54,8 @@ class xaliGUI {
 		}
 	}
 
-	protected function prepareOutput() { }
+	protected function prepareOutput(): void
+    { }
 
 
 	protected function cancel(): void
