@@ -57,19 +57,18 @@ class xaliConfigFormGUI extends ilPropertyFormGUI
         $subinput->setInfo($this->pl->txt('config_' . xaliConfig::F_SHOW_PRESENT_TOTAL . '_info'));
         $this->addItem($subinput);
 
-        /*
-      $section = new ilFormSectionHeaderGUI();
-      $section->setTitle($this->pl->txt('config_header_notification'));
-      $this->addItem($section);
+        $section = new ilFormSectionHeaderGUI();
+        $section->setTitle($this->pl->txt('config_header_notification'));
+        $this->addItem($section);
 
-      $subinput = new ilNumberInputGUI($this->pl->txt('config_' . xaliConfig::F_INTERVAL_REMINDER_EMAIL), xaliConfig::F_INTERVAL_REMINDER_EMAIL);
-      $subinput->setInfo($this->pl->txt('config_' . xaliConfig::F_INTERVAL_REMINDER_EMAIL . '_info'));
-      $this->addItem($subinput);
+        $subinput = new ilNumberInputGUI($this->pl->txt('config_' . xaliConfig::F_INTERVAL_REMINDER_EMAIL), xaliConfig::F_INTERVAL_REMINDER_EMAIL);
+        $subinput->setInfo($this->pl->txt('config_' . xaliConfig::F_INTERVAL_REMINDER_EMAIL . '_info'));
+        $this->addItem($subinput);
 
-      $subinput = new ilNumberInputGUI($this->pl->txt('config_' . xaliConfig::F_SENDER_REMINDER_EMAIL), xaliConfig::F_SENDER_REMINDER_EMAIL);
-      $subinput->setInfo($this->pl->txt('config_' . xaliConfig::F_SENDER_REMINDER_EMAIL . '_info'));
-      $this->addItem($subinput);
-      */
+        $subinput = new ilNumberInputGUI($this->pl->txt('config_' . xaliConfig::F_SENDER_REMINDER_EMAIL), xaliConfig::F_SENDER_REMINDER_EMAIL);
+        $subinput->setInfo($this->pl->txt('config_' . xaliConfig::F_SENDER_REMINDER_EMAIL . '_info'));
+        $this->addItem($subinput);
+
 
         // Buttons
         $this->addCommandButton(ilAttendanceListConfigGUI::CMD_UPDATE_CONFIG, $this->lng->txt('save'));
@@ -79,10 +78,10 @@ class xaliConfigFormGUI extends ilPropertyFormGUI
     public function fillForm(): void
     {
         $this->setValuesByArray([
-            xaliConfig::F_INTERVAL_REMINDER_EMAIL => xaliConfig::getConfig(xaliConfig::F_INTERVAL_REMINDER_EMAIL),
+            xaliConfig::F_INTERVAL_REMINDER_EMAIL => xaliConfig::getConfig(xaliConfig::F_INTERVAL_REMINDER_EMAIL) ?: 0,
             xaliConfig::F_SENDER_REMINDER_EMAIL => xaliConfig::getConfig(xaliConfig::F_SENDER_REMINDER_EMAIL),
             xaliConfig::F_SHOW_NOT_RELEVANT => xaliConfig::getConfig(xaliConfig::F_SHOW_NOT_RELEVANT),
-            xaliConfig::F_SHOW_PRESENT_TOTAL => xaliConfig::getConfig(xaliConfig::F_SHOW_PRESENT_TOTAL)
+            xaliConfig::F_SHOW_PRESENT_TOTAL => xaliConfig::getConfig(xaliConfig::F_SHOW_PRESENT_TOTAL),
         ]);
     }
 
