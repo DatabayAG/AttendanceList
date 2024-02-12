@@ -116,7 +116,15 @@ class xaliOverviewGUI extends xaliGUI
 
     public function saveList(): void
     {
-        if (!is_array($_POST['attendance_status']) || count($this->parent_gui->getMembers()) != count($_POST['attendance_status'])) {
+        $attendance_status = $this->httpWrapper->post()->retrieve(
+            "attendance_status",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->dictOf($this->refinery->kindlyTo()->int()),
+                $this->refinery->always([])
+            ])
+        );
+
+        if (count($this->parent_gui->getMembers()) !== count($attendance_status)) {
             $this->tpl->setOnScreenMessage('failure', $this->pl->txt('warning_list_incomplete'), true);
             $this->editList();
             return;
@@ -141,15 +149,22 @@ class xaliOverviewGUI extends xaliGUI
         $checklist->setLastUpdate(time());
         $checklist->store();
 
-        foreach ($_POST['attendance_status'] as $usr_id => $status) {
+        $absence_reason = $this->httpWrapper->post()->retrieve(
+            "absence_reason",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->dictOf($this->refinery->kindlyTo()->int()),
+                $this->refinery->always([])
+            ])
+        );
+
+        foreach ($attendance_status as $usr_id => $status) {
             $entry = $checklist->getEntryOfUser($usr_id);
             $entry->setChecklistId($checklist->getId());
             $entry->setStatus($status);
             $entry->setUserId($usr_id);
             $entry->store();
-            if ((int) $status === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
-                $reason_id = $_POST['absence_reason'][$entry->getId()] ?? null;
-
+            if ($status === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
+                $reason_id = $absence_reason[$entry->getId()] ?? null;
                 if ($reason_id) {
                     /** @var xaliAbsenceStatement $stm */
                     $stm = xaliAbsenceStatement::findOrGetInstance($entry->getId());
@@ -173,7 +188,25 @@ class xaliOverviewGUI extends xaliGUI
             "user_id",
             $this->refinery->kindlyTo()->int()
         );
-        foreach ($_POST['attendance_status'] as $checklist_id => $status) {
+
+        $attendance_status = $this->httpWrapper->post()->retrieve(
+            "attendance_status",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->dictOf($this->refinery->kindlyTo()->int()),
+                $this->refinery->always([])
+            ])
+        );
+
+        $absence_reason = $this->httpWrapper->post()->retrieve(
+            "absence_reason",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->dictOf($this->refinery->kindlyTo()->int()),
+                $this->refinery->always([])
+            ])
+        );
+
+        foreach ($attendance_status as $checklist_id => $status) {
+            /** @var xaliChecklist $checklist */
             $checklist = xaliChecklist::find($checklist_id);
             $entry = $checklist->getEntryOfUser($user_id);
             $entry->setStatus($status);
@@ -182,8 +215,8 @@ class xaliOverviewGUI extends xaliGUI
             $checklist->setLastEditedBy($this->user->getId());
             $checklist->setLastUpdate(time());
             $checklist->store();
-            if (intval($status) === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
-                $reason_id = $_POST['absence_reason'][$entry->getId()] ?? null;
+            if ($status === xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED) {
+                $reason_id = $absence_reason[$entry->getId()] ?? null;
 
                 if ($reason_id) {
                     /** @var xaliAbsenceStatement $stm */
@@ -220,7 +253,12 @@ class xaliOverviewGUI extends xaliGUI
 
     public function createList(): void
     {
-        $date = date('Y-m-d', strtotime($_POST['checklist_date']));
+        $checklist_date = $this->httpWrapper->post()->retrieve(
+            "checklist_date",
+            $this->refinery->kindlyTo()->string()
+        );
+
+        $date = date('Y-m-d', $checklist_date);
         $this->checkDate($date);
         $checklist = new xaliChecklist();
         $checklist->setObjId($this->parent_gui->getObject()->getId());
@@ -331,18 +369,38 @@ class xaliOverviewGUI extends xaliGUI
             ])
         );
 
-        $checklist_ids = $checklistId ?: $_POST['checklist_ids'];
+
+
+        $checklist_ids = $checklistId ? [$checklistId] : $this->httpWrapper->post()->retrieve(
+            "checklist_ids",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->listOf($this->refinery->kindlyTo()->int()),
+                $this->refinery->always([])
+            ])
+        );
         foreach ($checklist_ids as $id) {
+            /** @var xaliChecklist $checklist */
             $checklist = xaliChecklist::find($id);
-            $conf->addItem('checklist_id[]', $checklist->getId(), sprintf($this->pl->txt('table_checklist_title'), $checklist->getChecklistDate()));
+            $conf->addItem('checklist_id[]', (string) $checklist->getId(), sprintf($this->pl->txt('table_checklist_title'), $checklist->getChecklistDate()));
         }
         $this->tpl->setContent($conf->getHTML());
     }
 
     public function deleteLists(): void
     {
-        $checklist_ids = is_array($_POST['checklist_id']) ? $_POST['checklist_id'] : [$_POST['checklist_id']];
+        $checklist_id = $this->httpWrapper->post()->retrieve(
+            "checklist_id",
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->listOf($this->refinery->kindlyTo()->int()),
+                $this->refinery->kindlyTo()->int(),
+                $this->refinery->always([])
+            ])
+        );
+
+
+        $checklist_ids = is_array($checklist_id) ? $checklist_id : [$checklist_id];
         foreach ($checklist_ids as $id) {
+            /** @var xaliChecklist $checklist */
             $checklist = xaliChecklist::find($id);
             $checklist->delete();
         }
