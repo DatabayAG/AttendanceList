@@ -23,13 +23,6 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputCompo
 use srag\Plugins\AttendanceList\Libs\DIC\Exception\DICException;
 use Throwable;
 
-/**
- * Class AbstractFormBuilder
- *
- * @package      srag\Plugins\AttendanceList\Libs\CustomInputGUIs\FormBuilder
- *
- * @ilCtrl_Calls srag\Plugins\AttendanceList\Libs\CustomInputGUIs\FormBuilder\AbstractFormBuilder: ilFormPropertyDispatchGUI
- */
 abstract class AbstractFormBuilder implements FormBuilder
 {
     public const REPLACE_BUTTONS_REG_EXP = '/(<button\s+class\s*=\s*"btn btn-default"\s+data-action\s*=\s*"#?"(\s+id\s*=\s*"[a-z0-9_]+")?\s*>)(.+)(<\/button\s*>)/';

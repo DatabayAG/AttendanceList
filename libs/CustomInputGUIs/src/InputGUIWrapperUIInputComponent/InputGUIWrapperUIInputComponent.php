@@ -15,11 +15,6 @@ use ilRepositorySelector2InputGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Items\Items;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
-/**
- * Class InputGUIWrapperUIInputComponent
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent
- */
 class InputGUIWrapperUIInputComponent extends FormInput
 {
     /**

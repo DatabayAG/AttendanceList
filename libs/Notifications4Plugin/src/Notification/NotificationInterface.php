@@ -7,7 +7,6 @@ use ilDateTime;
 /**
  * Interface NotificationInterface
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification
  */
 interface NotificationInterface
 {

@@ -8,11 +8,6 @@ use ilDBConstants;
 use ILIAS\DI\Container;
 use ilObjUser;
 
-/**
- * Class UsersAjaxAutoCompleteCtrl
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\MultiSelectSearchNewInputGUI
- */
 class UsersAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 {
     private Container $dic;

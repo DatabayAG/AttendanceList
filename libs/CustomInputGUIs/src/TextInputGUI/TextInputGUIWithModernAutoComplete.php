@@ -9,11 +9,6 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
 use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 
-/**
- * Class TextInputGUIWithModernAutoComplete
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TextInputGUI
- */
 class TextInputGUIWithModernAutoComplete extends TextInputGUI
 {
     /**

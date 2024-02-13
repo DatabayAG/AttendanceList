@@ -5,7 +5,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs;
 /**
  * Trait CustomInputGUIsTrait
  *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs
  */
 trait CustomInputGUIsTrait
 {

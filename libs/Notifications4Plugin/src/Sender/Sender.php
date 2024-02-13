@@ -7,7 +7,6 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notification
 /**
  * Interface Sender
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender
  */
 interface Sender
 {

@@ -10,7 +10,6 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender\RepositoryInter
 /**
  * Interface RepositoryInterface
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin
  */
 interface RepositoryInterface
 {

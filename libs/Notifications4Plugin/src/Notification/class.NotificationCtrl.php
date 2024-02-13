@@ -10,13 +10,6 @@ use ilObjUser;
 use ilPluginConfigGUI;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
-/**
- * Class NotificationCtrl
- *
- * @package           srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification
- *
- * @ilCtrl_isCalledBy NotificationCtrl: ilObjAttendanceListGUI
- */
 class NotificationCtrl
 {
     use Notifications4PluginTrait;

@@ -11,11 +11,6 @@ use ilTemplate;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 use srag\Plugins\AttendanceList\Libs\DIC\Exception\DICException;
 
-/**
- * Class AbstractRenderer
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent
- */
 abstract class AbstractRenderer extends Renderer
 {
     public function registerResources(ResourceRegistry $registry): void

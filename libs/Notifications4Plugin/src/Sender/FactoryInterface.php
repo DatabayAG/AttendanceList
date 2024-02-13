@@ -7,7 +7,6 @@ use ilObjUser;
 /**
  * Interface FactoryInterface
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender
  */
 interface FactoryInterface
 {

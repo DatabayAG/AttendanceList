@@ -12,11 +12,6 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender\Repository as S
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender\RepositoryInterface as SenderRepositoryInterface;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
-/**
- * Class Repository
- *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin
- */
 final class Repository implements RepositoryInterface
 {
     use Notifications4PluginTrait;

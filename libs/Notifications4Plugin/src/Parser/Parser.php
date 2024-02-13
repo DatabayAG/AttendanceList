@@ -8,7 +8,6 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notification
 /**
  * Interface Parser
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser
  */
 interface Parser
 {

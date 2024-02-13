@@ -7,11 +7,6 @@ use Twig_Environment;
 use Twig_Error;
 use Twig_Loader_String;
 
-/**
- * Class twigParser
- *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser
- */
 class twigParser extends AbstractParser
 {
     public const DOC_LINK = "https://twig.symfony.com/doc/1.x/templates.html";

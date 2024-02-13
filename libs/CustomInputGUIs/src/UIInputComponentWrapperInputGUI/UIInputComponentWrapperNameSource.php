@@ -4,11 +4,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\UIInputComponentWrapp
 
 use ILIAS\UI\Implementation\Component\Input\NameSource;
 
-/**
- * Class UIInputComponentWrapperNameSource
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\UIInputComponentWrapperInputGUI
- */
 class UIInputComponentWrapperNameSource implements NameSource
 {
     /**

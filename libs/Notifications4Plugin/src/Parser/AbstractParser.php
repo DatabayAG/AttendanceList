@@ -5,11 +5,6 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser;
 use ILIAS\DI\Container;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
-/**
- * Class AbstractParser
- *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser
- */
 abstract class AbstractParser implements Parser
 {
     use Notifications4PluginTrait;

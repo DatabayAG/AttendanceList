@@ -5,9 +5,8 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TableGUI\Exception;
 use ilException;
 
 /**
- * Class TableGUIException
  *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TableGUI\Exception
+ *
  *
  * @deprecated
  */

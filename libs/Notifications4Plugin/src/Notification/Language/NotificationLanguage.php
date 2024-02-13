@@ -9,9 +9,8 @@ use ilDateTime;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
 /**
- * Class NotificationLanguage
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Language
+ *
  *
  * @deprecated
  */

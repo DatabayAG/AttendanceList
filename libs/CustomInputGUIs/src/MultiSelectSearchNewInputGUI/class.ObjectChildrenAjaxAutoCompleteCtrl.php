@@ -7,11 +7,6 @@ require_once __DIR__ . "/../../../../vendor/autoload.php";
 use ILIAS\DI\Container;
 use ilObjOrgUnit;
 
-/**
- * Class ObjectChildrenAjaxAutoCompleteCtrl
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\MultiSelectSearchNewInputGUI
- */
 class ObjectChildrenAjaxAutoCompleteCtrl extends ObjectsAjaxAutoCompleteCtrl
 {
     /**

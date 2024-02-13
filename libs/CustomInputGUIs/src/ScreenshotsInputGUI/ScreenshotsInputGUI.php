@@ -14,11 +14,6 @@ use srag\Plugins\AttendanceList\Libs\DIC\Plugin\Pluginable;
 use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
 use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 
-/**
- * Class ScreenshotsInputGUI
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\ScreenshotsInputGUI
- */
 class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 {
     public const LANG_MODULE = "screenshotsinputgui";

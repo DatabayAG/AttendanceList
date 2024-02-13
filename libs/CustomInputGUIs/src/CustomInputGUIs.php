@@ -5,11 +5,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\ViewControlModeUI\ViewControlModeUI;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
-/**
- * Class CustomInputGUIs
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs
- */
 final class CustomInputGUIs
 {
     /**

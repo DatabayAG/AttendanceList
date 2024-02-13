@@ -23,9 +23,8 @@ use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 use TypeError;
 
 /**
- * Class Items
  *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Items
+ *
  *
  * @access  namespace
  */

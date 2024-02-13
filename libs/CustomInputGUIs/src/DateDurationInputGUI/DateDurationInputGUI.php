@@ -8,11 +8,6 @@ use ilDateTime;
 use ILIAS\DI\Container;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
-/**
- * Class DateDurationInputGUI
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\DateDurationInputGUI
- */
 class DateDurationInputGUI extends ilDateDurationInputGUI
 {
     private Container $dic;

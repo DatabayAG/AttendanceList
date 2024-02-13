@@ -12,11 +12,10 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notification
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
 /**
- * Class vcalendarSender
+ *
  *
  * Sends the notification to an external E-Mail with calendar dates
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender
  */
 class vcalendarSender implements Sender
 {

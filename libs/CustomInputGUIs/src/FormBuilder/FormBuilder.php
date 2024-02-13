@@ -7,7 +7,6 @@ use ILIAS\UI\Component\Input\Container\Form\Form;
 /**
  * Interface FormBuilder
  *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\FormBuilder
  */
 interface FormBuilder
 {

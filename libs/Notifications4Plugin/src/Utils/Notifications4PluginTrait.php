@@ -8,7 +8,6 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\RepositoryInterface as
 /**
  * Trait Notifications4PluginTrait
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils
  */
 trait Notifications4PluginTrait
 {

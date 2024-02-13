@@ -12,11 +12,6 @@ use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
 use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 
-/**
- * Class MultiSelectSearchNewInputGUI
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\MultiSelectSearchNewInputGUI
- */
 class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToolbarItem
 {
     public const EMPTY_PLACEHOLDER = "__empty_placeholder__";

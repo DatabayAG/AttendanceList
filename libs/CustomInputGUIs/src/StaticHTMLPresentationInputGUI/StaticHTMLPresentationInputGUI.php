@@ -8,11 +8,6 @@ use ilTemplate;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
-/**
- * Class StaticHTMLPresentationInputGUI
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\StaticHTMLPresentationInputGUI
- */
 class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
 {
     /**

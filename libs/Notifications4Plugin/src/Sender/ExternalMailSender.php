@@ -8,13 +8,6 @@ use ilMimeMail;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
-/**
- * Class MailSender
- *
- * Sends the notification to an external E-Mail address using the ILIAS mailer class
- *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender
- */
 class ExternalMailSender implements Sender
 {
     use Notifications4PluginTrait;

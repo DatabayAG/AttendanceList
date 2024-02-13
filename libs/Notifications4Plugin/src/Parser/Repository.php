@@ -6,11 +6,6 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notification
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\NotificationInterface;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
-/**
- * Class Repository
- *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser
- */
 final class Repository implements RepositoryInterface
 {
     use Notifications4PluginTrait;

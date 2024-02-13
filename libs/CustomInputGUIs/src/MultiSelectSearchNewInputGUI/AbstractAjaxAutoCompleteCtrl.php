@@ -5,11 +5,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\MultiSelectSearchNewI
 use ILIAS\DI\Container;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
-/**
- * Class AbstractAjaxAutoCompleteCtrl
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\MultiSelectSearchNewInputGUI
- */
 abstract class AbstractAjaxAutoCompleteCtrl
 {
     public const CMD_AJAX_AUTO_COMPLETE = "ajaxAutoComplete";

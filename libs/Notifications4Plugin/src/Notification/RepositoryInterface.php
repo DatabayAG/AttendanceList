@@ -7,7 +7,6 @@ use srag\Plugins\AttendanceList\Libs\DataTableUI\Component\Settings\Settings;
 /**
  * Interface RepositoryInterface
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification
  */
 interface RepositoryInterface
 {

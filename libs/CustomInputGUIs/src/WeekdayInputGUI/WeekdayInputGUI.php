@@ -10,11 +10,6 @@ use ilTemplate;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
-/**
- * Class WeekdayInputGUI
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\WeekdayInputGUI
- */
 class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem
 {
     public const TYPE = 'weekday';

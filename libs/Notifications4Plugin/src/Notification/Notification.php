@@ -12,11 +12,6 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TabsInputGUI\MultilangualTa
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser\twigParser;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
-/**
- * Class Notification
- *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification
- */
 class Notification extends ActiveRecord implements NotificationInterface
 {
     use Notifications4PluginTrait;

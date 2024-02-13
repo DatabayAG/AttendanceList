@@ -4,11 +4,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template;
 
 use ilTemplate;
 
-/**
- * Class Template
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template
- */
 class Template extends ilTemplate
 {
     /**

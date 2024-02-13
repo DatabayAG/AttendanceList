@@ -9,7 +9,6 @@ use ilLanguage;
 /**
  * Trait InputGUIWrapperConstraintTrait
  *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent
  */
 trait InputGUIWrapperConstraintTrait
 {

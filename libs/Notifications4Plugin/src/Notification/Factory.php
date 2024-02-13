@@ -10,11 +10,6 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Table\Tab
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 use stdClass;
 
-/**
- * Class Factory
- *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification
- */
 final class Factory implements FactoryInterface
 {
     use Notifications4PluginTrait;

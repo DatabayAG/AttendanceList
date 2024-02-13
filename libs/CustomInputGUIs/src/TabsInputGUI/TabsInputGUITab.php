@@ -6,11 +6,6 @@ use ilFormPropertyGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Items\Items;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
-/**
- * Class TabsInputGUITab
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TabsInputGUI
- */
 class TabsInputGUITab
 {
     /**

@@ -13,11 +13,10 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4Pl
 use Throwable;
 
 /**
- * Class InternalMailSender
+ *
  *
  * Sends the notification internal in ILIAS. Based on the settings, the mail is also forwarded to the users external e-mail address
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender
  */
 class InternalMailSender implements Sender
 {

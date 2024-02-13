@@ -8,11 +8,6 @@ use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
 use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 
-/**
- * Class AjaxCheckbox
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\AjaxCheckbox
- */
 class AjaxCheckbox
 {
     public const GET_PARAM_CHECKED = "checked";

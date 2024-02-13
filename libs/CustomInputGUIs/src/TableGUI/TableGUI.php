@@ -16,9 +16,8 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 /**
- * Class TableGUI
  *
- * @package    srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TableGUI
+ *
  *
  * @deprecated Please use "srag/datatable" library (`AbstractTableBuilder`)
  */

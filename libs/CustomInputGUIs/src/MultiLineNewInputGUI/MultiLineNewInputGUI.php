@@ -13,11 +13,6 @@ use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
 use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 
-/**
- * Class MultiLineNewInputGUI
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\MultiLineNewInputGUI
- */
 class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToolbarItem
 {
     public const SHOW_INPUT_LABEL_ALWAYS = 3;

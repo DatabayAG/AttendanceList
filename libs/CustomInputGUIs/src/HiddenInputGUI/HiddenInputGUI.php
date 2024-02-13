@@ -6,11 +6,6 @@ use ilHiddenInputGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
-/**
- * Class HiddenInputGUI
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\HiddenInputGUI
- */
 class HiddenInputGUI extends ilHiddenInputGUI
 {
     /**

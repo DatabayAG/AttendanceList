@@ -5,9 +5,8 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Excep
 use ilFormException;
 
 /**
- * Class PropertyFormGUIException
  *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Exception
+ *
  *
  * @deprecated
  */

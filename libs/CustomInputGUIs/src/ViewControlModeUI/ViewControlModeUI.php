@@ -6,11 +6,6 @@ use ILIAS\DI\Container;
 use ilSession;
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
-/**
- * Class ViewControlModeUI
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\ViewControlModeUI
- */
 class ViewControlModeUI
 {
     public const CMD_HANDLE_BUTTONS = "ViewControlModeUIHandleButtons";

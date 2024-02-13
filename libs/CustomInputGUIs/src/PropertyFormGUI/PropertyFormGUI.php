@@ -19,9 +19,8 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TabsInputGUI\TabsInputGUITa
 use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 /**
- * Class PropertyFormGUI
  *
- * @package    srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI
+ *
  *
  * @deprecated Please use `AbstractFormBuilder`
  */

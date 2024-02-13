@@ -20,11 +20,6 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Notificat
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser\Parser;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
-/**
- * Class FormBuilder
- *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Form
- */
 class FormBuilder extends AbstractFormBuilder
 {
     use Notifications4PluginTrait;

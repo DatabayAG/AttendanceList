@@ -8,7 +8,6 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Notificat
 /**
  * Interface RepositoryInterface
  *
- * @package srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser
  */
 interface RepositoryInterface
 {

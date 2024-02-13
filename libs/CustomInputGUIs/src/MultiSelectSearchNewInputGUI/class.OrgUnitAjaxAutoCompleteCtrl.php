@@ -6,11 +6,6 @@ require_once __DIR__ . "/../../../../vendor/autoload.php";
 
 use ilOrgUnitPathStorage;
 
-/**
- * Class OrgUnitAjaxAutoCompleteCtrl
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\MultiSelectSearchNewInputGUI
- */
 class OrgUnitAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 {
     /**
