@@ -1,0 +1,46 @@
+<?php
+
+namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs;
+
+use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\ViewControlModeUI\ViewControlModeUI;
+use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
+
+/**
+ * Class CustomInputGUIs
+ *
+ * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs
+ */
+final class CustomInputGUIs
+{
+    /**
+     * @var self|null
+     */
+    protected static $instance = null;
+
+
+    /**
+     * CustomInputGUIs constructor
+     */
+    private function __construct()
+    {
+
+    }
+
+
+
+    public static function getInstance(): self
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
+
+
+    public function viewControlMode(): ViewControlModeUI
+    {
+        return new ViewControlModeUI();
+    }
+}
