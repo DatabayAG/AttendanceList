@@ -26,10 +26,12 @@
   },
   "autoload": {
     "psr-4": {
-      "srag\\Plugins\\AttendanceList\\": "src/"
+      "srag\\Plugins\\AttendanceList\\": "src/",
+      "srag\\Plugins\\AttendanceList\\Libs\\": "libs/"
     },
     "classmap": [
-      "./classes/"
+      "./classes/",
+      "./libs"
     ]
   },
   "config": {
