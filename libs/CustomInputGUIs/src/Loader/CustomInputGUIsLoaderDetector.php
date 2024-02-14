@@ -14,36 +14,20 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputCompo
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent\Renderer as InputGUIWrapperUIInputComponentRenderer;
 use ILIAS\Data\Factory;
 
-/**
- * Class CustomInputGUIsLoaderDetector
- *
- * @package srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Loader
- */
-class CustomInputGUIsLoaderDetector extends AbstractLoaderDetector
+class CustomInputGUIsLoaderDetector implements Loader
 {
     /**
      * @var bool
      */
     protected static $has_fix_ctrl_namespace_current_url = false;
-    /**
-     * @var callable[]|null
-     */
-    protected $get_renderer_for_hooks;
     private Container $dic;
+    protected Loader $loader;
 
-
-    /**
-     *
-     *
-     * @param callable[]|null $get_renderer_for_hooks
-     */
-    public function __construct(Loader $loader, /*?*/ array $get_renderer_for_hooks = null)
+    public function __construct(Loader $loader)
     {
-        parent::__construct($loader);
         global $DIC;
         $this->dic = $DIC;
-
-        $this->get_renderer_for_hooks = $get_renderer_for_hooks;
+        $this->loader = $loader;
     }
 
 
@@ -87,7 +71,10 @@ class CustomInputGUIsLoaderDetector extends AbstractLoaderDetector
         }
     }
 
-
+    public function getRendererFactoryFor(Component $component): RendererFactory
+    {
+        return $this->loader->getRendererFactoryFor($component);
+    }
 
     public function getRendererFor(Component $component, array $contexts): ComponentRenderer
     {
@@ -111,12 +98,12 @@ class CustomInputGUIsLoaderDetector extends AbstractLoaderDetector
                     $this->dic["ui.javascript_binding"],
                     $this->dic->refinery(),
                     $this->dic["ui.pathresolver"],
-                    new \ILIAS\Data\Factory(),
+                    new Factory(),
                     $this->dic["help.text_retriever"],
                     $this->dic["ui.upload_limit_resolver"]
                 );
             } else {
-                $renderer = parent::getRendererFor($component, $contexts);
+                return $this->loader->getRendererFor($component, $contexts);
             }
         }
 
