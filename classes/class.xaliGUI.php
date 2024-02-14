@@ -33,6 +33,7 @@ class xaliGUI
     protected ilLanguage $lng;
     protected WrapperFactory $httpWrapper;
     protected Factory $refinery;
+    protected ilTree $tree;
 
     public function __construct(ilObjAttendanceListGUI $parent_gui)
     {
@@ -51,6 +52,7 @@ class xaliGUI
         $this->ctrl = $ilCtrl;
         $this->httpWrapper = $DIC->http()->wrapper();
         $this->refinery = $DIC->refinery();
+        $this->tree = $DIC->repositoryTree();
 
         /** @var $component_factory ilComponentFactory */
         $component_factory = $DIC['component.factory'];

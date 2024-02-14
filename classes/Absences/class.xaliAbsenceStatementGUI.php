@@ -107,6 +107,13 @@ class xaliAbsenceStatementGUI extends xaliGUI
             $this->ctrl->setParameterByClass(xaliOverviewGUI::class, 'entry_id', $entryId);
             $this->ctrl->redirectByClass(xaliOverviewGUI::class, $back_cmd);
         }
-        $this->ctrl->returnToParent($this);
+
+        $refId = $this->httpWrapper->query()->retrieve(
+            "ref_id",
+            $this->refinery->kindlyTo()->int()
+        );
+
+        $this->ctrl->setParameterByClass(ilRepositoryGUI::class, 'ref_id', $this->tree->checkForParentType($refId, "crs"));
+        $this->ctrl->redirectByClass(ilRepositoryGUI::class, $back_cmd);
     }
 }

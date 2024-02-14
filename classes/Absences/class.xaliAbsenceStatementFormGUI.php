@@ -52,10 +52,15 @@ class xaliAbsenceStatementFormGUI extends ilPropertyFormGUI
 
         $backCmd = $this->httpWrapper->query()->retrieve(
             "back_cmd",
-            $this->refinery->kindlyTo()->string()
+            $this->refinery->byTrying([
+                $this->refinery->kindlyTo()->string(),
+                $this->refinery->always(null)
+            ])
         );
 
-        $this->ctrl->setParameter($this->parent_gui, 'back_cmd', $backCmd);
+        if ($backCmd) {
+            $this->ctrl->setParameter($this->parent_gui, 'back_cmd', $backCmd);
+        }
         $this->ctrl->setParameter($this->parent_gui, 'entry_id', $xaliAbsenceStatement->getEntryId());
         $this->setFormAction($this->ctrl->getFormAction($this->parent_gui));
         $this->initForm();
