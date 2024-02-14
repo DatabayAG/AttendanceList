@@ -23,7 +23,7 @@ declare(strict_types=1);
 class xaliUserDetailsTableGUI extends ilTable2GUI
 {
     protected ilObjUser $user;
-    protected string $obj_id;
+    protected int $obj_id;
     protected ilCtrl $ctrl;
     protected ilAttendanceListPlugin $pl;
     protected ilLanguage $lng;
@@ -43,7 +43,7 @@ class xaliUserDetailsTableGUI extends ilTable2GUI
         $this->parent_cmd = 'editUser';
 
         $this->setPrefix('xali_usr_detail');
-        $this->setId($user_id);
+        $this->setId((string) $user_id);
 
         parent::__construct($a_parent_obj, xaliOverviewGUI::CMD_EDIT_USER);
 
