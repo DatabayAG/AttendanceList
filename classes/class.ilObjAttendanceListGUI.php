@@ -307,9 +307,11 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
         $form = parent::initCreateForm($a_new_type);
 
         $from = new ilDateTimeInputGUI($this->pl->txt(xaliSettingsFormGUI::F_ACTIVATION_FROM), xaliSettingsFormGUI::F_ACTIVATION_FROM);
+        $from->setRequired(true);
         $form->addItem($from);
 
         $to = new ilDateTimeInputGUI($this->pl->txt(xaliSettingsFormGUI::F_ACTIVATION_TO), xaliSettingsFormGUI::F_ACTIVATION_TO);
+        $to->setRequired(true);
         $form->addItem($to);
 
         $wd = new srWeekdayInputGUI($this->pl->txt(xaliSettingsFormGUI::F_WEEKDAYS), xaliSettingsFormGUI::F_WEEKDAYS);

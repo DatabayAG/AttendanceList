@@ -90,10 +90,12 @@ class xaliSettingsFormGUI extends ilPropertyFormGUI
         $this->addItem($input);
 
         $input = new ilDateTimeInputGUI($this->pl->txt(self::F_ACTIVATION_FROM), self::F_ACTIVATION_FROM);
+        $input->setRequired(true);
         $input->setValueByArray([self::F_ACTIVATION_FROM => $this->xaliSetting->getActivationFrom()]);
         $this->addItem($input);
 
         $input = new ilDateTimeInputGUI($this->pl->txt(self::F_ACTIVATION_TO), self::F_ACTIVATION_TO);
+        $input->setRequired(true);
         $input->setValueByArray([self::F_ACTIVATION_TO => $this->xaliSetting->getActivationTo()]);
         $this->addItem($input);
 
