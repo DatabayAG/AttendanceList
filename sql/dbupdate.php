@@ -24,15 +24,15 @@ xaliAbsenceStatement::updateDB();
 ?>
 <#4>
 <?php
-/*\srag\Notifications4Plugin\AttendanceList\Repository::getInstance()->installTables();
+\srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repository::getInstance()->installTables();
 
-if (\srag\Notifications4Plugin\AttendanceList\Notification\Repository::getInstance()
-        ->migrateFromOldGlobalPlugin(\xaliChecklistEntry::NOTIFICATION_NAME) === null) {
+if (\srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repository::getInstance()
+        ->migrateFromOldGlobalPlugin(xaliChecklistEntry::NOTIFICATION_NAME) === null) {
 
-    $notification = \srag\Notifications4Plugin\AttendanceList\Notification\Repository::getInstance()
+    $notification = \srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repository::getInstance()
         ->factory()->newInstance();
 
-    $notification->setName(\xaliChecklistEntry::NOTIFICATION_NAME);
+    $notification->setName(xaliChecklistEntry::NOTIFICATION_NAME);
     $notification->setTitle("Absence");
     $notification->setDescription("Mail which will be sent directly after a user has been defined as absent");
 
@@ -45,17 +45,17 @@ if (\srag\Notifications4Plugin\AttendanceList\Notification\Repository::getInstan
 
         Please click on the link and specify a reason for your absence.", "default");
 
-    \srag\Notifications4Plugin\AttendanceList\Notification\Repository::getInstance()
+    \srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repository::getInstance()
         ->storeNotification($notification);
 }
 
-if (\srag\Notifications4Plugin\AttendanceList\Notification\Repository::getInstance()
-        ->migrateFromOldGlobalPlugin(\xaliCron::NOTIFICATION_NAME) === null) {
+if (\srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repository::getInstance()
+        ->migrateFromOldGlobalPlugin(\srag\Plugins\AttendanceList\Cron\AttendanceListJob::NOTIFICATION_NAME) === null) {
 
-    $notification = \srag\Notifications4Plugin\AttendanceList\Notification\Repository::getInstance()
+    $notification = \srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repository::getInstance()
         ->factory()->newInstance();
 
-    $notification->setName(\xaliCron::NOTIFICATION_NAME);
+    $notification->setName(\srag\Plugins\AttendanceList\Cron\AttendanceListJob::NOTIFICATION_NAME);
     $notification->setTitle("Absence Reminder");
     $notification->setDescription("Reminder email listing all open absence reasons");
 
@@ -68,12 +68,12 @@ if (\srag\Notifications4Plugin\AttendanceList\Notification\Repository::getInstan
 
         Please click on the link(s) and specify a reason for your absence.", "default");
 
-    \srag\Notifications4Plugin\AttendanceList\Notification\Repository::getInstance()
+    \srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repository::getInstance()
         ->storeNotification($notification);
 }
-*/
+
 ?>
 <#5>
 <?php
-//\srag\Notifications4Plugin\AttendanceList\Repository::getInstance()->installTables();
+\srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repository::getInstance()->installTables();
 ?>
