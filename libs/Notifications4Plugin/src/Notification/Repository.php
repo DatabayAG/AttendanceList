@@ -23,7 +23,6 @@ final class Repository implements RepositoryInterface
     private Container $dic;
 
 
-
     private function __construct()
     {
         global $DIC;

@@ -5,7 +5,6 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\NotificationInterface;
 
-
 interface RepositoryInterface
 {
     public function addParser(Parser $parser): void;
@@ -15,7 +14,6 @@ interface RepositoryInterface
      * @internal
      */
     public function dropTables(): void;
-
 
 
     public function factory(): FactoryInterface;

@@ -15,12 +15,10 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
     protected $html = "";
 
 
-
     public function __construct(string $title = "")
     {
         parent::__construct($title, "");
     }
-
 
 
     public function checkInput(): bool
@@ -29,12 +27,10 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
     }
 
 
-
     public function getHtml(): string
     {
         return $this->html;
     }
-
 
 
     public function setHtml(string $html): self
@@ -45,12 +41,10 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
     }
 
 
-
     public function getValue(): string
     {
         return "";
     }
-
 
 
     public function insert(ilTemplate $tpl): void
@@ -63,7 +57,6 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
     }
 
 
-
     public function render(): string
     {
         $iframe_tpl = new Template(__DIR__ . "/templates/iframe.html");
@@ -74,9 +67,7 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
     }
 
 
-    /**
-     * @param string $title
-     */
+
     public function setTitle(string $title): void
     {
         $this->title = $title;
@@ -84,7 +75,6 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
 
 
     /**
-     * @param string $value
      * @throws ilFormException
      */
     public function setValue(string $value): void
@@ -94,14 +84,12 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
 
 
     /**
-     * @param array $values
      * @throws ilFormException
      */
     public function setValueByArray(array $values): void
     {
         //throw new ilFormException("StaticHTMLPresentationInputGUI does not support set screenshots!");
     }
-
 
 
     protected function getDataUrl(): string

@@ -2,7 +2,6 @@
 
 namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TextInputGUI;
 
-use ILIAS\DI\Container;
 use iljQueryUtil;
 use ilUtil;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
@@ -16,14 +15,12 @@ class TextInputGUIWithModernAutoComplete extends TextInputGUI
     protected static $init = false;
 
 
-
     public function __construct(string $a_title = "", string $a_postvar = "")
     {
         parent::__construct($a_title, $a_postvar);
 
         self::init(); // TODO: Pass $plugin
     }
-
 
 
     public static function init(?ilPlugin $plugin = null): void
@@ -55,7 +52,6 @@ class TextInputGUIWithModernAutoComplete extends TextInputGUI
                     . ";") . ";");
         }
     }
-
 
 
     public function render(string $a_mode = ""): string

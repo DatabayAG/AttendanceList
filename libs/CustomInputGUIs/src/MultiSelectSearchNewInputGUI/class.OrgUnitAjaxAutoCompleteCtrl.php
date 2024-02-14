@@ -8,12 +8,10 @@ use ilOrgUnitPathStorage;
 
 class OrgUnitAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 {
-
     public function __construct(?array $skip_ids = null)
     {
         parent::__construct($skip_ids);
     }
-
 
 
     public function fillOptions(array $ids): array
@@ -26,7 +24,6 @@ class OrgUnitAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
             return [];
         }
     }
-
 
 
     public function searchOptions(?string $search = null): array

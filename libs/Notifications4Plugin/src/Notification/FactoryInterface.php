@@ -11,9 +11,7 @@ interface FactoryInterface
     public function fromDB(stdClass $data): NotificationInterface;
 
 
-
     public function newFormBuilderInstance(ilPluginConfigGUI $parentGui, NotificationInterface $notification): FormBuilder;
-
 
 
     public function newInstance(): NotificationInterface;

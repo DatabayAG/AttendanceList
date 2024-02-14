@@ -4,7 +4,6 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender;
 
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 
-
 interface Sender
 {
     /**

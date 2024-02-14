@@ -4,7 +4,6 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender;
 
 use ILIAS\DI\Container;
 use ilMimeMail;
-
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
@@ -49,8 +48,8 @@ class ExternalMailSender implements Sender
 
 
     /**
-     * @param string       $from E-Mail from address. If omitted, the ILIAS setting "external noreply address" is used
-     * @param string|array $to   E-Mail address or array of addresses
+     * @param string $from E-Mail from address. If omitted, the ILIAS setting "external noreply address" is used
+     * @param string|array $to E-Mail address or array of addresses
      */
     public function __construct(string $from = "", $to = "")
     {
@@ -86,7 +85,6 @@ class ExternalMailSender implements Sender
     }
 
 
-
     public function setBcc($bcc)
     {
         $this->bcc = $bcc;
@@ -100,7 +98,6 @@ class ExternalMailSender implements Sender
     {
         return $this->cc;
     }
-
 
 
     public function setCc($cc)
@@ -120,7 +117,6 @@ class ExternalMailSender implements Sender
     }
 
 
-
     public function setFrom($from)
     {
         $this->from = $from;
@@ -138,14 +134,12 @@ class ExternalMailSender implements Sender
     }
 
 
-
     public function setTo($to)
     {
         $this->to = $to;
 
         return $this;
     }
-
 
 
     public function reset()
@@ -161,7 +155,6 @@ class ExternalMailSender implements Sender
 
         return $this;
     }
-
 
 
     public function send(): void
@@ -190,14 +183,12 @@ class ExternalMailSender implements Sender
     }
 
 
-
     public function setMessage($message)
     {
         $this->message = $message;
 
         return $this;
     }
-
 
 
     public function setSubject($subject)

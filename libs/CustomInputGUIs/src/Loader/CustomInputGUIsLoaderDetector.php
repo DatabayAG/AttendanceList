@@ -3,6 +3,7 @@
 namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Loader;
 
 use Closure;
+use ILIAS\Data\Factory;
 use ILIAS\UI\Component\Component;
 use ILIAS\UI\Implementation\DefaultRenderer;
 use ILIAS\UI\Implementation\Render\ComponentRenderer;
@@ -12,7 +13,6 @@ use ILIAS\UI\Renderer;
 use Pimple\Container;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent\Renderer as InputGUIWrapperUIInputComponentRenderer;
-use ILIAS\Data\Factory;
 
 class CustomInputGUIsLoaderDetector implements Loader
 {
@@ -57,7 +57,6 @@ class CustomInputGUIsLoaderDetector implements Loader
             return new DefaultRenderer(new self($previous_renderer_loader, $get_renderer_for_hooks));
         };
     }
-
 
 
     private static function fixCtrlNamespaceCurrentUrl(): void

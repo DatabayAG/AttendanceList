@@ -22,14 +22,12 @@ abstract class AbstractRenderer extends Renderer
     }
 
 
-
     protected function getComponentInterfaceName(): array
     {
         return [
             InputGUIWrapperUIInputComponent::class
         ];
     }
-
 
 
     protected function getTemplatePath(string $name): string

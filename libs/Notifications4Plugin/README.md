@@ -1,10 +1,14 @@
 # srag/notifications4plugin Library for ILIAS Plugins
 
-This library offers a quick and easy way to create and send notifications in any language. The notifications are usually configured in the config screen of Notifications4Plugin and can then be sent for instance as an email by other plugins dynamic
+This library offers a quick and easy way to create and send notifications in any language. The notifications are usually
+configured in the config screen of Notifications4Plugin and can then be sent for instance as an email by other plugins
+dynamic
 
 This project is licensed under the GPL-3.0-only license
 
-The text of the notifications is parsed by default with the [Twig template engine!](https://twig.symfony.com/doc/1.x/templates.html), meaning the developer can replace placeholders and use if statements and loops
+The text of the notifications is parsed by default with
+the [Twig template engine!](https://twig.symfony.com/doc/1.x/templates.html), meaning the developer can replace
+placeholders and use if statements and loops
 
 The development interface offers easy methods to create, modify and send notifications
 
@@ -22,11 +26,14 @@ First add the following to your `composer.json` file:
 
 And run a `composer install`.
 
-If you deliver your plugin, the plugin has it's own copy of this library and the user doesn't need to install the library.
+If you deliver your plugin, the plugin has it's own copy of this library and the user doesn't need to install the
+library.
 
-Tip: Because of multiple autoloaders of plugins, it could be, that different versions of this library exists and suddenly your plugin use an older or a newer version of an other plugin!
+Tip: Because of multiple autoloaders of plugins, it could be, that different versions of this library exists and
+suddenly your plugin use an older or a newer version of an other plugin!
 
-So I recommand to use [srag/librariesnamespacechanger](https://packagist.org/packages/srag/librariesnamespacechanger) in your plugin.
+So I recommand to use [srag/librariesnamespacechanger](https://packagist.org/packages/srag/librariesnamespacechanger) in
+your plugin.
 
 ## Twig PHP 7.4 patch
 
@@ -59,7 +66,8 @@ use Notifications4PluginTrait;
 
 ## Notification ActiveRecord
 
-First you need to init the `Notification` and `NotificationLanguage` active record classes with your own table name prefix. Please add this very early in your plugin code
+First you need to init the `Notification` and `NotificationLanguage` active record classes with your own table name
+prefix. Please add this very early in your plugin code
 
 ```php
 self::notifications4plugin()->withTableNamePrefix(ilXPlugin::PLUGIN_ID)->withPlugin(self::plugin())->withPlaceholderTypes([

@@ -40,7 +40,6 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     private Container $dic;
 
 
-
     public function __construct(string $title = "", string $post_var = "")
     {
         global $DIC;
@@ -51,14 +50,12 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     }
 
 
-
     public static function cleanValues(array $values): array
     {
         return array_values(array_filter($values, function ($value): bool {
             return ($value !== self::EMPTY_PLACEHOLDER);
         }));
     }
-
 
 
     public static function init(?ilPlugin $plugin = null): void
@@ -88,13 +85,12 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
 
 
     /**
-     * @param mixed  $value
+     * @param mixed $value
      */
     public function addOption(string $key, $value): void
     {
         $this->options[$key] = $value;
     }
-
 
 
     public function checkInput(): bool
@@ -138,12 +134,10 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     }
 
 
-
     public function getAjaxAutoCompleteCtrl(): ?AbstractAjaxAutoCompleteCtrl
     {
         return $this->ajax_auto_complete_ctrl;
     }
-
 
 
     public function setAjaxAutoCompleteCtrl(?AbstractAjaxAutoCompleteCtrl $ajax_auto_complete_ctrl = null): void
@@ -152,19 +146,16 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     }
 
 
-
     public function getLimitCount(): ?int
     {
         return $this->limit_count;
     }
 
 
-
     public function setLimitCount(?int $limit_count = null): void
     {
         $this->limit_count = $limit_count;
     }
-
 
 
     public function getMinimumInputLength(): int
@@ -177,12 +168,10 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     }
 
 
-
     public function setMinimumInputLength(?int $minimum_input_length = null): void
     {
         $this->minimum_input_length = $minimum_input_length;
     }
-
 
 
     public function getOptions(): array
@@ -191,12 +180,10 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     }
 
 
-
     public function setOptions(array $options): void
     {
         $this->options = $options;
     }
-
 
 
     public function getTableFilterHTML(): string
@@ -205,12 +192,10 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     }
 
 
-
     public function getToolbarHTML(): string
     {
         return $this->render();
     }
-
 
 
     public function getValue(): array
@@ -219,9 +204,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     }
 
 
-    /**
-     * @param array $value
-     */
+
     public function setValue(array $value): void
     {
         if (is_array($value)) {
@@ -232,7 +215,6 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     }
 
 
-
     public function insert(ilTemplate $tpl): void
     {
         $html = $this->render();
@@ -241,7 +223,6 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
         $tpl->setVariable("PROP_GENERIC", $html);
         $tpl->parseCurrentBlock();
     }
-
 
 
     public function render(): string
@@ -293,9 +274,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     }
 
 
-    /**
-     * @param array $values
-     */
+
     public function setValueByArray(array $values): void
     {
         $this->setValue($values[$this->getPostVar()]);

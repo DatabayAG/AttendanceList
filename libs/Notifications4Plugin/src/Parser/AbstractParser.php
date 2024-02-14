@@ -19,12 +19,10 @@ abstract class AbstractParser implements Parser
     }
 
 
-
     public function getClass(): string
     {
         return static::class;
     }
-
 
 
     public function getDocLink(): string
@@ -33,12 +31,10 @@ abstract class AbstractParser implements Parser
     }
 
 
-
     public function getName(): string
     {
         return static::NAME;
     }
-
 
 
     protected function fixLineBreaks(string $html): string

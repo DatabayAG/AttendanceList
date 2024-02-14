@@ -35,7 +35,6 @@ class PluginVersionParameter
     }
 
 
-
     public static function getInstance(): self
     {
         return new self();

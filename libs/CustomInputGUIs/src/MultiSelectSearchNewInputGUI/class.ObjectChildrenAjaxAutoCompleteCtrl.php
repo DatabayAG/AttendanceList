@@ -16,8 +16,7 @@ class ObjectChildrenAjaxAutoCompleteCtrl extends ObjectsAjaxAutoCompleteCtrl
     private Container $dic;
 
 
-    /**
-     */
+
     public function __construct(string $type, /*?*/ int $parent_ref_id = null, /*?*/ array $skip_ids = null)
     {
         global $DIC;
@@ -26,7 +25,6 @@ class ObjectChildrenAjaxAutoCompleteCtrl extends ObjectsAjaxAutoCompleteCtrl
 
         $this->parent_ref_id = $parent_ref_id ?? ($type === "orgu" ? ilObjOrgUnit::getRootOrgRefId() : 1);
     }
-
 
 
     public function searchOptions(?string $search = null): array

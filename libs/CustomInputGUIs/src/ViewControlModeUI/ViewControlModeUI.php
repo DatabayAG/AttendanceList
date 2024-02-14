@@ -27,13 +27,11 @@ class ViewControlModeUI
     private Container $dic;
 
 
-
     public function __construct()
     {
         global $DIC;
         $this->dic = $DIC;
     }
-
 
 
     public function getActiveId(): string
@@ -48,7 +46,6 @@ class ViewControlModeUI
     }
 
 
-
     public function handleButtons(): void
     {
         $active_id = filter_input(INPUT_GET, self::CMD_HANDLE_BUTTONS);
@@ -57,7 +54,6 @@ class ViewControlModeUI
 
         $this->dic->ctrl()->redirectToURL(ilSession::get(self::CMD_HANDLE_BUTTONS . "_" . $this->id . "_url"));
     }
-
 
 
     public function render(): string
@@ -75,14 +71,12 @@ class ViewControlModeUI
     }
 
 
-
     public function withButtons(array $buttons): self
     {
         $this->buttons = $buttons;
 
         return $this;
     }
-
 
 
     public function withDefaultActiveId(string $default_active_id): self
@@ -93,14 +87,12 @@ class ViewControlModeUI
     }
 
 
-
     public function withId(string $id): self
     {
         $this->id = $id;
 
         return $this;
     }
-
 
 
     public function withLink(string $link): self

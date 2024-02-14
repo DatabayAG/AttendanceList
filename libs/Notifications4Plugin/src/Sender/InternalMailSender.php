@@ -7,7 +7,6 @@ use ilMail;
 use ilMailError;
 use ilMailException;
 use ilObjUser;
-
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 use Throwable;
@@ -64,7 +63,7 @@ class InternalMailSender implements Sender
 
     /**
      * @param int|string|ilObjUser $user_from Should be the user-ID from the sender, you can also pass the login
-     * @param int|string|ilObjUser $user_to   Should be the login of the receiver, you can also pass a user-ID
+     * @param int|string|ilObjUser $user_to Should be the login of the receiver, you can also pass a user-ID
      */
     public function __construct($user_from = 0, $user_to = "")
     {
@@ -88,7 +87,6 @@ class InternalMailSender implements Sender
     }
 
 
-
     public function setBcc($bcc)
     {
         $this->bcc = $this->idOrUser2login($bcc);
@@ -104,7 +102,6 @@ class InternalMailSender implements Sender
     {
         return $this->cc;
     }
-
 
 
     public function setCc($cc)
@@ -124,7 +121,6 @@ class InternalMailSender implements Sender
     }
 
 
-
     public function setMessage($message)
     {
         $this->message = $message;
@@ -140,7 +136,6 @@ class InternalMailSender implements Sender
     {
         return $this->subject;
     }
-
 
 
     public function setSubject($subject)
@@ -220,7 +215,6 @@ class InternalMailSender implements Sender
     }
 
 
-
     public function reset()
     {
         $this->message = "";
@@ -268,14 +262,12 @@ class InternalMailSender implements Sender
     }
 
 
-
     public function setFrom($from)
     {
         $this->setUserFrom($from);
 
         return $this;
     }
-
 
 
     public function setTo($to)

@@ -6,7 +6,6 @@ use Closure;
 use Exception;
 use ilFormPropertyDispatchGUI;
 use ILIAS\DI\Container;
-use ILIAS\UI\Component\Component;
 use ILIAS\UI\Component\Input\Container\Form\Form;
 use ILIAS\UI\Component\Input\Field\OptionalGroup;
 use ILIAS\UI\Component\Input\Field\Radio as RadioInterface;
@@ -15,10 +14,7 @@ use ILIAS\UI\Component\MessageBox\MessageBox;
 use ILIAS\UI\Implementation\Component\Input\Field\Group;
 use ILIAS\UI\Implementation\Component\Input\Field\Radio;
 use ILIAS\UI\Implementation\Component\Input\Field\SwitchableGroup;
-use ILIAS\UI\Implementation\Render\Template;
 use ilSubmitButton;
-use ilTable2GUI;
-use ilTemplate;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
 use srag\Plugins\AttendanceList\Libs\DIC\Exception\DICException;
 use Throwable;
@@ -39,7 +35,6 @@ abstract class AbstractFormBuilder implements FormBuilder
      */
     protected $parent;
     private Container $dic;
-
 
 
     public function __construct(object $parent)

@@ -14,7 +14,6 @@ class NumberInputGUI extends ilNumberInputGUI implements ilTableFilterItem, ilTo
     }
 
 
-
     public function getToolbarHTML(): string
     {
         return $this->render();

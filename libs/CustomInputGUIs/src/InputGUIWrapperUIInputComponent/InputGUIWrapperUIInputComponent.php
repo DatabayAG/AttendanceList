@@ -6,14 +6,13 @@ use Closure;
 use ilCheckboxInputGUI;
 use ilDateTimeInputGUI;
 use ilFormPropertyGUI;
+use ILIAS\Data\Factory;
 use ILIAS\DI\Container;
 use ILIAS\Refinery\Constraint;
 use ILIAS\UI\Implementation\Component\Input\Field\FormInput;
-use ILIAS\UI\Implementation\Component\Input\Input;
 use ILIAS\UI\Implementation\Component\Input\NameSource;
 use ilRepositorySelector2InputGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Items\Items;
-use ILIAS\Data\Factory;
 
 class InputGUIWrapperUIInputComponent extends FormInput
 {
@@ -34,12 +33,10 @@ class InputGUIWrapperUIInputComponent extends FormInput
     }
 
 
-
     public function getByline(): ?string
     {
         return $this->input->getInfo();
     }
-
 
 
     public function getError(): ?string
@@ -48,12 +45,10 @@ class InputGUIWrapperUIInputComponent extends FormInput
     }
 
 
-
     public function getInput(): ilFormPropertyGUI
     {
         return $this->input;
     }
-
 
 
     public function setInput(ilFormPropertyGUI $input): void
@@ -62,12 +57,10 @@ class InputGUIWrapperUIInputComponent extends FormInput
     }
 
 
-
     public function getLabel(): string
     {
         return $this->input->getTitle();
     }
-
 
 
     public function getUpdateOnLoadCode(): Closure
@@ -78,12 +71,10 @@ class InputGUIWrapperUIInputComponent extends FormInput
     }
 
 
-
     public function getValue()
     {
         return Items::getValueFromItem($this->input);
     }
-
 
 
     public function isDisabled(): bool
@@ -92,12 +83,10 @@ class InputGUIWrapperUIInputComponent extends FormInput
     }
 
 
-
     public function isRequired(): bool
     {
         return $this->input->getRequired();
     }
-
 
 
     public function withByline(string $info): self
@@ -113,7 +102,6 @@ class InputGUIWrapperUIInputComponent extends FormInput
     }
 
 
-
     public function withDisabled(bool $disabled): self
     {
         $this->checkBoolArg("disabled", $disabled);
@@ -127,7 +115,6 @@ class InputGUIWrapperUIInputComponent extends FormInput
     }
 
 
-
     public function withError(string $error): self
     {
         $clone = clone $this;
@@ -137,7 +124,6 @@ class InputGUIWrapperUIInputComponent extends FormInput
 
         return $clone;
     }
-
 
 
     public function withLabel(string $label): self
@@ -151,7 +137,6 @@ class InputGUIWrapperUIInputComponent extends FormInput
 
         return $clone;
     }
-
 
 
     public function withNameFrom(NameSource $source, ?string $parent_name = null): self
@@ -195,12 +180,10 @@ class InputGUIWrapperUIInputComponent extends FormInput
     }
 
 
-
     protected function getConstraintForRequirement(): ?Constraint
     {
         return new InputGUIWrapperConstraint($this->input, $this->data_factory, $this->dic->language());
     }
-
 
 
     public function isClientSideValueOk($value): bool

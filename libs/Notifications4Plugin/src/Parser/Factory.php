@@ -14,12 +14,10 @@ final class Factory implements FactoryInterface
     protected static $instance = null;
 
 
-
     private function __construct()
     {
 
     }
-
 
 
     public static function getInstance(): FactoryInterface
@@ -30,7 +28,6 @@ final class Factory implements FactoryInterface
 
         return self::$instance;
     }
-
 
 
     public function twig(): twigParser

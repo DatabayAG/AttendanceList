@@ -5,7 +5,6 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Lan
 use ActiveRecord;
 use arConnector;
 use ilDateTime;
-
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
 /**
@@ -88,7 +87,6 @@ class NotificationLanguage extends ActiveRecord
 
 
     /**
-     * @param int              $primary_key_value
      * @deprecated
      */
     public function __construct(int $primary_key_value = 0, /*?*/ arConnector $connector = null)

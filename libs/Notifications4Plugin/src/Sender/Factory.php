@@ -14,12 +14,10 @@ final class Factory implements FactoryInterface
     protected static $instance = null;
 
 
-
     private function __construct()
     {
 
     }
-
 
 
     public static function getInstance(): FactoryInterface
@@ -32,19 +30,16 @@ final class Factory implements FactoryInterface
     }
 
 
-
     public function externalMail(string $from = "", $to = ""): ExternalMailSender
     {
         return new ExternalMailSender($from, $to);
     }
 
 
-
     public function internalMail($user_from = 0, $user_to = ""): InternalMailSender
     {
         return new InternalMailSender($user_from, $user_to);
     }
-
 
 
     public function vcalendar($user_from = 0, $to = "", string $method = vcalendarSender::METHOD_REQUEST, string $uid = "", int $startTime = 0, int $endTime = 0, int $sequence = 0): vcalendarSender

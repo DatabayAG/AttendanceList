@@ -48,7 +48,6 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     private Container $dic;
 
 
-
     public function __construct(string $title = "", string $post_var = "")
     {
         global $DIC;
@@ -57,7 +56,6 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
         self::init(); // TODO: Pass $plugin
     }
-
 
 
     public static function init(?ilPlugin $plugin = null): void
@@ -81,13 +79,11 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     }
 
 
-
     public function addInput(ilFormPropertyGUI $input): void
     {
         $this->inputs[] = $input;
         $this->inputs_generated = null;
     }
-
 
 
     public function checkInput(): bool
@@ -171,12 +167,10 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     }
 
 
-
     public function getShowInputLabel(): int
     {
         return $this->show_input_label;
     }
-
 
 
     public function setShowInputLabel(int $show_input_label): void
@@ -185,19 +179,16 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     }
 
 
-
     public function getTableFilterHTML(): string
     {
         return $this->render();
     }
 
 
-
     public function getToolbarHTML(): string
     {
         return $this->render();
     }
-
 
 
     public function getValue(bool $need_one_line_at_least = false): array
@@ -212,9 +203,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     }
 
 
-    /**
-     * @param array $value
-     */
+
     public function setValue(array $value): void
     {
         if (is_array($value)) {
@@ -223,7 +212,6 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
             $this->value = [];
         }
     }
-
 
 
     public function insert(ilTemplate $tpl): void
@@ -236,19 +224,16 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     }
 
 
-
     public function isShowSort(): bool
     {
         return $this->show_sort;
     }
 
 
-
     public function setShowSort(bool $show_sort): void
     {
         $this->show_sort = $show_sort;
     }
-
 
 
     public function render(): string
@@ -322,9 +307,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     }
 
 
-    /**
-     * @param array $values
-     */
+
     public function setValueByArray(array $values): void
     {
         $this->setValue($values[$this->getPostVar()]);

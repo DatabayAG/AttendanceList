@@ -5,7 +5,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TabsInputGUI;
 use ilFormPropertyGUI;
 use ilTableFilterItem;
 use ilTemplate;
-use ilTextInputGUI;
 use ilToolbarItem;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Items\Items;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
@@ -34,14 +33,12 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     protected $value = [];
 
 
-
     public function __construct(string $title = "", string $post_var = "")
     {
         parent::__construct($title, $post_var);
 
         self::init(); // TODO: Pass $plugin
     }
-
 
 
     public static function init(?ilPlugin $plugin = null): void
@@ -63,7 +60,6 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     }
 
 
-
     public function __clone()
     {
         $this->tabs = array_map(function (TabsInputGUITab $tab): TabsInputGUITab {
@@ -72,12 +68,10 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     }
 
 
-
     public function addTab(TabsInputGUITab $tab): void
     {
         $this->tabs[] = $tab;
     }
-
 
 
     public function checkInput(): bool
@@ -127,12 +121,10 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     }
 
 
-
     public function setShowInputLabel(int $show_input_label): void
     {
         $this->show_input_label = $show_input_label;
     }
-
 
 
     public function getTableFilterHTML(): string
@@ -159,12 +151,10 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     }
 
 
-
     public function getToolbarHTML(): string
     {
         return $this->render();
     }
-
 
 
     public function getValue(): array
@@ -173,9 +163,7 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     }
 
 
-    /**
-     * @param array $value
-     */
+
     public function setValue(array $value): void
     {
         if (is_array($value)) {
@@ -186,7 +174,6 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     }
 
 
-
     public function insert(ilTemplate $tpl): void
     {
         $html = $this->render();
@@ -195,7 +182,6 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
         $tpl->setVariable("PROP_GENERIC", $html);
         $tpl->parseCurrentBlock();
     }
-
 
 
     public function render(): string
@@ -254,9 +240,7 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     }
 
 
-    /**
-     * @param array $values
-     */
+
     public function setValueByArray(array $values): void
     {
         $this->setValue($values[$this->getPostVar()]);

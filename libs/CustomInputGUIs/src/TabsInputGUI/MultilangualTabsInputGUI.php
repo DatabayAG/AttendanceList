@@ -7,12 +7,10 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\PropertyFor
 
 class MultilangualTabsInputGUI
 {
-
     private function __construct()
     {
 
     }
-
 
 
     public static function generate(array $items, bool $default_language = false, bool $default_required = true): array
@@ -68,7 +66,6 @@ class MultilangualTabsInputGUI
             $tabs->addTab($tab);
         }
     }
-
 
 
     public static function getLanguages(bool $default = false): array
@@ -127,7 +124,7 @@ class MultilangualTabsInputGUI
 
 
     /**
-     * @param mixed       $value
+     * @param mixed $value
      */
     public static function setValueForLang(array &$values, $value, string $lang_key, string $sub_key = null): void
     {

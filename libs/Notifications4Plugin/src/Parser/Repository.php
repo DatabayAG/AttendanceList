@@ -20,12 +20,10 @@ final class Repository implements RepositoryInterface
     protected $parsers = [];
 
 
-
     private function __construct()
     {
         $this->addParser($this->factory()->twig());
     }
-
 
 
     public static function getInstance(): RepositoryInterface
@@ -38,12 +36,10 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function addParser(Parser $parser): void
     {
         $this->parsers[$parser->getClass()] = $parser;
     }
-
 
 
     public function dropTables(): void
@@ -52,12 +48,10 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function factory(): FactoryInterface
     {
         return Factory::getInstance();
     }
-
 
 
     public function getParserByClass(string $parser_class): Parser
@@ -70,12 +64,10 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function getParserForNotification(NotificationInterface $notification): Parser
     {
         return $this->getParserByClass($notification->getParser());
     }
-
 
 
     public function getPossibleParsers(): array
@@ -84,19 +76,16 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function installTables(): void
     {
 
     }
 
 
-
     public function parseSubject(Parser $parser, NotificationInterface $notification, array $placeholders = [], ?string $language = null): string
     {
         return $parser->parse($notification->getSubject($language), $placeholders, $notification->getParserOptions());
     }
-
 
 
     public function parseText(Parser $parser, NotificationInterface $notification, array $placeholders = [], ?string $language = null): string

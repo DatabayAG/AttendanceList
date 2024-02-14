@@ -12,9 +12,6 @@ use ilTemplate;
 use ilToolbarItem;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
-
-
-
 use Throwable;
 
 class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToolbarItem
@@ -30,7 +27,6 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     private Container $dic;
 
 
-
     public function __construct(Input $input, string $post_var = "")
     {
         global $DIC;
@@ -43,7 +39,6 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
 
         self::init(); // TODO: Pass $plugin
     }
-
 
 
     public static function init(?ilPlugin $plugin = null): void
@@ -65,7 +60,6 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-
     public function checkInput(): bool
     {
         try {
@@ -76,7 +70,6 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
             return false;
         }
     }
-
 
 
     public function getAlert(): string
@@ -94,12 +87,10 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-
     public function getInfo(): string
     {
         return $this->input->getByline();
     }
-
 
 
     public function getInput(): Input
@@ -108,12 +99,10 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-
     public function setInput(Input $input): void
     {
         $this->input = $input;
     }
-
 
 
     public function getPostVar(): string
@@ -122,12 +111,10 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-
     public function getRequired(): bool
     {
         return $this->input->isRequired();
     }
-
 
 
     public function getTableFilterHTML(): string
@@ -136,12 +123,10 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-
     public function getTitle(): string
     {
         return $this->input->getLabel();
     }
-
 
 
     public function getToolbarHTML(): string
@@ -159,7 +144,6 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-
     public function insert(ilTemplate $tpl): void
     {
         $html = $this->render();
@@ -170,7 +154,6 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-
     public function render(): string
     {
         $tpl = new Template(__DIR__ . "/templates/input.html");
@@ -179,7 +162,6 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
 
         return $tpl->get();
     }
-
 
 
     public function setAlert(string $error): void
@@ -197,12 +179,10 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-
     public function setInfo(string $info): void
     {
         $this->input = $this->input->withByline($info);
     }
-
 
 
     public function setPostVar(string $post_var): void
@@ -211,12 +191,10 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-
     public function setRequired(bool $required): void
     {
         $this->input = $this->input->withRequired($required);
     }
-
 
 
     public function setTitle(string $title): void
@@ -238,9 +216,7 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     }
 
 
-    /**
-     * @param array $values
-     */
+
     public function setValueByArray(array $values): void
     {
         if (isset($values[$this->getPostVar()])) {

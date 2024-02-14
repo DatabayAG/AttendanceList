@@ -22,7 +22,6 @@ final class Waiter
     protected static $init = false;
 
 
-
     private function __construct()
     {
     }

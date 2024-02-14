@@ -34,14 +34,12 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
     private Container $dic;
 
 
-
     public function __construct(string $title = "", string $post_var = "")
     {
         global $DIC;
         $this->dic = $DIC;
         parent::__construct($title, $post_var);
     }
-
 
 
     public function checkInput(): bool
@@ -78,7 +76,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
     }
 
 
-
     public function getJSOnLoadCode(): string
     {
         $screenshot_tpl = $this->getPlugin()->template(__DIR__ . "/templates/screenshot.html", true, true, false);
@@ -91,7 +88,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
                 ->translate("page_screenshot", self::LANG_MODULE)) . ';
 		il.ScreenshotsInputGUI.SCREENSHOT_TEMPLATE = ' . json_encode(self::output()->getHTML($screenshot_tpl)) . ';';
     }
-
 
 
     public function getPlugin(): ilPlugin
@@ -109,7 +105,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 
         return $this->screenshots;
     }
-
 
 
     public function init(): void
@@ -132,7 +127,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
     }
 
 
-
     public function insert(ilTemplate $tpl): void
     {
         $html = $this->render();
@@ -141,7 +135,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
         $tpl->setVariable("PROP_GENERIC", $html);
         $tpl->parseCurrentBlock();
     }
-
 
 
     public function render(): string
@@ -162,18 +155,14 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
     }
 
 
-    /**
-     * @param string $post_var
-     */
+
     public function setPostVar(string $post_var): void
     {
         $this->postvar = $post_var;
     }
 
 
-    /**
-     * @param string $title
-     */
+
     public function setTitle(string $title): void
     {
         $this->title = $title;
@@ -191,7 +180,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 
 
     /**
-     * @param array $values
      * @throws ilFormException
      */
     public function setValueByArray(array $values): void
@@ -200,14 +188,12 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
     }
 
 
-
     public function withPlugin(ilPlugin $plugin): self
     {
         $this->plugin = $plugin;
 
         return $this;
     }
-
 
 
     protected function processScreenshots(): void

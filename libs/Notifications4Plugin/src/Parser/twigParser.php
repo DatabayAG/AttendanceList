@@ -2,7 +2,6 @@
 
 namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser;
 
-use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\NotificationsCtrl;
 use Twig_Environment;
 use Twig_Error;
 use Twig_Loader_String;
@@ -13,12 +12,10 @@ class twigParser extends AbstractParser
     public const NAME = "twig";
 
 
-
     public function __construct()
     {
         parent::__construct();
     }
-
 
 
     public function getOptionsFields(): array

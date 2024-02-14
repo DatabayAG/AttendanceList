@@ -19,7 +19,6 @@ class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem
     private Container $dic;
 
 
-
     public function __construct(string $a_title, string $a_postvar)
     {
         global $DIC;
@@ -30,12 +29,10 @@ class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem
     }
 
 
-
     public function checkInput(): bool
     {
         return ($_POST[$this->getPostVar()] == null) || (count($_POST[$this->getPostVar()]) <= 7);
     }
-
 
 
     public function getTableFilterHTML(): string
@@ -46,21 +43,17 @@ class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem
     }
 
 
-
     public function getValue(): array
     {
         return $this->value;
     }
 
 
-    /**
-     * @param array $value
-     */
+
     public function setValue(array $value): void
     {
         $this->value = $value;
     }
-
 
 
     public function insert(ilTemplate $tpl): void
@@ -71,7 +64,6 @@ class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem
         $tpl->setVariable("PROP_GENERIC", $html);
         $tpl->parseCurrentBlock();
     }
-
 
 
     public function render(): string
@@ -97,9 +89,7 @@ class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem
     }
 
 
-    /**
-     * @param array $values
-     */
+
     public function setValueByArray(array $values): void
     {
         $this->setValue($values[$this->getPostVar()] ? $values[$this->getPostVar()] : []);

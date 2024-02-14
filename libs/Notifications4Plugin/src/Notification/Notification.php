@@ -3,12 +3,10 @@
 namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification;
 
 use ActiveRecord;
-use arConnector;
 use ilDateTime;
 use ILIAS\DI\Container;
 use ILIAS\UI\Component\Component;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TabsInputGUI\MultilangualTabsInputGUI;
-
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser\twigParser;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
@@ -143,12 +141,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function getConnectorContainerName(): string
     {
         return self::getTableName();
     }
-
 
 
     public function getCreatedAt(): ilDateTime
@@ -157,12 +153,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function setCreatedAt(ilDateTime $created_at): void
     {
         $this->created_at = $created_at;
     }
-
 
 
     public function getDescription(): string
@@ -171,12 +165,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function setDescription(string $description): void
     {
         $this->description = $description;
     }
-
 
 
     public function getId(): int
@@ -185,12 +177,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function setId(int $id): void
     {
         $this->id = $id;
     }
-
 
 
     public function getName(): string
@@ -199,12 +189,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function setName(string $name): void
     {
         $this->name = $name;
     }
-
 
 
     public function getParser(): string
@@ -213,12 +201,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function setParser(string $parser): void
     {
         $this->parser = $parser;
     }
-
 
 
     public function getParserOption(string $key)
@@ -227,12 +213,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function getParserOptions(): array
     {
         return $this->parser_options;
     }
-
 
 
     public function setParserOptions(array $parser_options = self::DEFAULT_PARSER_OPTIONS): void
@@ -245,12 +229,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function getSubject(?string $lang_key = null, bool $use_default_if_not_set = true): string
     {
         return (string) MultilangualTabsInputGUI::getValueForLang($this->subject, $lang_key, "subject", $use_default_if_not_set);
     }
-
 
 
     public function setSubject(string $subject, string $lang_key): void
@@ -259,12 +241,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function getSubjects(): array
     {
         return $this->subject;
     }
-
 
 
     public function getText(?string $lang_key = null, bool $use_default_if_not_set = true): string
@@ -273,12 +253,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function setText(string $text, string $lang_key): void
     {
         MultilangualTabsInputGUI::setValueForLang($this->text, $text, $lang_key, "text");
     }
-
 
 
     public function getTexts(): array
@@ -287,12 +265,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function getTitle(): string
     {
         return $this->title;
     }
-
 
 
     public function setTitle(string $title): void
@@ -301,12 +277,10 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function getUpdatedAt(): ilDateTime
     {
         return $this->updated_at;
     }
-
 
 
     public function setUpdatedAt(ilDateTime $updated_at): void
@@ -315,19 +289,16 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
     public function setParserOption(string $key, $value): void
     {
         $this->parser_options[$key] = $value;
     }
 
 
-
     public function setSubjects(array $subjects): void
     {
         $this->subject = $subjects;
     }
-
 
 
     public function setTexts(array $texts): void
@@ -338,7 +309,6 @@ class Notification extends ActiveRecord implements NotificationInterface
 
     /**
      * @param string $field_name
-     * @return bool|string|null
      */
     public function sleep($field_name): bool|string|null
     {
@@ -357,7 +327,6 @@ class Notification extends ActiveRecord implements NotificationInterface
 
     /**
      * @param string $field_name
-     * @param $field_value
      * @return mixed|null
      */
     public function wakeUp($field_name, $field_value): mixed

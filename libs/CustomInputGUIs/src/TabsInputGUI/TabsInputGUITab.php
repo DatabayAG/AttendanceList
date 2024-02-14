@@ -33,13 +33,11 @@ class TabsInputGUITab
     protected $title = "";
 
 
-
     public function __construct(string $title = "", string $post_var = "")
     {
         $this->title = $title;
         $this->post_var = $post_var;
     }
-
 
 
     public function __clone()
@@ -52,7 +50,6 @@ class TabsInputGUITab
     }
 
 
-
     public function addInput(ilFormPropertyGUI $input): void
     {
         $this->inputs[] = $input;
@@ -60,12 +57,10 @@ class TabsInputGUITab
     }
 
 
-
     public function getInfo(): string
     {
         return $this->info;
     }
-
 
 
     public function setInfo(string $info): void
@@ -111,12 +106,10 @@ class TabsInputGUITab
     }
 
 
-
     public function getPostVar(): string
     {
         return $this->post_var;
     }
-
 
 
     public function setPostVar(string $post_var): void
@@ -125,12 +118,10 @@ class TabsInputGUITab
     }
 
 
-
     public function getTitle(): string
     {
         return $this->title;
     }
-
 
 
     public function setTitle(string $title): void
@@ -139,12 +130,10 @@ class TabsInputGUITab
     }
 
 
-
     public function isActive(): bool
     {
         return $this->active;
     }
-
 
 
     public function setActive(bool $active): void

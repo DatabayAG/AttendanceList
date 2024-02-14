@@ -5,7 +5,6 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser;
 use ILIAS\UI\Implementation\Component\Input\Input;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 
-
 interface Parser
 {
     /**
@@ -20,13 +19,10 @@ interface Parser
     public const NAME = "";
 
 
-
     public function getClass(): string;
 
 
-
     public function getDocLink(): string;
-
 
 
     public function getName(): string;

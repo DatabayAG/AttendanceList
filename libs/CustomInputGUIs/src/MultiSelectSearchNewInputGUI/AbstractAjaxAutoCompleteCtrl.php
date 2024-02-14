@@ -14,14 +14,12 @@ abstract class AbstractAjaxAutoCompleteCtrl
     private Container $dic;
 
 
-
     public function __construct(?array $skip_ids = null)
     {
         global $DIC;
         $this->dic = $DIC;
         $this->skip_ids = $skip_ids;
     }
-
 
 
     public function executeCommand(): void
@@ -45,20 +43,16 @@ abstract class AbstractAjaxAutoCompleteCtrl
     }
 
 
-
     abstract public function fillOptions(array $ids): array;
 
 
-
     abstract public function searchOptions(?string $search = null): array;
-
 
 
     public function validateOptions(array $ids): bool
     {
         return (count($this->skipIds($ids)) === count($this->fillOptions($ids)));
     }
-
 
 
     protected function ajaxAutoComplete(): void
@@ -76,7 +70,6 @@ abstract class AbstractAjaxAutoCompleteCtrl
 
         self::output()->outputJSON(["results" => $options]);
     }
-
 
 
     protected function skipIds(array $ids): array

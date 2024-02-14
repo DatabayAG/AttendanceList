@@ -15,6 +15,7 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4Pl
 final class Repository implements RepositoryInterface
 {
     use Notifications4PluginTrait;
+
     /**
      * @var RepositoryInterface|null
      */
@@ -33,12 +34,10 @@ final class Repository implements RepositoryInterface
     protected $table_name_prefix = "";
 
 
-
     private function __construct()
     {
 
     }
-
 
 
     public static function getInstance(): RepositoryInterface
@@ -51,14 +50,12 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function dropTables(): void
     {
         $this->notifications()->dropTables();
         $this->parser()->dropTables();
         $this->sender()->dropTables();
     }
-
 
 
     public function getPlaceholderTypes(): array
@@ -71,7 +68,6 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function getPlugin(): ilPlugin
     {
         if (empty($this->plugin)) {
@@ -80,7 +76,6 @@ final class Repository implements RepositoryInterface
 
         return $this->plugin;
     }
-
 
 
     public function getTableNamePrefix(): string
@@ -93,7 +88,6 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function installTables(): void
     {
         $this->notifications()->installTables();
@@ -102,12 +96,10 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function notifications(): NotificationsRepositoryInterface
     {
         return NotificationsRepository::getInstance();
     }
-
 
 
     public function parser(): ParserRepositoryInterface
@@ -116,12 +108,10 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function sender(): SenderRepositoryInterface
     {
         return SenderRepository::getInstance();
     }
-
 
 
     public function withPlaceholderTypes(array $placeholder_types): RepositoryInterface
@@ -132,14 +122,12 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function withPlugin(ilPlugin $plugin): RepositoryInterface
     {
         $this->plugin = $plugin;
 
         return $this;
     }
-
 
 
     public function withTableNamePrefix(string $table_name_prefix): RepositoryInterface

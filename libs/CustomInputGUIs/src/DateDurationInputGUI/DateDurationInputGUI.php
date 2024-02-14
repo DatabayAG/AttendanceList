@@ -105,7 +105,6 @@ class DateDurationInputGUI extends ilDateDurationInputGUI
     }
 
 
-
     public function getValue(): array
     {
         $start = $this->getStart() ? $this->getStart()->get(IL_CAL_UNIX) : 0;

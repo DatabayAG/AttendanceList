@@ -15,12 +15,10 @@ final class Repository implements RepositoryInterface
     protected static $instance = null;
 
 
-
     private function __construct()
     {
 
     }
-
 
 
     public static function getInstance(): RepositoryInterface
@@ -33,12 +31,10 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function dropTables(): void
     {
 
     }
-
 
 
     public function factory(): FactoryInterface
@@ -47,12 +43,10 @@ final class Repository implements RepositoryInterface
     }
 
 
-
     public function installTables(): void
     {
 
     }
-
 
 
     public function send(Sender $sender, NotificationInterface $notification, array $placeholders = [], ?string $language = null): void

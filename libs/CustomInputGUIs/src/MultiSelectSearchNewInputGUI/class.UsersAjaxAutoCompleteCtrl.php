@@ -21,7 +21,6 @@ class UsersAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
     }
 
 
-
     public function fillOptions(array $ids): array
     {
         return $this->formatUsers($this->dic->database()->fetchAll($this->dic->database()->queryF('
@@ -35,12 +34,10 @@ AND ' . $this->dic
     }
 
 
-
     public function searchOptions(?string $search = null): array
     {
         return $this->formatUsers(ilObjUser::searchUsers($search));
     }
-
 
 
     protected function formatUsers(array $users): array

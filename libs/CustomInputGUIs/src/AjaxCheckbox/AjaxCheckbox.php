@@ -24,7 +24,6 @@ class AjaxCheckbox
     }
 
 
-
     public static function init(ilPlugin $plugin = null): void
     {
         if (self::$init === false) {
@@ -46,19 +45,16 @@ class AjaxCheckbox
     }
 
 
-
     public function getAjaxChangeLink(): string
     {
         return $this->ajax_change_link;
     }
 
 
-
     public function isChecked(): bool
     {
         return $this->checked;
     }
-
 
 
     public function render(): string
@@ -79,14 +75,12 @@ class AjaxCheckbox
     }
 
 
-
     public function withAjaxChangeLink(string $ajax_change_link): self
     {
         $this->ajax_change_link = $ajax_change_link;
 
         return $this;
     }
-
 
 
     public function withChecked(bool $checked): self

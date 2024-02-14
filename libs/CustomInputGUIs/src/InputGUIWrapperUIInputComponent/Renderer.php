@@ -24,7 +24,6 @@ class Renderer extends AbstractRenderer
     }
 
 
-
     protected function renderInputField(Template $tpl, Input $input, $id, RendererInterface $default_renderer): string
     {
         return $this->renderInput($tpl, $input);

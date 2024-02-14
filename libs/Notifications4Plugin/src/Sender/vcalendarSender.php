@@ -278,7 +278,8 @@ class vcalendarSender implements Sender
 
         $mailerReflClass = new ReflectionClass($this->mailer);
         $sendInternalMailReflMethod = $mailerReflClass->getMethod("sendInternalMail");
-        $sendInternalMailReflMethod->invoke($this->mailer,
+        $sendInternalMailReflMethod->invoke(
+            $this->mailer,
             $sent_folder_id,
             $this->getUserFrom(),
             "",

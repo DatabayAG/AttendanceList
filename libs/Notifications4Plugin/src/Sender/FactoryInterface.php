@@ -4,7 +4,6 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender;
 
 use ilObjUser;
 
-
 interface FactoryInterface
 {
     /**
@@ -22,7 +21,7 @@ interface FactoryInterface
 
     /**
      * @param int|string|ilObjUser $user_from
-     * @param string|array         $to
+     * @param string|array $to
      */
     public function vcalendar($user_from = 0, $to = "", string $method = vcalendarSender::METHOD_REQUEST, string $uid = "", int $startTime = 0, int $endTime = 0, int $sequence = 0): vcalendarSender;
 }

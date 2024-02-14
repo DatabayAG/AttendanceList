@@ -12,12 +12,10 @@ class UIInputComponentWrapperNameSource implements NameSource
     protected $post_var;
 
 
-
     public function __construct(string $post_var)
     {
         $this->post_var = $post_var;
     }
-
 
 
     public function getNewName(): string

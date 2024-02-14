@@ -3,7 +3,6 @@
 namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI;
 
 use Closure;
-use ilAttendanceListPlugin;
 use ilFormPropertyGUI;
 use ilFormSectionHeaderGUI;
 use ILIAS\DI\Container;
@@ -89,7 +88,6 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
 
     /**
-     * @param object $parent
      * @deprecated
      */
     public function __construct(object $parent)
@@ -148,25 +146,25 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
     /**
      * @deprecated
      */
-    abstract protected function initCommands(): void ;
+    abstract protected function initCommands(): void;
 
 
     /**
      * @deprecated
      */
-    abstract protected function initFields(): void ;
+    abstract protected function initFields(): void;
 
 
     /**
      * @deprecated
      */
-    abstract protected function initId(): void ;
+    abstract protected function initId(): void;
 
 
     /**
      * @deprecated
      */
-    abstract protected function initTitle(): void ;
+    abstract protected function initTitle(): void;
 
 
     /**
@@ -187,10 +185,10 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
 
     /**
-     * @param mixed  $value
+     * @param mixed $value
      * @deprecated
      */
-    abstract protected function storeValue(string $key, $value): void ;
+    abstract protected function storeValue(string $key, $value): void;
 
 
     /**

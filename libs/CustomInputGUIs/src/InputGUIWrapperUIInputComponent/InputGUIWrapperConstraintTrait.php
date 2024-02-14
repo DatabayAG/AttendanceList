@@ -6,10 +6,8 @@ use ilFormPropertyGUI;
 use ILIAS\Data\Factory as DataFactory;
 use ilLanguage;
 
-
 trait InputGUIWrapperConstraintTrait
 {
-
     public function __construct(ilFormPropertyGUI $input, DataFactory $data_factory, ilLanguage $lng)
     {
         parent::__construct(

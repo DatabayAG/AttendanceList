@@ -17,9 +17,6 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\PropertyFor
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\UIInputComponentWrapperInputGUI\UIInputComponentWrapperInputGUI;
-
-
-
 use TypeError;
 
 /**
@@ -36,16 +33,15 @@ final class Items
     protected static $init = false;
 
 
-
     private function __construct()
     {
     }
 
 
     /**
-     * @param string                              $key
+     * @param string $key
      * @param ilPropertyFormGUI|ilFormPropertyGUI $parent_item
-     * @param PropertyFormGUI|TableGUI            $parent
+     * @param PropertyFormGUI|TableGUI $parent
      * @return ilFormPropertyGUI|ilFormSectionHeaderGUI|ilRadioOption
      * @deprecated
      */
@@ -161,7 +157,6 @@ final class Items
 
 
     /**
-     * @param object $object
      * @return mixed
      */
     public static function getter(object $object, string $property)
@@ -176,7 +171,6 @@ final class Items
 
         return null;
     }
-
 
 
     public static function init(?ilPlugin $plugin = null): void
@@ -255,7 +249,7 @@ final class Items
 
     /**
      * @param ilFormPropertyGUI|ilFormSectionHeaderGUI|ilRadioOption $item
-     * @param mixed                                                  $value
+     * @param mixed $value
      * @deprecated
      */
     public static function setValueToItem($item, $value): void
@@ -297,8 +291,7 @@ final class Items
 
 
     /**
-     * @param object $object
-     * @param mixed  $value
+     * @param mixed $value
      * @return mixed
      */
     public static function setter(object $object, string $property, $value)
@@ -319,7 +312,6 @@ final class Items
 
         return $res;
     }
-
 
 
     public static function strToCamelCase(string $string): string

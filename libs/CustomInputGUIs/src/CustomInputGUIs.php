@@ -12,12 +12,10 @@ final class CustomInputGUIs
     protected static $instance = null;
 
 
-
     private function __construct()
     {
 
     }
-
 
 
     public static function getInstance(): self
@@ -28,7 +26,6 @@ final class CustomInputGUIs
 
         return self::$instance;
     }
-
 
 
     public function viewControlMode(): ViewControlModeUI

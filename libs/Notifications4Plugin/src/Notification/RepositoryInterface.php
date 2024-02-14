@@ -2,7 +2,6 @@
 
 namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification;
 
-
 interface RepositoryInterface
 {
     public function deleteNotification(NotificationInterface $notification): void;

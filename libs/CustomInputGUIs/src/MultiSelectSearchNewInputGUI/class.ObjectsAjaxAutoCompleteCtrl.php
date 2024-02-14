@@ -20,8 +20,7 @@ class ObjectsAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
     private Container $dic;
 
 
-    /**
-     */
+
     public function __construct(string $type, bool $ref_id = false, /*?*/ array $skip_ids = null)
     {
         global $DIC;
@@ -31,7 +30,6 @@ class ObjectsAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
         $this->type = $type;
         $this->ref_id = $ref_id;
     }
-
 
 
     public function fillOptions(array $ids): array
@@ -50,7 +48,6 @@ AND ' . $this->dic
     }
 
 
-
     public function searchOptions(?string $search = null): array
     {
         $result = $this->dic->database()->queryF('
@@ -65,7 +62,6 @@ AND object_reference.deleted IS NULL
 
         return $this->formatObjects($this->dic->database()->fetchAll($result));
     }
-
 
 
     protected function formatObjects(array $objects): array

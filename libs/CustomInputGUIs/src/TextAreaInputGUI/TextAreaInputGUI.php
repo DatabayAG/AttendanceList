@@ -17,7 +17,6 @@ class TextAreaInputGUI extends ilTextAreaInputGUI
     protected $maxlength = 1000;
 
 
-
     public function customPrepare(): void
     {
         $this->addPlugin('latex');
@@ -50,12 +49,10 @@ class TextAreaInputGUI extends ilTextAreaInputGUI
     }
 
 
-
     public function getInlineStyle(): string
     {
         return $this->inline_style;
     }
-
 
 
     public function setInlineStyle(string $inline_style): void
@@ -64,19 +61,16 @@ class TextAreaInputGUI extends ilTextAreaInputGUI
     }
 
 
-
     public function getMaxlength(): int
     {
         return $this->maxlength;
     }
 
 
-
     public function setMaxlength(int $maxlength): void
     {
         $this->maxlength = $maxlength;
     }
-
 
 
     public function render(): string
