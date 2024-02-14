@@ -12,6 +12,8 @@ use ILIAS\Cron\Schedule\CronJobScheduleType;
 use ilLogger;
 use ilObjUser;
 use ilRbacReview;
+use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
+use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 use xaliAbsenceStatement;
 use xaliChecklist;
 use xaliChecklistEntry;
@@ -25,6 +27,7 @@ use xaliUserStatus;
  */
 class AttendanceListJob extends ilCronJob
 {
+    use Notifications4PluginTrait;
     public const CRON_JOB_ID = ilAttendanceListPlugin::PLUGIN_ID;
 
     public const DEBUG = false;
