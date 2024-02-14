@@ -9,10 +9,6 @@ use srag\DIC\AttendanceList\DICTrait;
 use xaliCron;
 
 /**
- * Class AttendanceListJob
- *
- * @package srag\Plugins\AttendanceList\Cron
- *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 class AttendanceListJob extends ilCronJob
