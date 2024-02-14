@@ -8,8 +8,6 @@ use ILIAS\UI\Implementation\Render\ResourceRegistry;
 use ILIAS\UI\Implementation\Render\Template;
 use ilTable2GUI;
 use ilTemplate;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
-use srag\Plugins\AttendanceList\Libs\DIC\Exception\DICException;
 
 abstract class AbstractRenderer extends Renderer
 {
@@ -67,7 +65,7 @@ abstract class AbstractRenderer extends Renderer
                     $html = $value;
                     break;
 
-                // Component instance
+                    // Component instance
                 case ($value instanceof Component):
                     if ($DIC->ctrl()->isAsynch()) {
                         $html = $DIC->ui()->renderer()->renderAsync($value);
@@ -76,13 +74,13 @@ abstract class AbstractRenderer extends Renderer
                     }
                     break;
 
-                // ilTable2GUI instance
+                    // ilTable2GUI instance
                 case ($value instanceof ilTable2GUI):
                     // Fix stupid broken ilTable2GUI (render has only header without rows)
                     $html = $value->getHTML();
                     break;
 
-                // GUI instance
+                    // GUI instance
                 case method_exists($value, "render"):
                     $html = $value->render();
                     break;
@@ -90,13 +88,13 @@ abstract class AbstractRenderer extends Renderer
                     $html = $value->getHTML();
                     break;
 
-                // Template instance
+                    // Template instance
                 case ($value instanceof ilTemplate):
                 case ($value instanceof Template):
                     $html = $value->get();
                     break;
 
-                // Not supported!
+                    // Not supported!
                 default:
                     throw new DICException("Class " . get_class($value) . " is not supported for output!", DICException::CODE_OUTPUT_INVALID_VALUE);
                     break;

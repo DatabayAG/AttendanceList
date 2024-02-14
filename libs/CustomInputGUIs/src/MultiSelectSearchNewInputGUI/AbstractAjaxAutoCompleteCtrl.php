@@ -3,7 +3,6 @@
 namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\MultiSelectSearchNewInputGUI;
 
 use ILIAS\DI\Container;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 abstract class AbstractAjaxAutoCompleteCtrl
 {

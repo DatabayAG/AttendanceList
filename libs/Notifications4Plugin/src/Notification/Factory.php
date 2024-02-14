@@ -6,7 +6,6 @@ use ilDateTime;
 
 use ilPluginConfigGUI;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Form\FormBuilder;
-use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Table\TableBuilder;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 use stdClass;
 

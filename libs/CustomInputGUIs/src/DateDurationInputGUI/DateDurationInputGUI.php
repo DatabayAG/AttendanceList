@@ -6,7 +6,6 @@ use ilCalendarUtil;
 use ilDateDurationInputGUI;
 use ilDateTime;
 use ILIAS\DI\Container;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 class DateDurationInputGUI extends ilDateDurationInputGUI
 {

@@ -13,7 +13,7 @@ use ILIAS\UI\Implementation\Component\Input\Input;
 use ILIAS\UI\Implementation\Component\Input\NameSource;
 use ilRepositorySelector2InputGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Items\Items;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
+use ILIAS\Data\Factory;
 
 class InputGUIWrapperUIInputComponent extends FormInput
 {
@@ -30,7 +30,7 @@ class InputGUIWrapperUIInputComponent extends FormInput
         $this->dic = $DIC;
         $this->input = $input;
 
-        parent::__construct(new \ILIAS\Data\Factory(), $this->dic->refinery(), "");
+        parent::__construct(new Factory(), $this->dic->refinery(), "");
     }
 
 

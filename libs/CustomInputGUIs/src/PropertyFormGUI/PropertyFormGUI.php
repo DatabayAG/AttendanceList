@@ -16,7 +16,6 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Exception\P
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Items\Items;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TabsInputGUI\TabsInputGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TabsInputGUI\TabsInputGUITab;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 /**
  *

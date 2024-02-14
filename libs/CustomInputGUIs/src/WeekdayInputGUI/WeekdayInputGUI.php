@@ -8,7 +8,6 @@ use ILIAS\DI\Container;
 use ilTableFilterItem;
 use ilTemplate;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem
 {

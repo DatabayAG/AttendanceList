@@ -5,7 +5,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\NumberInputGUI;
 use ilNumberInputGUI;
 use ilTableFilterItem;
 use ilToolbarItem;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 class NumberInputGUI extends ilNumberInputGUI implements ilTableFilterItem, ilToolbarItem
 {

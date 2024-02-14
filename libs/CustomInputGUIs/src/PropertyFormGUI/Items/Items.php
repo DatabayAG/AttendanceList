@@ -14,12 +14,13 @@ use ilUtil;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\HiddenInputGUI\HiddenInputGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Exception\PropertyFormGUIException;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\PropertyFormGUI;
+use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TableGUI\TableGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\UIInputComponentWrapperInputGUI\UIInputComponentWrapperInputGUI;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
-use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
-use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
+
+
+
 use TypeError;
 
 /**

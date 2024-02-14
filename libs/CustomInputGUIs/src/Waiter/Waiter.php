@@ -4,9 +4,7 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Waiter;
 
 use ilGlobalTemplateInterface;
 use ilTemplate;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
-use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
-use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
+use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
 
 final class Waiter
 {

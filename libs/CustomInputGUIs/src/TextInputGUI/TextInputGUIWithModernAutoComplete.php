@@ -5,9 +5,8 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TextInputGUI;
 use ILIAS\DI\Container;
 use iljQueryUtil;
 use ilUtil;
+use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
-use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
-use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 
 class TextInputGUIWithModernAutoComplete extends TextInputGUI
 {

@@ -4,8 +4,15 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification;
 
 require_once __DIR__ . "/../../../../vendor/autoload.php";
 
+use Generator;
+use ILIAS\Data\Order;
+use ILIAS\Data\Range;
 use ILIAS\DI\Container;
+use ILIAS\UI\Component\Table\DataRetrieval;
+use ILIAS\UI\Component\Table\DataRowBuilder;
+use ILIAS\UI\Renderer;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
+use ILIAS\UI\Factory;
 
 /**
  * Class NotificationsCtrl

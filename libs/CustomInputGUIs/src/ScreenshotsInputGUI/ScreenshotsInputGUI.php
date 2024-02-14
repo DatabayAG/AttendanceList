@@ -9,10 +9,8 @@ use ILIAS\DI\Container;
 use ILIAS\FileUpload\DTO\ProcessingStatus;
 use ILIAS\FileUpload\DTO\UploadResult;
 use ilTemplate;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
+use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
 use srag\Plugins\AttendanceList\Libs\DIC\Plugin\Pluginable;
-use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
-use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 
 class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 {

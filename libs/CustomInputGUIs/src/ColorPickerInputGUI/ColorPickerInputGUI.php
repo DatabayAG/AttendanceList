@@ -4,7 +4,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\ColorPickerInputGUI;
 
 use ilColorPickerInputGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 class ColorPickerInputGUI extends ilColorPickerInputGUI
 {

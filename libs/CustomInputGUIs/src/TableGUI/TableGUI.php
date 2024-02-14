@@ -13,7 +13,6 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\Items\Items
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\PropertyFormGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TableGUI\Exception\TableGUIException;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 /**
  *

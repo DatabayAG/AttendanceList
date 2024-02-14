@@ -7,11 +7,12 @@ use ILIAS\UI\Component\Component;
 use ILIAS\UI\Implementation\DefaultRenderer;
 use ILIAS\UI\Implementation\Render\ComponentRenderer;
 use ILIAS\UI\Implementation\Render\Loader;
+use ILIAS\UI\Implementation\Render\RendererFactory;
 use ILIAS\UI\Renderer;
 use Pimple\Container;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent\Renderer as InputGUIWrapperUIInputComponentRenderer;
-use srag\Plugins\AttendanceList\Libs\DIC\Loader\AbstractLoaderDetector;
+use ILIAS\Data\Factory;
 
 /**
  * Class CustomInputGUIsLoaderDetector

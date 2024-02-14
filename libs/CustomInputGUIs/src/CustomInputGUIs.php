@@ -3,7 +3,6 @@
 namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs;
 
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\ViewControlModeUI\ViewControlModeUI;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 final class CustomInputGUIs
 {

@@ -4,7 +4,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TabsInputGUI;
 
 use ilFormPropertyGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\PropertyFormGUI\PropertyFormGUI;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 class MultilangualTabsInputGUI
 {

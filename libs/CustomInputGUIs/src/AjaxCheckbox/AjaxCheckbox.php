@@ -2,11 +2,10 @@
 
 namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\AjaxCheckbox;
 
+use ilPlugin;
+use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Waiter\Waiter;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
-use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
-use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 
 class AjaxCheckbox
 {

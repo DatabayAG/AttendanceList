@@ -4,7 +4,6 @@ namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\ViewControlModeUI;
 
 use ILIAS\DI\Container;
 use ilSession;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 class ViewControlModeUI
 {

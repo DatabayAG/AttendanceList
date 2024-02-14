@@ -7,10 +7,8 @@ use ILIAS\DI\Container;
 use ilTableFilterItem;
 use ilTemplate;
 use ilToolbarItem;
+use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
-use srag\Plugins\AttendanceList\Libs\DIC\Plugin\PluginInterface;
-use srag\Plugins\AttendanceList\Libs\DIC\Version\PluginVersionParameter;
 
 class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToolbarItem
 {

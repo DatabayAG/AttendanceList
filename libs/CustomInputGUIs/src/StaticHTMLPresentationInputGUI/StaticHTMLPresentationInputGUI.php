@@ -6,7 +6,6 @@ use ilFormException;
 use ilFormPropertyGUI;
 use ilTemplate;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
-use srag\Plugins\AttendanceList\Libs\DIC\DICTrait;
 
 class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
 {

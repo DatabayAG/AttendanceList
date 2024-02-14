@@ -2,8 +2,6 @@
 
 namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification;
 
-use srag\Plugins\AttendanceList\Libs\DataTableUI\Component\Settings\Settings;
-
 /**
  * Interface RepositoryInterface
  *
