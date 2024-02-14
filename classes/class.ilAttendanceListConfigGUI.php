@@ -16,6 +16,12 @@
 declare(strict_types=1);
 
 use ILIAS\HTTP\Services;
+use ILIAS\HTTP\Wrapper\WrapperFactory;
+use ILIAS\Refinery\Factory;
+use srag\Plugins\AttendanceList\Cron\AttendanceListJob;
+use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\NotificationCtrl;
+use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\NotificationsCtrl;
+use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -29,6 +35,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
  */
 class ilAttendanceListConfigGUI extends ilPluginConfigGUI
 {
+    use Notifications4PluginTrait;
+
     public const SUBTAB_CONFIG = 'config';
     public const SUBTAB_ABSENCE_REASONS = 'absence_reasons';
     //const SUBTAB_NOTIFICATION_ABSENCE = NotificationsCtrl::TAB_NOTIFICATIONS . '_absence';

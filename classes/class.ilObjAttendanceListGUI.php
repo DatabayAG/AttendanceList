@@ -18,6 +18,7 @@
  *********************************************************************/
 
 declare(strict_types=1);
+use ILIAS\HTTP\Wrapper\WrapperFactory;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -45,7 +46,7 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
     protected ilRbacReview $rbacreview;
     protected ilObjUser $user;
     protected xaliSetting $setting;
-    private \ILIAS\HTTP\Wrapper\WrapperFactory $httpWrapper;
+    private WrapperFactory $httpWrapper;
 
 
     protected function afterConstructor(): void

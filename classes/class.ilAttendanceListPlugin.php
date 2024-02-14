@@ -16,6 +16,9 @@
 declare(strict_types=1);
 
 use ILIAS\DI\Container;
+use srag\Plugins\AttendanceList\Cron\AttendanceListJob;
+use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Loader\CustomInputGUIsLoaderDetector;
+use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -26,6 +29,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
  */
 class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
 {
+    use Notifications4PluginTrait;
+
     public const PLUGIN_ID = 'xali';
     public const PLUGIN_NAME = 'AttendanceList';
     public const PLUGIN_CLASS_NAME = self::class;

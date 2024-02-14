@@ -5,16 +5,28 @@ namespace srag\Plugins\AttendanceList\Cron;
 use ilAttendanceListPlugin;
 use ilCronJob;
 use ilCronJobResult;
-use srag\DIC\AttendanceList\DICTrait;
-use xaliCron;
+use ilCtrl;
+use ilDBInterface;
+use ILIAS;
+use ILIAS\Cron\Schedule\CronJobScheduleType;
+use ilLogger;
+use ilMail;
+use ilObject;
+use ilObjUser;
+use ilRbacReview;
+use xaliAbsenceStatement;
+use xaliChecklist;
+use xaliChecklistEntry;
+use xaliConfig;
+use xaliLastReminder;
+use xaliSetting;
+use xaliUserStatus;
 
 /**
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
 class AttendanceListJob extends ilCronJob
 {
-    use DICTrait;
-
     public const CRON_JOB_ID = ilAttendanceListPlugin::PLUGIN_ID;
     public const PLUGIN_CLASS_NAME = ilAttendanceListPlugin::class;
 

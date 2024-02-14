@@ -14,6 +14,8 @@
  *********************************************************************/
 
 declare(strict_types=1);
+use ILIAS\HTTP\Wrapper\WrapperFactory;
+use ILIAS\Refinery\Factory;
 
 /**
  * Class xaliOverviewUserTableGUI
@@ -27,8 +29,8 @@ class xaliOverviewUserTableGUI extends ilTable2GUI
     protected string|int $obj_id;
     protected ActiveRecord|null|xaliSetting $settings;
     protected bool $has_passed_students = false;
-    private \ILIAS\HTTP\Wrapper\WrapperFactory $httpWrapper;
-    private \ILIAS\Refinery\Factory $refinery;
+    private WrapperFactory $httpWrapper;
+    private Factory $refinery;
 
     public function __construct(xaliOverviewGUI $a_parent_obj, array $users, int $obj_id)
     {
