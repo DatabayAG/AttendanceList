@@ -21,7 +21,8 @@ Virtual attendance lists as repository objects in ILIAS. Some of the features:
   * [Requirements](#requirements)
   * [Table of contents](#table-of-contents)
   * [Installation](#installation)
-      * [AttendanceList](#attendancelist)
+  * [Usage](#usage)
+    * [Cronjob](#cronjob)
 <!-- TOC -->
 
 ---
