@@ -222,7 +222,6 @@ class InternalMailSender implements Sender
         $this->user_from = 0;
         $this->user_to = "";
         $this->bcc = "";
-        $this->bcc = "";
         $this->save_in_sent_box = true;
         $this->mailer = null;
 
@@ -241,7 +240,16 @@ class InternalMailSender implements Sender
 
         $this->mailer->setSaveInSentbox($this->isSaveInSentBox());
 
-        $errors = $this->mailer->sendMail($this->getUserTo(), $this->getCc(), $this->getBcc(), $this->getSubject(), $this->getMessage(), [], false);
+        $errors = $this->mailer->enqueue(
+            $this->getUserTo(),
+            $this->getCc(),
+            $this->getBcc(),
+            $this->getSubject(),
+            $this->getMessage(),
+            []
+        );
+
+        //$errors = $this->mailer->sendMail(, $this->getCc(), $this->getBcc(), $this->getSubject(), $this->getMessage(), [], false);
 
         if (!empty($errors)) {
             $error = $errors[0];
