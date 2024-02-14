@@ -66,9 +66,7 @@ final class Factory implements FactoryInterface
 
     public function newFormBuilderInstance(ilPluginConfigGUI $parentGui, NotificationInterface $notification): FormBuilder
     {
-        $form = new FormBuilder($parentGui, $notification);
-
-        return $form;
+        return new FormBuilder($parentGui, $notification);
     }
 
 

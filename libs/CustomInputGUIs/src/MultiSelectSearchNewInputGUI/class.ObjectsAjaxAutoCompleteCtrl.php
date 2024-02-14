@@ -28,7 +28,7 @@ class ObjectsAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
     public function __construct(string $type, bool $ref_id = false, /*?*/ array $skip_ids = null)
     {
         global $DIC;
-        $this->dic =$DIC;
+        $this->dic = $DIC;
         parent::__construct($skip_ids);
 
         $this->type = $type;

@@ -152,7 +152,9 @@ class NotificationCtrl
             sprintf(
                 self::notifications4plugin()->getPlugin()->txt("notifications4plugin_duplicated_notification"),
                 $cloned_notification->getTitle()
-            ), true);
+            ),
+            true
+        );
 
         $this->dic->ctrl()->redirect($this->parentGui, self::CMD_BACK);
     }

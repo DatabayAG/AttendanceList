@@ -10,18 +10,12 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Waiter\Waiter;
 class AjaxCheckbox
 {
     public const GET_PARAM_CHECKED = "checked";
-    /**
-     * @var bool
-     */
-    protected static $init = false;
-    /**
-     * @var string
-     */
-    protected $ajax_change_link = "";
-    /**
-     * @var bool
-     */
-    protected $checked = false;
+
+    protected static bool $init = false;
+
+    protected string $ajax_change_link = "";
+
+    protected bool $checked = false;
 
 
     /**
@@ -83,7 +77,7 @@ class AjaxCheckbox
             "ajax_change_link" => $this->ajax_change_link
         ];
 
-        $tpl->setVariableEscaped("CONFIG", base64_encode(json_encode($config)));
+        $tpl->setVariableEscaped("CONFIG", base64_encode(json_encode($config, JSON_THROW_ON_ERROR)));
 
         return $tpl->get();
     }
