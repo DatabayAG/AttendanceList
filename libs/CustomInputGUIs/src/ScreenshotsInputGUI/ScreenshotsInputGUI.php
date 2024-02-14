@@ -24,7 +24,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
      */
     protected $allowed_formats = ["bmp", "gif", "jpg", "png"];
     /**
-     * @var PluginInterface|null
+     * @var ilPlugin|null
      */
     protected $plugin = null;
     /**
@@ -98,7 +98,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 
 
 
-    public function getPlugin(): PluginInterface
+    public function getPlugin(): ilPlugin
     {
         return $this->plugin;
     }
@@ -209,7 +209,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 
 
 
-    public function withPlugin(PluginInterface $plugin): self
+    public function withPlugin(ilPlugin $plugin): self
     {
         $this->plugin = $plugin;
 

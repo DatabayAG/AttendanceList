@@ -187,7 +187,7 @@ final class Items
 
 
 
-    public static function init(/*?*/ PluginInterface $plugin = null): void
+    public static function init(?ilPlugin $plugin = null): void
     {
         if (self::$init === false) {
             global $DIC;

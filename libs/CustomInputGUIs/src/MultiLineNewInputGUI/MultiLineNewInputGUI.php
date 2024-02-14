@@ -44,7 +44,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
      * @var array
      */
     protected $value = [];
-    
+
     private Container $dic;
 
 
@@ -63,7 +63,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
 
 
-    public static function init(/*?*/ PluginInterface $plugin = null): void
+    public static function init(?ilPlugin $plugin = null): void
     {
         if (self::$init === false) {
             global $DIC;
