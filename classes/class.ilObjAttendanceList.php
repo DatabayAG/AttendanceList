@@ -130,7 +130,7 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
         return ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM;
     }
 
-    protected function doCloneObject(/*ilObjAttendanceList*/ $new_obj, /*int*/ $a_target_id, /*?int*/ $a_copy_id = null): void
+    protected function doCloneObject(ilObjAttendanceList|ilObject2 $new_obj, int $a_target_id, ?int $a_copy_id = null): void
     {
         /** @var xaliSetting $xaliSetting */
         $xaliSetting = xaliSetting::findOrGetInstance($this->id);
