@@ -43,7 +43,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
     {
         if (!self::$init_notifications) {
             self::$init_notifications = true;
-            //self::notifications4plugin()->withTableNamePrefix(self::PLUGIN_ID)->withPlugin(self::plugin());
+            self::notifications4plugin()->withTableNamePrefix(self::PLUGIN_ID)->withPlugin(self::getInstance());
         }
     }
 
@@ -89,6 +89,11 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
         return self::PLUGIN_NAME;
     }
 
+
+    public function exchangeUIRendererAfterInitialization(Container $dic): Closure
+    {
+        return CustomInputGUIsLoaderDetector::exchangeUIRendererAfterInitialization();
+    }
 
     protected function uninstallCustom(): void
     {

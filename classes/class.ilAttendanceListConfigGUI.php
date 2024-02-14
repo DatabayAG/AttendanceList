@@ -38,8 +38,8 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
 
     public const SUBTAB_CONFIG = 'config';
     public const SUBTAB_ABSENCE_REASONS = 'absence_reasons';
-    //const SUBTAB_NOTIFICATION_ABSENCE = NotificationsCtrl::TAB_NOTIFICATIONS . '_absence';
-    //const SUBTAB_NOTIFICATION_ABSENCE_REMINDER = NotificationsCtrl::TAB_NOTIFICATIONS . '_absence_reminder';
+    public const SUBTAB_NOTIFICATION_ABSENCE = NotificationsCtrl::TAB_NOTIFICATIONS . '_absence';
+    public const SUBTAB_NOTIFICATION_ABSENCE_REMINDER = NotificationsCtrl::TAB_NOTIFICATIONS . '_absence_reminder';
 
     public const CMD_STANDARD = 'configure';
     public const CMD_ADD_REASON = 'addReason';
@@ -90,66 +90,62 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
 
     public function performCommand($cmd): void
     {
-        $this->tabs->addSubTab(self::SUBTAB_CONFIG, $this->pl->txt('subtab_'
-            . self::SUBTAB_CONFIG), $this->ctrl->getLinkTarget($this, self::CMD_STANDARD));
+        $this->tabs->addSubTab(
+            self::SUBTAB_CONFIG,
+            $this->pl->txt('subtab_' . self::SUBTAB_CONFIG),
+            $this->ctrl->getLinkTarget($this, self::CMD_STANDARD)
+        );
 
-        $this->tabs->addSubTab(self::SUBTAB_ABSENCE_REASONS, $this->pl->txt('subtab_'
-            . self::SUBTAB_ABSENCE_REASONS), $this->ctrl->getLinkTarget($this, self::CMD_SHOW_REASONS));
+        $this->tabs->addSubTab(
+            self::SUBTAB_ABSENCE_REASONS,
+            $this->pl->txt('subtab_' . self::SUBTAB_ABSENCE_REASONS),
+            $this->ctrl->getLinkTarget($this, self::CMD_SHOW_REASONS)
+        );
 
-        //todo
-        /*
-        $this->ctrl->setParameterByClass(NotificationCtrl::class, NotificationCtrl::GET_PARAM_NOTIFICATION_ID, self::notifications4plugin()->notifications()
-            ->getNotificationByName(xaliChecklistEntry::NOTIFICATION_NAME)->getId());
-        $this->tabs->addSubTab(self::SUBTAB_NOTIFICATION_ABSENCE, $this->pl->txt('subtab_'
-            . self::SUBTAB_NOTIFICATION_ABSENCE), $this->ctrl->getLinkTargetByClass([NotificationsCtrl::class, NotificationCtrl::class], NotificationCtrl::CMD_EDIT_NOTIFICATION));
+        $this->ctrl->setParameterByClass(
+            self::class,
+            NotificationCtrl::GET_PARAM_NOTIFICATION_ID,
+            self::notifications4plugin()->notifications()->getNotificationByName(xaliChecklistEntry::NOTIFICATION_NAME)->getId()
+        );
+        $this->tabs->addSubTab(
+            self::SUBTAB_NOTIFICATION_ABSENCE,
+            $this->pl->txt('subtab_' . self::SUBTAB_NOTIFICATION_ABSENCE),
+            $this->ctrl->getLinkTargetByClass(self::class, NotificationCtrl::CMD_EDIT_NOTIFICATION)
+        );
 
-        $this->ctrl->setParameterByClass(NotificationCtrl::class, NotificationCtrl::GET_PARAM_NOTIFICATION_ID, self::notifications4plugin()->notifications()
-            ->getNotificationByName(xaliCron::NOTIFICATION_NAME)->getId());
-        $this->tabs->addSubTab(self::SUBTAB_NOTIFICATION_ABSENCE_REMINDER, $this->pl->txt('subtab_'
-            . self::SUBTAB_NOTIFICATION_ABSENCE_REMINDER), $this->ctrl->getLinkTargetByClass([NotificationsCtrl::class, NotificationCtrl::class], NotificationCtrl::CMD_EDIT_NOTIFICATION));
-        */
+        $this->ctrl->setParameterByClass(
+            self::class,
+            NotificationCtrl::GET_PARAM_NOTIFICATION_ID,
+            self::notifications4plugin()->notifications()->getNotificationByName(AttendanceListJob::NOTIFICATION_NAME)->getId()
+        );
+        $this->tabs->addSubTab(
+            self::SUBTAB_NOTIFICATION_ABSENCE_REMINDER,
+            $this->pl->txt('subtab_' . self::SUBTAB_NOTIFICATION_ABSENCE_REMINDER),
+            $this->ctrl->getLinkTargetByClass(self::class, NotificationCtrl::CMD_EDIT_NOTIFICATION)
+        );
 
-        switch ($this->ctrl->getNextClass($this)) {
-            /*case strtolower(NotificationsCtrl::class):
-                if ($this->ctrl->getCmd() === NotificationsCtrl::CMD_LIST_NOTIFICATIONS) {
-                    $this->ctrl->redirect($this, self::CMD_STANDARD);
+        if ((new NotificationCtrl($this))->handleCommand($cmd)) {
+            $notification = self::notifications4plugin()->notifications()->getNotificationById(intval(filter_input(INPUT_GET, NotificationCtrl::GET_PARAM_NOTIFICATION_ID)));
+            if ($notification !== null) {
+                switch ($notification->getName()) {
+                    case xaliChecklistEntry::NOTIFICATION_NAME:
+                        $this->tabs->activateSubTab(self::SUBTAB_NOTIFICATION_ABSENCE);
+                        break;
+                    case AttendanceListJob::NOTIFICATION_NAME:
+                        $this->tabs->activateSubTab(self::SUBTAB_NOTIFICATION_ABSENCE_REMINDER);
+                        break;
 
-                    return;
-                }
-                $notification = self::notifications4plugin()->notifications()->getNotificationById(intval(filter_input(INPUT_GET, NotificationCtrl::GET_PARAM_NOTIFICATION_ID)));
-                if ($notification !== null) {
-                    switch ($notification->getName()) {
-                        case xaliChecklistEntry::NOTIFICATION_NAME:
-                            $this->tabs->activateSubTab(self::SUBTAB_NOTIFICATION_ABSENCE);
-                            self::notifications4plugin()->withPlaceholderTypes([
-                                'user'    => 'object ' . ilObjUser::class,
-                                'absence' => 'string'
-                            ]);
-                            break;
-
-                        case xaliCron::NOTIFICATION_NAME:
-                            $this->tabs->activateSubTab(self::SUBTAB_NOTIFICATION_ABSENCE_REMINDER);
-                            self::notifications4plugin()->withPlaceholderTypes([
-                                'user'          => 'object ' . ilObjUser::class,
-                                'open_absences' => 'string'
-                            ]);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-
-                $this->ctrl->forwardCommand(new NotificationsCtrl());
-                break;*/
-            default:
-                // this is redirect-abuse and should be somehow
-                switch ($cmd) {
-                    case self::CMD_SHOW_REASONS:
-                        $this->addToolbarButton();
+                    default:
                         break;
                 }
-                $this->{$cmd}();
+            }
+        } elseif ((new NotificationsCtrl())->handleCommand($cmd)) {
+            //Do nothing special
+        } else {
+            if ($cmd === self::CMD_SHOW_REASONS) {
+                $this->addToolbarButton();
+            }
+            $this->{$cmd}();
         }
     }
 
