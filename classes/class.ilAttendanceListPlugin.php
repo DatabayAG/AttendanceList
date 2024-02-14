@@ -27,7 +27,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
  *
  * @author            Theodor Truffer <tt@studer-raimann.ch>
  */
-class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
+class ilAttendanceListPlugin extends ilRepositoryObjectPlugin implements ilCronJobProvider
 {
     use Notifications4PluginTrait;
 
@@ -105,7 +105,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
         $this->db->dropTable(xaliChecklist::DB_TABLE_NAME, false);
         $this->db->dropTable(xaliChecklistEntry::DB_TABLE_NAME, false);
         $this->db->dropTable(xaliUserStatus::TABLE_NAME, false);
-        // self::notifications4plugin()->dropTables();
+        self::notifications4plugin()->dropTables();
     }
 
     /**
@@ -215,5 +215,22 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin
     public function allowCopy(): bool
     {
         return true;
+    }
+
+    public function getCronJobInstances(): array
+    {
+        return [
+            new AttendanceListJob($this)
+        ];
+    }
+
+    public function getCronJobInstance(string $jobId): ilCronJob
+    {
+        foreach ($this->getCronJobInstances() as $cronJobInstance) {
+            if ($cronJobInstance->getId() === $jobId) {
+                return $cronJobInstance;
+            }
+        }
+        throw new Exception("No cron job found with the id '$jobId'.");
     }
 }
