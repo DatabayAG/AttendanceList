@@ -29,7 +29,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
  * @ilCtrl_isCalledBy   ilObjAttendanceListGUI: ilRepositoryGUI, ilObjPluginDispatchGUI, ilAdministrationGUI
  * @ilCtrl_Calls        ilObjAttendanceListGUI: xaliChecklistGUI, xaliSettingsGUI, xaliOverviewGUI
  * @ilCtrl_Calls        ilObjAttendanceListGUI: xaliAbsenceStatementGUI
- * @ilCtrl_Calls        ilObjAttendanceListGUI: ilInfoScreenGUI, ilPermissionGUI, ilCommonActionDispatcherGUI
+ * @ilCtrl_Calls        ilObjAttendanceListGUI: ilInfoScreenGUI, ilPermissionGUI, ilCommonActionDispatcherGUI, ilLearningProgressGUI
  *
  */
 class ilObjAttendanceListGUI extends ilObjectPluginGUI
