@@ -165,7 +165,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
     /**
      * @param string $post_var
      */
-    public function setPostVar(/*string*/ $post_var): void
+    public function setPostVar(string $post_var): void
     {
         $this->postvar = $post_var;
     }
@@ -174,7 +174,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
     /**
      * @param string $title
      */
-    public function setTitle(/*string*/ $title): void
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -184,7 +184,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
      * @param UploadResult[] $screenshots
      * @throws ilFormException
      */
-    public function setValue(/*array*/ $screenshots): void
+    public function setValue(array $screenshots): void
     {
         //throw new ilFormException("ScreenshotsInputGUI does not support set screenshots!");
     }
@@ -194,7 +194,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
      * @param array $values
      * @throws ilFormException
      */
-    public function setValueByArray(/*array*/ $values): void
+    public function setValueByArray(array $values): void
     {
         //throw new ilFormException("ScreenshotsInputGUI does not support set screenshots!");
     }

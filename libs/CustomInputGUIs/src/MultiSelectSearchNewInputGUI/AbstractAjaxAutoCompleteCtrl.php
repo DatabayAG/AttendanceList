@@ -15,7 +15,7 @@ abstract class AbstractAjaxAutoCompleteCtrl
 
 
 
-    public function __construct(/*?*/ array $skip_ids = null)
+    public function __construct(?array $skip_ids = null)
     {
         global $DIC;
         $this->dic = $DIC;
@@ -50,7 +50,7 @@ abstract class AbstractAjaxAutoCompleteCtrl
 
 
 
-    abstract public function searchOptions(/*?*/ string $search = null): array;
+    abstract public function searchOptions(?string $search = null): array;
 
 
 

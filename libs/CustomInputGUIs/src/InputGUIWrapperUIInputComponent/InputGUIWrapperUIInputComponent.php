@@ -128,7 +128,7 @@ class InputGUIWrapperUIInputComponent extends FormInput
 
 
 
-    public function withError(/*string*/ $error): self
+    public function withError(string $error): self
     {
         $clone = clone $this;
         $clone->input = clone $this->input;
@@ -140,7 +140,7 @@ class InputGUIWrapperUIInputComponent extends FormInput
 
 
 
-    public function withLabel(/*string*/ $label): self
+    public function withLabel(string $label): self
     {
         $this->checkStringArg("label", $label);
 

@@ -51,7 +51,7 @@ AND ' . $this->dic
 
 
 
-    public function searchOptions(/*?*/ string $search = null): array
+    public function searchOptions(?string $search = null): array
     {
         $result = $this->dic->database()->queryF('
 SELECT ' . ($this->ref_id ? 'object_reference.ref_id' : 'object_data.obj_id') . ', title

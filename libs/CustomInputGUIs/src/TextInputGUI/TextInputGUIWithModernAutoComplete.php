@@ -58,7 +58,7 @@ class TextInputGUIWithModernAutoComplete extends TextInputGUI
 
 
 
-    public function render(/*string*/ $a_mode = ""): string
+    public function render(string $a_mode = ""): string
     {
         $tpl = new Template(__DIR__ . "/templates/text_input_gui_with_modern_auto_complete.html", true, true);
         if (strlen($this->getValue())) {

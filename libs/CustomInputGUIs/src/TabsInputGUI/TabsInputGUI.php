@@ -176,7 +176,7 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     /**
      * @param array $value
      */
-    public function setValue(/*array*/ $value): void
+    public function setValue(array $value): void
     {
         if (is_array($value)) {
             $this->value = $value;
@@ -257,7 +257,7 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     /**
      * @param array $values
      */
-    public function setValueByArray(/*array*/ $values): void
+    public function setValueByArray(array $values): void
     {
         $this->setValue($values[$this->getPostVar()]);
     }

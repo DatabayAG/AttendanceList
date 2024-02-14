@@ -31,7 +31,7 @@ final class Waiter
     /**
      * @param ilTemplate|ilGlobalTemplateInterface|null $tpl
      */
-    final public static function init(string $type, /*?ilGlobalTemplateInterface*/ $tpl = null, ?ilPlugin $plugin = null): void
+    final public static function init(string $type, ?ilGlobalTemplateInterface $tpl = null, ?ilPlugin $plugin = null): void
     {
         global $DIC;
         $tpl = $tpl ?? $DIC->ui()->mainTemplate();

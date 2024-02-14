@@ -34,7 +34,7 @@ class CustomInputGUIsLoaderDetector implements Loader
     /**
      * @param callable[]|null $get_renderer_for_hooks
      */
-    public static function exchangeUIRendererAfterInitialization(/*?*/ array $get_renderer_for_hooks = null): callable
+    public static function exchangeUIRendererAfterInitialization(?array $get_renderer_for_hooks = null): callable
     {
         global $DIC;
         self::fixCtrlNamespaceCurrentUrl();

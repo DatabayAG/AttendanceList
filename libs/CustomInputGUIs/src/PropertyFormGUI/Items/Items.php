@@ -164,7 +164,7 @@ final class Items
      * @param object $object
      * @return mixed
      */
-    public static function getter(/*object*/ $object, string $property)
+    public static function getter(object $object, string $property)
     {
         if (method_exists($object, $method = "get" . self::strToCamelCase($property))) {
             return $object->{$method}();
@@ -301,7 +301,7 @@ final class Items
      * @param mixed  $value
      * @return mixed
      */
-    public static function setter(/*object*/ $object, string $property, $value)
+    public static function setter(object $object, string $property, $value)
     {
         $res = null;
 

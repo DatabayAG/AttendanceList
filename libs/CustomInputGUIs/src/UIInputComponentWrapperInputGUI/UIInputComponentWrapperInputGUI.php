@@ -182,7 +182,7 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
 
 
 
-    public function setAlert(/*string*/ $error): void
+    public function setAlert(string $error): void
     {
         $this->input = $this->input->withError($error);
     }
@@ -191,35 +191,35 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     /**
      * @throws ilFormException
      */
-    public function setDisabled(/*bool*/ $disabled): void
+    public function setDisabled(bool $disabled): void
     {
         $this->input = $this->input->withDisabled($disabled);
     }
 
 
 
-    public function setInfo(/*string*/ $info): void
+    public function setInfo(string $info): void
     {
         $this->input = $this->input->withByline($info);
     }
 
 
 
-    public function setPostVar(/*string*/ $post_var): void
+    public function setPostVar(string $post_var): void
     {
         $this->input = $this->input->withNameFrom(new UIInputComponentWrapperNameSource($post_var));
     }
 
 
 
-    public function setRequired(/*bool*/ $required): void
+    public function setRequired(bool $required): void
     {
         $this->input = $this->input->withRequired($required);
     }
 
 
 
-    public function setTitle(/*string*/ $title): void
+    public function setTitle(string $title): void
     {
         $this->input = $this->input->withLabel($title);
     }
@@ -241,7 +241,7 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     /**
      * @param array $values
      */
-    public function setValueByArray(/*array*/ $values): void
+    public function setValueByArray(array $values): void
     {
         if (isset($values[$this->getPostVar()])) {
             $this->setValue($values[$this->getPostVar()]);

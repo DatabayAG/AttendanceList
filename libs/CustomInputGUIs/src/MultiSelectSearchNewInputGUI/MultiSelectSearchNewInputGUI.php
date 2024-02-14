@@ -146,7 +146,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
 
 
 
-    public function setAjaxAutoCompleteCtrl(/*?*/ AbstractAjaxAutoCompleteCtrl $ajax_auto_complete_ctrl = null): void
+    public function setAjaxAutoCompleteCtrl(?AbstractAjaxAutoCompleteCtrl $ajax_auto_complete_ctrl = null): void
     {
         $this->ajax_auto_complete_ctrl = $ajax_auto_complete_ctrl;
     }
@@ -160,7 +160,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
 
 
 
-    public function setLimitCount(/*?*/ int $limit_count = null): void
+    public function setLimitCount(?int $limit_count = null): void
     {
         $this->limit_count = $limit_count;
     }
@@ -178,7 +178,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
 
 
 
-    public function setMinimumInputLength(/*?*/ int $minimum_input_length = null): void
+    public function setMinimumInputLength(?int $minimum_input_length = null): void
     {
         $this->minimum_input_length = $minimum_input_length;
     }
@@ -222,7 +222,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     /**
      * @param array $value
      */
-    public function setValue(/*array*/ $value): void
+    public function setValue(array $value): void
     {
         if (is_array($value)) {
             $this->value = self::cleanValues($value);
@@ -296,7 +296,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     /**
      * @param array $values
      */
-    public function setValueByArray(/*array*/ $values): void
+    public function setValueByArray(array $values): void
     {
         $this->setValue($values[$this->getPostVar()]);
     }

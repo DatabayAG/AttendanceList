@@ -215,7 +215,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     /**
      * @param array $value
      */
-    public function setValue(/*array*/ $value): void
+    public function setValue(array $value): void
     {
         if (is_array($value)) {
             $this->value = $value;
@@ -325,7 +325,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     /**
      * @param array $values
      */
-    public function setValueByArray(/*array*/ $values): void
+    public function setValueByArray(array $values): void
     {
         $this->setValue($values[$this->getPostVar()]);
     }

@@ -77,7 +77,7 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
     /**
      * @param string $title
      */
-    public function setTitle(/*string*/ $title): self
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
@@ -89,7 +89,7 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
      * @param string $value
      * @throws ilFormException
      */
-    public function setValue(/*string*/ $value): void
+    public function setValue(string $value): void
     {
         //throw new ilFormException("StaticHTMLPresentationInputGUI does not support set screenshots!");
     }
@@ -99,7 +99,7 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
      * @param array $values
      * @throws ilFormException
      */
-    public function setValueByArray(/*array*/ $values): void
+    public function setValueByArray(array $values): void
     {
         //throw new ilFormException("StaticHTMLPresentationInputGUI does not support set screenshots!");
     }

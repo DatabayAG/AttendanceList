@@ -91,7 +91,7 @@ class NotificationLanguage extends ActiveRecord
      * @param int              $primary_key_value
      * @deprecated
      */
-    public function __construct(/*int*/ $primary_key_value = 0, /*?*/ arConnector $connector = null)
+    public function __construct(int $primary_key_value = 0, /*?*/ arConnector $connector = null)
     {
         //parent::__construct($primary_key_value, $connector);
     }

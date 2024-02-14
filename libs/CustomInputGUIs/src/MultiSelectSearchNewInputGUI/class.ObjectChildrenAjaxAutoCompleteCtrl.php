@@ -29,7 +29,7 @@ class ObjectChildrenAjaxAutoCompleteCtrl extends ObjectsAjaxAutoCompleteCtrl
 
 
 
-    public function searchOptions(/*?*/ string $search = null): array
+    public function searchOptions(?string $search = null): array
     {
         $org_units = [];
 

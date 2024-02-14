@@ -7,7 +7,7 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 
 class ColorPickerInputGUI extends ilColorPickerInputGUI
 {
-    public function render(/*string*/ $a_mode = ""): string
+    public function render(string $a_mode = ""): string
     {
         $tpl = new Template("Services/Form/templates/default/tpl.property_form.html", true, true);
 

@@ -92,7 +92,7 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
      * @param object $parent
      * @deprecated
      */
-    public function __construct(/*object*/ $parent)
+    public function __construct(object $parent)
     {
         global $DIC;
         $this->dic = $DIC;

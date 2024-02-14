@@ -13,7 +13,7 @@ class UsersAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
     private Container $dic;
 
 
-    public function __construct(/*?*/ array $skip_ids = null)
+    public function __construct(?array $skip_ids = null)
     {
         global $DIC;
         $this->dic = $DIC;
@@ -36,7 +36,7 @@ AND ' . $this->dic
 
 
 
-    public function searchOptions(/*?*/ string $search = null): array
+    public function searchOptions(?string $search = null): array
     {
         return $this->formatUsers(ilObjUser::searchUsers($search));
     }

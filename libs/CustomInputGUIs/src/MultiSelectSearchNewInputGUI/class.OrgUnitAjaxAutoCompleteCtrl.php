@@ -9,7 +9,7 @@ use ilOrgUnitPathStorage;
 class OrgUnitAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 {
 
-    public function __construct(/*?*/ array $skip_ids = null)
+    public function __construct(?array $skip_ids = null)
     {
         parent::__construct($skip_ids);
     }
@@ -29,7 +29,7 @@ class OrgUnitAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 
 
 
-    public function searchOptions(/*?*/ string $search = null): array
+    public function searchOptions(?string $search = null): array
     {
         if (!empty($search)) {
             $where = ilOrgUnitPathStorage::where([

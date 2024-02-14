@@ -32,7 +32,7 @@ abstract class AbstractRenderer extends Renderer
 
 
 
-    protected function getTemplatePath(/*string*/ $name): string
+    protected function getTemplatePath(string $name): string
     {
         if ($name === "input.html") {
             return __DIR__ . "/templates/" . $name;

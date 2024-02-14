@@ -337,7 +337,7 @@ class Notification extends ActiveRecord implements NotificationInterface
 
 
 
-    public function sleep(/*string*/ $field_name)
+    public function sleep(string $field_name)
     {
         $field_value = $this->{$field_name};
 
@@ -354,7 +354,7 @@ class Notification extends ActiveRecord implements NotificationInterface
 
 
 
-    public function wakeUp(/*string*/ $field_name, $field_value)
+    public function wakeUp(string $field_name, $field_value)
     {
         switch ($field_name) {
             case "subject":
