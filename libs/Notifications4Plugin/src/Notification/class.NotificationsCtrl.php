@@ -38,33 +38,16 @@ class NotificationsCtrl implements DataRetrieval
     }
 
 
-
-    public function executeCommand(): void
+    public function handleCommand($cmd): bool
     {
         $this->setTabs();
 
-        $next_class = $this->dic->ctrl()->getNextClass($this);
-
-        switch (strtolower($next_class)) {
-            case strtolower(NotificationCtrl::class):
-                $this->dic->ctrl()->forwardCommand(new NotificationCtrl($this));
-                break;
-
-            default:
-                $cmd = $this->dic->ctrl()->getCmd();
-
-                switch ($cmd) {
-                    case self::CMD_LIST_NOTIFICATIONS:
-                        $this->{$cmd}();
-                        break;
-
-                    default:
-                        break;
-                }
-                break;
+        if ($cmd === self::CMD_LIST_NOTIFICATIONS) {
+            $this->{$cmd}();
+            return true;
         }
+        return false;
     }
-
 
 
     protected function listNotifications(): void
