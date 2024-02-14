@@ -42,7 +42,7 @@ class xaliLastReminder extends ActiveRecord
      * @db_has_field        true
      * @db_fieldtype        date
      */
-    protected string $last_reminder;
+    protected string $last_reminder = "";
 
     public function getUserId(): int
     {
