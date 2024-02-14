@@ -352,28 +352,4 @@ final class Repository implements RepositoryInterface
 
         $this->dropTablesLanguage();
     }
-
-
-    private function getNotificationsQuery(?Settings $settings = null): string
-    {
-
-        $sql = ' FROM ' . $this->dic->database()->quoteIdentifier(Notification::getTableName());
-
-        if ($settings !== null) {
-            if (!empty($settings->getSortFields())) {
-                $sql .= ' ORDER BY ' . implode(
-                    ", ",
-                    array_map(function (SortField $sort_field): string {
-                        return $this->dic->database()->quoteIdentifier($sort_field->getSortField()) . ' ' . ($sort_field->getSortFieldDirection()
-                            === SortField::SORT_DIRECTION_DOWN ? 'DESC' : 'ASC');
-                    }, $settings->getSortFields())
-                );
-            }
-
-            $sql .= ' LIMIT ' . $this->dic->database()->quote($settings->getOffset(), ilDBConstants::T_INTEGER) . ',' . $this->dic->database()
-                    ->quote($settings->getRowsCount(), ilDBConstants::T_INTEGER);
-        }
-
-        return $sql;
-    }
 }

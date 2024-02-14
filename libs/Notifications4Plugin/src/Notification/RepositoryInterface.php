@@ -17,17 +17,13 @@ interface RepositoryInterface
     public function dropTables(): void;
 
 
-
     public function duplicateNotification(NotificationInterface $notification): NotificationInterface;
-
 
 
     public function factory(): FactoryInterface;
 
 
-
     public function getNotificationById(int $id): ?NotificationInterface;
-
 
 
     public function getNotificationByName(string $name): ?NotificationInterface;
@@ -56,7 +52,6 @@ interface RepositoryInterface
      * @deprecated
      */
     public function migrateFromOldGlobalPlugin(string $name = null): ?NotificationInterface;
-
 
 
     public function storeNotification(NotificationInterface $notification): void;
