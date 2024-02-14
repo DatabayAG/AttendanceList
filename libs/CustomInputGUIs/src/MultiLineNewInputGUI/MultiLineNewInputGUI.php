@@ -48,10 +48,7 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
     private Container $dic;
 
 
-    /**
-     * MultiLineNewInputGUI constructor
-     *
-     */
+
     public function __construct(string $title = "", string $post_var = "")
     {
         global $DIC;
@@ -128,7 +125,6 @@ class MultiLineNewInputGUI extends ilFormPropertyGUI implements ilTableFilterIte
 
 
     /**
-     *
      * @return ilFormPropertyGUI[][]
      */
     public function getInputs(bool $need_one_line_at_least = true): array

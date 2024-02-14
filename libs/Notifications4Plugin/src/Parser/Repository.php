@@ -20,9 +20,7 @@ final class Repository implements RepositoryInterface
     protected $parsers = [];
 
 
-    /**
-     * Repository constructor
-     */
+
     private function __construct()
     {
         $this->addParser($this->factory()->twig());

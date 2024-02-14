@@ -7,7 +7,6 @@ use ilMail;
 use ilMailbox;
 use ilMimeMail;
 use ilObjUser;
-
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
@@ -77,7 +76,6 @@ class vcalendarSender implements Sender
     protected $uid = "";
     /**
      * User-ID or login of sender
-     *
      * @var int|string
      */
     protected $user_from = 0;
@@ -85,12 +83,10 @@ class vcalendarSender implements Sender
 
 
     /**
-     * vcalendarSender constructor
-     *
      * @param int|string|ilObjUser $user_from Should be the user-ID from the sender, you can also pass the login
-     * @param string|array         $to        E-Mail address or array of addresses
-     * @param int                  $startTime Timestamp
-     * @param int                  $endTime   Timestamp
+     * @param string|array $to E-Mail address or array of addresses
+     * @param int $startTime Timestamp
+     * @param int $endTime Timestamp
      */
     public function __construct($user_from = 0, $to = "", string $method = self::METHOD_REQUEST, string $uid = "", int $startTime = 0, int $endTime = 0, int $sequence = 0)
     {
@@ -112,9 +108,7 @@ class vcalendarSender implements Sender
 
     /**
      * Add an attachment
-     *
      * @param string $file Full path of the file to attach
-     *
      * @return $this
      */
     public function addAttachment($file)
@@ -136,7 +130,6 @@ class vcalendarSender implements Sender
     }
 
 
-
     public function setBcc($bcc)
     {
         $this->bcc = $bcc;
@@ -152,7 +145,6 @@ class vcalendarSender implements Sender
     }
 
 
-
     public function setCc($cc)
     {
         $this->cc = $cc;
@@ -163,7 +155,6 @@ class vcalendarSender implements Sender
 
     /**
      * @param string $mime_boundary
-     *
      * @return string
      */
     public function getIcalEvent($mime_boundary)
@@ -217,7 +208,6 @@ class vcalendarSender implements Sender
     }
 
 
-
     public function setTo($to)
     {
         $this->to = $to;
@@ -237,7 +227,6 @@ class vcalendarSender implements Sender
 
     /**
      * @param int|string|ilObjUser $user_from
-     *
      * @return $this
      */
     public function setUserFrom($user_from)
@@ -254,7 +243,6 @@ class vcalendarSender implements Sender
 
         return $this;
     }
-
 
 
     public function reset()
@@ -275,7 +263,6 @@ class vcalendarSender implements Sender
 
         return $this;
     }
-
 
 
     public function send(): void
@@ -310,7 +297,6 @@ class vcalendarSender implements Sender
     }
 
 
-
     public function setFrom($from)
     {
         $this->setUserFrom($from);
@@ -321,9 +307,7 @@ class vcalendarSender implements Sender
 
     /**
      * Set the location for the message
-     *
      * @param string location
-     *
      * @return $this
      */
     public function setLocation($location)
@@ -334,14 +318,12 @@ class vcalendarSender implements Sender
     }
 
 
-
     public function setMessage($message)
     {
         $this->message = $message;
 
         return $this;
     }
-
 
 
     public function setSubject($subject)

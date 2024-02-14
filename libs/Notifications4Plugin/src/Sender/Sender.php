@@ -4,15 +4,11 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender;
 
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 
-/**
- * Interface Sender
- *
- */
+
 interface Sender
 {
     /**
      * Reset internal state of object, e.g. clear all data (from, to, subject, message etc.)
-     *
      * @return $this
      */
     public function reset();
@@ -20,7 +16,6 @@ interface Sender
 
     /**
      * Send the notification
-     *
      * @throws Notifications4PluginException
      */
     public function send(): void;
@@ -28,7 +23,6 @@ interface Sender
 
     /**
      * @param array|string $bcc
-     *
      * @return $this
      */
     public function setBcc($bcc);
@@ -36,7 +30,6 @@ interface Sender
 
     /**
      * @param array|string $cc
-     *
      * @return $this
      */
     public function setCc($cc);
@@ -44,7 +37,6 @@ interface Sender
 
     /**
      * @param string $from
-     *
      * @return $this
      */
     public function setFrom($from);
@@ -52,9 +44,7 @@ interface Sender
 
     /**
      * Set the message to send
-     *
      * @param string $message
-     *
      * @return $this
      */
     public function setMessage($message);
@@ -62,9 +52,7 @@ interface Sender
 
     /**
      * Set the subject for the message
-     *
      * @param string $subject
-     *
      * @return $this
      */
     public function setSubject($subject);
@@ -72,7 +60,6 @@ interface Sender
 
     /**
      * @param array|string $to
-     *
      * @return $this
      */
     public function setTo($to);

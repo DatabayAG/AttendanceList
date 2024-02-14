@@ -29,7 +29,6 @@
 
     /**
      * @param {Node} node
-     *
      * @returns {boolean}
      */
     function checkNode(node) {

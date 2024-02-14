@@ -26,9 +26,7 @@ class NotificationsCtrl implements DataRetrieval
     private Renderer $uiRenderer;
 
 
-    /**
-     * NotificationsCtrl constructor
-     */
+
     public function __construct()
     {
         global $DIC;

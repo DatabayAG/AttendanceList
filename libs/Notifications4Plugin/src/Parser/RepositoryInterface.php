@@ -5,10 +5,7 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\NotificationInterface;
 
-/**
- * Interface RepositoryInterface
- *
- */
+
 interface RepositoryInterface
 {
     public function addParser(Parser $parser): void;
@@ -25,16 +22,12 @@ interface RepositoryInterface
 
 
     /**
-     *
-     *
      * @throws Notifications4PluginException
      */
     public function getParserByClass(string $parser_class): Parser;
 
 
     /**
-     *
-     *
      * @throws Notifications4PluginException
      */
     public function getParserForNotification(NotificationInterface $notification): Parser;
@@ -53,16 +46,12 @@ interface RepositoryInterface
 
 
     /**
-     *
-     *
      * @throws Notifications4PluginException
      */
     public function parseSubject(Parser $parser, NotificationInterface $notification, array $placeholders = [], ?string $language = null): string;
 
 
     /**
-     *
-     *
      * @throws Notifications4PluginException
      */
     public function parseText(Parser $parser, NotificationInterface $notification, array $placeholders = [], ?string $language = null): string;

@@ -7,10 +7,7 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repositor
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser\RepositoryInterface as ParserRepositoryInterface;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Sender\RepositoryInterface as SenderRepositoryInterface;
 
-/**
- * Interface RepositoryInterface
- *
- */
+
 interface RepositoryInterface
 {
     public function dropTables(): void;

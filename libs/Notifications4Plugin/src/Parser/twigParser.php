@@ -13,10 +13,7 @@ class twigParser extends AbstractParser
     public const NAME = "twig";
 
 
-    /**
-     * twigParser constructor
-     *
-     */
+
     public function __construct()
     {
         parent::__construct();
@@ -44,8 +41,6 @@ class twigParser extends AbstractParser
 
 
     /**
-     *
-     *
      * @throws Twig_Error
      */
     public function parse(string $text, array $placeholders = [], array $options = []): string

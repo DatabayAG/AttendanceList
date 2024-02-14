@@ -17,9 +17,6 @@ class ObjectChildrenAjaxAutoCompleteCtrl extends ObjectsAjaxAutoCompleteCtrl
 
 
     /**
-     * ObjectChildrenAjaxAutoCompleteCtrl constructor
-     *
-     *
      */
     public function __construct(string $type, /*?*/ int $parent_ref_id = null, /*?*/ array $skip_ids = null)
     {

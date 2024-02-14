@@ -19,7 +19,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     public const TABLE_NAME_SUFFIX = "not";
     /**
      * @var ilDateTime
-     *
      * @con_has_field    true
      * @con_fieldtype    timestamp
      * @con_is_notnull   true
@@ -27,7 +26,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     protected $created_at;
     /**
      * @var string
-     *
      * @con_has_field    true
      * @con_fieldtype    text
      * @con_length       4000
@@ -36,7 +34,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     protected $description = "";
     /**
      * @var int
-     *
      * @con_has_field    true
      * @con_fieldtype    integer
      * @con_length       8
@@ -46,7 +43,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     protected $id = 0;
     /**
      * @var string
-     *
      * @con_has_field    true
      * @con_fieldtype    text
      * @con_length       1024
@@ -56,7 +52,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     protected $name = "";
     /**
      * @var string
-     *
      * @con_has_field    true
      * @con_fieldtype    text
      * @con_is_notnull   true
@@ -64,7 +59,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     protected $parser = twigParser::class;
     /**
      * @var array
-     *
      * @con_has_field    true
      * @con_fieldtype    text
      * @con_is_notnull   true
@@ -72,7 +66,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     protected $parser_options = self::DEFAULT_PARSER_OPTIONS;
     /**
      * @var array
-     *
      * @con_has_field    true
      * @con_fieldtype    text
      * @con_is_notnull   true
@@ -80,7 +73,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     protected $subject = [];
     /**
      * @var array
-     *
      * @con_has_field    true
      * @con_fieldtype    text
      * @con_is_notnull   true
@@ -88,7 +80,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     protected $text = [];
     /**
      * @var string
-     *
      * @con_has_field    true
      * @con_fieldtype    text
      * @con_length       1024
@@ -97,7 +88,6 @@ class Notification extends ActiveRecord implements NotificationInterface
     protected $title = "";
     /**
      * @var ilDateTime
-     *
      * @con_has_field    true
      * @con_fieldtype    timestamp
      * @con_is_notnull   true
@@ -121,8 +111,6 @@ class Notification extends ActiveRecord implements NotificationInterface
 
 
     /**
-     *
-     *
      * @deprecated
      */
     public static function returnDbTableName(): string

@@ -15,10 +15,7 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
     protected $html = "";
 
 
-    /**
-     * StaticHTMLPresentationInputGUI constructor
-     *
-     */
+
     public function __construct(string $title = "")
     {
         parent::__construct($title, "");
@@ -79,7 +76,6 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
 
     /**
      * @param string $title
-     *
      */
     public function setTitle(/*string*/ $title): self
     {
@@ -91,7 +87,6 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
 
     /**
      * @param string $value
-     *
      * @throws ilFormException
      */
     public function setValue(/*string*/ $value): void
@@ -102,7 +97,6 @@ class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
 
     /**
      * @param array $values
-     *
      * @throws ilFormException
      */
     public function setValueByArray(/*array*/ $values): void

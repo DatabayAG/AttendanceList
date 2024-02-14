@@ -19,10 +19,7 @@ class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem
     private Container $dic;
 
 
-    /**
-     * WeekdayInputGUI constructor
-     *
-     */
+
     public function __construct(string $a_title, string $a_postvar)
     {
         global $DIC;

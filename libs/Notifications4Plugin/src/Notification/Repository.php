@@ -23,9 +23,7 @@ final class Repository implements RepositoryInterface
     private Container $dic;
 
 
-    /**
-     * Repository constructor
-     */
+
     private function __construct()
     {
         global $DIC;
@@ -175,8 +173,6 @@ final class Repository implements RepositoryInterface
 
 
     /**
-     *
-     *
      * @deprecated
      */
     public function migrateFromOldGlobalPlugin(string $name = null): ?NotificationInterface
@@ -302,8 +298,6 @@ final class Repository implements RepositoryInterface
 
 
     /**
-     *
-     *
      * @deprecated
      */
     protected function getLanguageForNotification(int $notification_id, string $language): ?stdClass

@@ -30,10 +30,7 @@ class NotificationCtrl
     private Container $dic;
     private ilPluginConfigGUI $parentGui;
 
-    /**
-     * NotificationCtrl constructor
-     *
-     */
+
     public function __construct(ilPluginConfigGUI $parentGui)
     {
         global $DIC;

@@ -49,8 +49,6 @@ class ExternalMailSender implements Sender
 
 
     /**
-     * MailSender constructor
-     *
      * @param string       $from E-Mail from address. If omitted, the ILIAS setting "external noreply address" is used
      * @param string|array $to   E-Mail address or array of addresses
      */
@@ -66,9 +64,7 @@ class ExternalMailSender implements Sender
 
     /**
      * Add an attachment
-     *
      * @param string $file Full path of the file to attach
-     *
      * @return $this
      */
     public function addAttachment($file)

@@ -41,10 +41,7 @@ abstract class AbstractFormBuilder implements FormBuilder
     private Container $dic;
 
 
-    /**
-     * AbstractFormBuilder constructor
-     *
-     */
+
     public function __construct(object $parent)
     {
         global $DIC;

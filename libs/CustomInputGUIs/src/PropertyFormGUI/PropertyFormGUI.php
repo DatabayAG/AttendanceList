@@ -27,73 +27,61 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 {
     /**
      * @var string
-     *
      * @deprecated
      */
     public const LANG_MODULE = "";
     /**
      * @var string
-     *
      * @deprecated
      */
     public const PROPERTY_CLASS = "class";
     /**
      * @var string
-     *
      * @deprecated
      */
     public const PROPERTY_DISABLED = "disabled";
     /**
      * @var string
-     *
      * @deprecated
      */
     public const PROPERTY_MULTI = "multi";
     /**
      * @var string
-     *
      * @deprecated
      */
     public const PROPERTY_NOT_ADD = "not_add";
     /**
      * @var string
-     *
      * @deprecated
      */
     public const PROPERTY_OPTIONS = "options";
     /**
      * @var string
-     *
      * @deprecated
      */
     public const PROPERTY_REQUIRED = "required";
     /**
      * @var string
-     *
      * @deprecated
      */
     public const PROPERTY_SUBITEMS = "subitems";
     /**
      * @var string
-     *
      * @deprecated
      */
     public const PROPERTY_VALUE = "value";
     /**
      * @var array
-     *
      * @deprecated
      */
     protected $fields = [];
     /**
      * @var object
-     *
      * @deprecated
      */
     protected $parent;
     /**
      * @var ilFormPropertyGUI[]|ilFormSectionHeaderGUI[]
-     *
      * @deprecated
      */
     private $items_cache = [];
@@ -101,10 +89,7 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
 
     /**
-     * PropertyFormGUI constructor
-     *
      * @param object $parent
-     *
      * @deprecated
      */
     public function __construct(/*object*/ $parent)
@@ -122,8 +107,6 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
 
     /**
-     *
-     *
      * @deprecated
      */
     public function checkInput(): bool
@@ -133,7 +116,6 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
 
     /**
-     *
      * @deprecated
      */
     public function storeForm(): bool
@@ -148,9 +130,7 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
     }
 
     /**
-     *
      * @return mixed
-     *
      * @deprecated
      */
     abstract protected function getValue(string $key);
@@ -190,7 +170,6 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
 
     /**
-     *
      * @deprecated
      */
     final protected function storeFormCheck(): bool
@@ -209,7 +188,6 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
     /**
      * @param mixed  $value
-     *
      * @deprecated
      */
     abstract protected function storeValue(string $key, $value): void ;
@@ -217,12 +195,10 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
     /**
      * @param ilPropertyFormGUI|ilFormPropertyGUI $parent_item
-     *
      * @throws PropertyFormGUIException $fields needs to be an array!
      * @throws PropertyFormGUIException Class $class not exists!
      * @throws PropertyFormGUIException $item must be an instance of ilFormPropertyGUI, ilFormSectionHeaderGUI or ilRadioOption!
      * @throws PropertyFormGUIException $options needs to be an array!
-     *
      * @deprecated
      */
     private function getFields(array $fields, $parent_item): void
@@ -320,7 +296,6 @@ abstract class PropertyFormGUI extends ilPropertyFormGUI
 
 
     /**
-     *
      * @deprecated
      */
     private function storeFormItems(array $fields): void

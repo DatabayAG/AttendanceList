@@ -12,10 +12,7 @@ class UsersAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 {
     private Container $dic;
 
-    /**
-     * UsersAjaxAutoCompleteCtrl constructor
-     *
-     */
+
     public function __construct(/*?*/ array $skip_ids = null)
     {
         global $DIC;

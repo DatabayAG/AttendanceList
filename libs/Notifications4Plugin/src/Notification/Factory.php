@@ -19,9 +19,7 @@ final class Factory implements FactoryInterface
     protected static $instance = null;
 
 
-    /**
-     * Factory constructor
-     */
+
     private function __construct()
     {
 

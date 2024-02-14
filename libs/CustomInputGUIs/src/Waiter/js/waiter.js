@@ -37,9 +37,7 @@ il.waiter = {
         }
     },
 
-    /**
-     *
-     */
+
     show: function () {
         if (this.count == 0) {
             this.timer = setTimeout(function () {
@@ -62,9 +60,7 @@ il.waiter = {
         $('#srag_waiter2').remove();
     },
 
-    /**
-     *
-     */
+
     hide: function () {
         this.count = this.count - 1;
         if (this.count == 0) {
@@ -83,7 +79,6 @@ il.waiter = {
 
     /**
      * use this method instead of setPercentage to show the amount of bytes loaded (e.g. "10.5MB/100MB")
-     *
      * @param {number} loaded
      * @param {number} total
      */
@@ -99,9 +94,7 @@ il.waiter = {
         $('#srag_waiter_progress_text').text(loadedHuman + " / " + totalHuman);
     },
 
-    /**
-     *
-     */
+
     resetProgress: function () {
         this.setPercentage(0);
         $('#srag_waiter_progress_text').text('');
@@ -141,12 +134,10 @@ il.waiter = {
 
     /**
      * Format bytes as human-readable text.
-     *
      * @param {number} bytes Number of bytes.
      * @param {boolean} si True to use metric (SI) units, aka powers of 1000. False to use
      *           binary (IEC), aka powers of 1024.
      * @param {number} dp Number of decimal places to display.
-     *
      * @returns {string} Formatted string.
      */
     humanFileSize: function (bytes, si = false, dp = 1) {

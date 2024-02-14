@@ -33,9 +33,7 @@ final class Repository implements RepositoryInterface
     protected $table_name_prefix = "";
 
 
-    /**
-     * Repository constructor
-     */
+
     private function __construct()
     {
 

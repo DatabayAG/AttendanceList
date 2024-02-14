@@ -18,10 +18,6 @@ class AjaxCheckbox
     protected bool $checked = false;
 
 
-    /**
-     * AjaxCheckbox constructor
-     *
-     */
     public function __construct(?ilPlugin $plugin = null)
     {
         self::init($plugin);

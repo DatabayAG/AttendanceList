@@ -104,9 +104,7 @@ il.ScreenshotsInputGUI.prototype = {
      */
     screenshots: [],
 
-    /**
-     *
-     */
+
     addPageScreenshot: function () {
         // Hide modal on the screenshot
         this.hideModal();
@@ -153,16 +151,12 @@ il.ScreenshotsInputGUI.prototype = {
         alert(ex);
     },
 
-    /**
-     *
-     */
+
     addScreenshot: function () {
         this.$screenshot_file_input.click();
     },
 
-    /**
-     *
-     */
+
     addScreenshotOnChange: function () {
         var screenshot_file_input = $(".screenshot_file_input", this.element)[0];
 
@@ -188,9 +182,7 @@ il.ScreenshotsInputGUI.prototype = {
         this.removePreviewURLCache();
     },
 
-    /**
-     *
-     */
+
     hideModal: function () {
         if (this.modal !== null) {
             this.modal.css("visibility", "hidden");
@@ -199,9 +191,7 @@ il.ScreenshotsInputGUI.prototype = {
         }
     },
 
-    /**
-     *
-     */
+
     init: function () {
         this.element = $('input[type="file"][name="' + this.post_var + '"]').parent();
 
@@ -215,9 +205,7 @@ il.ScreenshotsInputGUI.prototype = {
         this.$screenshot_file_input.change(this.addScreenshotOnChange.bind(this));
     },
 
-    /**
-     *
-     */
+
     removePreviewURLCache: function () {
         this.previewURLCache.forEach(function (preview_url) {
             URL.revokeObjectURL(preview_url);
@@ -236,9 +224,7 @@ il.ScreenshotsInputGUI.prototype = {
         this.updateScreenshots();
     },
 
-    /**
-     *
-     */
+
     restoreModal: function () {
         if (this.modal !== null) {
             this.modal.css("visibility", "");
@@ -247,9 +233,7 @@ il.ScreenshotsInputGUI.prototype = {
         }
     },
 
-    /**
-     *
-     */
+
     updateScreenshots: function () {
         this.$screenshots.empty();
         this.removePreviewURLCache();

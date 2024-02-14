@@ -16,10 +16,7 @@ class TextInputGUIWithModernAutoComplete extends TextInputGUI
     protected static $init = false;
 
 
-    /**
-     * TextInputGUIWithModernAutoComplete constructor
-     *
-     */
+
     public function __construct(string $a_title = "", string $a_postvar = "")
     {
         parent::__construct($a_title, $a_postvar);

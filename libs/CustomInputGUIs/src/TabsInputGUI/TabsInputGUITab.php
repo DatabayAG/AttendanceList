@@ -33,10 +33,7 @@ class TabsInputGUITab
     protected $title = "";
 
 
-    /**
-     * TabsInputGUITab constructor
-     *
-     */
+
     public function __construct(string $title = "", string $post_var = "")
     {
         $this->title = $title;
@@ -78,7 +75,6 @@ class TabsInputGUITab
 
 
     /**
-     *
      * @return ilFormPropertyGUI[]
      */
     public function getInputs(string $post_var, array $init_value): array

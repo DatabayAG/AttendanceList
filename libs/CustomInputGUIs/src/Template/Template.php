@@ -6,16 +6,13 @@ use ilTemplate;
 
 class Template extends ilTemplate
 {
-    /**
-     * Template constructor
-     *
-     */
+
     public function __construct(string $template_file, bool $remove_unknown_variables = true, bool $remove_empty_blocks = true)
     {
         parent::__construct($template_file, $remove_unknown_variables, $remove_empty_blocks);
     }
 
-    /* *
+    /**
      * @param bool $a_force
      * /
     public function fillJavaScriptFiles($a_force = false)

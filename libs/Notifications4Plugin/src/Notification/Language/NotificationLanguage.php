@@ -20,93 +20,75 @@ class NotificationLanguage extends ActiveRecord
 
     /**
      * @var string
-     *
      * @deprecated
      */
     public const TABLE_NAME_SUFFIX = "not_lan";
     /**
      * @var ilDateTime
-     *
      * @con_has_field    true
      * @con_fieldtype    timestamp
      * @con_is_notnull   true
-     *
      * @deprecated
      */
     protected $created_at;
     /**
      * @var int
-     *
      * @con_has_field    true
      * @con_fieldtype    integer
      * @con_length       8
      * @con_is_notnull   true
      * @con_is_primary   true
-     *
      * @deprecated
      */
     protected $id = 0;
     /**
      * @var string
-     *
      * @con_has_field    true
      * @con_fieldtype    text
      * @con_length       2
      * @con_is_notnull   true
-     *
      * @deprecated
      */
     protected $language = "";
     /**
      * @var int
-     *
      * @con_has_field    true
      * @con_fieldtype    integer
      * @con_length       8
      * @con_is_notnull   true
-     *
      * @deprecated
      */
     protected $notification_id;
     /**
      * @var string
-     *
      * @con_has_field    true
      * @con_fieldtype    clob
      * @con_length       256
      * @con_is_notnull   true
-     *
      * @deprecated
      */
     protected $subject = "";
     /**
      * @var string
-     *
      * @con_has_field    true
      * @con_fieldtype    clob
      * @con_length       4000
      * @con_is_notnull   true
-     *
      * @deprecated
      */
     protected $text = "";
     /**
      * @var ilDateTime
-     *
      * @con_has_field    true
      * @con_fieldtype    timestamp
      * @con_is_notnull   true
-     *
      * @deprecated
      */
     protected $updated_at;
 
 
     /**
-     * NotificationLanguage constructor
-     *
      * @param int              $primary_key_value
-     *
      * @deprecated
      */
     public function __construct(/*int*/ $primary_key_value = 0, /*?*/ arConnector $connector = null)
@@ -116,8 +98,6 @@ class NotificationLanguage extends ActiveRecord
 
 
     /**
-     *
-     *
      * @deprecated
      */
     public static function getTableName(): string
@@ -127,8 +107,6 @@ class NotificationLanguage extends ActiveRecord
 
 
     /**
-     *
-     *
      * @deprecated
      */
     public static function returnDbTableName(): string
@@ -138,8 +116,6 @@ class NotificationLanguage extends ActiveRecord
 
 
     /**
-     *
-     *
      * @deprecated
      */
     public function getConnectorContainerName(): string
@@ -149,8 +125,6 @@ class NotificationLanguage extends ActiveRecord
 
 
     /**
-     *
-     *
      * @deprecated
      */
     public function getSubject(): string
@@ -160,8 +134,6 @@ class NotificationLanguage extends ActiveRecord
 
 
     /**
-     *
-     *
      * @deprecated
      */
     public function getText(): string

@@ -40,10 +40,7 @@ class MultiSelectSearchNewInputGUI extends ilFormPropertyGUI implements ilTableF
     private Container $dic;
 
 
-    /**
-     * MultiSelectSearchNewInputGUI constructor
-     *
-     */
+
     public function __construct(string $title = "", string $post_var = "")
     {
         global $DIC;

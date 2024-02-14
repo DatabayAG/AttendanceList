@@ -30,10 +30,7 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
     private Container $dic;
 
 
-    /**
-     * UIInputComponentWrapperInputGUI constructor
-     *
-     */
+
     public function __construct(Input $input, string $post_var = "")
     {
         global $DIC;
@@ -89,8 +86,6 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
 
 
     /**
-     *
-     *
      * @throws ilFormException
      */
     public function getDisabled(): bool
@@ -194,8 +189,6 @@ class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTab
 
 
     /**
-     *
-     *
      * @throws ilFormException
      */
     public function setDisabled(/*bool*/ $disabled): void

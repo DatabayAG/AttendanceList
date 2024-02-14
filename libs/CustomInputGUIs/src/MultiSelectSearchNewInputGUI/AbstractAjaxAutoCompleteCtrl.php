@@ -14,10 +14,7 @@ abstract class AbstractAjaxAutoCompleteCtrl
     private Container $dic;
 
 
-    /**
-     * AbstractAjaxAutoCompleteCtrl constructor
-     *
-     */
+
     public function __construct(/*?*/ array $skip_ids = null)
     {
         global $DIC;

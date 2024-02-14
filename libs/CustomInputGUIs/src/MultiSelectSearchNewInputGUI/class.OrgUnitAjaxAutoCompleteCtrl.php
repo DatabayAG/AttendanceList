@@ -8,10 +8,7 @@ use ilOrgUnitPathStorage;
 
 class OrgUnitAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 {
-    /**
-     * OrgUnitAjaxAutoCompleteCtrl constructor
-     *
-     */
+
     public function __construct(/*?*/ array $skip_ids = null)
     {
         parent::__construct($skip_ids);

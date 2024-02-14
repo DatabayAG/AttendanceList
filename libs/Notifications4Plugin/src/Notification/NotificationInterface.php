@@ -4,10 +4,7 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification;
 
 use ilDateTime;
 
-/**
- * Interface NotificationInterface
- *
- */
+
 interface NotificationInterface
 {
     public const DEFAULT_PARSER_OPTIONS
@@ -41,7 +38,6 @@ interface NotificationInterface
 
 
     /**
-     *
      * @return mixed
      */
     public function getParserOption(string $key);

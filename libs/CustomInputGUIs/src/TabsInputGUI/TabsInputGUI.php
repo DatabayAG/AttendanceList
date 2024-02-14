@@ -34,10 +34,7 @@ class TabsInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToo
     protected $value = [];
 
 
-    /**
-     * TabsInputGUI constructor
-     *
-     */
+
     public function __construct(string $title = "", string $post_var = "")
     {
         parent::__construct($title, $post_var);

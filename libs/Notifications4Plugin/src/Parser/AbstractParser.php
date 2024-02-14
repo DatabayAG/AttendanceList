@@ -11,9 +11,7 @@ abstract class AbstractParser implements Parser
 
     protected Container $dic;
 
-    /**
-     * AbstractParser constructor
-     */
+
     public function __construct()
     {
         global $DIC;

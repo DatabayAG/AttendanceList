@@ -12,9 +12,7 @@ final class CustomInputGUIs
     protected static $instance = null;
 
 
-    /**
-     * CustomInputGUIs constructor
-     */
+
     private function __construct()
     {
 

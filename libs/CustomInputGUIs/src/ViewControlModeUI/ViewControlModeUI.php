@@ -27,9 +27,7 @@ class ViewControlModeUI
     private Container $dic;
 
 
-    /**
-     * ViewControlModeUI constructor
-     */
+
     public function __construct()
     {
         global $DIC;

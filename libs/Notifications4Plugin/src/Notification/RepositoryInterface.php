@@ -2,10 +2,7 @@
 
 namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification;
 
-/**
- * Interface RepositoryInterface
- *
- */
+
 interface RepositoryInterface
 {
     public function deleteNotification(NotificationInterface $notification): void;
@@ -30,7 +27,6 @@ interface RepositoryInterface
 
 
     /**
-     *
      * @return NotificationInterface[]
      */
     public function getNotifications(): array;
@@ -47,8 +43,6 @@ interface RepositoryInterface
 
     /**
      * @param string $name |null
-     *
-     *
      * @deprecated
      */
     public function migrateFromOldGlobalPlugin(string $name = null): ?NotificationInterface;

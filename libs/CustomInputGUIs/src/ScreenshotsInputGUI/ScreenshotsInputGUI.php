@@ -34,10 +34,7 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
     private Container $dic;
 
 
-    /**
-     * ScreenshotsInputGUI constructor
-     *
-     */
+
     public function __construct(string $title = "", string $post_var = "")
     {
         global $DIC;
@@ -72,7 +69,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 
     /**
      * @param string[] $allowed_formats
-     *
      */
     public function setAllowedFormats(array $allowed_formats): self
     {
@@ -168,7 +164,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 
     /**
      * @param string $post_var
-     *
      */
     public function setPostVar(/*string*/ $post_var): void
     {
@@ -178,7 +173,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 
     /**
      * @param string $title
-     *
      */
     public function setTitle(/*string*/ $title): void
     {
@@ -188,7 +182,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 
     /**
      * @param UploadResult[] $screenshots
-     *
      * @throws ilFormException
      */
     public function setValue(/*array*/ $screenshots): void
@@ -199,7 +192,6 @@ class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 
     /**
      * @param array $values
-     *
      * @throws ilFormException
      */
     public function setValueByArray(/*array*/ $values): void

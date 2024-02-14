@@ -24,13 +24,11 @@ class InternalMailSender implements Sender
 
     /**
      * User-ID or login of bcc
-     *
      * @var string|int
      */
     protected $bcc = "";
     /**
      * User-ID or login of cc
-     *
      * @var string|int
      */
     protected $cc = "";
@@ -44,7 +42,6 @@ class InternalMailSender implements Sender
     protected $message = "";
     /**
      * Store the mail in the sent box of the sender
-     *
      * @var bool
      */
     protected $save_in_sent_box = true;
@@ -54,13 +51,11 @@ class InternalMailSender implements Sender
     protected $subject = "";
     /**
      * User-ID or login of sender
-     *
      * @var int|string
      */
     protected $user_from = 0;
     /**
      * User-ID or login of receiver
-     *
      * @var int|string
      */
     protected $user_to = "";
@@ -68,8 +63,6 @@ class InternalMailSender implements Sender
 
 
     /**
-     * InternalMailSender constructor
-     *
      * @param int|string|ilObjUser $user_from Should be the user-ID from the sender, you can also pass the login
      * @param int|string|ilObjUser $user_to   Should be the login of the receiver, you can also pass a user-ID
      */
@@ -169,7 +162,6 @@ class InternalMailSender implements Sender
 
     /**
      * @param int|string|ilObjUser $user_from
-     *
      * @return $this
      */
     public function setUserFrom($user_from)
@@ -199,7 +191,6 @@ class InternalMailSender implements Sender
 
     /**
      * @param int|string|ilObjUser $user_to
-     *
      * @return $this
      */
     public function setUserTo($user_to)
@@ -221,7 +212,6 @@ class InternalMailSender implements Sender
 
     /**
      * Save email in sent box of sender?
-     *
      * @param bool $state
      */
     public function setSaveInSentBox($state)
@@ -247,7 +237,6 @@ class InternalMailSender implements Sender
 
 
     /**
-     *
      * @throws ilMailException
      * @throws Throwable
      * @throws Notifications4PluginException
@@ -299,9 +288,7 @@ class InternalMailSender implements Sender
 
     /**
      * Convert User-ID to login
-     *
      * @param int|string|ilObjUser $id_or_user
-     *
      * @return mixed
      */
     protected function idOrUser2login($id_or_user)

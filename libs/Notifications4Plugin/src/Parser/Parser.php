@@ -5,21 +5,16 @@ namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser;
 use ILIAS\UI\Implementation\Component\Input\Input;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 
-/**
- * Interface Parser
- *
- */
+
 interface Parser
 {
     /**
      * @var string
-     *
      * @abstract
      */
     public const DOC_LINK = "";
     /**
      * @var string
-     *
      * @abstract
      */
     public const NAME = "";
@@ -44,8 +39,6 @@ interface Parser
 
 
     /**
-     *
-     *
      * @throws Notifications4PluginException
      */
     public function parse(string $text, array $placeholders = [], array $options = []): string;

@@ -15,9 +15,7 @@ final class Repository implements RepositoryInterface
     protected static $instance = null;
 
 
-    /**
-     * Repository constructor
-     */
+
     private function __construct()
     {
 

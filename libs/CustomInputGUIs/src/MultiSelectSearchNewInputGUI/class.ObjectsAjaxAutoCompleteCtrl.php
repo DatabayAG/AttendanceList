@@ -21,9 +21,6 @@ class ObjectsAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 
 
     /**
-     * ObjectsAjaxAutoCompleteCtrl constructor
-     *
-     *
      */
     public function __construct(string $type, bool $ref_id = false, /*?*/ array $skip_ids = null)
     {

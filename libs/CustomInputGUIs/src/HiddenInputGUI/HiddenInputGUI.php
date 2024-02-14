@@ -7,10 +7,7 @@ use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
 
 class HiddenInputGUI extends ilHiddenInputGUI
 {
-    /**
-     * HiddenInputGUI constructor
-     *
-     */
+
     public function __construct(string $a_postvar = "")
     {
         parent::__construct($a_postvar);
