@@ -2,7 +2,11 @@
 
 require_once __DIR__ . "/vendor/autoload.php";
 
-$dirs = array_filter([__DIR__ . "/src", __DIR__ . "/classes"], static function (string $dir): bool {
+$dirs = array_filter([
+    __DIR__ . "/src",
+    __DIR__ . "/classes",
+    __DIR__ . "/libs"
+], static function (string $dir): bool {
     return is_dir($dir);
 });
 
