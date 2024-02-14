@@ -2,9 +2,10 @@
 
 namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Parser;
 
-use Twig_Environment;
-use Twig_Error;
-use Twig_Loader_String;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\SyntaxError;
+use Twig\Loader\ArrayLoader;
 
 class twigParser extends AbstractParser
 {
@@ -38,16 +39,17 @@ class twigParser extends AbstractParser
 
 
     /**
-     * @throws Twig_Error
+     * @throws SyntaxError
+     * @throws LoaderError
      */
     public function parse(string $text, array $placeholders = [], array $options = []): string
     {
-        $loader = new Twig_Loader_String();
-
-        $twig = new Twig_Environment($loader, [
+        $twig = new Environment(new ArrayLoader(), [
             "autoescape" => (bool) $options["autoescape"]
         ]);
 
-        return $this->fixLineBreaks($twig->render($text, $placeholders));
+        $template = $twig->createTemplate($text);
+
+        return $this->fixLineBreaks($template->render($placeholders));
     }
 }
