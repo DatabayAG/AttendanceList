@@ -2,9 +2,13 @@
 
 require_once __DIR__ . "/vendor/autoload.php";
 
+$dirs = array_filter([__DIR__ . "/src", __DIR__ . "/classes"], static function (string $dir): bool {
+    return is_dir($dir);
+});
+
 $finder = PhpCsFixer\Finder::create()
                            ->exclude([__DIR__ . "/vendor"])
-                           ->in([__DIR__]);
+                           ->in($dirs);
 
 return (new PhpCsFixer\Config())
     ->setUsingCache(false)
