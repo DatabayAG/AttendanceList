@@ -29,7 +29,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
  * Class ilAttendanceListConfigGUI
  *
  * @ilCtrl_IsCalledBy  ilAttendanceListConfigGUI: ilObjComponentSettingsGUI
- * @ilCtrl_isCalledBy srag\Plugins\AttendanceList\Notification\Notification\NotificationsCtrl: ilAttendanceListConfigGUI
  *
  * @author  Theodor Truffer <tt@studer-raimann.ch>
  */
@@ -57,8 +56,8 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
     protected ilToolbarGUI $toolbar;
     protected ilTabsGUI $tabs;
     private Services $http;
-    private \ILIAS\HTTP\Wrapper\WrapperFactory $httpWrapper;
-    private \ILIAS\Refinery\Factory $refinery;
+    private WrapperFactory $httpWrapper;
+    private Factory $refinery;
 
     /**
      * ilAttendanceListConfigGUI constructor.
