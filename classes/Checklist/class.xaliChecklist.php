@@ -38,28 +38,28 @@ class xaliChecklist extends ActiveRecord
      * @db_fieldtype        integer
      * @db_length           8
      */
-    protected int $obj_id;
+    protected int $obj_id = 0;
 
     /**
      * @db_has_field        true
      * @db_is_unique        true
      * @db_fieldtype        date
      */
-    protected string $checklist_date;
+    protected string $checklist_date = "";
 
     /**
      * @db_has_field        true
      * @db_fieldtype        integer
      * @db_length           8
      */
-    protected int $last_edited_by;
+    protected int $last_edited_by = 0;
 
     /**
      * @db_has_field        true
      * @db_fieldtype        integer
      * @db_length           8
      */
-    protected int $last_update;
+    protected int $last_update = 0;
 
     public function getEntryOfUser(int $user_id): xaliChecklistEntry
     {
