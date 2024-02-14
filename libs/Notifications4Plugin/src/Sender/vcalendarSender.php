@@ -7,6 +7,7 @@ use ilMail;
 use ilMailbox;
 use ilMimeMail;
 use ilObjUser;
+use ReflectionClass;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Exception\Notifications4PluginException;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
@@ -275,7 +276,26 @@ class vcalendarSender implements Sender
         //Create Email Headers
         $mime_boundary = "----Meeting Booking----" . MD5(TIME());
 
-        $this->mailer->sendInternalMail($sent_folder_id, $this->getUserFrom(), "", $this->to, "", "", "read", "email", 0, $this->subject, $this->getIcalEvent($mime_boundary), $this->getUserFrom(), 0);
+        $mailerReflClass = new ReflectionClass($this->mailer);
+        $sendInternalMailReflMethod = $mailerReflClass->getMethod("sendInternalMail");
+        $sendInternalMailReflMethod->invoke($this->mailer,
+            $sent_folder_id,
+            $this->getUserFrom(),
+            "",
+            $this->to,
+            "",
+            "",
+            "read",
+            "email",
+            0,
+            $this->subject,
+            $this->getIcalEvent($mime_boundary),
+            $this->getUserFrom(),
+            0
+        );
+
+        //Replaced with reflection call. Ideally should be replaced with the proper "new" & "proper" call.
+        //$this->mailer->sendInternalMail($sent_folder_id, $this->getUserFrom(), "", $this->to, "", "", "read", "email", 0, $this->subject, $this->getIcalEvent($mime_boundary), $this->getUserFrom(), 0);
 
         $this->mailer = new ilMail($this->getUserFrom());
 
