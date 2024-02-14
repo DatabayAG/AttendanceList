@@ -10,8 +10,6 @@ use ilDBInterface;
 use ILIAS;
 use ILIAS\Cron\Schedule\CronJobScheduleType;
 use ilLogger;
-use ilMail;
-use ilObject;
 use ilObjUser;
 use ilRbacReview;
 use xaliAbsenceStatement;

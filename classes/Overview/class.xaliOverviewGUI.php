@@ -370,7 +370,6 @@ class xaliOverviewGUI extends xaliGUI
         );
 
 
-
         $checklist_ids = $checklistId ? [$checklistId] : $this->httpWrapper->post()->retrieve(
             "checklist_ids",
             $this->refinery->byTrying([

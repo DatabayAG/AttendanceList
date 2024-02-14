@@ -14,6 +14,7 @@
  *********************************************************************/
 
 declare(strict_types=1);
+
 use ILIAS\FileUpload\FileUpload;
 use ILIAS\HTTP\Wrapper\WrapperFactory;
 

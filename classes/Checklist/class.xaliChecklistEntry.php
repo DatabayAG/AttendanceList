@@ -20,6 +20,7 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4Pl
 class xaliChecklistEntry extends ActiveRecord
 {
     use Notifications4PluginTrait;
+
     public const DB_TABLE_NAME = "xali_entry";
     public const STATUS_ABSENT_UNEXCUSED = 1;
     public const STATUS_ABSENT_EXCUSED = 2; // DEPRECATED

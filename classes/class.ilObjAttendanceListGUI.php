@@ -18,6 +18,7 @@
  *********************************************************************/
 
 declare(strict_types=1);
+
 use ILIAS\HTTP\Wrapper\WrapperFactory;
 
 require_once __DIR__ . '/../vendor/autoload.php';
