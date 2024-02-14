@@ -17,8 +17,4 @@ interface FactoryInterface
 
 
     public function newInstance(): NotificationInterface;
-
-
-
-    public function newTableBuilderInstance(NotificationsCtrl $parent): TableBuilder;
 }

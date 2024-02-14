@@ -37,8 +37,7 @@ interface RepositoryInterface
      *
      * @return NotificationInterface[]
      */
-    public function getNotifications(?Settings $settings = null): array;
-
+    public function getNotifications(): array;
 
 
     public function getNotificationsCount(): int;

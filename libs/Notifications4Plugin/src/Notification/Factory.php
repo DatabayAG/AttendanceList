@@ -75,17 +75,6 @@ final class Factory implements FactoryInterface
 
     public function newInstance(): NotificationInterface
     {
-        $notification = new Notification();
-
-        return $notification;
-    }
-
-
-
-    public function newTableBuilderInstance(NotificationsCtrl $parent): TableBuilder
-    {
-        $table = new TableBuilder($parent);
-
-        return $table;
+        return new Notification();
     }
 }

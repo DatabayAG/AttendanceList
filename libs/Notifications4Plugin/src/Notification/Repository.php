@@ -119,9 +119,9 @@ final class Repository implements RepositoryInterface
     }
 
 
-    public function getNotifications(?Settings $settings = null): array
+    public function getNotifications(): array
     {
-        $stm = $this->dic->database()->query('SELECT *' . $this->getNotificationsQuery($settings));
+        $stm = $this->dic->database()->query('SELECT *' . ' FROM ' . $this->dic->database()->quoteIdentifier(Notification::getTableName()));
 
         $notifications = [];
         while ($stdClass = $stm->fetchObject()) {
@@ -135,9 +135,7 @@ final class Repository implements RepositoryInterface
     public function getNotificationsCount(): int
     {
 
-        $sql = 'SELECT COUNT(id) AS count';
-
-        $sql .= $this->getNotificationsQuery();
+        $sql = 'SELECT COUNT(id) AS count' . ' FROM ' . $this->dic->database()->quoteIdentifier(Notification::getTableName());
 
         $result = $this->dic->database()->query($sql);
 
