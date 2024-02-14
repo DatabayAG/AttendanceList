@@ -174,7 +174,7 @@ class InternalMailSender implements Sender
                 $user_from = ilObjUser::_lookupId($user_from);
             }
         }
-        $this->user_from = intval($user_from);
+        $this->user_from = (int) $user_from;
 
         return $this;
     }

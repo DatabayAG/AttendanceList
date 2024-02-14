@@ -48,7 +48,7 @@ class twigParser extends AbstractParser
         $loader = new Twig_Loader_String();
 
         $twig = new Twig_Environment($loader, [
-            "autoescape" => boolval($options["autoescape"])
+            "autoescape" => (bool) $options["autoescape"]
         ]);
 
         return $this->fixLineBreaks($twig->render($text, $placeholders));

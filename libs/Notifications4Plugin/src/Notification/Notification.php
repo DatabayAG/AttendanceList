@@ -248,7 +248,7 @@ class Notification extends ActiveRecord implements NotificationInterface
 
     public function getSubject(?string $lang_key = null, bool $use_default_if_not_set = true): string
     {
-        return strval(MultilangualTabsInputGUI::getValueForLang($this->subject, $lang_key, "subject", $use_default_if_not_set));
+        return (string) MultilangualTabsInputGUI::getValueForLang($this->subject, $lang_key, "subject", $use_default_if_not_set);
     }
 
 
@@ -269,7 +269,7 @@ class Notification extends ActiveRecord implements NotificationInterface
 
     public function getText(?string $lang_key = null, bool $use_default_if_not_set = true): string
     {
-        return strval(MultilangualTabsInputGUI::getValueForLang($this->text, $lang_key, "text", $use_default_if_not_set));
+        return (string) MultilangualTabsInputGUI::getValueForLang($this->text, $lang_key, "text", $use_default_if_not_set);
     }
 
 
@@ -336,8 +336,11 @@ class Notification extends ActiveRecord implements NotificationInterface
     }
 
 
-
-    public function sleep(string $field_name)
+    /**
+     * @param string $field_name
+     * @return bool|string|null
+     */
+    public function sleep($field_name): bool|string|null
     {
         $field_value = $this->{$field_name};
 
@@ -352,9 +355,12 @@ class Notification extends ActiveRecord implements NotificationInterface
         }
     }
 
-
-
-    public function wakeUp(string $field_name, $field_value)
+    /**
+     * @param string $field_name
+     * @param $field_value
+     * @return mixed|null
+     */
+    public function wakeUp($field_name, $field_value): mixed
     {
         switch ($field_name) {
             case "subject":
