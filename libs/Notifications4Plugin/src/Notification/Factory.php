@@ -3,7 +3,6 @@
 namespace srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification;
 
 use ilDateTime;
-use ilPluginConfigGUI;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Form\FormBuilder;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 use stdClass;
@@ -57,7 +56,7 @@ final class Factory implements FactoryInterface
     }
 
 
-    public function newFormBuilderInstance(ilPluginConfigGUI $parentGui, NotificationInterface $notification): FormBuilder
+    public function newFormBuilderInstance(object $parentGui, NotificationInterface $notification): FormBuilder
     {
         return new FormBuilder($parentGui, $notification);
     }

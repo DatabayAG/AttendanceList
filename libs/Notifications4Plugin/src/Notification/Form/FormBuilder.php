@@ -7,7 +7,6 @@ use ILIAS\UI\Component\Input\Field\Group;
 use ILIAS\UI\Factory;
 use ILIAS\UI\Renderer;
 use ilNonEditableValueGUI;
-use ilPluginConfigGUI;
 use ilTextInputGUI;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\FormBuilder\AbstractFormBuilder;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\InputGUIWrapperUIInputComponent\InputGUIWrapperUIInputComponent;
@@ -29,7 +28,7 @@ class FormBuilder extends AbstractFormBuilder
     private Factory $uiFactory;
     private Renderer $uiRenderer;
 
-    public function __construct(ilPluginConfigGUI $parentGui, NotificationInterface $notification)
+    public function __construct(object $parentGui, NotificationInterface $notification)
     {
         global $DIC;
         $this->dic = $DIC;

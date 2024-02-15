@@ -7,7 +7,6 @@ require_once __DIR__ . "/../../../../vendor/autoload.php";
 use ilConfirmationGUI;
 use ILIAS\DI\Container;
 use ilObjUser;
-use ilPluginConfigGUI;
 use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
 
 class NotificationCtrl
@@ -28,10 +27,10 @@ class NotificationCtrl
      */
     protected $notification;
     private Container $dic;
-    private ilPluginConfigGUI $parentGui;
+    private object $parentGui;
 
 
-    public function __construct(ilPluginConfigGUI $parentGui)
+    public function __construct(object $parentGui)
     {
         global $DIC;
         $this->parentGui = $parentGui;
