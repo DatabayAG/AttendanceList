@@ -474,7 +474,7 @@ class xaliOverviewGUI extends xaliGUI
         exit();
     }
 
-    #[NoReturn] protected function saveAbsenceReason(): void
+    protected function saveAbsenceReason(): never
     {
         $checklistId = $this->httpWrapper->query()->retrieve(
             "checklist_id",
