@@ -81,13 +81,6 @@ class xaliChecklistGUI extends xaliGUI
         if (count($this->parent_gui->getMembers()) !== count($attendance_status)) {
             $this->tpl->setOnScreenMessage('failure', $this->pl->txt('warning_list_incomplete'), true);
             $this->tpl->printToStdout();
-            /*
-            if (self::version()->is6()) {
-                $this->tpl->printToStdout();
-            } else {
-                $this->show();
-            }
-            */
             return;
         }
 
