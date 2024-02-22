@@ -97,10 +97,6 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
             $this->tpl->setTitle($this->object->getTitle());
             $this->tpl->setTitleIcon(ilObject::_getIcon($this->object->getId()));
 
-            //			$list_gui = ilObjectListGUIFactory::_getListGUIByType('xali');
-            //			$this->tpl->setAlertProperties($list_gui->getAlertProperties());
-            // set tabs
-
             $baseClass = $this->httpWrapper->query()->retrieve(
                 "baseClass",
                 $this->refinery->kindlyTo()->string()
@@ -175,7 +171,6 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
                     $this->checkPermission("write");
                 }
                 $xaliAbsenceStatementGUI = new xaliAbsenceStatementGUI($this);
-                //				$this->tabs->setTabActive(self::TAB_SETTINGS);
                 $this->ctrl->forwardCommand($xaliAbsenceStatementGUI);
                 break;
             case 'ilpermissiongui':
@@ -207,25 +202,18 @@ class ilObjAttendanceListGUI extends ilObjectPluginGUI
 
         if (count($t) == 2) {
             $entry_id = $t[1];
-            //			$_GET['entry_id'] = $entry_id;
-            //$ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
             $ilCtrl->setTargetScript("ilias.php");
-            //$ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
             $ilCtrl->setParameterByClass($class_name, "ref_id", $ref_id);
             $ilCtrl->setParameterByClass($class_name, "entry_id", $entry_id);
             $ilCtrl->redirectByClass(["ilobjplugindispatchgui", self::class, xaliAbsenceStatementGUI::class], xaliAbsenceStatementGUI::CMD_STANDARD);
         }
 
         if ($ilAccess->checkAccess("read", "", $ref_id)) {
-            //$ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
             $ilCtrl->setTargetScript("ilias.php");
-            //$ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
             $ilCtrl->setParameterByClass($class_name, "ref_id", $ref_id);
             $ilCtrl->redirectByClass(["ilobjplugindispatchgui", $class_name], "");
         } elseif ($ilAccess->checkAccess("visible", "", $ref_id)) {
-            //$ilCtrl->initBaseClass("ilObjPluginDispatchGUI");
             $ilCtrl->setTargetScript("ilias.php");
-            //$ilCtrl->getCallStructure(strtolower("ilObjPluginDispatchGUI"));
             $ilCtrl->setParameterByClass($class_name, "ref_id", $ref_id);
             $ilCtrl->redirectByClass(["ilobjplugindispatchgui", $class_name], "infoScreen");
         } elseif ($ilAccess->checkAccess("read", "", ROOT_FOLDER_ID)) {

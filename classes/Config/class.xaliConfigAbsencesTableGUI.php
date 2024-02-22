@@ -42,9 +42,6 @@ class xaliConfigAbsencesTableGUI extends ilTable2GUI
 
         $this->setFormAction($this->ctrl->getFormAction($a_parent_obj));
         $this->setTitle($this->pl->txt('absence_reasons'));
-
-        //		$this->setDefaultOrderField('sort_date');
-
         $this->parseData();
     }
 

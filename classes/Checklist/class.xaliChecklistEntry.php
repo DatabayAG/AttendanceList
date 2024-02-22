@@ -26,7 +26,7 @@ class xaliChecklistEntry extends ActiveRecord
 
     public const DB_TABLE_NAME = "xali_entry";
     public const STATUS_ABSENT_UNEXCUSED = 1;
-    public const STATUS_ABSENT_EXCUSED = 2; // DEPRECATED
+    public const STATUS_ABSENT_EXCUSED = 2;
     public const STATUS_PRESENT = 3;
     public const STATUS_NOT_RELEVANT = 4;
     public const NOTIFICATION_NAME = "absence";
