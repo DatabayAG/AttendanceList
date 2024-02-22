@@ -1,6 +1,6 @@
 {
-  "name": "studer-raimann.ch/attendance_list",
-  "description": "ILIAS 5.1 AttendanceList plugin",
+  "name": "plugin/attendance_list",
+  "description": "ILIAS 9 AttendanceList plugin",
   "type": "project",
   "license": "GPL-3.0+",
   "authors": [
@@ -9,22 +9,30 @@
       "email": "tt@studer-raimann.ch",
       "homepage": "https://studer-raimann.ch",
       "role": "Project Manager, Software Engineer"
+    },
+    {
+      "name": "mbeym",
+      "email": "mbeym@databay.de"
     }
   ],
-  "support": {
-    "issues": "https://plugins.studer-raimann.ch/goto.php?target=uihk_srsu_PLATT"
-  },
   "minimum-stability": "beta",
   "prefer-stable": true,
   "require": {
-    "php": ">=7.0"
+    "php": ">=8.1 <8.3"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "friendsofphp/php-cs-fixer": "^3.12",
+    "captainhook/captainhook": "^5.10"
   },
   "autoload": {
     "psr-4": {
-      "srag\\Plugins\\AttendanceList\\": "src/"
+      "srag\\Plugins\\AttendanceList\\": "src/",
+      "srag\\Plugins\\AttendanceList\\Libs\\": "libs/"
     },
     "classmap": [
-      "./classes/"
+      "./classes/",
+      "./libs"
     ]
   },
   "config": {

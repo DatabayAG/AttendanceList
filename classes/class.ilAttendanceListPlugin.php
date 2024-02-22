@@ -1,41 +1,53 @@
 <?php
-/* Copyright (c) 1998-2009 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once __DIR__ . '/../vendor/autoload.php';
-
-use ILIAS\DI\Container;
 
 /**
- * Class ilAttendanceListPlugin
+ * This file is part of ILIAS, a powerful learning management system
+ * published by ILIAS open source e-Learning e.V.
  *
- * @author            Theodor Truffer <tt@studer-raimann.ch>
- */
-class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
+ * ILIAS is licensed with the GPL-3.0,
+ * see https://www.gnu.org/licenses/gpl-3.0.en.html
+ * You should have received a copy of said license along with the
+ * source code, too.
+ *
+ * If this is not the case or you just want to try ILIAS, you'll find
+ * us at:
+ * https://www.ilias.de
+ * https://github.com/ILIAS-eLearning
+ *
+ *********************************************************************/
 
-	const PLUGIN_ID = 'xali';
-	const PLUGIN_NAME = 'AttendanceList';
-	const PLUGIN_CLASS_NAME = self::class;
+declare(strict_types=1);
+
+use ILIAS\DI\Container;
+use srag\Plugins\AttendanceList\Cron\AttendanceListJob;
+use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Loader\CustomInputGUIsLoaderDetector;
+use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4PluginTrait;
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 
-    /**
-     * @var bool
-     */
-    protected static $init_notifications = false;
+class ilAttendanceListPlugin extends ilRepositoryObjectPlugin implements ilCronJobProvider
+{
+    use Notifications4PluginTrait;
+
+    public const PLUGIN_ID = 'xali';
+    public const PLUGIN_NAME = 'AttendanceList';
+    public const PLUGIN_CLASS_NAME = self::class;
+
+    protected static bool $init_notifications = false;
+    private Container $dic;
 
 
-    /**
-     *
-     */
     public static function initNotifications(): void
     {
         if (!self::$init_notifications) {
             self::$init_notifications = true;
-            //self::notifications4plugin()->withTableNamePrefix(self::PLUGIN_ID)->withPlugin(self::plugin());
+            self::notifications4plugin()->withTableNamePrefix(self::PLUGIN_ID)->withPlugin(self::getInstance());
         }
     }
 
-	protected static ilAttendanceListPlugin $instance;
-	protected ilDBInterface $db;
-
+    protected static ilAttendanceListPlugin $instance;
+    protected ilDBInterface $db;
 
     public function __construct(
         ilDBInterface $db,
@@ -43,192 +55,179 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin {
         string $id
     ) {
         global $DIC;
+        $this->dic = $DIC;
         parent::__construct($db, $component_repository, $id);
 
-		$this->db = $DIC->database();
-	}
+        $this->db = $DIC->database();
+    }
 
-
-	/**
-	 * @return ilAttendanceListPlugin
-	 */
-	public static function getInstance(): ilAttendanceListPlugin
+    public static function getInstance(): ilAttendanceListPlugin
     {
-		if (!isset(self::$instance)) {
+        if (!isset(self::$instance)) {
             global $DIC;
 
             /** @var $component_factory ilComponentFactory */
             $component_factory = $DIC['component.factory'];
             /** @var $plugin ilAttendanceListPlugin */
-            $plugin  = $component_factory->getPlugin(ilAttendanceListPlugin::PLUGIN_ID);
+            $plugin = $component_factory->getPlugin(self::PLUGIN_ID);
 
-			self::$instance = $plugin;
-		}
+            self::$instance = $plugin;
+        }
 
-		return self::$instance;
-	}
-
-
-    /**
-     * @inheritDoc
-     */
-	protected function init(): void
-    {
-       self::initNotifications();
+        return self::$instance;
     }
 
 
-    /**
-	 * @return string
-	 */
-	function getPluginName(): string
+    protected function init(): void
     {
-		return self::PLUGIN_NAME;
-	}
+        self::initNotifications();
+    }
 
-
-
-	/**
-	 *
-	 */
-	protected function uninstallCustom(): void
+    public function getPluginName(): string
     {
-		$this->db->dropTable(xaliConfig::TABLE_NAME, false);
-		$this->db->dropTable(xaliLastReminder::TABLE_NAME, false);
-		$this->db->dropTable(xaliAbsenceReason::TABLE_NAME, false);
-		$this->db->dropTable(xaliAbsenceStatement::TABLE_NAME, false);
-		$this->db->dropTable(xaliSetting::DB_TABLE_NAME, false);
-		$this->db->dropTable(xaliChecklist::DB_TABLE_NAME, false);
-		$this->db->dropTable(xaliChecklistEntry::DB_TABLE_NAME, false);
-		$this->db->dropTable(xaliUserStatus::TABLE_NAME, false);
-       // self::notifications4plugin()->dropTables();
+        return self::PLUGIN_NAME;
     }
 
 
-	/**
-	 * Get ref id for object id.
-	 * The ref id is unambiguous since there can't be references to attendance lists.
-	 *
-	 * @param $obj_id
-	 *
-	 * @return int|null
+    public function exchangeUIRendererAfterInitialization(Container $dic): Closure
+    {
+        return CustomInputGUIsLoaderDetector::exchangeUIRendererAfterInitialization();
+    }
+
+    protected function uninstallCustom(): void
+    {
+        $this->db->dropTable(xaliConfig::TABLE_NAME, false);
+        $this->db->dropTable(xaliLastReminder::TABLE_NAME, false);
+        $this->db->dropTable(xaliAbsenceReason::TABLE_NAME, false);
+        $this->db->dropTable(xaliAbsenceStatement::TABLE_NAME, false);
+        $this->db->dropTable(xaliSetting::DB_TABLE_NAME, false);
+        $this->db->dropTable(xaliChecklist::DB_TABLE_NAME, false);
+        $this->db->dropTable(xaliChecklistEntry::DB_TABLE_NAME, false);
+        $this->db->dropTable(xaliUserStatus::TABLE_NAME, false);
+        self::notifications4plugin()->dropTables();
+    }
+
+    /**
+     * The ref id is unambiguous since there can't be references to attendance lists.
      */
-	static function lookupRefId($obj_id): ?int
+    public static function lookupRefId(int $obj_id): ?int
     {
         $allReferences = ilObject2::_getAllReferences($obj_id);
         return array_shift($allReferences);
-	}
+    }
 
-
-	/**
-	 * @return array
-	 */
-	public function getMembers($ref_id = 0): array
+    public function getMembers(int $ref_id = 0): array
     {
-		global $DIC;
-		$rbacreview = $DIC['rbacreview'];
-		static $members;
-		if (!$members) {
-			$ref_id = $ref_id ? $ref_id : $_GET['ref_id'];
-			$parent = $this->getParentCourseOrGroup($ref_id);
-			$member_role = $parent->getDefaultMemberRole();
-			$members = $rbacreview->assignedUsers($member_role);
-			$members = array_filter($members, function($usr_id) {
-			    return ilObjUser::_exists($usr_id);
+        $httpWrapper = $this->dic->http()->wrapper();
+        $refinery = $this->dic->refinery();
+        $rbacreview = $this->dic->rbac()->review();
+        static $members;
+        if (!$members) {
+
+            if (!$ref_id) {
+                $ref_id = $httpWrapper->query()->retrieve(
+                    "ref_id",
+                    $refinery->kindlyTo()->int()
+                );
+            }
+
+            $parent = $this->getParentCourseOrGroup($ref_id);
+            $member_role = $parent->getDefaultMemberRole();
+            $members = $rbacreview->assignedUsers($member_role);
+            $members = array_filter($members, function ($usr_id) {
+                return ilObjUser::_exists($usr_id);
             });
-		}
+        }
 
-		return $members;
-	}
-
-
-	/**
-	 * @return ilObjCourse|ilObjGroup
-	 * @throws Exception
-	 */
-	public function getParentCourseOrGroup($ref_id = 0): ilObjGroup|ilObjCourse
-    {
-		$ref_id = $ref_id ? $ref_id : $_GET['ref_id'];
-		$parent = ilObjectFactory::getInstanceByRefId($this->getParentCourseOrGroupId($ref_id));
-
-		return $parent;
-	}
-
-
-	/**
-	 * @param $ref_id
-	 *
-	 * @return int
-	 * @throws Exception
-	 */
-	public function getParentCourseOrGroupId($ref_id): int
-    {
-		global $DIC;
-		$tree = $DIC['tree'];
-		$orig_ref_id = $ref_id;
-		while (!in_array(ilObject2::_lookupType($ref_id, true), array( 'crs', 'grp' ))) {
-			if ($ref_id == 1 || !$ref_id) {
-				throw new Exception("Parent of ref id {$orig_ref_id} is neither course nor group.");
-			}
-			$ref_id = $tree->getParentId($ref_id);
-		}
-
-		return $ref_id;
-	}
-
-
-	/**
-	 * @param $user_id
-	 * @param $crs_ref_id
-	 *
-	 * @return array
-	 */
-	public function getAttendancesForUserAndCourse($user_id, $crs_ref_id): array
-    {
-		$obj_id = $this->getAttendanceListIdForCourse($crs_ref_id);
-		$settings = new xaliSetting($obj_id);
-
-		/** @var xaliUserStatus $xaliUserStatus */
-		$xaliUserStatus = xaliUserStatus::getInstance($user_id, $obj_id);
-
-		return array(
-			'present' => $xaliUserStatus->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT),
-			'absent' => $xaliUserStatus->getAttendanceStatuses(xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED),
-			'unedited' => $xaliUserStatus->getUnedited(),
-			'percentage' => $xaliUserStatus->getReachedPercentage(),
-			'minimum_attendance' => $obj_id ? $xaliUserStatus->calcMinimumAttendance() : 0
-		);
-	}
-
-
-	/**
-	 * @param      $crs_ref_id
-	 * @param bool $get_ref_id
-	 *
-	 * @return int
-	 */
-	public function getAttendanceListIdForCourse($crs_ref_id, $get_ref_id = false): int
-    {
-		global $DIC;
-		/** @var ilTree $tree */
-		$tree = $DIC['tree'];
-        $subTree = $tree->getSubTree($tree->getNodeData($crs_ref_id), true, [$this->getId()]);
-        $attendancelist = array_shift($subTree);
-		$ref_id = $attendancelist['child'];
-		if ($get_ref_id) {
-			return $ref_id;
-		}
-
-		return ilObjAttendanceList::_lookupObjectId($ref_id);
-	}
-
-
+        return $members;
+    }
 
     /**
-     * @inheritDoc
+     * @throws Exception
      */
-    public function allowCopy() : bool
+    public function getParentCourseOrGroup(int $ref_id = 0): ilObjGroup|ilObjCourse
+    {
+        $httpWrapper = $this->dic->http()->wrapper();
+        $refinery = $this->dic->refinery();
+        if (!$ref_id) {
+            $refId = $httpWrapper->query()->retrieve(
+                "ref_id",
+                $refinery->kindlyTo()->int()
+            );
+        }
+
+        return ilObjectFactory::getInstanceByRefId($this->getParentCourseOrGroupId($ref_id));
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function getParentCourseOrGroupId(int $ref_id): int
+    {
+        global $DIC;
+        $tree = $DIC->repositoryTree();
+        $orig_ref_id = $ref_id;
+        while (!in_array(ilObject2::_lookupType($ref_id, true), ['crs', 'grp'])) {
+            if ($ref_id == 1 || !$ref_id) {
+                throw new Exception("Parent of ref id {$orig_ref_id} is neither course nor group.");
+            }
+            $ref_id = (int) $tree->getParentId($ref_id);
+        }
+
+        return $ref_id;
+    }
+
+    public function getAttendancesForUserAndCourse(int $user_id, int $crs_ref_id): array
+    {
+        $obj_id = $this->getAttendanceListIdForCourse($crs_ref_id);
+        $settings = new xaliSetting($obj_id);
+
+        /** @var xaliUserStatus $xaliUserStatus */
+        $xaliUserStatus = xaliUserStatus::getInstance($user_id, $obj_id);
+
+        return [
+            'present' => $xaliUserStatus->getAttendanceStatuses(xaliChecklistEntry::STATUS_PRESENT),
+            'absent' => $xaliUserStatus->getAttendanceStatuses(xaliChecklistEntry::STATUS_ABSENT_UNEXCUSED),
+            'unedited' => $xaliUserStatus->getUnedited(),
+            'percentage' => $xaliUserStatus->getReachedPercentage(),
+            'minimum_attendance' => $obj_id ? $xaliUserStatus->calcMinimumAttendance() : 0
+        ];
+    }
+
+    public function getAttendanceListIdForCourse(int $crs_ref_id, bool $get_ref_id = false): int
+    {
+        global $DIC;
+        $tree = $DIC->repositoryTree();
+        $subTree = $tree->getSubTree($tree->getNodeData($crs_ref_id), true, [$this->getId()]);
+        $attendancelist = array_shift($subTree);
+        $ref_id = $attendancelist['child'];
+        if ($get_ref_id) {
+            return $ref_id;
+        }
+
+        return ilObjAttendanceList::_lookupObjectId($ref_id);
+    }
+
+
+    public function allowCopy(): bool
     {
         return true;
+    }
+
+    public function getCronJobInstances(): array
+    {
+        return [
+            new AttendanceListJob($this)
+        ];
+    }
+
+    public function getCronJobInstance(string $jobId): ilCronJob
+    {
+        foreach ($this->getCronJobInstances() as $cronJobInstance) {
+            if ($cronJobInstance->getId() === $jobId) {
+                return $cronJobInstance;
+            }
+        }
+        throw new Exception("No cron job found with the id '$jobId'.");
     }
 }
