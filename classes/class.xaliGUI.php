@@ -1,70 +1,92 @@
 <?php
-class xaliGUI {
 
-	const CMD_STANDARD = 'show';
-	const CMD_CANCEL = 'cancel';
+/**
+ * This file is part of ILIAS, a powerful learning management system
+ * published by ILIAS open source e-Learning e.V.
+ *
+ * ILIAS is licensed with the GPL-3.0,
+ * see https://www.gnu.org/licenses/gpl-3.0.en.html
+ * You should have received a copy of said license along with the
+ * source code, too.
+ *
+ * If this is not the case or you just want to try ILIAS, you'll find
+ * us at:
+ * https://www.ilias.de
+ * https://github.com/ILIAS-eLearning
+ *
+ *********************************************************************/
 
-	protected mixed $tpl;
-	protected mixed $ctrl;
-	protected ilAttendanceListPlugin|ilPlugin $pl;
-	protected ilObjAttendanceListGUI $parent_gui;
-	protected ilTabsGUI $tabs;
-	protected mixed $user;
-	protected ilToolbarGUI $toolbar;
+declare(strict_types=1);
 
+use ILIAS\HTTP\Wrapper\WrapperFactory;
+use ILIAS\Refinery\Factory;
 
-	/**
-	 * xaliGUI constructor.
-	 *
-	 * @param ilObjAttendanceListGUI $parent_gui
-	 */
-	function __construct(ilObjAttendanceListGUI $parent_gui) {
-		global $DIC;
-		$tpl = $DIC['tpl'];
-		$ilCtrl = $DIC['ilCtrl'];
-		$ilTabs = $DIC['ilTabs'];
-		$lng = $DIC['lng'];
-		$ilUser = $DIC['ilUser'];
-		$ilToolbar = $DIC['ilToolbar'];
-		$this->toolbar = $ilToolbar;
-		$this->user = $ilUser;
-		$this->lng = $lng;
-		$this->tabs = $ilTabs;
-		$this->tpl = $tpl;
-		$this->ctrl = $ilCtrl;
+class xaliGUI
+{
+    public const CMD_STANDARD = 'show';
+    public const CMD_CANCEL = 'cancel';
+
+    protected mixed $tpl;
+    protected mixed $ctrl;
+    protected ilAttendanceListPlugin|ilPlugin $pl;
+    protected ilObjAttendanceListGUI $parent_gui;
+    protected ilTabsGUI $tabs;
+    protected ilObjUser $user;
+    protected ilToolbarGUI $toolbar;
+    protected ilLanguage $lng;
+    protected WrapperFactory $httpWrapper;
+    protected Factory $refinery;
+    protected ilTree $tree;
+
+    public function __construct(ilObjAttendanceListGUI $parent_gui)
+    {
+        global $DIC;
+        $tpl = $DIC->ui()->mainTemplate();
+        $ilCtrl = $DIC->ctrl();
+        $ilTabs = $DIC->tabs();
+        $lng = $DIC->language();
+        $ilUser = $DIC->user();
+        $ilToolbar = $DIC->toolbar();
+        $this->toolbar = $ilToolbar;
+        $this->user = $ilUser;
+        $this->lng = $lng;
+        $this->tabs = $ilTabs;
+        $this->tpl = $tpl;
+        $this->ctrl = $ilCtrl;
+        $this->httpWrapper = $DIC->http()->wrapper();
+        $this->refinery = $DIC->refinery();
+        $this->tree = $DIC->repositoryTree();
+
         /** @var $component_factory ilComponentFactory */
         $component_factory = $DIC['component.factory'];
-        /** @var $plugin ilAttendanceListPlugin */
-        $this->pl  = $component_factory->getPlugin(ilAttendanceListPlugin::PLUGIN_ID);
-		$this->parent_gui = $parent_gui;
-	}
+        $this->pl = $component_factory->getPlugin(ilAttendanceListPlugin::PLUGIN_ID);
+        $this->parent_gui = $parent_gui;
+    }
 
 
-	/**
-	 *
-	 */
-	public function executeCommand(): void
+    public function executeCommand(): void
     {
-		$this->prepareOutput();
-		if (ilObjAttendanceListAccess::hasWriteAccess()) {
-			$this->parent_gui->checkPassedIncompleteLists();
-		}
+        $this->prepareOutput();
+        if (ilObjAttendanceListAccess::hasWriteAccess()) {
+            $this->parent_gui->checkPassedIncompleteLists();
+        }
 
-		$nextClass = $this->ctrl->getNextClass();
+        $nextClass = $this->ctrl->getNextClass();
 
-		switch ($nextClass) {
-			default:
-				$cmd = $this->ctrl->getCmd(static::CMD_STANDARD);
-				$this->{$cmd}();
-				break;
-		}
-	}
+        switch ($nextClass) {
+            default:
+                $cmd = $this->ctrl->getCmd(static::CMD_STANDARD);
+                $this->{$cmd}();
+                break;
+        }
+    }
 
-	protected function prepareOutput() { }
-
-
-	protected function cancel(): void
+    protected function prepareOutput(): void
     {
-		$this->ctrl->redirect($this, static::CMD_STANDARD);
-	}
+    }
+
+    protected function cancel(): void
+    {
+        $this->ctrl->redirect($this, static::CMD_STANDARD);
+    }
 }

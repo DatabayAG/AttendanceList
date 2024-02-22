@@ -1,46 +1,60 @@
-AttendanceList
-=================
+# RepositoryObject Plugin - AttendanceList
 
 Virtual attendance lists as repository objects in ILIAS. Some of the features:
 * automatically generate, delete and schedule lists
 * configure a minimum attendance and automatically calculate the progress
 * ILIAS learning progress supported
 
-Installation
-------------
-#### AttendanceList
-Navigate into the ILIAS root directory, then use:
+## Requirements
 
-```bash
-mkdir -p Customizing/global/plugins/Services/Repository/RepositoryObject
-cd Customizing/global/plugins/Services/Repository/RepositoryObject
-git clone https://github.com/fluxapps/AttendanceList.git
-```
+| Component | Version(s)                                                                                    | Link                      |
+|-----------|-----------------------------------------------------------------------------------------------|---------------------------|
+| PHP       | ![](https://img.shields.io/badge/8.1-blue.svg) ![](https://img.shields.io/badge/8.2-blue.svg) | [PHP](https://php.net)    |
+| ILIAS     | ![](https://img.shields.io/badge/9.x-orange.svg)                                              | [ILIAS](https://ilias.de) |
 
-Please also install and enable [AttendanceListCron](https://github.com/fluxapps/AttendanceListCron).
+---
 
-## ILIAS 7 core ilCtrl patch 
+## Table of contents
 
-For make this plugin work with ilCtrl in ILIAS 7, you may need to patch the core, before you update the plugin (At your own risk) 
+<!-- TOC -->
+* [RepositoryObject Plugin - AttendanceList](#repositoryobject-plugin---attendancelist)
+  * [Requirements](#requirements)
+  * [Table of contents](#table-of-contents)
+  * [Installation](#installation)
+  * [Usage](#usage)
+    * [Cronjob](#cronjob)
+<!-- TOC -->
 
-Start at the plugin directory 
+---
 
-```shell
-./vendor/srag/dic/bin/ilias7_core_apply_ilctrl_patch.sh
-```
+## Installation
 
-## Rebuild & Maintenance
+1. Clone this repository to **Customizing/global/plugins/Services/Repository/RepositoryObject/AttendanceList**
+2. Install the Composer dependencies
+   ```bash
+   cd Customizing/global/plugins/Services/Repository/RepositoryObject/AttendanceList
+   composer install --no-dev
+   ```
+   Developers **MUST** omit the `--no-dev` argument.
 
-fluxlabs ag, support@fluxlabs.ch
+3. Login to ILIAS with an administrator account (e.g. root)
+4. Select **Plugins** in **Extending ILIAS** inside the **Administration** main menu.
+5. Search for the **AttendanceList** plugin in the list of plugin and choose **Install** from the **Actions** drop-down.
+6. Choose **Activate** from the **Actions** dropdown.
 
-This project needs to be rebuilt before it can be maintained.
+## Usage
 
-Are you interested in a rebuild and would you like to participate?
-Take advantage of the crowdfunding opportunity under [discussions](https://github.com/fluxapps/AttendanceList/discussions/1).
+1. Create or Enter a **Course**.
+2. Click on the **Add New Item** Dropdown.
+3. Select ``Attendance List`` under **Other**
+4. Configure the new object.
+5. Click on the button **Create attendance list**
 
-## About fluxlabs plugins
+### Cronjob
 
-Please also have a look at our other key projects and their [MAINTENANCE](https://github.com/fluxapps/docs/blob/8ce4309b0ac64c039d29204c2d5b06723084c64b/assets/MAINTENANCE.png).
+The plugin adds a cronjob that regularily sends out reminders to users to give a reason for their absence.
 
-The plugins that require a rebuild and the costs are listed here: [REBUILDS](https://github.com/fluxapps/docs/blob/8ce4309b0ac64c039d29204c2d5b06723084c64b/assets/REBUILDS.png)
-
+1. Go to **Administration** => **System Settings and Maintenance** => **General Settings** => Tab **Cron Jobs** => Search for ``AttendanceList: Send absence reminders``.
+2. Activate the CronJob
+3. Configure it by clicking on **Edit**
+4. Define when the cronjob should run
