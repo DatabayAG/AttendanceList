@@ -1,156 +1,121 @@
 <?php
-/* Copyright (c) 1998-2009 ILIAS open source, Extended GPL, see docs/LICENSE */
+
+/**
+ * This file is part of ILIAS, a powerful learning management system
+ * published by ILIAS open source e-Learning e.V.
+ *
+ * ILIAS is licensed with the GPL-3.0,
+ * see https://www.gnu.org/licenses/gpl-3.0.en.html
+ * You should have received a copy of said license along with the
+ * source code, too.
+ *
+ * If this is not the case or you just want to try ILIAS, you'll find
+ * us at:
+ * https://www.ilias.de
+ * https://github.com/ILIAS-eLearning
+ *
+ *********************************************************************/
+
+declare(strict_types=1);
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
-class ilObjAttendanceListAccess extends ilObjectPluginAccess {
-
-	/**
-	 * @param string $a_cmd
-	 * @param string $a_permission
-	 * @param int    $a_ref_id
-	 * @param int    $a_obj_id
-	 * @param string $a_user_id
-	 *
-	 * @return bool
-	 */
-	public function _checkAccess($a_cmd, $a_permission, $a_ref_id, $a_obj_id = NULL, $a_user_id = ''): bool
+class ilObjAttendanceListAccess extends ilObjectPluginAccess
+{
+    public function _checkAccess(string $a_cmd, string $a_permission, int $a_ref_id, int $a_obj_id, ?int $a_user_id = null): bool
     {
-		global $DIC;
-		$ilUser = $DIC['ilUser'];
-		$ilAccess = $DIC['ilAccess'];
-		/**
-		 * @var $ilAccess ilAccessHandler
-		 */
-		if ($a_user_id == '') {
-			$a_user_id = $ilUser->getId();
-		}
-		if ($a_obj_id === NULL) {
-			$a_obj_id = ilObject2::_lookupObjId($a_ref_id);
-		}
+        global $DIC;
+        $ilUser = $DIC->user();
+        $ilAccess = $DIC->access();
+        if ($a_user_id == '') {
+            $a_user_id = $ilUser->getId();
+        }
+        if ($a_obj_id === null) {
+            $a_obj_id = ilObject2::_lookupObjId($a_ref_id);
+        }
 
-		switch ($a_permission) {
-			case 'read':
-			case 'visible':
-				if ((!ilObjAttendanceListAccess::checkOnline($a_obj_id) OR !ilObjAttendanceListAccess::checkActivation($a_obj_id))
-					AND !$ilAccess->checkAccessOfUser($a_user_id, 'write', '', $a_ref_id)) {
-					return false;
-				}
-				break;
-		}
+        switch ($a_permission) {
+            case 'read':
+            case 'visible':
+                if ((!ilObjAttendanceListAccess::checkOnline($a_obj_id) or !ilObjAttendanceListAccess::checkActivation($a_obj_id))
+                    and !$ilAccess->checkAccessOfUser($a_user_id, 'write', '', $a_ref_id)) {
+                    return false;
+                }
+                break;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-
-	/**
-	 * @param        $a_permission
-	 * @param        $a_cmd
-	 * @param        $a_ref_id
-	 * @param string $a_type
-	 * @param string $a_obj_id
-	 * @param string $a_tree_id
-	 *
-	 * @return mixed
-	 */
-	function checkAccess($a_permission, $a_cmd, $a_ref_id, string $a_type = "", string $a_obj_id = "", string $a_tree_id = ""): mixed
+    public function checkAccess(string $a_permission, string $a_cmd, int $a_ref_id, string $a_type = "", ?int $a_obj_id = null, ?int $a_tree_id = null): bool
     {
-		return $this->access->checkAccess($a_permission, $a_cmd, $a_ref_id, $a_type, $a_obj_id, $a_tree_id);
-	}
+        return $this->access->checkAccess($a_permission, $a_cmd, $a_ref_id, $a_type, $a_obj_id, $a_tree_id);
+    }
 
-
-	/**
-	 * @param $a_id
-	 *
-	 * @return bool
-	 */
-	static function checkOnline($a_id): bool
+    public static function checkOnline(int $a_id): bool
     {
-		/**
-		 * @var $xaliSettings xaliSetting
-		 */
-		$xaliSettings = xaliSetting::findOrGetInstance($a_id);
+        /**
+         * @var $xaliSettings xaliSetting
+         */
+        $xaliSettings = xaliSetting::findOrGetInstance($a_id);
 
-		return (bool)$xaliSettings->getIsOnline();
-	}
+        return (bool) $xaliSettings->getIsOnline();
+    }
 
-
-	/**
-	 * @return bool
-	 */
-	static function checkActivation($a_id): bool
+    public static function checkActivation($a_id): bool
     {
-		/** @var xaliSetting $settings */
-		$settings = xaliSetting::find($a_id);
-		$today = date('Y-m-d');
+        /** @var xaliSetting $settings */
+        $settings = xaliSetting::find($a_id);
+        $today = date('Y-m-d');
 
-		return !$settings->getActivation() || (($today >= $settings->getActivationFrom()) && ($today <= $settings->getActivationTo()));
-	}
+        return !$settings->getActivation() || (($today >= $settings->getActivationFrom()) && ($today <= $settings->getActivationTo()));
+    }
 
-
-	/**
-	 * @param null $ref_id
-	 * @param null $user_id
-	 *
-	 * @return bool
-	 */
-	public static function hasReadAccess($ref_id = NULL, $user_id = NULL): bool
+    public static function hasReadAccess(?int $ref_id = null, ?int $user_id = null): bool
     {
-		return self::hasAccess('read', $ref_id, $user_id);
-	}
+        return self::hasAccess('read', $ref_id, $user_id);
+    }
 
-
-	/**
-	 * @param null $ref_id
-	 * @param null $user_id
-	 *
-	 * @return bool
-	 */
-	public static function hasWriteAccess($ref_id = NULL, $user_id = NULL): bool
+    public static function hasWriteAccess(?int $ref_id = null, ?int $user_id = null): bool
     {
-		return self::hasAccess('write', $ref_id, $user_id);
-	}
+        return self::hasAccess('write', $ref_id, $user_id);
+    }
 
-
-	/**
-	 * @param      $permission
-	 * @param null $ref_id
-	 * @param null $user_id
-	 *
-	 * @return bool
-	 */
-	protected static function hasAccess($permission, $ref_id = NULL, $user_id = NULL): bool
+    protected static function hasAccess(string $permission, ?int $ref_id = null, ?int $user_id = null): bool
     {
-		global $DIC;
-		$ilUser = $DIC['ilUser'];
-		$ilAccess = $DIC['ilAccess'];
-		$ilLog = $DIC['ilLog'];
-		/**
-		 * @var $ilAccess \ilAccessHandler
-		 */
-		$ref_id = $ref_id ? $ref_id : $_GET['ref_id'];
-		$user_id = $user_id ? $user_id : $ilUser->getId();
+        global $DIC;
+        $ilUser = $DIC->user();
+        $ilAccess = $DIC->access();
+        $ilLog = $DIC->logger()->root();
+        $httpWrapper = $DIC->http()->wrapper();
+        $refinery = $DIC->refinery();
 
-		return $ilAccess->checkAccessOfUser($user_id, $permission, '', $ref_id);
-	}
+        $ref_id = $ref_id ?: (int) $httpWrapper->query()->retrieve(
+            "ref_id",
+            $refinery->byTrying([
+                $refinery->kindlyTo()->int(),
+                $refinery->always(null)
+            ])
+        );
+        $user_id = $user_id ?: $ilUser->getId();
 
-	/**
-	 * check whether goto script will succeed
-	 */
-	static function _checkGoto($a_target): bool
+        return $ilAccess->checkAccessOfUser($user_id, $permission, '', $ref_id);
+    }
+
+    public static function _checkGoto(string $target): bool
     {
-		global $DIC;
+        global $DIC;
 
-		$ilAccess = $DIC->access();
+        $ilAccess = $DIC->access();
 
-		$t_arr = explode("_", $a_target);
-		if (count($t_arr) == 3) { // access to absence statement -> access will be checked later
-			return true;
-		}
+        $t_arr = explode("_", $target);
+        if (count($t_arr) === 3) { // access to absence statement -> access will be checked later
+            return true;
+        }
 
-		if ($ilAccess->checkAccess("read", "", $t_arr[1]))
-		{
-			return true;
-		}
-		return false;
-	}
+        if ($ilAccess->checkAccess("read", "", (int) $t_arr[1])) {
+            return true;
+        }
+        return false;
+    }
 }
