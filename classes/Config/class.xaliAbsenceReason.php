@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliAbsenceReason
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliAbsenceReason extends ActiveRecord
 {
     public const F_ABSENCE_REASONS_TITLE = 'title';

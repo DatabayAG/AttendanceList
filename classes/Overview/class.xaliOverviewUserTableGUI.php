@@ -21,11 +21,7 @@ declare(strict_types=1);
 use ILIAS\HTTP\Wrapper\WrapperFactory;
 use ILIAS\Refinery\Factory;
 
-/**
- * Class xaliOverviewUserTableGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliOverviewUserTableGUI extends ilTable2GUI
 {
     protected ilAttendanceListPlugin $pl;

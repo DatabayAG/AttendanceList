@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class srWeekdayInputGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class srWeekdayInputGUI extends ilFormPropertyGUI
 {
     public const TYPE = 'weekday';
@@ -69,9 +65,6 @@ class srWeekdayInputGUI extends ilFormPropertyGUI
         return count($postData) <= 7;
     }
 
-    /**
-     * Insert property html
-     */
     public function insert(&$a_tpl): void
     {
         $html = $this->render();
@@ -107,7 +100,6 @@ class srWeekdayInputGUI extends ilFormPropertyGUI
     }
 
     /**
-     * Get HTML for table filter
      * @throws ilTemplateException
      */
     public function getTableFilterHTML(): string

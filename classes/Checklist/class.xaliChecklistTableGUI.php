@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliChecklistTableGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliChecklistTableGUI extends ilTable2GUI
 {
     protected ilAttendanceListPlugin $pl;
@@ -31,11 +27,6 @@ class xaliChecklistTableGUI extends ilTable2GUI
     protected bool $is_new;
     protected ilCtrl $ctrl;
 
-    /**
-     * xaliChecklistTableGUI constructor.
-     *
-     * @throws ilCtrlException
-     */
     public function __construct(xaliChecklistGUI|xaliOverviewGUI $a_parent_obj, xaliChecklist $checklist, array $users)
     {
         global $DIC;

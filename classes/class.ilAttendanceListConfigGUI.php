@@ -29,11 +29,7 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4Pl
 require_once __DIR__ . '/../vendor/autoload.php';
 
 /**
- * Class ilAttendanceListConfigGUI
- *
  * @ilCtrl_IsCalledBy  ilAttendanceListConfigGUI: ilObjComponentSettingsGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
  */
 class ilAttendanceListConfigGUI extends ilPluginConfigGUI
 {
@@ -62,9 +58,6 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
     private WrapperFactory $httpWrapper;
     private Factory $refinery;
 
-    /**
-     * ilAttendanceListConfigGUI constructor.
-     */
     public function __construct()
     {
         global $DIC;

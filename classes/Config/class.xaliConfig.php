@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliConfig
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliConfig extends ActiveRecord
 {
     public const F_INTERVAL_REMINDER_EMAIL = 'interval_reminder_email';

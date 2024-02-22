@@ -66,10 +66,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
         return $set->numRows();
     }
 
-    /**
-     * Get all user ids with LP status completed
-     *
-     */
     public function getLPCompleted(): array
     {
         return xaliUserStatus::where([
@@ -78,10 +74,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
         ])->getArray(null, 'user_id');
     }
 
-    /**
-     * Get all user ids with LP status not attempted
-     *
-     */
     public function getLPNotAttempted(): array
     {
         $operators = [
@@ -96,10 +88,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
         return array_diff($this->plugin->getMembers($this->plugin->lookupRefId($this->getId())), $other_than_not_attempted);
     }
 
-    /**
-     * Get all user ids with LP status failed
-     *
-     */
     public function getLPFailed(): array
     {
         return xaliUserStatus::where([
@@ -108,10 +96,6 @@ class ilObjAttendanceList extends ilObjectPlugin implements ilLPStatusPluginInte
         ])->getArray(null, 'user_id');
     }
 
-    /**
-     * Get all user ids with LP status in progress
-     *
-     */
     public function getLPInProgress(): array
     {
         return xaliUserStatus::where([

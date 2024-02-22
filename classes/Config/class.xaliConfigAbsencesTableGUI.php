@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliConfigAbsencesTableGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliConfigAbsencesTableGUI extends ilTable2GUI
 {
     protected ilAttendanceListPlugin $pl;

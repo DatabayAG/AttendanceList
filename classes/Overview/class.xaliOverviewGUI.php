@@ -20,11 +20,7 @@ declare(strict_types=1);
 
 use JetBrains\PhpStorm\NoReturn;
 
-/**
- * Class xaliOverviewGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliOverviewGUI extends xaliGUI
 {
     public const CMD_STANDARD = 'initUserOverview';

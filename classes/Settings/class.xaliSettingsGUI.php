@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliSettingsGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliSettingsGUI extends xaliGUI
 {
     public const CMD_STANDARD = 'showContent';

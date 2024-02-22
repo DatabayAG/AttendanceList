@@ -19,11 +19,9 @@
 declare(strict_types=1);
 
 /**
- * Class xaliLastReminder
  *
  * database table to track the date of the last email reminder sent by this plugin
  *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
  */
 class xaliLastReminder extends ActiveRecord
 {

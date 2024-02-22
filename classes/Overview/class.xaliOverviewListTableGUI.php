@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliOverviewListTableGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliOverviewListTableGUI extends ilTable2GUI
 {
     protected ilAttendanceListPlugin $pl;
@@ -30,8 +26,6 @@ class xaliOverviewListTableGUI extends ilTable2GUI
     protected ilCtrl $ctrl;
 
     /**
-     * xaliOverviewListTableGUI constructor.
-     *
      * @throws ilException
      */
     public function __construct(xaliOverviewGUI $a_parent_obj, int $obj_id)

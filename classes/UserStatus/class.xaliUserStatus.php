@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliUserStatus
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliUserStatus extends ActiveRecord
 {
     public const TABLE_NAME = 'xali_user_status';

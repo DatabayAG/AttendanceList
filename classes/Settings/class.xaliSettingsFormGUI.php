@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliSettingsFormGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliSettingsFormGUI extends ilPropertyFormGUI
 {
     public const F_TITLE = 'title';

@@ -25,11 +25,7 @@ use srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Utils\Notifications4Pl
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-/**
- * Class ilAttendanceListPlugin
- *
- * @author            Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class ilAttendanceListPlugin extends ilRepositoryObjectPlugin implements ilCronJobProvider
 {
     use Notifications4PluginTrait;
@@ -112,9 +108,7 @@ class ilAttendanceListPlugin extends ilRepositoryObjectPlugin implements ilCronJ
     }
 
     /**
-     * Get ref id for object id.
      * The ref id is unambiguous since there can't be references to attendance lists.
-     *
      */
     public static function lookupRefId(int $obj_id): ?int
     {

@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliUserDetailsTableGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliUserDetailsTableGUI extends ilTable2GUI
 {
     protected ilObjUser $user;

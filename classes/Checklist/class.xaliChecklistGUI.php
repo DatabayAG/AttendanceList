@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliChecklistGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliChecklistGUI extends xaliGUI
 {
     protected xaliChecklist $checklist;
@@ -45,9 +41,6 @@ class xaliChecklistGUI extends xaliGUI
         }
     }
 
-    /**
-     * standard command
-     */
     public function show(): void
     {
         // activation passed, don't show a list

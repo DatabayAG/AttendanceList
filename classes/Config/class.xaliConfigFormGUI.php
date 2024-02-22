@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliConfigFormGUI
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliConfigFormGUI extends ilPropertyFormGUI
 {
     protected ilAttendanceListPlugin $pl;

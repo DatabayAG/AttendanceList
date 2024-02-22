@@ -22,9 +22,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 class ilObjAttendanceListListGUI extends ilObjectPluginListGUI
 {
-    /**
-     * @var false
-     */
     private bool $payment_enabled;
 
     public function getGuiClass(): string
@@ -65,8 +62,6 @@ class ilObjAttendanceListListGUI extends ilObjectPluginListGUI
     }
 
     /**
-     * Get item properties
-     *
      * @return    array        array of property arrays:
      *                        'alert' (boolean) => display as an alert property (usually in red)
      *                        'property' (string) => property name

@@ -27,13 +27,10 @@ use ILIAS\HTTP\Wrapper\WrapperFactory;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 /**
- * Class ilObjAttendanceListGUI
- *
  * @ilCtrl_isCalledBy   ilObjAttendanceListGUI: ilRepositoryGUI, ilObjPluginDispatchGUI, ilAdministrationGUI
  * @ilCtrl_Calls        ilObjAttendanceListGUI: xaliChecklistGUI, xaliSettingsGUI, xaliOverviewGUI
  * @ilCtrl_Calls        ilObjAttendanceListGUI: xaliAbsenceStatementGUI
  * @ilCtrl_Calls        ilObjAttendanceListGUI: ilInfoScreenGUI, ilPermissionGUI, ilCommonActionDispatcherGUI, ilLearningProgressGUI
- *
  */
 class ilObjAttendanceListGUI extends ilObjectPluginGUI
 {

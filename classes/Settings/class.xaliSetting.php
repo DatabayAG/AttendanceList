@@ -18,11 +18,7 @@
 
 declare(strict_types=1);
 
-/**
- * Class xaliSetting
- *
- * @author  Theodor Truffer <tt@studer-raimann.ch>
- */
+
 class xaliSetting extends ActiveRecord
 {
     public const DB_TABLE_NAME = "xali_data";
