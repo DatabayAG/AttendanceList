@@ -18,9 +18,6 @@
 
 declare(strict_types=1);
 
-use JetBrains\PhpStorm\NoReturn;
-
-
 class xaliOverviewGUI extends xaliGUI
 {
     public const CMD_STANDARD = 'initUserOverview';
@@ -411,7 +408,7 @@ class xaliOverviewGUI extends xaliGUI
         $this->ctrl->redirect($this, self::CMD_LISTS);
     }
 
-    #[NoReturn] public function saveEntry(): void
+    public function saveEntry(): never
     {
         $checklistId = $this->httpWrapper->query()->retrieve(
             "checklist_id",
@@ -449,7 +446,7 @@ class xaliOverviewGUI extends xaliGUI
     /**
      * async auto complete method for user filter in overview
      */
-    #[NoReturn] public function addUserAutoComplete(): void
+    public function addUserAutoComplete(): never
     {
         $auto = new ilUserAutoComplete();
         $auto->setSearchFields(['login', 'firstname', 'lastname']);

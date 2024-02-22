@@ -18,8 +18,6 @@
 
 declare(strict_types=1);
 
-use JetBrains\PhpStorm\NoReturn;
-
 class xaliAbsenceStatementGUI extends xaliGUI
 {
     public const CMD_UPDATE = 'update';
@@ -81,7 +79,7 @@ class xaliAbsenceStatementGUI extends xaliGUI
         $this->tpl->setContent($xaliAbsenceFormGUI->getHTML());
     }
 
-    #[NoReturn] protected function downloadFile(): void
+    protected function downloadFile(): never
     {
         $file_id = $this->httpWrapper->query()->retrieve(
             "file_id",
