@@ -91,14 +91,14 @@ class MultilangualTabsInputGUI
             $lang_key = $DIC->language()->getLangKey();
         }
 
-        $value = $values[$lang_key];
+        $value = $values[$lang_key] ?? "";
 
         if (!empty($sub_key)) {
             if (!is_array($value)) {
                 $value = [];
             }
 
-            $value = $value[$sub_key];
+            $value = $value[$sub_key] ?? "";
         }
 
         if (!empty($value)) {
