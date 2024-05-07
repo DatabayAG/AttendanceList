@@ -252,10 +252,11 @@ class InternalMailSender implements Sender
         //$errors = $this->mailer->sendMail(, $this->getCc(), $this->getBcc(), $this->getSubject(), $this->getMessage(), [], false);
 
         if (!empty($errors)) {
+            foreach ($errors as $mailError) {
+                $this->dic->logger()->root()->error($this->dic->language()->txt($mailError->getLanguageVariable()));
+            }
             $error = $errors[0];
-            if ($error instanceof ilMailError) {
-                throw new ilMailException($this->dic->language()->txt($error->getLanguageVariable()));
-            } else {
+            if (!$error instanceof ilMailError) {
                 if ($error instanceof Throwable) {
                     throw $error;
                 } else {
