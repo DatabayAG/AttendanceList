@@ -128,7 +128,7 @@ class xaliChecklist extends ActiveRecord
 
     public function isEmpty(): bool
     {
-        return $this->last_edited_by == null;
+        return !$this->last_edited_by;
     }
 
     public function delete(): void
