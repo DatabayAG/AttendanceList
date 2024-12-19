@@ -51,6 +51,7 @@ class xaliSetting extends ActiveRecord
     /**
      * @db_has_field        true
      * @db_fieldtype        integer
+     * @db_is_notnull       true
      * @db_length           1
      */
     protected int $activation = 0;

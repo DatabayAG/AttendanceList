@@ -77,3 +77,14 @@ if (\srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Reposito
 <?php
 \srag\Plugins\AttendanceList\Libs\Notifications4Plugin\Notification\Repository::getInstance()->installTables();
 ?>
+<#6>
+<?php
+global $ilDB;
+if ($ilDB->tableExists('xali_data') && $ilDB->tableColumnExists('xali_data', 'activation')) {
+    $ilDB->manipulateF(
+        "UPDATE xali_data SET activation = %s WHERE activation IS NULL",
+        ['integer'],
+        [0]
+    );
+}
+?>
