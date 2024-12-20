@@ -88,3 +88,13 @@ if ($ilDB->tableExists('xali_data') && $ilDB->tableColumnExists('xali_data', 'ac
     );
 }
 ?>
+<#7>
+<?php
+if ($ilDB->tableExists('xali_checklist') && $ilDB->tableColumnExists('xali_checklist', 'last_edited_by')) {
+    $ilDB->manipulateF(
+        "UPDATE xali_checklist SET last_edited_by = %s WHERE last_edited_by IS NULL",
+        ['integer'],
+        [0]
+    );
+}
+?>
