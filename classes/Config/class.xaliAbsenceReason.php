@@ -44,36 +44,42 @@ class xaliAbsenceReason extends ActiveRecord
     protected ?string $id = "";
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        text
      * @db_length           256
      */
     protected string $title = "";
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        text
      * @db_length           256
      */
     protected string $info = "";
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           1
      */
     protected bool $has_comment = false;
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           1
      */
     protected bool $comment_req = false;
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           1
      */
     protected bool $has_upload = false;
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           1
      */

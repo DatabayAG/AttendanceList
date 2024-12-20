@@ -37,6 +37,7 @@ class xaliAbsenceStatement extends ActiveRecord
 
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           8
      */
@@ -44,6 +45,7 @@ class xaliAbsenceStatement extends ActiveRecord
 
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_is_unique        true
      * @db_length           256
      * @db_fieldtype        text
@@ -52,6 +54,7 @@ class xaliAbsenceStatement extends ActiveRecord
 
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           8
      */

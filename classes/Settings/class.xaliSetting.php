@@ -38,12 +38,14 @@ class xaliSetting extends ActiveRecord
     protected ?int $id;
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           1
      */
     protected int $is_online = 0;
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           8
      */
@@ -57,16 +59,19 @@ class xaliSetting extends ActiveRecord
     protected int $activation = 0;
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        date
      */
     protected string $activation_from = "";
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        date
      */
     protected string $activation_to = "";
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        text
      * @db_length           128
      */

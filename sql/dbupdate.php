@@ -98,3 +98,66 @@ if ($ilDB->tableExists('xali_checklist') && $ilDB->tableColumnExists('xali_check
     );
 }
 ?>
+<#8>
+<?php
+$columns_to_update = [
+        'xali_absence_statement' => [
+                'reason_id' => [ilDBConstants::T_INTEGER, 0],
+                'comment_text' => [ilDBConstants::T_TEXT, ''],
+                'file_id' => [ilDBConstants::T_INTEGER, 0]
+        ],
+        'xali_checklist' => [
+                'obj_id' => [ilDBConstants::T_INTEGER, 0],
+                'checklist_date' => [ilDBConstants::T_DATE, ''],
+                'last_update' => [ilDBConstants::T_INTEGER, 0]
+        ],
+        'xali_entry' => [
+                'checklist_id' => [ilDBConstants::T_INTEGER, 0],
+                'user_id' => [ilDBConstants::T_INTEGER, 0],
+                'status' => [ilDBConstants::T_INTEGER, 0]
+        ],
+        'xali_absence_reasons' => [
+                'title' => [ilDBConstants::T_TEXT, ''],
+                'info' => [ilDBConstants::T_TEXT, ''],
+                'has_comment' => [ilDBConstants::T_INTEGER, 0],
+                'comment_req' => [ilDBConstants::T_INTEGER, 0],
+                'has_upload' => [ilDBConstants::T_INTEGER, 0],
+                'upload_req' => [ilDBConstants::T_INTEGER, 0]
+            ],
+        'xali_config' => [
+                'value' => [ilDBConstants::T_TEXT, '']
+        ],
+        'xali_last_reminder' => [
+                'last_reminder' => [ilDBConstants::T_DATE, '']
+        ],
+        'xali_data' => [
+                'is_online' => [ilDBConstants::T_INTEGER, 0],
+                'minumum_attendance' => [ilDBConstants::T_INTEGER, 80],
+                'activation_from' => [ilDBConstants::T_DATE, ''],
+                'activation_to' => [ilDBConstants::T_DATE, ''],
+                'activation_weekdays' => [ilDBConstants::T_TEXT, '']
+        ],
+        'xali_user_status' => [
+                'attendancelist_id' => [ilDBConstants::T_INTEGER, 0],
+                'user_id' => [ilDBConstants::T_INTEGER, 0],
+                'created_at' => [ilDBConstants::T_TIMESTAMP, ''],
+                'updated_at' => [ilDBConstants::T_TIMESTAMP, ''],
+                'created_user_id' => [ilDBConstants::T_INTEGER, 0],
+                'updated_user_id' => [ilDBConstants::T_INTEGER, 0],
+                'status' => [ilDBConstants::T_INTEGER, 0]
+        ]
+
+];
+
+foreach ($columns_to_update as $table => $columns) {
+    foreach ($columns as $column => $definition) {
+        if ($ilDB->tableExists($table) && $ilDB->tableColumnExists($table, $column)) {
+            $ilDB->manipulateF(
+                "UPDATE $table SET $column = %s WHERE $column IS NULL",
+                [$definition[0]],
+                [$definition[1]]
+            );
+        }
+    }
+}
+?>
