@@ -41,6 +41,7 @@ class xaliLastReminder extends ActiveRecord
     protected ?int $user_id;
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        date
      */
     protected string $last_reminder = "";

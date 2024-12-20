@@ -39,6 +39,7 @@ class xaliUserStatus extends ActiveRecord
 
     /**
      * @db_has_field    true
+     * @db_is_notnull   true
      * @db_fieldtype    integer
      * @db_length       8
      */
@@ -46,6 +47,7 @@ class xaliUserStatus extends ActiveRecord
 
     /**
      * @db_has_field    true
+     * @db_is_notnull   true
      * @db_fieldtype    integer
      * @db_length       8
      */
@@ -53,18 +55,21 @@ class xaliUserStatus extends ActiveRecord
 
     /**
      * @db_has_field    true
+     * @db_is_notnull   true
      * @db_fieldtype    timestamp
      */
     protected string $created_at;
 
     /**
      * @db_has_field    true
+     * @db_is_notnull   true
      * @db_fieldtype    timestamp
      */
     protected string $updated_at;
 
     /**
      * @db_has_field    true
+     * @db_is_notnull   true
      * @db_fieldtype    integer
      * @db_length       8
      */
@@ -72,6 +77,7 @@ class xaliUserStatus extends ActiveRecord
 
     /**
      * @db_has_field    true
+     * @db_is_notnull   true
      * @db_fieldtype    integer
      * @db_length       8
      */
@@ -79,6 +85,7 @@ class xaliUserStatus extends ActiveRecord
 
     /**
      * @db_has_field    true
+     * @db_is_notnull   true
      * @db_fieldtype    integer
      * @db_length       8
      */

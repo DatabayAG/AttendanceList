@@ -47,6 +47,7 @@ class xaliChecklistEntry extends ActiveRecord
 
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           8
      */
@@ -54,12 +55,14 @@ class xaliChecklistEntry extends ActiveRecord
 
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           8
      */
     protected int $user_id = 0;
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           8
      */

@@ -38,6 +38,7 @@ class xaliChecklist extends ActiveRecord
 
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           8
      */
@@ -45,6 +46,7 @@ class xaliChecklist extends ActiveRecord
 
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_is_unique        true
      * @db_fieldtype        date
      */
@@ -60,6 +62,7 @@ class xaliChecklist extends ActiveRecord
 
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        integer
      * @db_length           8
      */

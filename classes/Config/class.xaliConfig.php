@@ -84,6 +84,7 @@ class xaliConfig extends ActiveRecord
     protected ?string $name;
     /**
      * @db_has_field        true
+     * @db_is_notnull       true
      * @db_fieldtype        text
      * @db_length           4000
      */
