@@ -231,34 +231,48 @@ class xaliOverviewGUI extends xaliGUI
         $this->ctrl->redirect($this, self::CMD_SHOW_USERS);
     }
 
-    public function addList(): void
+    private function buildCreateListForm(): ilPropertyFormGUI
     {
         $form = new ilPropertyFormGUI();
 
         $date_input = new ilDateTimeInputGUI($this->pl->txt('form_input_date'), 'checklist_date');
+        $date_input->setRequired(true);
         $form->addItem($date_input);
 
         $form->addCommandButton(self::CMD_CREATE_LIST, $this->lng->txt('create'));
         $form->addCommandButton(self::CMD_CANCEL, $this->lng->txt('cancel'));
 
         $form->setFormAction($this->ctrl->getFormAction($this));
+        return $form;
+    }
+
+    public function addList(?ilPropertyFormGUI $form = null): void
+    {
+        if (!$form) {
+            $form = $this->buildCreateListForm();
+        }
 
         $this->tpl->setContent($form->getHTML());
-        return;
     }
 
     public function createList(): void
     {
-        $checklist_date = $this->httpWrapper->post()->retrieve(
-            "checklist_date",
-            $this->refinery->kindlyTo()->string()
-        );
+        $form = $this->buildCreateListForm();
 
-        $date = (new DateTime($checklist_date))->format('Y-m-d');
-        $this->checkDate($date);
+        if (!$form->checkInput()) {
+            $form->setValuesByPost();
+            $this->addList($form);
+            return;
+        }
+
+        $form->setValuesByPost();
+
+        $checklist_date = $form->getInput("checklist_date");
+
+        $this->checkDate($checklist_date);
         $checklist = new xaliChecklist();
         $checklist->setObjId($this->parent_gui->getObject()->getId());
-        $checklist->setChecklistDate($date);
+        $checklist->setChecklistDate($checklist_date);
         $checklist->setLastEditedBy($this->user->getId());
         $checklist->setLastUpdate(time());
         $checklist->create();
