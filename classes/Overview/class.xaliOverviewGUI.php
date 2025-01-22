@@ -254,7 +254,7 @@ class xaliOverviewGUI extends xaliGUI
             $this->refinery->kindlyTo()->string()
         );
 
-        $date = date('Y-m-d', $checklist_date);
+        $date = (new DateTime($checklist_date))->format('Y-m-d');
         $this->checkDate($date);
         $checklist = new xaliChecklist();
         $checklist->setObjId($this->parent_gui->getObject()->getId());
