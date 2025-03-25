@@ -161,3 +161,15 @@ foreach ($columns_to_update as $table => $columns) {
     }
 }
 ?>
+<#9>
+<?php
+if (
+    $ilDB->tableExists("xali_absence_statement")
+    && $ilDB->tableColumnExists("xali_absence_statement", "comment_text")
+) {
+    $ilDB->modifyTableColumn("xali_absence_statement", "comment_text", [
+        "type" => ilDBConstants::T_CLOB,
+        "notnull" => true,
+    ]);
+}
+?>
