@@ -47,8 +47,7 @@ class xaliAbsenceStatement extends ActiveRecord
      * @db_has_field        true
      * @db_is_notnull       true
      * @db_is_unique        true
-     * @db_length           256
-     * @db_fieldtype        text
+     * @db_fieldtype        clob
      */
     protected string $comment_text = "";
 
