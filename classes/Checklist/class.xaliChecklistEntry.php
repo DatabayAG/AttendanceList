@@ -106,7 +106,7 @@ class xaliChecklistEntry extends ActiveRecord
 
         $notification = self::notifications4plugin()->notifications()->getNotificationByName(self::NOTIFICATION_NAME);
 
-        $sender_id = xaliConfig::getConfig(xaliConfig::F_SENDER_REMINDER_EMAIL);
+        $sender_id = xaliConfig::getConfig(xaliConfig::F_SENDER_REMINDER_EMAIL) ?: 6;
         $sender = self::notifications4plugin()->sender()->factory()->internalMail($sender_id, $ilObjUser->getId());
 
         try {
