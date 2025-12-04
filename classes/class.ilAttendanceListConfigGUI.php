@@ -77,11 +77,6 @@ class ilAttendanceListConfigGUI extends ilPluginConfigGUI
         $component_factory = $DIC['component.factory'];
         /** @var $plugin ilAttendanceListPlugin */
         $this->pl = $component_factory->getPlugin(ilAttendanceListPlugin::PLUGIN_ID);
-
-        // this is for the cron job, since the ILIAS_HTTP_PATH is not initialized in cron context
-        if (!xaliConfig::getConfig(xaliConfig::F_HTTP_PATH)) {
-            xaliConfig::set(xaliConfig::F_HTTP_PATH, ILIAS_HTTP_PATH);
-        }
     }
 
     public function performCommand($cmd): void
