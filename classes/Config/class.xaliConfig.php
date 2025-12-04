@@ -23,7 +23,6 @@ class xaliConfig extends ActiveRecord
 {
     public const F_INTERVAL_REMINDER_EMAIL = 'interval_reminder_email';
     public const F_SENDER_REMINDER_EMAIL = 'sender_reminder_email';
-    public const F_HTTP_PATH = 'http_path';
     public const F_SHOW_NOT_RELEVANT = 'show_not_relevant';
     public const F_SHOW_PRESENT_TOTAL = 'show_present_total';
     public const TABLE_NAME = 'xali_config';
