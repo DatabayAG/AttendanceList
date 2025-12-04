@@ -62,9 +62,11 @@ class xaliConfigFormGUI extends ilPropertyFormGUI
 
         $subinput = new ilNumberInputGUI($this->pl->txt('config_' . xaliConfig::F_INTERVAL_REMINDER_EMAIL), xaliConfig::F_INTERVAL_REMINDER_EMAIL);
         $subinput->setInfo($this->pl->txt('config_' . xaliConfig::F_INTERVAL_REMINDER_EMAIL . '_info'));
+        $subinput->setRequired(true);
         $this->addItem($subinput);
 
         $subinput = new ilNumberInputGUI($this->pl->txt('config_' . xaliConfig::F_SENDER_REMINDER_EMAIL), xaliConfig::F_SENDER_REMINDER_EMAIL);
+        $subinput->setRequired(true);
         $subinput->setInfo($this->pl->txt('config_' . xaliConfig::F_SENDER_REMINDER_EMAIL . '_info'));
         $this->addItem($subinput);
 
@@ -78,7 +80,7 @@ class xaliConfigFormGUI extends ilPropertyFormGUI
     {
         $this->setValuesByArray([
             xaliConfig::F_INTERVAL_REMINDER_EMAIL => xaliConfig::getConfig(xaliConfig::F_INTERVAL_REMINDER_EMAIL) ?: 0,
-            xaliConfig::F_SENDER_REMINDER_EMAIL => xaliConfig::getConfig(xaliConfig::F_SENDER_REMINDER_EMAIL),
+            xaliConfig::F_SENDER_REMINDER_EMAIL => xaliConfig::getConfig(xaliConfig::F_SENDER_REMINDER_EMAIL) ?: 6,
             xaliConfig::F_SHOW_NOT_RELEVANT => xaliConfig::getConfig(xaliConfig::F_SHOW_NOT_RELEVANT),
             xaliConfig::F_SHOW_PRESENT_TOTAL => xaliConfig::getConfig(xaliConfig::F_SHOW_PRESENT_TOTAL),
         ]);

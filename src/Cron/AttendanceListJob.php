@@ -203,7 +203,7 @@ class AttendanceListJob extends ilCronJob
                     continue;
                 }
 
-                $base_link = xaliConfig::getConfig(xaliConfig::F_HTTP_PATH) . '/goto.php?target=xali_' . $ref_id;
+                $base_link = ILIAS_HTTP_PATH . '/goto.php?target=xali_' . $ref_id;
 
                 $open_absences .= 'Kurs "' . $parent_course->getTitle() . "\": \n";
                 foreach ($entry_array as $entry_id => $checklist_date) {

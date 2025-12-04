@@ -95,7 +95,7 @@ class xaliChecklistEntry extends ActiveRecord
         /** @var xaliChecklist $xaliChecklist */
         $xaliChecklist = xaliChecklist::find($this->getChecklistId());
         $ref_id = ilAttendanceListPlugin::lookupRefId($xaliChecklist->getObjId());
-        $link = xaliConfig::getConfig(xaliConfig::F_HTTP_PATH) . '/goto.php?target=xali_' . $ref_id . '_' . $this->id;
+        $link = ILIAS_HTTP_PATH . '/goto.php?target=xali_' . $ref_id . '_' . $this->id;
 
         $parent_course = ilAttendanceListPlugin::getInstance()->getParentCourseOrGroup($ref_id);
         $absence_date = $xaliChecklist->getChecklistDate('d.m.Y');
@@ -106,7 +106,7 @@ class xaliChecklistEntry extends ActiveRecord
 
         $notification = self::notifications4plugin()->notifications()->getNotificationByName(self::NOTIFICATION_NAME);
 
-        $sender_id = xaliConfig::getConfig(xaliConfig::F_SENDER_REMINDER_EMAIL);
+        $sender_id = xaliConfig::getConfig(xaliConfig::F_SENDER_REMINDER_EMAIL) ?: 6;
         $sender = self::notifications4plugin()->sender()->factory()->internalMail($sender_id, $ilObjUser->getId());
 
         try {
