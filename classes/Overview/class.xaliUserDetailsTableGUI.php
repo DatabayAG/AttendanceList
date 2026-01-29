@@ -244,7 +244,7 @@ class xaliUserDetailsTableGUI extends ilTable2GUI
             if (!$this->getExternalSorting() && $this->enabled["sort"]) {
                 $this->determineOffsetAndOrder(true);
 
-                $this->row_data = ilUtil::sortArray(
+                $this->row_data = ilArrayUtil::sortArray(
                     $this->row_data,
                     $this->getOrderField(),
                     $this->getOrderDirection(),
