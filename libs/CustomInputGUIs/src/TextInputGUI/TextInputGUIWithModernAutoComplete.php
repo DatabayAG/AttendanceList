@@ -3,6 +3,7 @@
 namespace srag\Plugins\AttendanceList\Libs\CustomInputGUIs\TextInputGUI;
 
 use iljQueryUtil;
+use ilLegacyFormElementsUtil;
 use ilUtil;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\src\Utils\PluginVersionParameter;
 use srag\Plugins\AttendanceList\Libs\CustomInputGUIs\Template\Template;
@@ -59,17 +60,17 @@ class TextInputGUIWithModernAutoComplete extends TextInputGUI
         $tpl = new Template(__DIR__ . "/templates/text_input_gui_with_modern_auto_complete.html", true, true);
         if (strlen($this->getValue())) {
             $tpl->setCurrentBlock("prop_text_propval");
-            $tpl->setVariable("PROPERTY_VALUE", ilUtil::prepareFormOutput($this->getValue()));
+            $tpl->setVariable("PROPERTY_VALUE", ilLegacyFormElementsUtil::prepareFormOutput($this->getValue()));
             $tpl->parseCurrentBlock();
         }
         if (strlen($this->getInlineStyle())) {
             $tpl->setCurrentBlock("stylecss");
-            $tpl->setVariable("CSS_STYLE", ilUtil::prepareFormOutput($this->getInlineStyle()));
+            $tpl->setVariable("CSS_STYLE", ilLegacyFormElementsUtil::prepareFormOutput($this->getInlineStyle()));
             $tpl->parseCurrentBlock();
         }
         if (strlen($this->getCssClass())) {
             $tpl->setCurrentBlock("classcss");
-            $tpl->setVariable('CLASS_CSS', ilUtil::prepareFormOutput($this->getCssClass()));
+            $tpl->setVariable('CLASS_CSS', ilLegacyFormElementsUtil::prepareFormOutput($this->getCssClass()));
             $tpl->parseCurrentBlock();
         }
         if ($this->getSubmitFormOnEnter()) {
