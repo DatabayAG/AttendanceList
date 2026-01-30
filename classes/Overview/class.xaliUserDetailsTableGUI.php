@@ -258,7 +258,7 @@ class xaliUserDetailsTableGUI extends ilTable2GUI
                 case self::EXPORT_EXCEL:
                     $excel = new ilExcel();
                     $excel->addSheet($filename);
-                    $row = 0;
+                    $row = 1;
 
                     ob_start();
                     $this->fillMetaExcel($excel, $row); // row must be increment in fillMetaExcel()! (optional method)
